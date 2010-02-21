@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+# Git - Select Add
+# Written by: Gianni Chiappetta <gianni[at]runlevel6[dot]org>
+
+require 'rubygems'
+require 'git' # http://github.com/schacon/ruby-git
+
+MODES = {
+  "M" => "Modified"
+}
+
+COLOURS = {
+  :default => {:start => "\033[36m", :end => "\033[0m"},
+  "M" => {:start => "\033[32m", :end => "\033[0m"}
+}
+
+g = Git.open(ARGV[0] || Dir.pwd) rescue nil
+if g.nil?
+  puts "Not a git repo" and exit 1
+else
+  files = g.status.select{|f| (MODES.keys.include?(f.type) && f.sha_index == '0000000000000000000000000000000000000000') || !f.untracked.nil?}
+  if files.empty?
+    puts "Nothing to add to commit"
+  else
+    files.each do |f|
+      decided = false
+      until decided
+        colour_start = COLOURS[f.type] ? COLOURS[f.type][:start] : COLOURS[:default][:start]
+        colour_end   = COLOURS[f.type] ? COLOURS[f.type][:end]   : COLOURS[:default][:end]
+        print sprintf("#{colour_start}%14s#{colour_end} %-53s Add? [Yn]: ", "(#{MODES[f.type] || 'Untracked'})", "#{f.path}")
+      
+        decision = gets.chomp.downcase
+      
+        if ['y', 'n', ''].include? decision
+          decided = true
+          case decision
+            when 'y'
+              g.add f.path
+            when ''
+              g.add f.path
+          end
+        end
+      end
+    end
+  end
+end
