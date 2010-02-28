@@ -33,5 +33,3 @@
 	untracked = cyan
 [merge]
 	log = true
-[core]
-	editor = mate -wl1
