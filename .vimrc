@@ -1,4 +1,5 @@
 " Set syntax highlighting options.
+:set t_Co=256
 :set background=dark 
 :syntax on
 :colorscheme darkburn
@@ -23,6 +24,7 @@
 :set nocompatible " Make vim more useful
 :set noerrorbells " Disable error bells.
 :set nohlsearch " Enable search result highlighting.
+:set nostartofline
 :set nowrap " Do not wrap lines.
 :set nu " Enable line numbers.
 :set report=0 " Show all changes.
@@ -85,10 +87,15 @@ endfunction
 ":au BufWinLeave * mkview
 ":au BufWinEnter * silent loadview
 
+" Fix page up and down
+map <PageUp> <C-U>
+map <PageDown> <C-D>
+imap <PageUp> <C-O><C-U>
+imap <PageDown> <C-O><C-D>
+
 :filetype plugin on
 
 " Markdown
 augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
-
