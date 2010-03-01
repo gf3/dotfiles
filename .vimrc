@@ -1,7 +1,7 @@
 " Set syntax highlighting options.
 :set background=dark 
 :syntax on
-:colorscheme desertedoceanburnt
+:colorscheme darkburn
 
 " Change mapleader
 :let mapleader=","
@@ -14,11 +14,13 @@
 :set expandtab " Expand tabs to spaces
 :set foldmethod=syntax " Markers are used to specify folds.
 :set foldenable
-:set foldlevel=2
+:set foldlevel=1
 :set hidden " When a buffer is brought to foreground, remember undo history and marks.
 :set history=1000 " Increase history from 20 default to 1000
+:set hlsearch " Highlight searches
 :set incsearch " Highlight dynamically as pattern is typed.
 :set magic " Enable extended regexes.
+:set nocompatible " Make vim more useful
 :set noerrorbells " Disable error bells.
 :set nohlsearch " Enable search result highlighting.
 :set nowrap " Do not wrap lines.
@@ -79,8 +81,8 @@ endfunction
 :noremap <leader>ss :call StripWhitespace ()<CR>
 
 " Save and restore folds
-:au BufWinLeave * mkview
-:au BufWinEnter * silent loadview
+":au BufWinLeave * mkview
+":au BufWinEnter * silent loadview
 
 :filetype plugin on
 
