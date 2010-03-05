@@ -60,6 +60,10 @@
 " New tab (Ctrl + T)
 :map <C-T> <Esc>:tabnew<CR>
 
+" Indent/unident block (,]) (,[)
+:nnoremap <leader>] >i{<CR>
+:nnoremap <leader>[ <i{<CR>
+
 " Paste toggle (,p)
 :set pastetoggle=<leader>p
 :map <leader>p :set invpaste paste?<CR>
@@ -69,10 +73,13 @@
 
 " Buffer navigation (,,) (,]) (,[) (,ls)
 :map <Leader>, <C-^>
-:map <Leader>] :bnext<CR>
-:map <Leader>[ :bprev<CR>
+" :map <Leader>] :bnext<CR>
+" :map <Leader>[ :bprev<CR>
 :map <Leader>ls :buffers<CR>
- 
+
+" Yank from cursor to end of line
+:nnoremap Y y$
+
  " Insert newline
 :map <S-Enter> O<ESC>
 :map <Enter> o<ESC>
