@@ -2,7 +2,7 @@
 :set t_Co=256
 :set background=dark 
 :syntax on
-:colorscheme darkburn
+:colorscheme molokai
 
 " Change mapleader
 :let mapleader=","
