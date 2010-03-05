@@ -62,7 +62,7 @@
 
 " Paste toggle (,p)
 :set pastetoggle=<leader>p
-:map <leader>p :set invpaste paste?<CR
+:map <leader>p :set invpaste paste?<CR>
 
 " Nerdtree (,n)
 :map <leader>n :NERDTreeToggle<CR>
