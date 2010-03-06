@@ -23,7 +23,6 @@
 :set magic " Enable extended regexes.
 :set nocompatible " Make vim more useful
 :set noerrorbells " Disable error bells.
-:set nohlsearch " Enable search result highlighting.
 :set nostartofline
 :set nowrap " Do not wrap lines.
 :set nu " Enable line numbers.
