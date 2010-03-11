@@ -9,7 +9,10 @@ if [ -f ~/.bash_prompt ]; then
 fi
 
 # Editor
-export EDITOR="mate -w"
+export EDITOR="vim"
+
+# Vi style command line editing
+set -o vi
 
 # Larger bash history (default is 500)
 export HISTFILESIZE=10000
