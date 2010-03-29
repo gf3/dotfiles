@@ -59,6 +59,9 @@
 " New tab (Ctrl + T)
 :map <C-T> <Esc>:tabnew<CR>
 
+" Clear last search (,cs)
+:map <leader>cs <Esc>:let @/ = ""<CR>
+
 " Indent/unident block (,]) (,[)
 :nnoremap <leader>] >i{<CR>
 :nnoremap <leader>[ <i{<CR>
