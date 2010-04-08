@@ -23,6 +23,7 @@
 :set history=1000 " Increase history from 20 default to 1000
 :set hlsearch " Highlight searches
 :set incsearch " Highlight dynamically as pattern is typed.
+:set laststatus=2 " Always show status line
 :set magic " Enable extended regexes.
 :set nocompatible " Make vim more useful
 :set noerrorbells " Disable error bells.
