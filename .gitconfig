@@ -11,9 +11,10 @@
 	co = checkout
 	df = diff
 	lg = log -p
-	sa = select-add
 	pb = publish-branch
 	rc = rank-contributors
+  rb = rbranch
+  rv = review
 	sm = show-merges
 	pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
 [color]

@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby -wKU
+# Usage:
+#   $ git review [action] [branch]
+# 
+# Action defaults to "start" and branch to current branch.
+# 
+# Examples:
+#   $ git review
+#   $ git review end
+#   $ git review start topic-1
+#   $ git review end topic-1
+#
+action, branch = ARGV
+action ||= 'start'
+branch ||= `git name-rev HEAD`.chomp.sub('HEAD ', '') # current branch
+
+case action
+when 'start'
+  `git config --bool branch.#{branch}.peer-review true`
+  puts "Marked '#{branch}' for peer review."
+when 'end'
+  `git config --unset branch.#{branch}.peer-review`
+  puts "Peer review is done on '#{branch}'."
+else
+  $stderr.puts "unknown action #{action}"
+end

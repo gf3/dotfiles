@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby -wKU
+# Usage:
+#   $ git rbranch [args]
+# 
+# Branches with peer review in progress are rendered with '-' prefix.
+#
+
+args = ARGV.dup
+args << '--color' unless args.include?('--no-color')
+
+`git branch #{args.join(' ')}`.split("\n").each do |line|
+  if line =~ /^  (?:\e\[(?:\d;)?\d{2}m)?([\w-]+)/
+    branch= $1
+    `git config --bool branch.#{branch}.peer-review`
+    prefix = $?.success?? '- ' : '  '
+    puts line.gsub(/^  /, prefix)
+  else
+    puts line
+  end
+end
