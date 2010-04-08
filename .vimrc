@@ -11,6 +11,7 @@
 :set autoindent " Copy indent from last line when starting new line.
 :set backspace=indent,eol,start
 :set cursorline " Highlight current line
+:set encoding=utf-8 nobomb " BOM often causes trouble
 :set esckeys " Allow cursor keys in insert mode.
 :set expandtab " Expand tabs to spaces
 :set foldmethod=syntax " Markers are used to specify folds.
@@ -27,6 +28,7 @@
 :set nowrap " Do not wrap lines.
 :set nu " Enable line numbers.
 :set report=0 " Show all changes.
+:set ruler " Show the cursor position
 :set scrolloff=3 " Start scrolling three lines before horizontal border of window.
 :set shiftwidth=2 " The # of spaces for indenting.
 :set shortmess=I " Don't show the intro message when starting vim.
