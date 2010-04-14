@@ -44,6 +44,9 @@
 :set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 :set wildmode=list:longest " Complete only until point of ambiguity.
 
+" PHP Syntax folding
+:let g:php_folding 2
+
 " Speed up viewport scrolling
 :nnoremap <C-e> 3<C-e>
 :nnoremap <C-y> 3<C-y>
