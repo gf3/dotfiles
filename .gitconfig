@@ -1,36 +1,37 @@
 [user]
-	name = Gianni Chiappetta
-	email = EMAIL
+  name = Gianni Chiappetta
+  email = EMAIL
 [github]
-	user = gf3
-	token = TOKEN
+  user = gf3
+  token = TOKEN
 [alias]
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
-	lg = log -p
-	pb = publish-branch
-	rc = rank-contributors
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
+  g = grep -I
+  lg = log -p
+  pb = publish-branch
+  pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
   rb = rbranch
+  rc = rank-contributors
   rv = review
-	sm = show-merges
-	pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
+  sm = show-merges
+  st = status
 [color]
-	ui = auto
+  ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+  added = yellow
+  changed = green
+  untracked = cyan
 [merge]
-	log = true
+  log = true
