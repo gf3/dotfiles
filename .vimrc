@@ -48,6 +48,12 @@
 :nnoremap <C-e> 3<C-e>
 :nnoremap <C-y> 3<C-y>
 
+" Remap arrow keys
+:inoremap <Left>  <NOP>
+:inoremap <Right> <NOP>
+:inoremap <Up>    <NOP>
+:inoremap <Down>  <NOP>
+
 " Sudo write (,W)
 :noremap <leader>W :w !sudo tee %<CR>
 
@@ -65,7 +71,7 @@
 :map <C-T> <Esc>:tabnew<CR>
 
 " Clear last search (,cs)
-:map <leader>cs <Esc>:let @/ = ""<CR>
+:map <silent> <leader>cs <Esc>:let @/ = ""<CR>
 
 " Indent/unident block (,]) (,[)
 :nnoremap <leader>] >i{<CR>
