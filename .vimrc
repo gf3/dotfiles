@@ -37,9 +37,11 @@
 :set shortmess=I " Don't show the intro message when starting vim.
 :set showmode " Show the current mode.
 :set showtabline=2 " Always show tab bar.
+:set smartindent " Do smart autoindenting when starting a new line.
 :set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
 :set tabstop=2 " Tab key results in 2 spaces
 :set title " Show the filename in the window titlebar.
+:set ttyfast " Send more characters at a given time.
 :set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 :set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 :set wildmode=list:longest " Complete only until point of ambiguity.
@@ -56,6 +58,9 @@
 
 " Sudo write (,W)
 :noremap <leader>W :w !sudo tee %<CR>
+
+" Remap :W to :w
+:cnoremap W w
 
 " Toggle show tabs and trailing spaces (,c)
 :set lcs=tab:>-,trail:·,eol:$,nbsp:_
@@ -93,7 +98,7 @@
 " Yank from cursor to end of line
 :nnoremap Y y$
 
- " Insert newline
+" Insert newline
 :map <S-Enter> O<ESC>
 :map <Enter> o<ESC>
 
@@ -104,14 +109,14 @@ endfunction
 :noremap <leader>ss :call StripWhitespace ()<CR>
 
 " Save and restore folds
-":au BufWinLeave * mkview
-":au BufWinEnter * silent loadview
+" :au BufWinLeave * mkview
+" :au BufWinEnter * silent loadview
 
 " Fix page up and down
-map <PageUp> <C-U>
-map <PageDown> <C-D>
-imap <PageUp> <C-O><C-U>
-imap <PageDown> <C-O><C-D>
+:map <PageUp> <C-U>
+:map <PageDown> <C-D>
+:imap <PageUp> <C-O><C-U>
+:imap <PageDown> <C-O><C-D>
 
 :filetype plugin on
 
