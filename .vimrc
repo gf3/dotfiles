@@ -37,9 +37,8 @@
 :set shortmess=I " Don't show the intro message when starting vim.
 :set showmode " Show the current mode.
 :set showtabline=2 " Always show tab bar.
-:set smartindent " Do smart autoindenting when starting a new line.
 :set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
-:set tabstop=2 " Tab key results in 2 spaces
+:set softtabstop=2 " Tab key results in 2 spaces
 :set title " Show the filename in the window titlebar.
 :set ttyfast " Send more characters at a given time.
 :set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
@@ -60,7 +59,7 @@
 :noremap <leader>W :w !sudo tee %<CR>
 
 " Remap :W to :w
-:cnoremap W w
+:command W w
 
 " Toggle show tabs and trailing spaces (,c)
 :set lcs=tab:>-,trail:·,eol:$,nbsp:_
