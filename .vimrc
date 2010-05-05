@@ -119,6 +119,9 @@ endfunction
 
 :filetype plugin on
 
+" Emulate bundles, allow plugins to live independantly. Easier to manage.
+:call pathogen#runtime_append_all_bundles()
+
 " Markdown
 augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
