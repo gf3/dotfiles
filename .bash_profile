@@ -1,6 +1,6 @@
 # Aliases
 if [ -f ~/.bash_aliases ]; then
-  source ~/.bash_aliases
+  source ~/.aliases
 fi
 
 # Prompt
