@@ -62,7 +62,7 @@
 :command W w
 
 " Toggle show tabs and trailing spaces (,c)
-:set lcs=tab:>-,trail:·,eol:$,nbsp:_
+:set lcs=tab:›\ ,trail:·,eol:↴,nbsp:_
 :set fcs=fold:-
 :nnoremap <silent> <leader>c :set nolist!<CR>
 
@@ -129,3 +129,4 @@ augroup END
 
 " CSS3
 au BufRead,BufNewFile *.css set ft=css syntax=css3
+
