@@ -16,6 +16,7 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias ip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 alias localip="ipconfig getifaddr en1"
 alias vp="vim -p"
+alias view="vim -p -R"
 
 # Sync
 alias sync_irc="rsync -avz ~/Sites/IRC/ slice:/home/gianni/www/irc.gf3.ca"
