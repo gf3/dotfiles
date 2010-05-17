@@ -117,7 +117,13 @@ endfunction
 :imap <PageUp> <C-O><C-U>
 :imap <PageDown> <C-O><C-D>
 
-:filetype plugin on
+:filetype plugin indent on
+
+" Restore cursor position
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 :call pathogen#runtime_append_all_bundles()
