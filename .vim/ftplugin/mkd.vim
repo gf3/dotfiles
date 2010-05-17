@@ -18,7 +18,11 @@ function! MarkdownRender(lines)
   end
 
   let text = join(a:lines, "\n")
-  let html = system("ruby -e \"def e(msg); puts msg; exit 1; end; begin; require 'rubygems'; rescue LoadError; e('rubygems not found'); end; begin; require 'bluecloth'; rescue LoadError; e('BlueCloth gem not installed.  Run this from the terminal: sudo gem install BlueCloth'); end; puts(BlueCloth.new(\\$stdin.read).to_html(:markdown)\"", text)
+  let html = system("ruby -e \"
+        \ require 'rubygems';
+        \ require 'rdiscount';
+        \ puts RDiscount.new(\\$stdin.read).to_html
+        \ \"", text)
   return html
 endfunction
 
@@ -33,7 +37,7 @@ function! MarkdownRenderBufferToPreview()
   call MarkdownRenderFile(getbufline(bufname("%"), 1, '$'), filename)
 
   " Modify this line to make it compatible on other platforms
-  call system("open -a Safari ". filename)
+  call system("open ". filename)
 endfunction
 
 function! MarkdownRenderBufferToFile()
