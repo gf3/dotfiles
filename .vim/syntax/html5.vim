@@ -9,6 +9,23 @@
 " Note: This file just adds the new tags from HTML 5
 "       and don't replace default html.vim syntax file
 
+if version < 600
+  syntax clear
+elseif exists("b:current_syntax")
+  finish
+endif
+
+if !exists("main_syntax")
+  let main_syntax = 'html'
+endif
+
+if version < 600
+  so <sfile>:p:h/html.vim
+else
+  runtime! syntax/html.vim
+  unlet b:current_syntax
+endif
+
 " HTML 5 tags
 syn keyword htmlTagName contained article aside audio bb canvas command datagrid
 syn keyword htmlTagName contained datalist details dialog embed figure footer
@@ -21,3 +38,5 @@ syn keyword htmlArg contained contenteditable contextmenu draggable hidden item
 syn keyword htmlArg contained itemprop list subject spellcheck
 " this doesn't work because default syntax file alredy define a 'data' attribute
 syn match   htmlArg "\<\(data-[\-a-zA-Z0-9_]\+\)=" contained
+
+let b:current_syntax = "html5"
