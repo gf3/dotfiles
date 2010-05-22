@@ -1,1 +1,1 @@
-go-=T " Hide toolbar on launch
+set go-=T " Hide toolbar on launch
