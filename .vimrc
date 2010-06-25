@@ -20,9 +20,12 @@ set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 nobomb " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
-set foldmethod=syntax " Markers are used to specify folds.
+set foldcolumn=4 " Column to show folds
 set foldenable
-set foldlevel=1
+set foldlevel=2
+" set foldlevelstart=2 " Sets `foldlevel` when editing a new buffer
+set foldmethod=indent " Markers are used to specify folds.
+set foldnestmax=3 " Set max fold nesting level
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=1000 " Increase history from 20 default to 1000
 set hlsearch " Highlight searches
