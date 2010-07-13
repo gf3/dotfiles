@@ -78,9 +78,6 @@ nnoremap <leader>ff :FufFile<CR>
 nnoremap <leader>fb :FufBuffer<CR>
 nnoremap <leader>fd :FufDir<CR>
 
-" New tab (Ctrl + T)
-map <C-T> <Esc>:tabnew<CR>
-
 " Clear last search (,cs)
 map <silent> <leader>cs <Esc>:let @/ = ""<CR>
 
@@ -105,8 +102,7 @@ map <Leader>ls :buffers<CR>
 nnoremap Y y$
 
 " Insert newline
-map <S-Enter> O<ESC>
-map <Enter> o<ESC>
+map <leader><Enter> o<ESC>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
