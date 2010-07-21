@@ -98,6 +98,9 @@ map <Leader>, <C-^>
 " :map <Leader>[ :bprev<CR>
 map <Leader>ls :buffers<CR>
 
+" Close Quickfix window (,cq)
+map <leader>cq :cclose<CR>
+
 " Yank from cursor to end of line
 nnoremap Y y$
 
