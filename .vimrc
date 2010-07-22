@@ -37,6 +37,7 @@ set noerrorbells " Disable error bells.
 set nostartofline
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
+set ofu=syntaxcomplete#Complete " Set omni-completion method.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
@@ -80,6 +81,12 @@ nnoremap <leader>fd :FufDir<CR>
 
 " Clear last search (,cs)
 map <silent> <leader>cs <Esc>:let @/ = ""<CR>
+
+" Remap keys for auto-completion
+inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
 
 " Indent/unident block (,]) (,[)
 nnoremap <leader>] >i{<CR>
