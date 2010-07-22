@@ -80,7 +80,8 @@ nnoremap <leader>fb :FufBuffer<CR>
 nnoremap <leader>fd :FufDir<CR>
 
 " Clear last search (,cs)
-map <silent> <leader>cs <Esc>:let @/ = ""<CR>
+map <silent> <leader>cs <Esc>:noh<CR>
+" map <silent> <leader>cs <Esc>:let @/ = ""<CR>
 
 " Remap keys for auto-completion
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
