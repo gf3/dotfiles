@@ -32,6 +32,7 @@ set hlsearch " Highlight searches
 set incsearch " Highlight dynamically as pattern is typed.
 set laststatus=2 " Always show status line
 set magic " Enable extended regexes.
+set mouse=a " Enable moouse in all in all modes.
 set nocompatible " Make vim more useful
 set noerrorbells " Disable error bells.
 set nostartofline
@@ -49,6 +50,7 @@ set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes s
 set softtabstop=2 " Tab key results in 2 spaces
 set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
+set ttymouse=xterm " Set mouse type to xterm.
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
