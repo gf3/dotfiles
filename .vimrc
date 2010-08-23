@@ -52,6 +52,7 @@ set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
+set wildignore+=*.o,*.obj,*.min.js,smarty/**,vendor/rails/**,vendor/plugins/**,vendor/gems/**,.git,.hg,.svn,.sass-cache,log,tmp,build,_SCRIPTS,_TESTS
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
 
