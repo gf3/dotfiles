@@ -65,6 +65,12 @@ inoremap <Right> <NOP>
 inoremap <Up>    <NOP>
 inoremap <Down>  <NOP>
 
+" Faster split resizing (+,-)
+if bufwinnr(1)
+  map + <C-W>+
+  map - <C-W>-
+endif
+
 " Sudo write (,W)
 noremap <leader>W :w !sudo tee %<CR>
 
