@@ -83,11 +83,6 @@ set lcs=tab:›\ ,trail:·,eol:↴,nbsp:_
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
-" FuzzyFinder (,ff) (,fb) (,fd)
-nnoremap <leader>ff :FufFile<CR>
-nnoremap <leader>fb :FufBuffer<CR>
-nnoremap <leader>fd :FufDir<CR>
-
 " Clear last search (,cs)
 map <silent> <leader>cs <Esc>:noh<CR>
 " map <silent> <leader>cs <Esc>:let @/ = ""<CR>
