@@ -29,6 +29,7 @@ set foldnestmax=3 " Set max fold nesting level
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=1000 " Increase history from 20 default to 1000
 set hlsearch " Highlight searches
+set ignorecase " Ignore case of searches.
 set incsearch " Highlight dynamically as pattern is typed.
 set laststatus=2 " Always show status line
 set magic " Enable extended regexes.
@@ -60,12 +61,6 @@ set wildmode=list:longest " Complete only until point of ambiguity.
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" Remap arrow keys
-inoremap <Left>  <NOP>
-inoremap <Right> <NOP>
-inoremap <Up>    <NOP>
-inoremap <Down>  <NOP>
-
 " Faster split resizing (+,-)
 if bufwinnr(1)
   map + <C-W>+
@@ -87,11 +82,13 @@ nnoremap <silent> <leader>c :set nolist!<CR>
 map <silent> <leader>cs <Esc>:noh<CR>
 " map <silent> <leader>cs <Esc>:let @/ = ""<CR>
 
-" Remap keys for auto-completion
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+" Remap keys for auto-completion, disable arrow keys
+inoremap <expr>  <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr>  <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr>  <Down>     pumvisible() ? "\<C-n>" : "\<NOP>"
+inoremap <expr>  <Up>       pumvisible() ? "\<C-p>" : "\<NOP>"
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
 
 " Indent/unident block (,]) (,[)
 nnoremap <leader>] >i{<CR>
