@@ -20,8 +20,8 @@ function! MarkdownRender(lines)
   let text = join(a:lines, "\n")
   let html = system("ruby -e \"
         \ require 'rubygems';
-        \ require 'rdiscount';
-        \ puts RDiscount.new(\\$stdin.read).to_html
+        \ require 'maruku';
+        \ puts Maruku.new(\\$stdin.read).to_html
         \ \"", text)
   return html
 endfunction
