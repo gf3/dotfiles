@@ -154,6 +154,9 @@ au BufRead,BufNewFile *.css set ft=css syntax=css3
 " HTML5
 au BufRead,BufNewFile *.html set ft=html syntax=html5
 
+" JSON
+au BufRead,BufNewFile *.json set ft=json syntax=javascript
+
 " Command-T
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
