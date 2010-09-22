@@ -20,10 +20,10 @@ $exclude = [
 
 desc 'Backup previous dotfiles.'
 task :backup do
-  dir = FileUtils.mkdir_p( File.join( File.expand_path( '~' ), '.dotfiles-backup', Time.now.to_s.gsub( /:/, '-' ).gsub( /[^-\w]+/, '_' ) ) )
+  dir = FileUtils.mkdir_p( File.expand_path( File.join( '~' , '.dotfiles-backup', Time.now.to_s ) ) )
   entries.each do | file |
     orig = File.expand_path( "~/#{file}" )
-    FileUtils.mv orig, "#{dir}/#{file}" if File.exists? orig
+    FileUtils.cp_r orig, "#{dir}/#{file}", :verbose => true if File.exists? orig
   end
 end
 
@@ -56,6 +56,7 @@ namespace :install do
     Dir.chdir File.expand_path( '~/.vim/bundle/command-t' ) do
       system 'rake make'
     end
+    puts "\n\n\n##################################################"
     puts "Don't forget to edit your '~/.gitconfig'!!!"
   end
 
