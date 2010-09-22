@@ -24,8 +24,18 @@ set foldcolumn=4 " Column to show folds
 set foldenable
 set foldlevel=2
 " set foldlevelstart=2 " Sets `foldlevel` when editing a new buffer
-set foldmethod=indent " Markers are used to specify folds.
+set foldmethod=syntax " Markers are used to specify folds.
+set foldminlines=0 " Allow folding single lines
 set foldnestmax=3 " Set max fold nesting level
+set formatoptions=
+set formatoptions+=c " Format comments
+set formatoptions+=r " Continue comments by default
+set formatoptions+=o " Make comment when using o or O from comment line
+set formatoptions+=q " Format comments with gq
+set formatoptions+=n " Recognize numbered lists
+set formatoptions+=2 " Use indent from 2nd line of a paragraph
+set formatoptions+=l " Don't break lines that are already long
+set formatoptions+=1 " Break before 1-letter words
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=1000 " Increase history from 20 default to 1000
 set hlsearch " Highlight searches
@@ -36,7 +46,7 @@ set magic " Enable extended regexes.
 set mouse=a " Enable moouse in all in all modes.
 set nocompatible " Make vim more useful
 set noerrorbells " Disable error bells.
-set nostartofline
+set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
 set ofu=syntaxcomplete#Complete " Set omni-completion method.
@@ -49,6 +59,9 @@ set showmode " Show the current mode.
 set showtabline=2 " Always show tab bar.
 set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
 set softtabstop=2 " Tab key results in 2 spaces
+set splitbelow " New window goes below
+set splitright " New windows goes right
+set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
@@ -56,6 +69,7 @@ set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.o,*.obj,*.min.js,smarty/**,vendor/rails/**,vendor/plugins/**,vendor/gems/**,.git,.hg,.svn,.sass-cache,log,tmp,build,_SCRIPTS,_TESTS
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
+set wrapscan " Searches wrap around end of file
 
 " Speed up viewport scrolling
 nnoremap <C-e> 3<C-e>
