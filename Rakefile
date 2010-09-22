@@ -56,6 +56,7 @@ namespace :install do
     Dir.chdir File.expand_path( '~/.vim/bundle/command-t' ) do
       system 'rake make'
     end
+    puts "Don't forget to edit your '~/.gitconfig'!!!"
   end
 
 end
