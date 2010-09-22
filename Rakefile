@@ -20,7 +20,7 @@ $exclude = [
 
 desc 'Backup previous dotfiles.'
 task :backup do
-  dir = FileUtils.mkdir_p( File.join( File.expand_path( '~' ), '.dotfiles-backup', "#{Time.now}" ) )[0]
+  dir = FileUtils.mkdir_p( File.join( File.expand_path( '~' ), '.dotfiles-backup', Time.now.to_s.gsub( /:/, '-' ).gsub( /[^-\w]+/, '_' ) ) )
   entries.each do | file |
     orig = File.expand_path( "~/#{file}" )
     FileUtils.mv orig, "#{dir}/#{file}" if File.exists? orig
