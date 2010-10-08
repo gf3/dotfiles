@@ -1,6 +1,7 @@
 " Vim filetype plugin
-" Language:		Haml
-" Maintainer:		Tim Pope <vimNOSPAM@tpope.info>
+" Language:	Haml
+" Maintainer:	Tim Pope <vimNOSPAM@tpope.org>
+" Last Change:	2010 May 21
 
 " Only do this when not done yet for this buffer
 if exists("b:did_ftplugin")
