@@ -1,3 +1,6 @@
+" Make vim more useful
+set nocompatible
+
 " Set syntax highlighting options.
 set t_Co=256
 set background=dark 
@@ -44,7 +47,6 @@ set incsearch " Highlight dynamically as pattern is typed.
 set laststatus=2 " Always show status line
 set magic " Enable extended regexes.
 set mouse=a " Enable moouse in all in all modes.
-set nocompatible " Make vim more useful
 set noerrorbells " Disable error bells.
 set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
