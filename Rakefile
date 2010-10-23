@@ -57,7 +57,7 @@ namespace :install do
       system 'rake make'
     end
     puts "\n\n\n##################################################"
-    puts "Don't forget to edit your '~/.gitconfig'!!!"
+    puts "Don't forget to edit your git config: ~/.gitconfig"
   end
 
 end
