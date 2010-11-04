@@ -18,6 +18,7 @@
   rv = review
   sm = show-merges
   st = status
+  ksdiff = difftool -y -t Kaleidoscope
 [color]
   ui = auto
 [color "branch"]
@@ -35,3 +36,5 @@
   untracked = cyan
 [merge]
   log = true
+[difftool "Kaleidoscope"]
+  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
