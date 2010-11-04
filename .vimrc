@@ -39,6 +39,7 @@ set formatoptions+=n " Recognize numbered lists
 set formatoptions+=2 " Use indent from 2nd line of a paragraph
 set formatoptions+=l " Don't break lines that are already long
 set formatoptions+=1 " Break before 1-letter words
+set gdefault " By default add g flag to search/replace. Add g to toggle.
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=1000 " Increase history from 20 default to 1000
 set hlsearch " Highlight searches
@@ -52,6 +53,7 @@ set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
 set ofu=syntaxcomplete#Complete " Set omni-completion method.
+set relativenumber " Use relative line numbers. Current line is still in status bar.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
@@ -59,6 +61,8 @@ set shiftwidth=2 " The # of spaces for indenting.
 set shortmess=I " Don't show the intro message when starting vim.
 set showmode " Show the current mode.
 set showtabline=2 " Always show tab bar.
+set sidescrolloff=3 " Start scrolling three columns before vertical border of window.
+set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
 set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces.
 set softtabstop=2 " Tab key results in 2 spaces
 set splitbelow " New window goes below
@@ -68,7 +72,7 @@ set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
-set wildignore+=*.o,*.obj,*.min.js,smarty/**,vendor/rails/**,vendor/plugins/**,vendor/gems/**,.git,.hg,.svn,.sass-cache,log,tmp,build,_SCRIPTS,_TESTS
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js,smarty/**,vendor/**,node_libraries/**,.git,.hg,.svn,.sass-cache,log,tmp,build,_SCRIPTS,_TESTS
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
 set wrapscan " Searches wrap around end of file
@@ -90,7 +94,7 @@ noremap <leader>W :w !sudo tee %<CR>
 command W w
 
 " Toggle show tabs and trailing spaces (,c)
-set lcs=tab:›\ ,trail:·,eol:↴,nbsp:_
+set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
