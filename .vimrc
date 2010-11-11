@@ -181,6 +181,9 @@ au BufRead,BufNewFile *.html set ft=html syntax=html5
 " JSON
 au BufRead,BufNewFile *.json set ft=json syntax=javascript
 
+" Jade
+au BufRead,BufNewFile *.jade set ft=jade syntax=jade
+
 " Command-T
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
