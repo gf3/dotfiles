@@ -53,7 +53,6 @@ set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
 set ofu=syntaxcomplete#Complete " Set omni-completion method.
-set relativenumber " Use relative line numbers. Current line is still in status bar.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
@@ -98,9 +97,9 @@ set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
 set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
-" Clear last search (,cs)
-map <silent> <leader>cs <Esc>:noh<CR>
-" map <silent> <leader>cs <Esc>:let @/ = ""<CR>
+" Clear last search (,qs)
+map <silent> <leader>qs <Esc>:noh<CR>
+" map <silent> <leader>qs <Esc>:let @/ = ""<CR>
 
 " Remap keys for auto-completion, disable arrow keys
 inoremap <expr>  <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
@@ -118,8 +117,12 @@ nnoremap <leader>[ <i{<CR>
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
 
-" Nerdtree (,n)
+" NERD Tree (,n)
 map <leader>n :NERDTreeToggle<CR>
+
+" NERD Commenter
+let NERDSpaceDelims=1
+let NERDCompactSexyComs=1
 
 " Buffer navigation (,,) (,]) (,[) (,ls)
 map <Leader>, <C-^>
@@ -127,8 +130,8 @@ map <Leader>, <C-^>
 " :map <Leader>[ :bprev<CR>
 map <Leader>ls :buffers<CR>
 
-" Close Quickfix window (,cc)
-map <leader>cc :cclose<CR>
+" Close Quickfix window (,qq)
+map <leader>qq :cclose<CR>
 
 " Yank from cursor to end of line
 nnoremap Y y$
@@ -163,6 +166,10 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
+
+" Set relative line numbers
+set relativenumber " Use relative line numbers. Current line is still in status bar.
+au BufReadPost * set relativenumber
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 call pathogen#runtime_append_all_bundles()
