@@ -1,6 +1,7 @@
 " mkd.vim
 "
 " Inspired by textile.vim from Tim Harper (tim.theenchanter.com)
+" Heavily modified by Gianni Chiappetta (gf3.ca)
 
 command! -nargs=0 MarkdownRenderFile call MarkdownRenderBufferToFile()
 command! -nargs=0 MarkdownRenderTab call MarkdownRenderBufferToTab()
@@ -27,8 +28,10 @@ function! MarkdownRender(lines)
 endfunction
 
 function! MarkdownRenderFile(lines, filename)
+  " Assumed tpope's pathogen is installed.
+  let css = "<link rel=\"stylesheet\" media=\"screen\" href=\"" . pathogen#split(&rtp)[0] . "/ftplugin/mkd-preview.css\" />"
   let html = MarkdownRender(getbufline(bufname("%"), 1, '$'))
-  let html = "<html><head><title>" . bufname("%") . "</title><body>\n" . html . "\n</body></html>"
+  let html = "<!DOCTYPE html><html><head><title>" . bufname("%") . "</title>" . css . "</head><body>\n" . html . "\n</body></html>"
   return writefile(split(html, "\n"), a:filename)
 endfunction
 
