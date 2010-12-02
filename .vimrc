@@ -13,6 +13,7 @@ let mapleader=","
 " Local dirs
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
+set undodir=~/.vim/undo
 
 " Set some junk
 set autoindent " Copy indent from last line when starting new line.
@@ -70,6 +71,7 @@ set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.br
 set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
+set undofile " Persistent Undo.
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js,smarty/**,vendor/**,node_libraries/**,.git,.hg,.svn,.sass-cache,log,tmp,build
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
