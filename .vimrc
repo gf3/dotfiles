@@ -197,3 +197,6 @@ au BufRead,BufNewFile *.jade set ft=jade syntax=jade
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
 
+" Sparkup
+let g:sparkupNextMapping=''
+
