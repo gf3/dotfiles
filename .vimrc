@@ -196,6 +196,8 @@ au BufRead,BufNewFile *.jade set ft=jade syntax=jade
 " Command-T
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
+let g:CommandTMaxHeight=12
+let g:CommandTCancelMap=['<Esc>', '<C-c>']
 
 " Sparkup
 let g:sparkupNextMapping=''
