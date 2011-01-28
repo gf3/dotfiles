@@ -181,12 +181,6 @@ augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
-" CSS3
-au BufRead,BufNewFile *.css set ft=css syntax=css3
-
-" HTML5
-au BufRead,BufNewFile *.html set ft=html syntax=html5
-
 " JSON
 au BufRead,BufNewFile *.json set ft=json syntax=javascript
 
