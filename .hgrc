@@ -1,0 +1,5 @@
+[ui]
+username = Ryan Gibbons <insanity5902@gmail.com>
+ssh = ssh -C
+ignore = ~/.hgignore
+editor = /usr/local/bin/kod
