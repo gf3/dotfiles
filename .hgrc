@@ -1,5 +1,7 @@
 [ui]
-username = Ryan Gibbons <insanity5902@gmail.com>
+username = Gianni Chiappetta <gianni@runlevel6.org>
 ssh = ssh -C
 ignore = ~/.hgignore
-editor = /usr/local/bin/kod
+editor = vim
+[extensions]
+prompt = ~/Projects/python/hg-prompt/prompt.py
