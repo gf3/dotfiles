@@ -94,6 +94,9 @@ noremap <leader>W :w !sudo tee %<CR>
 " Remap :W to :w
 command W w
 
+" Better mark jumping (line + col)
+nnoremap ' `
+
 " Toggle show tabs and trailing spaces (,c)
 set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
 set fcs=fold:-
