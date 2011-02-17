@@ -127,9 +127,6 @@ nnoremap <leader>[ <i{<CR>
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
 
-" NERD Tree (,n)
-map <leader>n :NERDTreeToggle<CR>
-
 " NERD Commenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
