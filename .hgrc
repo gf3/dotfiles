@@ -1,7 +1,22 @@
 [ui]
-username = Gianni Chiappetta <gianni@runlevel6.org>
+username = First Last <emal@address.tld>
 ssh = ssh -C
 ignore = ~/.hgignore
 editor = vim
+
+# Prompt: http://stevelosh.com/projects/hg-prompt/
+# Shelve: http://mercurial.selenic.com/wiki/ShelveExtension
+# Bookmarks: http://mercurial.selenic.com/wiki/BookmarksExtension
 [extensions]
 prompt = ~/Projects/python/hg-prompt/prompt.py
+hgshelve = ~/Projects/python/hgshelve/hgshelve.py
+bookmarks =
+hgext.extdiff =
+
+[bookmarks]
+track.current = True
+
+# Kaleidoscope: http://www.kaleidoscopeapp.com/
+[extdiff]
+cmd.ksdiff = /usr/local/bin/ksdiff-wrapper
+opts.ksdiff = hg
