@@ -8,10 +8,11 @@ editor = vim
 # Shelve: http://mercurial.selenic.com/wiki/ShelveExtension
 # Bookmarks: http://mercurial.selenic.com/wiki/BookmarksExtension
 [extensions]
-prompt = ~/.hgext/hg-prompt/prompt.py
-hgshelve = ~/.hgext/hgshelve/hgshelve.py
+color =
 bookmarks =
 hgext.extdiff =
+hgshelve = ~/.hgext/hgshelve/hgshelve.py
+prompt = ~/.hgext/hg-prompt/prompt.py
 
 [bookmarks]
 track.current = True
