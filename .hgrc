@@ -8,8 +8,8 @@ editor = vim
 # Shelve: http://mercurial.selenic.com/wiki/ShelveExtension
 # Bookmarks: http://mercurial.selenic.com/wiki/BookmarksExtension
 [extensions]
-prompt = ~/Projects/python/hg-prompt/prompt.py
-hgshelve = ~/Projects/python/hgshelve/hgshelve.py
+prompt = ~/.hgext/hg-prompt/prompt.py
+hgshelve = ~/.hgext/hgshelve/hgshelve.py
 bookmarks =
 hgext.extdiff =
 

@@ -1,0 +1,14 @@
+Documentation
+=============
+
+##[Usage](/documentation/usage/)##
+
+How the `hg prompt` command can be used.
+
+##[Keywords](/documentation/keywords/)##
+
+Keywords available to use with the command.
+
+##[Sample Prompts](/documentation/samples/)##
+
+Some sample prompts to get you started.

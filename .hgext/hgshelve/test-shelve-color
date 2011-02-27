@@ -1,0 +1,45 @@
+#!/bin/sh
+
+echo "[extensions]" >> $HGRCPATH
+echo "color=" >> $HGRCPATH
+
+hg init repo
+cd repo
+cat > a <<EOF
+c
+c
+a
+a
+b
+a
+a
+c
+c
+EOF
+hg ci -Am adda
+cat > a <<EOF
+c
+c
+a
+a
+dd
+a
+a
+c
+c
+EOF
+
+echo "[ui]" >> $HGRCPATH
+echo "interactive=true" >> $HGRCPATH
+echo "[extensions]" >> $HGRCPATH
+echo "hgshelve=" >> $HGRCPATH
+echo "[diff]" >> $HGRCPATH
+echo "git=True" >> $HGRCPATH
+
+echo % shelve
+chmod 0755 a
+hg shelve --color=always a <<EOF
+y
+y
+EOF
+echo

@@ -1,0 +1,63 @@
+Sample Prompts
+==============
+
+`hg-prompt` supports many keywords, but you probably don't want to use them
+all at once. Which keywords you'll find useful depends on the workflow(s) you
+commonly use.
+
+Here are some example prompts to get you started.
+
+A Basic Prompt
+--------------
+
+A very simple prompt could tell you:
+
+* Which named branch you're currently working on.
+* If there are any uncommitted changes in the working directory.
+* If you're at a revision that's not a branch tip (i.e. if running `hg update`
+  would do something).
+
+To get a prompt like this you could add this to your `~/.bashrc` file:
+
+    :::bash
+    export PS1='\u in \w`hg prompt "{on {branch}}{status}{update}" 2>/dev/null` $'
+
+The result would look something like this:
+
+    :::text
+    username in ~/src $ cd project
+    username in ~/src/project on feature-branch $ touch sample
+    username in ~/src/project on feature-branch? $ hg add sample
+    username in ~/src/project on feature-branch! $ hg commit -m 'Add a file.'
+    username in ~/src/project on feature-branch $ hg update default
+    username in ~/src/project on default $ hg update 0
+    username in ~/src/project on default^ $
+
+The `2>/dev/null` part of the prompt command prevents errors from showing when
+you're not currently in a Mercurial repository.
+
+The keywords (`{branch}`, `{status}` and `{update}`) display the relevant
+information.
+
+The extra text in the `{branch}` keyword will only display if a branch exists,
+so you won't see the word "on" if you're not in a repository.
+
+A More Compact Basic Prompt
+---------------------------
+
+Some people prefer a smaller, less obtrusive prompt. To get that kind of
+prompt you can omit some of the less important text:
+
+    :::bash
+    export PS1='\w`hg prompt "[{branch}{status}{update}]" 2>/dev/null` $'
+
+That will give you something like this:
+
+    :::text
+    ~/src $ cd project
+    ~/src/project[feature-branch] $ touch sample
+    ~/src/project[feature-branch?] $ hg add sample
+    ~/src/project[feature-branch!] $ hg commit -m 'Add a file.'
+    ~/src/project[feature-branch] $ hg update default
+    ~/src/project[default] $ hg update 0
+    ~/src/project[default^] $

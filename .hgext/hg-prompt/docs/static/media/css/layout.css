@@ -1,0 +1,182 @@
+/* @override http://localhost:8008/media/css/layout.css */
+body, html {
+	background-color: #226F89;
+	margin: 0;
+	padding: 0;
+}
+
+div#breadcrumbs {
+	border-bottom: 4px dashed #265565;
+	border-right: 1px solid #265565;
+	padding: 0em 1.5em;
+	background-color: #fff;
+	width: 55em;
+	margin: 0em 0em 0em -1.5em;
+}
+div#breadcrumbs p {
+	margin: 0.5em auto;
+}
+div#content {
+	background-color: #fff;
+	height: 100%;
+	margin: 0 auto 3em;
+	overflow: hidden;
+	padding: 0em 1.5em 0em 1.5em;
+	width: 55em;
+	border-left: 1px solid #265565;
+	border-right: 1px solid #265565;
+}
+
+h1 {
+	margin: 0.3em 0;
+	padding: 0.1em 0;
+}
+h2, h3, h4, h5, h6 {
+	margin-top: 1em;
+	margin-bottom: 0.4em;
+}
+p, ul, blockquote {
+	line-height: 1.8em;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+a {
+	color: #133C4C;
+}
+a:hover {
+	color: #F14800;
+}
+
+p#footer {
+	background-color: #fff;
+	border-top: 4px dashed #265565;
+	width: 55em;
+	padding: 0.75em 1.5em;
+	text-align: center;
+	color: #666;
+	margin-left: -1.5em;
+	margin-bottom: 0em;
+}
+
+ul {
+	padding-left: 1.5em;
+}
+ul li {
+	list-style-type: disc;
+	margin-left: 1.5em;
+	margin-top: 0.4em;
+}
+
+div.toc ul {
+    padding: 0;
+}
+div.toc ul li {
+    list-style-type: none;
+    margin: 0;
+}
+div.toc > ul > li {
+    list-style-type: none;
+    margin: 0;
+}
+div.toc > ul ul {
+    margin: 0 3em;
+}
+
+code {
+	background-color: #f6f6f6;
+	border: 1px solid #999;
+	padding: 2px;
+	white-space: nowrap;
+}
+pre code {
+	border: none;
+	padding: 0;
+	background: none;
+	white-space: pre-wrap;
+}
+a code {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	text-decoration: inherit;
+}
+a.code {
+	background-color: #3f3f3f;
+}
+
+dt {
+	font-weight: bold;
+	margin-top: 1em;
+}
+dd {
+	line-height: 1.8em;
+	margin-left: 1.5em;
+}
+blockquote p {
+	margin: 0;
+}
+
+img {
+    background-color: #f6f6f6;
+    border: 1px solid #999;
+    padding: 1em;
+    display: block;
+    margin: 0 auto;
+}
+
+table {
+	margin: 1em;
+}
+table thead {
+	background-color: #f6f6f6;
+}
+table thead th {
+	border: 1px solid #999;
+	padding: 0.5em 1em;
+}
+table tbody tr td {
+	border: 1px solid #999;
+	padding: 0.5em 1em;
+}
+
+pre, blockquote, table.codehilitetable {
+	background-color: #f6f6f6;
+	border: 1px solid #999;
+	display: block;
+	line-height: 1.5em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+	padding: 0.5em;
+	padding-left: 1em;
+}
+pre, table.codehilitetable {
+	margin-bottom: 1em;
+}
+table.codehilitetable div.linenodiv {
+	border-right: 1px solid #ccc;
+	margin-right: 1em;
+	padding-right: 1em;
+}
+table.codehilitetable pre {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+table#pages tr, table#subdirs tr, table#files tr {
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+}
+table tr td.name a {
+	display: block;
+	padding: 0.5em 1em;
+}
+table tr td.name a:hover {
+	background-color: #f6f6f6;
+}
+table tr td.size {
+	padding: 0.5em 1em;
+	width:  40px;
+}

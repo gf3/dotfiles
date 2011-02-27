@@ -1,0 +1,143 @@
+1 changesets found
+1 changesets found
+% create changes for shelving
+reverting file1.txt
+reverting file2.txt
+reverting tip.bundle
+diff -r a71f3ef38ad4 file1.txt
+--- a/file1.txt
++++ b/file1.txt
+@@ -1,6 +1,4 @@
+-a
+ 1
+ 2
+ 3
+ 4
+-b
+diff -r a71f3ef38ad4 file2.txt
+--- a/file2.txt
++++ b/file2.txt
+@@ -1,6 +1,4 @@
+-a
+ 1
+ 2
+ 3
+ 4
+-b
+diff -r a71f3ef38ad4 tip.bundle
+Binary file tip.bundle has changed
+% do selective shelve
+diff --git a/file1.txt b/file1.txt
+2 hunks, 2 lines changed
+shelve changes to 'file1.txt'? [Ynsfdaq?]  @@ -1,5 +1,4 @@
+-a
+ 1
+ 2
+ 3
+ 4
+shelve this change to 'file1.txt'? [Ynsfdaq?]  @@ -2,5 +1,4 @@
+ 1
+ 2
+ 3
+ 4
+-b
+shelve this change to 'file1.txt'? [Ynsfdaq?]  diff --git a/file2.txt b/file2.txt
+2 hunks, 2 lines changed
+shelve changes to 'file2.txt'? [Ynsfdaq?]  @@ -1,5 +1,4 @@
+-a
+ 1
+ 2
+ 3
+ 4
+shelve this change to 'file2.txt'? [Ynsfdaq?]  @@ -2,5 +1,4 @@
+ 1
+ 2
+ 3
+ 4
+-b
+shelve this change to 'file2.txt'? [Ynsfdaq?]  diff --git a/tip.bundle b/tip.bundle
+this modifies a binary file (all or nothing)
+shelve changes to 'tip.bundle'? [Ynsfdaq?]  
+% check remaining diffs
+M file1.txt
+M file2.txt
+diff -r a71f3ef38ad4 file1.txt
+--- a/file1.txt
++++ b/file1.txt
+@@ -1,4 +1,3 @@
+-a
+ 1
+ 2
+ 3
+diff -r a71f3ef38ad4 file2.txt
+--- a/file2.txt
++++ b/file2.txt
+@@ -3,4 +3,3 @@
+ 2
+ 3
+ 4
+-b
+% append to existing shelf
+% inpect shelved data
+default
+diff --git a/file1.txt b/file1.txt
+--- a/file1.txt
++++ b/file1.txt
+@@ -2,5 +2,4 @@
+ 1
+ 2
+ 3
+ 4
+-b
+diff --git a/tip.bundle b/tip.bundle
+index 7360ca0c61fa832e44b5e5c936b87701de8bda12..225d2fbb02d47c2162cda09e9e3332f88ec4069a
+GIT binary patch
+literal 396
+zc$@)@0dxLHM=>x$T4*^jL0KkKStX{nX#fBX|NrgVUcpx-fA>nDw?IGjzt|Zn3<N+R
+z|BwcW6wm;i1fZ}0`xXsS6B7VTCYof)fCw2eF$|3|VLbw1nl!>=N$Aw|KPWX!r1qxN
+z^$Fr58kz=%Mg+nGH3ox5h7d3&k5fjP82~jVplFx@3<;)9G{#6607em$6DC2lXdu%9
+zWWtIPid_|~ry%P%q~tW$!Qw;eFEkK<6vCK+fG?6(b&ooFr>96-LNf@JgmnR>9F0i>
+ze{=>YwaT|6O3VY*<7P<REtEl|{eVVw$`}c<quJ8ZJB1CNd*EPLA;Y87RE9EZxpoTg
+zP`oJpG$rVyq{E>DEZNDG$>}T!HpVbAF4V<{0^jlDd5^jXR;#7pJv}%>Mf#_26KF$$
+z01Qg)6*km`Z;!B^0@j~Kfn)~2GXWMpfFcFFL^RD?et!VbV9$*?K&7}2Bv2(pTRHo>
+qar#atNvM%#;0jJt&??Xnqyaz5Pzsh+06idB-Y(>daG@YeO>ELh`lWmT
+
+diff --git a/file2.txt b/file2.txt
+--- a/file2.txt
++++ b/file2.txt
+@@ -1,5 +1,4 @@
+-a
+ 1
+ 2
+ 3
+ 4
+diff --git a/file1.txt b/file1.txt
+--- a/file1.txt
++++ b/file1.txt
+@@ -1,4 +1,3 @@
+-a
+ 1
+ 2
+ 3
+diff --git a/file2.txt b/file2.txt
+--- a/file2.txt
++++ b/file2.txt
+@@ -3,4 +3,3 @@
+ 2
+ 3
+ 4
+-b
+% unshelve and verify
+unshelve completed
+% check shelf names
+M tip.bundle
+file2
+file1
+file2
+file1
+unshelve completed
+unshelve completed
+M file1.txt
+M file2.txt
+M tip.bundle
+nothing to unshelve

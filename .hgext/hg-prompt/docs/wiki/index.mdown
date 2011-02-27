@@ -1,0 +1,28 @@
+hg-prompt
+=========
+
+`hg-prompt` is a Mercurial extension that adds an 'hg prompt' command to
+Mercurial for viewing repository information. It's designed to be used in a
+shell prompt.
+
+[Installation][]
+----------------
+
+[Quick Start][]
+---------------
+
+[Full Documentation][]
+----------------------
+
+[Code][]
+--------
+
+[Installation]: /installation/
+[Quick Start]: /quickstart/
+[Full Documentation]: /documentation/
+[Code]: http://bitbucket.org/sjl
+
+Screenshot
+----------
+
+![My bash prompt while using hg-prompt.](http://stevelosh.com/media/images/projects/hg-prompt/prompt.png "My bash prompt while using hg-prompt.")

@@ -1,0 +1,73 @@
+#!/bin/sh
+
+HGRCPATH=$HGTMP/.hgrc
+export HGRCPATH
+echo "[ui]" >> $HGRCPATH
+echo "interactive=true" >> $HGRCPATH
+echo "[extensions]" >> $HGRCPATH
+echo "hgshelve=" >> $HGRCPATH
+
+hg init a
+cd a
+
+for i in 1 2 3 4; do
+    echo $i >> file1.txt
+done
+cp file1.txt file2.txt
+hg add file1.txt file2.txt
+hg commit -d '1 0' -m 'first file' file1.txt
+hg commit -d '2 0' -m 'second file' file2.txt
+hg bundle --base -2 tip.bundle
+hg add tip.bundle
+hg commit -d '3 0' -m 'binary file' tip.bundle
+
+rm file1.txt
+for i in a 1 2 3 4 b; do
+    echo $i >> file1.txt
+done
+cp file1.txt file2.txt
+hg bundle --base -2 tip.bundle
+hg commit -d '4 0' -m 'more changes'
+
+echo % create changes for shelving
+hg revert --rev 2 --all
+hg diff --nodates
+
+echo % do selective shelve
+hg shelve<<EOF
+y
+n
+y
+y
+y
+n
+y
+EOF
+
+echo
+echo % check remaining diffs
+hg status
+hg diff --nodates
+
+echo % append to existing shelf
+hg shelve --append --all
+
+echo % inpect shelved data
+hg shelve --list
+hg unshelve --inspect
+
+echo % unshelve and verify
+hg unshelve
+hg diff --rev 2 --git
+
+echo % check shelf names
+hg shelve --name file1 --all file1.txt
+hg shelve --name file2 --all file2.txt
+hg status
+hg shelve --list
+hg unshelve --list
+hg unshelve --name file1
+hg unshelve --name file2
+hg status
+hg unshelve
+
