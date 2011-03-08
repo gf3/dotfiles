@@ -7,6 +7,9 @@ set background=dark
 syntax on
 colorscheme molokai
 
+" Enabled later, after Pathogen
+filetype off
+
 " Change mapleader
 let mapleader=","
 
@@ -168,8 +171,6 @@ map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
 
-filetype plugin indent on
-
 " Restore cursor position
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -182,6 +183,7 @@ au BufReadPost * set relativenumber
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
 
 " Markdown
 augroup mkd
