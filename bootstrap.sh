@@ -53,8 +53,6 @@ if [ "${#missing[@]}" -gt "0" ]; then
   exit 1
 fi
 
-exit # TODO Remove
-
 # Assumes ~/.dotfiles is *ours*
 if [ -d ~/.dotfiles ]; then
   # --- Update Repo --- #
