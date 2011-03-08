@@ -42,8 +42,6 @@ dep "hg"   "1.6"
 dep "ruby" "1.8"
 dep "vim " "7.3"
 dep "tree" "1.5"
-dep "fake" "2.0"
-dep "git"  "1.9"
 
 if [ "${#missing[@]}" -gt "0" ]; then
   error "Missing dependencies"
