@@ -9,9 +9,5 @@ export HISTSIZE=10000
 
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
-# Some junk
-export JAVA_HOME="/Library/Java/Home"
-export JRUBY_HOME="/Users/gianni/Projects/java/jruby-1.3.1"
-
 # Common junk
 [[ -s "$HOME/.commonrc" ]] && source "$HOME/.commonrc"
