@@ -1,21 +1,37 @@
 # Installation
 
+## Prerequisites
+
+* Git (1.7+)
+* Mercurial (1.6+)
+* Ruby (1.9 recommended) and RubyGems
+* Vim (7.3+ with +ruby, I recommend [this formula](https://github.com/adamv/homebrew/blob/duplicates/Library/Formula/vim.rb))
+* Tree
+
+Optional, but recommended:
+
+* ZSH
+* [RVM](http://rvm.beginrescueend.com/)
+* [Homebrew](http://mxcl.github.com/homebrew/) (OS X only)
+
 ## Bootstrapper
 
 The bootstrapper depends on three things: ruby, rake, and bundler. Assuming you
 have ruby and ruby gems installed on your system: `gem install rake bundler`.
+
+**Note:** if using RVM, be sure to use the system ruby before installing.
+
 Then:
 
-    bash < <( curl https://github.com/gf3/dotfiles/raw/master/bootstrap.sh )
+    zsh < <( curl https://github.com/gf3/dotfiles/raw/master/bootstrap.sh )
 
 Don't worry, all your old files will be backed up!
 
 ## Stay Updated
 
-Rake tasks!
+Run the bootstrapper again!
 
-    cd ~/.dotfiles
-    rake update install
+    ~/.dotfiles/bootstrap.sh
 
 
 
@@ -48,6 +64,10 @@ As well `↑`, `↓`, `⏎`, and `⎋` may be used in completions menus. `<PageU
 
 * `+` Increase split size.
 * `-` Decrease split size.
+* `^j` Go to split below.
+* `^k` Go to split above.
+* `^h` Go to split left.
+* `^l` Go to split right.
 
 ### Markdow
 
