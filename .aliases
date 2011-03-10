@@ -2,8 +2,7 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ~='cd ~'
-alias ll="ls -lahG"
-alias ls="ls -G"
+alias ll='tree --dirsfirst -ChFupDaLg 1'
 
 # Utilities
 alias a="ack -ia"
@@ -16,7 +15,6 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 alias ip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 alias localip="ipconfig getifaddr en1"
 alias mp="mvim -p"
-alias nr="node-repl"
 alias view="vim -p -R"
 alias vp="vim -p"
 
