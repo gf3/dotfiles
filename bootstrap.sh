@@ -15,7 +15,7 @@ function e_list { echo  "  \033[1;31m✖\033[0m $1"; }
 function dep {
   # Check installed
   local i=true
-  type -P $1 &> /dev/null || i=false
+  type -p $1 &> /dev/null || i=false
 
   # Check version
   if $i ; then
