@@ -66,12 +66,12 @@ else
   # --- Clone Repo --- #
   notice "Downloading"
   git clone git://github.com/gf3/dotfiles.git ~/.dotfiles
-  git submodule init
-  git submodule update
 
   # --- Install --- #
   notice "Installing"
   cd ~/.dotfiles
+  git submodule init
+  git submodule update
   rake backup
   rake install
 fi
