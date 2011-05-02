@@ -27,7 +27,7 @@ function dep {
   
   # Save if dep not met
   if ! $i || [ -n "$msg" ] ; then
-    missing[${#missing[*]}]=$msg
+    missing+=($msg)
   fi
 }
 
