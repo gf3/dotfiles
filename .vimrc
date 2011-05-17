@@ -214,6 +214,10 @@ let g:CommandTMatchWindowAtTop=1
 let g:CommandTMaxHeight=12
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
 
+" Taglist Plus
+let Tlist_WinWidth='auto'
+nnoremap <leader>l :TlistToggle<CR>
+
 " Sparkup
 let g:sparkupNextMapping=''
 
