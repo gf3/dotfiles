@@ -57,6 +57,7 @@ if [ -d ~/.dotfiles ]; then
   notice "Updating"
   cd ~/.dotfiles
   git pull origin master
+  git submodule init
   git submodule update
 
   # --- Install --- #
@@ -65,13 +66,11 @@ if [ -d ~/.dotfiles ]; then
 else
   # --- Clone Repo --- #
   notice "Downloading"
-  git clone git://github.com/gf3/dotfiles.git ~/.dotfiles
+  git clone --recursive git://github.com/gf3/dotfiles.git ~/.dotfiles
 
   # --- Install --- #
   notice "Installing"
   cd ~/.dotfiles
-  git submodule init
-  git submodule update
   rake backup
   rake install
 fi
