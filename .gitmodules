@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/stylus.vim"]
 	path = .vim/bundle/stylus.vim
 	url = git://github.com/wavded/vim-stylus.git
+[submodule ".vim/bundle/css-color.vim"]
+	path = .vim/bundle/css-color.vim
+	url = git://github.com/gf3/vim-css-color.git
