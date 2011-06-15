@@ -53,6 +53,7 @@ set laststatus=2 " Always show status line
 set magic " Enable extended regexes.
 set mouse=a " Enable moouse in all in all modes.
 set noerrorbells " Disable error bells.
+set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command.
 set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
