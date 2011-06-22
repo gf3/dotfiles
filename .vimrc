@@ -209,6 +209,9 @@ au BufRead,BufNewFile *.jade set ft=jade syntax=jade
 " Common Ruby files
 au BufRead,BufNewFile Rakefile,Capfile,Gemfile,.autotest,.irbrc,*.treetop,*.tt set ft=ruby syntax=ruby
 
+" Nu
+au BufNewFile,BufRead *.nu,*.nujson,Nukefile setf nu
+
 " Command-T
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
