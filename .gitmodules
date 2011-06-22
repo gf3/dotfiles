@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/nu.vim"]
 	path = .vim/bundle/nu.vim
 	url = git://github.com/itfrombit/nuvim.git
+[submodule ".vim/bundle/css-color.vim"]
+	path = .vim/bundle/css-color.vim
+	url = git://github.com/gf3/vim-css-color.git
