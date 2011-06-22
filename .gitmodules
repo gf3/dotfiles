@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/stylus.vim"]
 	path = .vim/bundle/stylus.vim
 	url = git://github.com/wavded/vim-stylus.git
+[submodule ".vim/bundle/nu.vim"]
+	path = .vim/bundle/nu.vim
+	url = git://github.com/itfrombit/nuvim.git
