@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/css-color.vim"]
 	path = .vim/bundle/css-color.vim
 	url = git://github.com/gf3/vim-css-color.git
+[submodule ".vim/bundle/racket.vim"]
+	path = .vim/bundle/racket.vim
+	url = git://github.com/wlangstroth/vim-racket.git
