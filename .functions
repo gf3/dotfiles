@@ -8,3 +8,8 @@ height () {
   echo $(sips -g pixelHeight $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
+# All the dig info, 'cause I can never remember it
+digga () {
+  dig +nocmd $1 any +multiline +noall +answer
+}
+
