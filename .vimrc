@@ -206,6 +206,9 @@ augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
+" Racket indentation
+au BufRead,BufNewFile *.rkt set lisp
+
 " JSON
 au BufRead,BufNewFile *.json set ft=json syntax=javascript
 
