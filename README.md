@@ -51,12 +51,15 @@ Reference to vim mappings.
 * `,p` Toggle paste mode.
 * `,qs` Toggle search highlight.
 * `,qq` Close Quickfix window (think Ack.vim).
+* `,rp` Toggle RainbowParenthesis.
 * `,ss` Strip all trailing whitespace in buffer.
+* `,tl` Toggle Taglist Plus.
 * `,W` Sudo write!
 * `Y` Yank from cursor to end of line (same as `y$`).
 * `,]` Indent current block.
 * `,[` Outdent current block.
 * `,⏎` Insert newline.
+* `'` Actually calls <code>`</code> for better mark jumping (line + column).
 
 As well `↑`, `↓`, `⏎`, and `⎋` may be used in completions menus. `<PageUp>` and `<PageDown>` work in both insert and command mode.
 
@@ -94,13 +97,21 @@ Installed plugins and syntax files.
 * Javascript
 * Markdown
 * Nerdcommenter
-* Nerdtree
+* Nu
 * Pastie
 * Pathogen
+* Racket
+* Rails
 * Repeat
 * Snipmate
 * Sparkup
+* Stylus
 * Surround
+* Taglist Plus
+
+Rudimentary support for vim on the iPad has been added via usage of the
+`xterm-ipad` `$TERM` value. In this mode `<Tab>` is `<Esc>` and `,<Tab>` is
+`<Tab>.
 
 
 
