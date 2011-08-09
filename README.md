@@ -109,9 +109,11 @@ Installed plugins and syntax files.
 * Surround
 * Taglist Plus
 
+## iPad
+
 Rudimentary support for vim on the iPad has been added via usage of the
 `xterm-ipad` `$TERM` value. In this mode `<Tab>` is `<Esc>` and `,<Tab>` is
-`<Tab>.
+`<Tab>`.
 
 
 
