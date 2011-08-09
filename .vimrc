@@ -150,6 +150,7 @@ map <leader>p :set invpaste paste?<CR>
 " NERD Commenter
 let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
+let g:NERDCustomDelimiters = { 'racket': { 'left': ';', 'leftAlt': '#|', 'rightAlt': '|#' } }
 
 " Buffer navigation (,,) (,]) (,[) (,ls)
 map <Leader>, <C-^>
@@ -222,6 +223,9 @@ let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
 let g:CommandTMaxHeight=12
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
+
+" Rainbow Parenthesis
+nnoremap <leader>rp :RainbowParenthesesToggle<CR>
 
 " Taglist Plus
 let Tlist_WinWidth='auto'
