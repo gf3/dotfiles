@@ -1,5 +1,5 @@
 # Prompt
-if [ -f ~/.bash_prompt ]; then
+if [ -f ~/.bash_prompt -a $TERM_PROGRAM == "iTerm.app" ]; then
   source ~/.bash_prompt
 fi
 
