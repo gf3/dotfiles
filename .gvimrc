@@ -1,5 +1,5 @@
 set go-=T " Hide toolbar on launch
-set guifont=Menlo:h13 " Set default font
+set guifont=Menlo:h14:b " Set default font
 
 " Tab Navigation
 nmap <D-j> :tabprevious<CR>
