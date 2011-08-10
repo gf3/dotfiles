@@ -113,6 +113,13 @@ command W w
 " Better mark jumping (line + col)
 nnoremap ' `
 
+" Hard to type things
+imap >> →
+imap << ←
+imap ^^ ↑
+imap VV ↓
+imap aa λ
+
 " Toggle show tabs and trailing spaces (,c)
 set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
 set fcs=fold:-
