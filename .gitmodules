@@ -13,3 +13,6 @@
 [submodule ".vim/bundle/racket.vim"]
 	path = .vim/bundle/racket.vim
 	url = git://github.com/wlangstroth/vim-racket.git
+[submodule ".vim/bundle/coffeescript.vim"]
+	path = .vim/bundle/coffeescript.vim
+	url = git://github.com/kchmck/vim-coffee-script.git
