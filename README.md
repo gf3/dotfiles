@@ -5,7 +5,7 @@
 * Git (1.7+)
 * Mercurial (1.6+)
 * Ruby (1.9 recommended) and RubyGems
-* Vim (7.3+ with +ruby, I recommend [this formula](https://github.com/adamv/homebrew/blob/duplicates/Library/Formula/vim.rb))
+* Vim (7.3+ with +ruby, I recommend [this formula](https://github.com/adamv/homebrew-alt/blob/master/duplicates/vim.rb))
 * Tree
 
 Optional, but recommended:
