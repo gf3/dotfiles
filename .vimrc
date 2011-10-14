@@ -225,6 +225,9 @@ au BufRead,BufNewFile Rakefile,Capfile,Gemfile,.autotest,.irbrc,*.treetop,*.tt s
 " Nu
 au BufNewFile,BufRead *.nu,*.nujson,Nukefile setf nu
 
+" Coffee Folding
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
 " Command-T
 let g:CommandTMaxFiles=20000
 let g:CommandTMatchWindowAtTop=1
