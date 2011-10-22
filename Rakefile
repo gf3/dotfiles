@@ -52,10 +52,6 @@ namespace :install do
 
   desc 'Run post-install tasks.'
   task :post do
-    # Command T
-    Dir.chdir File.expand_path( '~/.vim/bundle/command-t' ) do
-      system 'rake make'
-    end
     puts "\n\n\n##################################################"
     puts "Don't forget to edit your git config: ~/.gitconfig"
   end

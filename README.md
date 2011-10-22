@@ -72,7 +72,7 @@ As well `↑`, `↓`, `⏎`, and `⎋` may be used in completions menus. `<PageU
 * `^h` Go to split left.
 * `^l` Go to split right.
 
-### Markdow
+### Markdown
 
 * `,mp` Preview markdown buffer with Github styles.
 * `,mf` Render markdown buffer to html in a file.
@@ -88,8 +88,8 @@ Installed plugins and syntax files.
 
 * Ack
 * Cocoa
-* Command-T
 * CSS-color
+* CtrlP
 * Gist
 * Haml
 * Histwin
@@ -101,6 +101,7 @@ Installed plugins and syntax files.
 * Pastie
 * Pathogen
 * Racket
+* Rainbow Parenthesis
 * Rails
 * Repeat
 * Snipmate

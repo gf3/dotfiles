@@ -229,12 +229,6 @@ au BufNewFile,BufRead *.nu,*.nujson,Nukefile setf nu
 " Coffee Folding
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
-" Command-T
-let g:CommandTMaxFiles=20000
-let g:CommandTMatchWindowAtTop=1
-let g:CommandTMaxHeight=12
-let g:CommandTCancelMap=['<Esc>', '<C-c>']
-
 " CtrlP
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_mru_files = 1
