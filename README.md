@@ -105,7 +105,6 @@ Installed plugins and syntax files.
 * Rails
 * Repeat
 * Snipmate
-* Sparkup
 * Stylus
 * Surround
 * Taglist Plus

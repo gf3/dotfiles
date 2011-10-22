@@ -240,6 +240,3 @@ nnoremap <leader>rp :RainbowParenthesesToggle<CR>
 let Tlist_WinWidth='auto'
 nnoremap <leader>l :TlistToggle<CR>
 
-" Sparkup
-let g:sparkupNextMapping=''
-
