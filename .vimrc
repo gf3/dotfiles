@@ -230,8 +230,11 @@ au BufNewFile,BufRead *.nu,*.nujson,Nukefile setf nu
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 " CtrlP
-let g:ctrlp_working_path_mode = 2
-let g:ctrlp_mru_files = 1
+let g:ctrlp_match_window_bottom = 0 " Show at top of window
+let g:ctrlp_working_path_mode = 2 " Smart path mode
+let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
+let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
+let g:ctrlp_split_window = 1 " <CR> = New Tab
 
 " Rainbow Parenthesis
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
