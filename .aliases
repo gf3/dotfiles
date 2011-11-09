@@ -6,6 +6,7 @@ alias ll='tree --dirsfirst -ChFupDaLg 1'
 
 # Utilities
 alias a="ack -ia"
+alias b="bundle exec"
 alias d="du -h -d=1"
 alias df="df -h"
 alias g="git"
