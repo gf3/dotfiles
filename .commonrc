@@ -15,6 +15,9 @@ fi
 # Misc settings
 export EDITOR=vim
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# rbenv
+if [ -d "$HOME/.rbenv/bin" ] ; then 
+  export PATH="$HOME/.rbenv/bin":$PATH
+  eval "$(rbenv init -)"
+fi
 

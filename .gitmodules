@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/jade.vim"]
 	path = .vim/bundle/jade.vim
 	url = git://github.com/vim-scripts/jade.vim.git
+[submodule ".rbenv"]
+	path = .rbenv
+	url = git://github.com/sstephenson/rbenv.git
