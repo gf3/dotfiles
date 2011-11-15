@@ -175,6 +175,9 @@ nnoremap Y y$
 " Insert newline
 map <leader><Enter> o<ESC>
 
+" Search and replace word under cursor (,*)
+:nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
     let save_cursor = getpos(".")
