@@ -25,3 +25,6 @@
 [submodule ".rbenv"]
 	path = .rbenv
 	url = git://github.com/sstephenson/rbenv.git
+[submodule ".vim/bundle/rainbow_parenthesis.vim"]
+	path = .vim/bundle/rainbow_parenthesis.vim
+	url = git://github.com/kien/rainbow_parentheses.vim.git
