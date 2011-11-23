@@ -51,11 +51,12 @@ Reference to vim mappings.
 * `,p` Toggle paste mode.
 * `,qs` Toggle search highlight.
 * `,qq` Close Quickfix window (think Ack.vim).
-* `,rp` Toggle RainbowParenthesis.
+* `,rp` Toggle Rainbow Parenthesis.
 * `,ss` Strip all trailing whitespace in buffer.
 * `,tl` Toggle Taglist Plus.
 * `,W` Sudo write!
 * `Y` Yank from cursor to end of line (same as `y$`).
+* `,*` Replace word under cursor.
 * `,]` Indent current block.
 * `,[` Outdent current block.
 * `,⏎` Insert newline.
@@ -88,6 +89,7 @@ Installed plugins and syntax files.
 
 * Ack
 * Cocoa
+* CoffeeScript
 * CSS-color
 * CtrlP
 * Gist
@@ -101,8 +103,8 @@ Installed plugins and syntax files.
 * Pastie
 * Pathogen
 * Racket
-* Rainbow Parenthesis
 * Rails
+* Rainbow Parenthesis
 * Repeat
 * Snipmate
 * Stylus
