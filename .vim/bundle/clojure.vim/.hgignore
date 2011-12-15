@@ -1,0 +1,7 @@
+syntax: glob
+.DS_Store
+*-keys.txt
+build
+ng
+.gradle
+local.gradle

@@ -1,0 +1,5 @@
+rootProject.name = 'vimclojure'
+include 'client'
+include 'server'
+include 'vim'
+include 'gradle'
