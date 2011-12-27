@@ -50,6 +50,10 @@ set hlsearch " Highlight searches
 set ignorecase " Ignore case of searches.
 set incsearch " Highlight dynamically as pattern is typed.
 set laststatus=2 " Always show status line
+set lispwords+=defroutes " Compojure
+set lispwords+=defpartial,defpage " Noir core
+set lispwords+=defaction,deffilter,defview,defsection " Ciste core
+set lispwords+=describe,it " Speclj TDD/BDD
 set magic " Enable extended regexes.
 set mouse=a " Enable moouse in all in all modes.
 set noerrorbells " Disable error bells.
@@ -238,6 +242,11 @@ let g:ctrlp_working_path_mode = 2 " Smart path mode
 let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
+
+" Clojure.vim
+let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
+let g:vimclojure#DynamicHighlighting = 1 " Dynamic highlighting
+let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be indented as if they were included in the 'lispwords' option
 
 " Rainbow Parenthesis
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
