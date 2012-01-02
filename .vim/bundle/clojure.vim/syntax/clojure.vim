@@ -211,6 +211,7 @@ syn match   clojureNumber "\<-\=[0-9]\+/[0-9]\+\>"
 syn match   clojureQuote "\('\|`\)"
 syn match   clojureUnquote "\(\~@\|\~\)"
 syn match   clojureDispatch "\(#^\|#'\)"
+syn match   clojureDispatch "\^"
 
 syn match   clojureAnonArg contained "%\(\d\|&\)\?"
 syn match   clojureVarArg contained "&"

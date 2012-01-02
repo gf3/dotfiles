@@ -1,5 +1,5 @@
 [ui]
-username = First Last <emal@address.tld>
+username = Gianni Chiappetta <gianni@runlevel6.org>
 ssh = ssh -C
 ignore = ~/.hgignore
 editor = vim
@@ -12,6 +12,7 @@ color =
 bookmarks =
 hgext.extdiff =
 hgshelve = ~/.hgext/hgshelve/hgshelve.py
+fetch =
 prompt = ~/.hgext/hg-prompt/prompt.py
 
 [bookmarks]
