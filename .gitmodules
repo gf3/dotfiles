@@ -40,3 +40,6 @@
 [submodule ".vim/bundle/powerline.vim"]
 	path = .vim/bundle/powerline.vim
 	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule ".vim/bundle/fish.vim"]
+	path = .vim/bundle/fish.vim
+	url = git://github.com/vim-scripts/fish.vim.git
