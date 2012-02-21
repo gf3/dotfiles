@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/fish.vim"]
 	path = .vim/bundle/fish.vim
 	url = git://github.com/vim-scripts/fish.vim.git
+[submodule ".vim/bundle/javascript.vim"]
+	path = .vim/bundle/javascript.vim
+	url = git://github.com/pangloss/vim-javascript.git
