@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/javascript.vim"]
 	path = .vim/bundle/javascript.vim
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule ".vim/bundle/slim.vim"]
+	path = .vim/bundle/slim.vim
+	url = git://github.com/bbommarito/vim-slim.git
