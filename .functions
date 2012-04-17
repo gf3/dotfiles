@@ -18,3 +18,8 @@ cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
+# Pretty print JSON
+cjson () {
+  curl --silent $1 | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+}
+
