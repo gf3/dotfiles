@@ -1,12 +1,14 @@
 # Dir navigation
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ~='cd ~'
 alias ll='tree --dirsfirst -ChFupDaLg 1'
 
 # Utilities
 alias a="ack -ia"
 alias b="bundle exec"
+alias c="pygmentize -O style=monokai -f console256 -g"
 alias d="du -h -d=1"
 alias df="df -h"
 alias g="git"
