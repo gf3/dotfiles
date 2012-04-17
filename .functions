@@ -20,6 +20,11 @@ cp_p () {
 
 # Pretty print JSON
 cjson () {
-  curl --silent $1 | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+  local url=$(echo $1)
+  if [[ "http" == $url[0,4] ]] ; then
+    curl --silent $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+  else
+    cat $url | python -mjson.tool | pygmentize -O style=monokai -f console256 -g
+  fi
 }
 
