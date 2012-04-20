@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/ruby.vim"]
 	path = .vim/bundle/ruby.vim
 	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule ".vim/bundle/handlebars.vim"]
+	path = .vim/bundle/handlebars.vim
+	url = git://github.com/nono/vim-handlebars.git

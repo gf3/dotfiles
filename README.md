@@ -96,6 +96,7 @@ Installed plugins and syntax files.
 * Fish
 * Gist
 * Haml
+* Handlebars
 * Histwin
 * Jade
 * Javascript
