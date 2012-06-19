@@ -198,6 +198,12 @@ noremap <leader>ss :call StripWhitespace ()<CR>
 " :au BufWinLeave * mkview
 " :au BufWinEnter * silent loadview
 
+" Join lines and restore cursor location (J)
+nnoremap J mjJ`j
+
+" Toggle folds (<Space>)
+nnoremap <silent> <space> :exe 'silent! normal! '.((foldclosed('.')>0)? 'zMzx' : 'zc')<CR>
+
 " Fix page up and down
 map <PageUp> <C-U>
 map <PageDown> <C-D>
