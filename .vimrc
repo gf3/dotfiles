@@ -244,6 +244,9 @@ au BufNewFile,BufRead *.nu,*.nujson,Nukefile setf nu
 " Coffee Folding
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
+" ZSH
+au BufRead,BufNewFile .zsh_rc,.functions,.commonrc set ft=zsh
+
 " CtrlP
 let g:ctrlp_match_window_bottom = 0 " Show at top of window
 let g:ctrlp_working_path_mode = 2 " Smart path mode
