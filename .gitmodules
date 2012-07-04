@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/repeat.vim"]
 	path = .vim/bundle/repeat.vim
 	url = git://github.com/tpope/vim-repeat.git
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
