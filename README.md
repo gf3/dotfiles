@@ -1,53 +1,63 @@
-# Installation
+Installation
+============
 
-## Prerequisites
+Prerequisites
+-------------
 
 * Git (1.7+)
 * Mercurial (1.6+)
 * Ruby (1.9 recommended) and RubyGems
-* Vim (7.3+ with +ruby, I recommend [this formula](https://github.com/adamv/homebrew-alt/blob/master/duplicates/vim.rb))
+* Vim (7.3+)
 * Tree
 
 Optional, but recommended:
 
 * ZSH
-* [RVM](http://rvm.beginrescueend.com/)
+* [rbenv](http://rbenv.org) or [RVM](http://rvm.beginrescueend.com/)
 * [Homebrew](http://mxcl.github.com/homebrew/) (OS X only)
 
-## Bootstrapper
+
+Bootstrapper
+------------
 
 The bootstrapper depends on three things: ruby, rake, and bundler. Assuming you
 have ruby and ruby gems installed on your system: `gem install rake bundler`.
 
-**Note:** if using RVM, be sure to use the system ruby before installing.
-
 Then:
 
-    zsh < <( curl https://raw.github.com/gf3/dotfiles/master/bootstrap.sh )
+``` bash-session
+$ zsh < <( curl https://raw.github.com/gf3/dotfiles/master/bootstrap.sh )
+```
 
 Don't worry, all your old files will be backed up!
 
-## Stay Updated
+
+Stay Updated
+------------
 
 Run the bootstrapper again!
 
-    ~/.dotfiles/bootstrap.sh
+``` bash-session
+$ ~/.dotfiles/bootstrap.sh
+```
 
 
+Vim
+===
 
-# Vim
+Overview of the vim setup. Sensible defaults for all the things!
 
-Overview of my vim setup. Sensible defaults!
 
-## Mappings
+Mappings
+--------
 
 Reference to vim mappings.
+
 
 ### General
 
 * `,c` Toggle invisibles.
 * `,ls` Show buffers (same as `:buffers`).
-* `,n` Toggle NERD Tree file explorer.
 * `,p` Toggle paste mode.
 * `,qs` Toggle search highlight.
 * `,qq` Close Quickfix window (think Ack.vim).
@@ -61,8 +71,18 @@ Reference to vim mappings.
 * `,[` Outdent current block.
 * `,⏎` Insert newline.
 * `'` Actually calls <code>`</code> for better mark jumping (line + column).
+* `J` Join lines and restore cursor position.
+
+Some handy aliases for hard to type things that I use often:
+
+* `>>` to `→`
+* `<<` to `←`
+* `^^` to `↑`
+* `VV` to `↓`
+* `aa` to `λ`
 
 As well `↑`, `↓`, `⏎`, and `⎋` may be used in completions menus. `<PageUp>` and `<PageDown>` work in both insert and command mode.
+
 
 ### Splits
 
@@ -73,17 +93,22 @@ As well `↑`, `↓`, `⏎`, and `⎋` may be used in completions menus. `<PageU
 * `^h` Go to split left.
 * `^l` Go to split right.
 
+
 ### Markdown
 
 * `,mp` Preview markdown buffer with Github styles.
 * `,mf` Render markdown buffer to html in a file.
 * `,mt` Render markdown buffer to html in a tab.
 
-## Commands
+
+Commands
+========
 
 * `:W` Alias to `:w` because I'm always typing it.
 
-## Plugins
+
+Plugins
+=======
 
 Installed plugins and syntax files.
 
@@ -117,34 +142,45 @@ Installed plugins and syntax files.
 * Surround
 * Taglist Plus
 
-## iPad
+
+iPad
+----
 
 Rudimentary support for vim on the iPad has been added via usage of the
 `xterm-ipad` `$TERM` value. In this mode `<Tab>` is `<Esc>` and `,<Tab>` is
 `<Tab>`.
 
 
-
-# Shell
+Shell
+=====
 
 Most of the shell junk is setup to work in both zsh and bash. Bash users should
 see [.bash_profile](https://github.com/gf3/dotfiles/blob/master/.bash_profile)
 and [.bash_prompt](https://github.com/gf3/dotfiles/blob/master/.bash_prompt).
 
-## Aliases
+
+Aliases
+-------
 
 Check out [.aliases](https://github.com/gf3/dotfiles/blob/master/.aliases)
 
-## Scripts
+
+Scripts
+-------
 
 Additional useful scripts bundled:
 
 * ack
 * bookmarklet
 
+Fonts
+=====
+
+A modified version of Menlo is available in `.fonts` for use with [powerline.vim](https://github.com/Lokaltog/vim-powerline/).
 
 
-# Git
+Git
+===
 
 I've included some handy git script additions as well as configution changes.
 Have a look at
@@ -161,8 +197,8 @@ Additional scripts (see [.scripts](https://github.com/gf3/dotfiles/tree/master/.
 * git-wtf
 
 
-
-# Configurations
+Configurations
+==============
 
 Sensible configurations exist for:
 

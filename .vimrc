@@ -182,7 +182,7 @@ nnoremap Y y$
 map <leader><Enter> o<ESC>
 
 " Search and replace word under cursor (,*)
-:nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
@@ -218,7 +218,7 @@ autocmd BufReadPost *
 
 " Set relative line numbers
 set relativenumber " Use relative line numbers. Current line is still in status bar.
-au BufReadPost * set relativenumber
+au BufReadPost,BufNewFile * set relativenumber
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 call pathogen#runtime_append_all_bundles()
