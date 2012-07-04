@@ -262,7 +262,3 @@ let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be inde
 " Rainbow Parenthesis
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
 
-" Taglist Plus
-let Tlist_WinWidth='auto'
-nnoremap <leader>l :TlistToggle<CR>
-

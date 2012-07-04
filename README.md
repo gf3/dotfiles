@@ -63,7 +63,6 @@ Reference to vim mappings.
 * `,qq` Close Quickfix window (think Ack.vim).
 * `,rp` Toggle Rainbow Parenthesis.
 * `,ss` Strip all trailing whitespace in buffer.
-* `,tl` Toggle Taglist Plus.
 * `,W` Sudo write!
 * `Y` Yank from cursor to end of line (same as `y$`).
 * `,*` Replace word under cursor.
@@ -140,7 +139,6 @@ Installed plugins and syntax files.
 * Snipmate
 * Stylus
 * Surround
-* Taglist Plus
 
 
 iPad
