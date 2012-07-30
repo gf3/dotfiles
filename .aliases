@@ -5,6 +5,9 @@ alias ....='cd ../../..'
 alias ~='cd ~'
 alias ll='tree --dirsfirst -ChFupDaLg 1'
 
+# Navigate to root of git repository
+alias ..g='git rev-parse && cd "$(git rev-parse --show-cdup)"'
+
 # Utilities
 alias a="ack -ia"
 alias b="bundle exec"
