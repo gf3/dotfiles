@@ -1,16 +1,12 @@
 # Load things
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-if [ -f ~/.functions ]; then
-  source ~/.functions
-fi
+[[ -f "$HOME/.functions" ]] && source "$HOME/.functions"
 
 # Adjust $PATH
-if [ -d ~/.scripts ] ; then
-  export PATH=$HOME/.scripts:$PATH
-fi
+[[ -d "$HOME/.scripts" ]] && export PATH=$HOME/.scripts:$PATH
+
+[[ -d "$HOME/.lein/bin" ]] && export PATH=$HOME/.lein/bin:$PATH
 
 # Misc settings
 export EDITOR=vim
