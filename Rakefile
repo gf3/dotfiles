@@ -2,7 +2,7 @@ require 'fileutils'
 
 # Files
 def entries
-  @files ||= Dir.entries( File.expand_path( '~/.dotfiles' ) ) - $exclude
+  @files ||= Dir.entries(File.expand_path('~/.dotfiles')) - $exclude
 end
 
 # Files and folders which shouldn't be copied over
@@ -20,10 +20,10 @@ $exclude = [
 
 desc 'Backup previous dotfiles.'
 task :backup do
-  dir = FileUtils.mkdir_p( File.expand_path( File.join( '~' , '.dotfiles-backup', Time.now.to_s ) ) )
-  entries.each do | file |
-    orig = File.expand_path( "~/#{file}" )
-    FileUtils.cp_r orig, "#{dir}/#{file}", :verbose => true if File.exists? orig
+  dir = FileUtils.mkdir_p(File.expand_path(File.join('~' , '.dotfiles-backup', Time.now.to_s)))
+  entries.each do |file|
+    orig = File.expand_path("~/#{file}")
+    FileUtils.cp_r orig, File.join(dir, file), :verbose => true if File.exists? orig
   end
 end
 
@@ -33,7 +33,7 @@ task :update do
 end
 
 desc 'Run all install tasks in order.'
-task :install => [ 'install:deps', 'install:copy', 'install:post' ]
+task :install => ['install:deps', 'install:copy', 'install:post']
 
 namespace :install do
 
@@ -45,8 +45,8 @@ namespace :install do
 
   desc 'Copy dotfiles over to home dir.'
   task :copy do
-    entries.each do | file |
-      FileUtils.cp_r file, File.expand_path( "~/#{file}" ), :verbose => true, :remove_destination => true
+    entries.each do |file|
+      FileUtils.cp_r file, File.expand_path("~/#{file}"), :verbose => true, :remove_destination => true
     end
   end
 
