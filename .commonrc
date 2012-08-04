@@ -17,3 +17,6 @@ if [ -d "$HOME/.rbenv/bin" ] ; then
   eval "$(rbenv init -)"
 fi
 
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
