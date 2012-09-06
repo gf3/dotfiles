@@ -224,11 +224,6 @@ au BufReadPost,BufNewFile * set relativenumber
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
-" Markdown
-augroup mkd
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
-augroup END
-
 " JSON
 au BufRead,BufNewFile *.json set ft=json syntax=javascript
 
