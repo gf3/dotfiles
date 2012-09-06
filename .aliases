@@ -5,9 +5,6 @@ alias ....='cd ../../..'
 alias ~='cd ~'
 alias ll='tree --dirsfirst -ChFupDaLg 1'
 
-# Navigate to root of git repository
-alias ..g='git rev-parse && cd "$(git rev-parse --show-cdup)"'
-
 # Utilities
 alias a="ack -ia"
 alias b="bundle exec"
@@ -22,6 +19,7 @@ alias ip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 alias localip="ipconfig getifaddr en1"
 alias mp="mvim -p"
 alias rkt="racket -il xrepl"
+alias tmux="tmux -2"
 alias view="vim -p -R"
 alias vp="vim -p"
 
