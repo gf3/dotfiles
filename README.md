@@ -122,6 +122,7 @@ Installed plugins and syntax files.
 * Haml
 * Handlebars
 * Histwin
+* Indent Guides
 * Jade
 * Javascript
 * Markdown
