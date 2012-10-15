@@ -115,14 +115,12 @@ Installed plugins and syntax files.
 * Gist
 * Haml
 * Handlebars
-* Histwin
 * Indent Guides
 * Jade
 * Javascript
 * Markdown
 * Nerdcommenter
 * Nu
-* Pastie
 * Powerline
 * Pathogen
 * Racket
@@ -166,6 +164,7 @@ Additional useful scripts bundled:
 * ack
 * bookmarklet
 
+
 Fonts
 =====
 
@@ -203,4 +202,6 @@ Sensible configurations exist for:
 * TMUX
 * Vim
 * GVim / MacVim
+
+...and more!
 
