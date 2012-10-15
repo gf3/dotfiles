@@ -111,6 +111,9 @@ map <C-L> <C-W>l
 " Sudo write (,W)
 noremap <leader>W :w !sudo tee %<CR>
 
+" Get output of shell commands
+command! -nargs=* -complete=shellcmd R new | setlocal buftype=nofile bufhidden=hide noswapfile | r !<args>
+
 " Remap :W to :w
 command W w
 
