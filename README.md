@@ -93,17 +93,11 @@ As well `↑`, `↓`, `⏎`, and `⎋` may be used in completions menus. `<PageU
 * `^l` Go to split right.
 
 
-### Markdown
-
-* `,mp` Preview markdown buffer with Github styles.
-* `,mf` Render markdown buffer to html in a file.
-* `,mt` Render markdown buffer to html in a tab.
-
-
 Commands
 ========
 
 * `:W` Alias to `:w` because I'm always typing it.
+* `:R` Get the output of shell commands.
 
 
 Plugins
