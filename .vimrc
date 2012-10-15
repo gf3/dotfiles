@@ -240,6 +240,12 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 " ZSH
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc set ft=zsh
 
+" Highlight Custom C Types
+autocmd BufRead,BufNewFile *.[ch] let fname = expand('<afile>:p:h') . '/types.vim'
+autocmd BufRead,BufNewFile *.[ch] if filereadable(fname)
+autocmd BufRead,BufNewFile *.[ch]   exe 'so ' . fname
+autocmd BufRead,BufNewFile *.[ch] endif
+
 " CtrlP
 let g:ctrlp_match_window_bottom = 0 " Show at top of window
 let g:ctrlp_working_path_mode = 2 " Smart path mode
