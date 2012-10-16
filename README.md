@@ -128,6 +128,7 @@ Installed plugins and syntax files.
 * Rainbow Parenthesis
 * Repeat
 * Ruby
+* Scala
 * Slim
 * Snipmate
 * Stylus
