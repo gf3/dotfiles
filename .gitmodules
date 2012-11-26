@@ -79,3 +79,6 @@
 [submodule ".vim/bundle/scala.vim"]
 	path = .vim/bundle/scala.vim
 	url = git://github.com/derekwyatt/vim-scala.git
+[submodule ".vim/bundle/fugitive.vim"]
+	path = .vim/bundle/fugitive.vim
+	url = git://github.com/tpope/vim-fugitive.git
