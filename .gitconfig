@@ -1,9 +1,6 @@
 [user]
   name = Gianni Chiappetta
-  email = EMAIL
-[github]
-  user = gf3
-  token = TOKEN
+  email = gianni@runlevel6.org
 [alias]
   br = branch
   ci = commit
