@@ -77,5 +77,6 @@ fi
 
 # --- Finished --- #
 cd $current_pwd
+exec $SHELL
 notice "Done"
 
