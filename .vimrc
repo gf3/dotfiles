@@ -65,6 +65,7 @@ set ofu=syntaxcomplete#Complete " Set omni-completion method.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
+set shell=/bin/sh " Use /bin/sh for executing shell commands
 set shiftwidth=2 " The # of spaces for indenting.
 set shortmess=atI " Don't show the intro message when starting vim.
 set showmode " Show the current mode.
@@ -83,7 +84,7 @@ set undofile " Persistent Undo.
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*
+set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
@@ -218,10 +219,6 @@ autocmd BufReadPost *
 set relativenumber " Use relative line numbers. Current line is still in status bar.
 au BufReadPost,BufNewFile * set relativenumber
 
-" Emulate bundles, allow plugins to live independantly. Easier to manage.
-call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
-
 " JSON
 au BufRead,BufNewFile *.json set ft=json syntax=javascript
 
@@ -239,6 +236,9 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 " ZSH
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc set ft=zsh
+
+" XML
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
 " Highlight Custom C Types
 autocmd BufRead,BufNewFile *.[ch] let fname = expand('<afile>:p:h') . '/types.vim'
@@ -261,4 +261,8 @@ let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be inde
 
 " Rainbow Parenthesis
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
+
+" Emulate bundles, allow plugins to live independantly. Easier to manage.
+execute pathogen#infect()
+filetype plugin indent on
 
