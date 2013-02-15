@@ -237,6 +237,9 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 " ZSH
 au BufRead,BufNewFile .zsh_rc,.functions,.commonrc set ft=zsh
 
+" Fish
+au BufRead,BufNewFile *.fish set ft=fish
+
 " XML
 au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
