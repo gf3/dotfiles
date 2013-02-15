@@ -1,4 +1,9 @@
-# --- Functions --- #
+#!/bin/sh
+
+#-----------------------------------------------------------------------------
+# Functions
+#-----------------------------------------------------------------------------
+
 # Notice title
 function notice { echo  "\033[1;32m=> $1\033[0m"; }
 
@@ -13,70 +18,118 @@ function e_list { echo  "  \033[1;31m✖\033[0m $1"; }
 
 # Check for dependency
 function dep {
-  # Check installed
-  local i=true
-  type -p $1 &> /dev/null || i=false
-
-  # Check version
-  if $i ; then
-    local version=$($1 --version | grep -oE -m 1 "[[:digit:]]+\.[[:digit:]]+\.?[[:digit:]]?")
-    [[ $version < $2 ]] && local msg="$1 version installed: $version, version needed: $2"
+  type -p $1 &> /dev/null
+  local installed=$?
+  if [ $installed -eq 0 ]; then
+    c_list $1
   else
-    local msg="Missing $1"
+    e_list $1
   fi
-  
-  # Save if dep not met
-  if ! $i || [ -n "$msg" ] ; then
-    missing+=($msg)
-  fi
+  return $installed
 }
 
-# --- INIT --- #
-current_pwd=$(pwd)
-missing=()
+function backup {
+  mkdir -p $backupdir
 
-# --- Check deps --- #
-notice "Checking dependencies"
-dep "git"  "1.7"
-dep "hg"   "1.6"
-dep "ruby" "1.8"
-dep "vim" "7.3"
-dep "tree" "1.5"
-
-if [ "${#missing[@]}" -gt "0" ]; then
-  error "Missing dependencies"
-  for need in "${missing[@]}"; do
-    e_list "$need."
+  local files=( $(ls -a) )
+  for file in "${files[@]}"; do
+    in_array $file "${excluded[@]}" || cp -Rf "$HOME/$file" "$backupdir/$file"
   done
+}
+
+function install {
+  local files=( $(ls -a) )
+  for file in "${files[@]}"; do
+    in_array $file "${excluded[@]}"
+    should_install=$?
+    if [ $should_install -gt 0 ]; then
+      [ -d "$HOME/$file" ] && rm -rf "$HOME/$file"
+      cp -Rf "$file" "$HOME/$file"
+    fi
+  done
+}
+
+function in_array {
+  local hay needle=$1
+  shift
+  for hay; do
+    [[ $hay == $needle ]] && return 0
+  done
+  return 1
+}
+
+
+#-----------------------------------------------------------------------------
+# Initialize
+#-----------------------------------------------------------------------------
+
+backupdir="$HOME/.dotfiles-backup/$(date "+%Y%m%d%H%M.%S")"
+dependencies=(git hg pygmentize tree vim xmllint)
+excluded=(. .. .git .gitignore bootstrap.sh Gemfile Gemfile.lock Rakefile README.md)
+
+
+#-----------------------------------------------------------------------------
+# Dependencies
+#-----------------------------------------------------------------------------
+
+notice "Checking dependencies"
+
+not_met=0
+for need in "${dependencies[@]}"; do
+  dep $need
+  met=$?
+  not_met=$(echo "$not_met + $met" | bc)
+done
+
+if [ $not_met -gt 0 ]; then
+  error "$not_met dependencies not met!"
   exit 1
 fi
 
-# Assumes ~/.dotfiles is *ours*
-if [ -d ~/.dotfiles ]; then
-  # --- Update Repo --- #
+
+#-----------------------------------------------------------------------------
+# Install
+#-----------------------------------------------------------------------------
+
+# Assumes $HOME/.dotfiles is *ours*
+if [ -d $HOME/.dotfiles ]; then
+  pushd $HOME/.dotfiles
+
+  # Update Repo
   notice "Updating"
-  cd ~/.dotfiles
   git pull origin master
   git submodule init
   git submodule update
 
-  # --- Install --- #
-  notice "Installing"
-  rake install
-else
-  # --- Clone Repo --- #
-  notice "Downloading"
-  git clone --recursive git://github.com/gf3/dotfiles.git ~/.dotfiles
+  # Backup
+  notice "Backup up old files ($backupdir)"
+  backup
 
-  # --- Install --- #
+  # Install
   notice "Installing"
-  cd ~/.dotfiles
-  rake backup
-  rake install
+  install
+else
+  # Clone Repo
+  notice "Downloading"
+  git clone --recursive git://github.com/gf3/dotfiles.git $HOME/.dotfiles
+
+  pushd $HOME/.dotfiles
+
+  # Backup
+  notice "Backup up old files ($backupdir)"
+  backup
+
+  # Install
+  notice "Installing"
+  install
 fi
 
-# --- Finished --- #
-cd $current_pwd
-exec $SHELL
+
+#-----------------------------------------------------------------------------
+# Finished
+#-----------------------------------------------------------------------------
+
+popd
 notice "Done"
+exec $SHELL -l
 

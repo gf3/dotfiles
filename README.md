@@ -4,15 +4,15 @@ Installation
 Prerequisites
 -------------
 
-* Git (1.7+)
-* Mercurial (1.6+)
-* Ruby (1.9 recommended) and RubyGems
-* Vim (7.3+)
+* Git (1.8+ recommended)
+* Mercurial (1.6+ recommended)
+* Vim (7.3+ recommended)
 * Tree
+* Pygments
+* xmllint
 
 Optional, but recommended:
 
-* ZSH
 * [rbenv](http://rbenv.org) or [RVM](http://rvm.beginrescueend.com/)
 * [Homebrew](http://mxcl.github.com/homebrew/) (OS X only)
 
@@ -20,13 +20,11 @@ Optional, but recommended:
 Bootstrapper
 ------------
 
-The bootstrapper depends on three things: ruby, rake, and bundler. Assuming you
-have ruby and ruby gems installed on your system: `gem install rake bundler`.
-
-Then:
+The bootstrapper will back up all your existing files before it installs
+anything new, it'll also warn you if a dependency isn't met.
 
 ``` bash-session
-$ zsh < <( curl https://raw.github.com/gf3/dotfiles/master/bootstrap.sh )
+$ sh < <( curl https://raw.github.com/gf3/dotfiles/master/bootstrap.sh )
 ```
 
 Don't worry, all your old files will be backed up!
