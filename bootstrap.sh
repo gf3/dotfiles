@@ -1,23 +1,23 @@
-#!/bin/sh
+#!/bin/bash
 
 #-----------------------------------------------------------------------------
 # Functions
 #-----------------------------------------------------------------------------
 
 # Notice title
-function notice { echo  "\033[1;32m=> $1\033[0m"; }
+notice() { echo  "\033[1;32m=> $1\033[0m"; }
 
 # Error title
-function error { echo "\033[1;31m=> Error: $1\033[0m"; }
+error() { echo "\033[1;31m=> Error: $1\033[0m"; }
 
 # List item
-function c_list { echo  "  \033[1;32m✔\033[0m $1"; }
+c_list() { echo  "  \033[1;32m✔\033[0m $1"; }
 
 # Error list item
-function e_list { echo  "  \033[1;31m✖\033[0m $1"; }
+e_list() { echo  "  \033[1;31m✖\033[0m $1"; }
 
 # Check for dependency
-function dep {
+dep() {
   type -p $1 &> /dev/null
   local installed=$?
   if [ $installed -eq 0 ]; then
@@ -28,7 +28,7 @@ function dep {
   return $installed
 }
 
-function backup {
+backup() {
   mkdir -p $backupdir
 
   local files=( $(ls -a) )
@@ -37,7 +37,7 @@ function backup {
   done
 }
 
-function install {
+install() {
   local files=( $(ls -a) )
   for file in "${files[@]}"; do
     in_array $file "${excluded[@]}"
@@ -49,7 +49,7 @@ function install {
   done
 }
 
-function in_array {
+in_array() {
   local hay needle=$1
   shift
   for hay; do
