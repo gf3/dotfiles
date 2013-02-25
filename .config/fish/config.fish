@@ -10,6 +10,7 @@ set -x LANG C
 # Paths
 test -d /usr/local/share/npm/bin ; and set PATH /usr/local/share/npm/bin $PATH
 test -d /usr/local/racket/bin    ; and set PATH /usr/local/racket/bin $PATH
+test -d /usr/local/heroku/bin    ; and set PATH /usr/local/heroku/bin $PATH
 test -d /usr/local/sbin          ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin           ; and set PATH /usr/local/bin $PATH
 
