@@ -39,7 +39,7 @@
 	url = git://github.com/tpope/vim-haml.git
 [submodule ".vim/bundle/powerline.vim"]
 	path = .vim/bundle/powerline.vim
-	url = git://github.com/Lokaltog/vim-powerline.git
+	url = git://github.com/Lokaltog/powerline.git
 [submodule ".vim/bundle/fish.vim"]
 	path = .vim/bundle/fish.vim
 	url = git://github.com/vim-scripts/fish.vim.git
@@ -48,7 +48,7 @@
 	url = git://github.com/pangloss/vim-javascript.git
 [submodule ".vim/bundle/slim.vim"]
 	path = .vim/bundle/slim.vim
-	url = git://github.com/bbommarito/vim-slim.git
+	url = git://github.com/slim-template/vim-slim.git
 [submodule ".vim/bundle/ruby.vim"]
 	path = .vim/bundle/ruby.vim
 	url = https://github.com/vim-ruby/vim-ruby.git
