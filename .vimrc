@@ -261,11 +261,10 @@ autocmd BufRead,BufNewFile *.[ch] endif
 
 " CtrlP
 let g:ctrlp_match_window_bottom = 0 " Show at top of window
-let g:ctrlp_working_path_mode = 2 " Smart path mode
-let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
-let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
+let g:ctrlp_jump_to_buffer = 'Et' " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
 let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
+let g:ctrlp_open_multiple_files = 't' " Open multiple files in new tabs
 
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
