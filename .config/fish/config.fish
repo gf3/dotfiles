@@ -1,11 +1,11 @@
 set fish_greeting
 
 set -x EDITOR vim
-set -x RBXOPT -X19
-set -x JRUBYOPT "-Xcext.enabled=true"
-set -x LC_ALL en_US.UTF-8
 set -x GREP_COLOR "1;37;45"
-set -x LANG C
+set -x JRUBYOPT "-Xcext.enabled=true"
+set -x LC_ALL en_US.UTF-8  
+set -x LANG en_US.UTF-8
+set -x RBXOPT -X19
 
 # Paths
 test -d /usr/local/share/npm/bin ; and set PATH /usr/local/share/npm/bin $PATH
