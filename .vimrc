@@ -30,7 +30,6 @@ set expandtab " Expand tabs to spaces
 set foldcolumn=4 " Column to show folds
 set foldenable
 set foldlevel=2
-" set foldlevelstart=2 " Sets `foldlevel` when editing a new buffer
 set foldmethod=syntax " Markers are used to specify folds.
 set foldminlines=0 " Allow folding single lines
 set foldnestmax=3 " Set max fold nesting level
@@ -58,6 +57,7 @@ set magic " Enable extended regexes.
 set mouse=a " Enable moouse in all in all modes.
 set noerrorbells " Disable error bells.
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command.
+set noshowmode " Don't show the current mode (Powerline takes care of us)
 set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
@@ -90,8 +90,18 @@ set wildmode=list:longest " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 
-" Status Line
-let g:Powerline_symbols = 'fancy'
+" Powerline
+set rtp+=~/.vim/bundle/powerline.vim/powerline/bindings/vim
+
+" Speed up transition from modes
+if ! has('gui_running')
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
+endif
 
 " Speed up viewport scrolling
 nnoremap <C-e> 3<C-e>
