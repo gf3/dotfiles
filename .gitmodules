@@ -76,3 +76,6 @@
 [submodule ".vim/bundle/slim.vim"]
 	path = .vim/bundle/slim.vim
 	url = git://github.com/slim-template/vim-slim.git
+[submodule ".vim/bundle/tabular.vim"]
+	path = .vim/bundle/tabular.vim
+	url = git://github.com/godlygeek/tabular.git
