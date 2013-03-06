@@ -54,6 +54,10 @@ Reference to vim mappings.
 
 ### General
 
+* `,a=` Tabularize on assignment (=)
+* `,a=>` Tabularize on hash rocket keys (=>)
+* `,a:` Tabularize on hash/object/dict keys (:)
+* `,a,` Tabularize on comma (,)
 * `,c` Toggle invisibles.
 * `,ls` Show buffers (same as `:buffers`).
 * `,p` Toggle paste mode.
