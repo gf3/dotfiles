@@ -5,7 +5,7 @@ set nocompatible
 set t_Co=256
 set background=dark 
 syntax on
-colorscheme badwolf
+colorscheme molotov
 
 " Enabled later, after Pathogen
 filetype off
@@ -235,13 +235,13 @@ au BufRead,BufNewFile *.json set ft=json syntax=javascript
 " Jade
 au BufRead,BufNewFile *.jade set ft=jade syntax=jade
 
-" Common Ruby files
+" Ruby
 au BufRead,BufNewFile Rakefile,Capfile,Gemfile,.autotest,.irbrc,*.treetop,*.tt set ft=ruby syntax=ruby
 
 " Nu
 au BufNewFile,BufRead *.nu,*.nujson,Nukefile setf nu
 
-" Coffee Folding
+" Coffee
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
 " ZSH
@@ -264,14 +264,14 @@ let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
 let g:vimclojure#DynamicHighlighting = 1 " Dynamic highlighting
 let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be indented as if they were included in the 'lispwords' option
 
-" CtrlP
+" CtrlP.vim
 let g:ctrlp_match_window_bottom = 0 " Show at top of window
 let g:ctrlp_jump_to_buffer = 'Et' " Jump to tab AND buffer if already open
 let g:ctrlp_split_window = 1 " <CR> = New Tab
 let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
 let g:ctrlp_open_multiple_files = 't' " Open multiple files in new tabs
 
-" Tabular
+" Tabular.vim
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a=> :Tabularize /=><CR>
@@ -281,8 +281,13 @@ vmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
 nmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
 vmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
 
-" Rainbow Parenthesis
+" RainbowParenthesis.vim
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
+
+" Ruby.vim
+let ruby_operators = 1
+let ruby_space_errors = 1
+let ruby_fold = 1
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 execute pathogen#infect()
