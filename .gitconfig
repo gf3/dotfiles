@@ -8,6 +8,7 @@
   df = diff
   g = grep -I
   lg = log -p
+  loq = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
   pb = publish-branch
   pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
   rb = rbranch
@@ -57,3 +58,5 @@
   tool = Kaleidoscope
 [diff "exif"]
   textconv = exiftool
+[push]
+  default = simple
