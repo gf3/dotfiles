@@ -39,6 +39,7 @@ function rkt      ; racket -il xrepl $argv ; end
 function tmux     ; command tmux -2 $argv ; end 
 function view     ; vim -p -R $argv ; end 
 function vp       ; vim -p $argv ; end 
+function mutt     ; command bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv; end
 
 function make_completion --argument-names alias command
     echo "
