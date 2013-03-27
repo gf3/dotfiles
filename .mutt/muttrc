@@ -47,7 +47,7 @@ set thorough_search      # strip headers and eval mimes before searching
 set sidebar_delim   = ' │'
 set sidebar_visible = yes
 set sidebar_width   = 28
-set sidebar_format  = '%B    \t%S(%N)'
+set sidebar_format  = "%B%?F? ?%* %?N?%N/?%4S"
 color sidebar_new color221 color233
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
