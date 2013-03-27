@@ -44,9 +44,10 @@ set thorough_search      # strip headers and eval mimes before searching
 # }}}
 # Sidebar Patch {{{
 
-set sidebar_delim   = '  │'
+set sidebar_delim   = ' │'
 set sidebar_visible = yes
-set sidebar_width   = 24
+set sidebar_width   = 28
+set sidebar_format  = '%B    \t%S(%N)'
 color sidebar_new color221 color233
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
@@ -119,13 +120,10 @@ alternates gianni@metalabdesign.com
 
 # Mailboxes to show in the sidebar.
 mailboxes +gianni-runlevel6.org/INBOX \
-          +gianni-runlevel6.org/vim \
-          +gianni-runlevel6.org/clojure \
-          +gianni-runlevel6.org/python \
-          +gianni-runlevel6.org/mercurial \
           +gianni-runlevel6.org/archive \
           +gianni-runlevel6.org/sent \
           +gianni-runlevel6.org/drafts \
+          +gianni-runlevel6.org/chats \
           +temporary/search \
 
 # Other special folders.
@@ -134,7 +132,7 @@ set postponed = "+gianni-runlevel6.org/drafts"
 
 # Sending email.
 set from     = "gianni@runlevel6.org"
-set sendmail = "/usr/local/bin/msmtp -a gianni"
+set sendmail = "/usr/local/bin/msmtp -a runlevel6"
 set sendmail_wait = 0 # no please don't silently fail, email is important
 unset record
 
@@ -158,6 +156,7 @@ bind index G        last-entry
 bind index p        recall-message
 bind index <space>  collapse-thread
 bind index N        search-opposite
+bind index tt       toggle-new
 macro index s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
 # Mark all as read
