@@ -1,5 +1,5 @@
 [general]
-ui = TTY.TTYUI
+ui = Basic
 accounts = Runlevel6
 pythonfile=~/.mutt/offlineimap.py
 fsync = False

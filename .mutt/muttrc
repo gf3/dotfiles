@@ -156,8 +156,13 @@ bind index G        last-entry
 bind index p        recall-message
 bind index <space>  collapse-thread
 bind index N        search-opposite
-bind index tt       toggle-new
-macro index s "<pipe-message>cat > ~/Desktop/"  "save message as"
+
+# Mark as read and delete thread
+# macro index tt "<read-thread><delete-thread>" "mark as read and delete thread"
+macro index tt "<enter-command>unset resolve<enter><clear-flag>N<enter-command>set resolve<enter><delete-message>" "mark as read and delete"
+
+# Save message as
+macro index s  "<pipe-message>cat > ~/Desktop/"  "save message as"
 
 # Mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
