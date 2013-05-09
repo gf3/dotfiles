@@ -219,6 +219,18 @@ map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
 
+" Jumping to tags. (via Steve Losh)
+"
+" Basically, <c-]> jumps to tags (like normal) and <c-\> opens the tag in a new
+" split instead.
+"
+" Both of them will align the destination line to the upper middle part of the
+" screen.  Both will pulse the cursor line so you can see where the hell you
+" are.  <c-\> will also fold everything in the buffer and then unfold just
+" enough for you to see the destination line.
+nnoremap <c-]> <c-]>mzzvzz15<c-e>`z:Pulse<cr>
+nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<c-e>`z:Pulse<cr>
+
 " Restore cursor position
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
