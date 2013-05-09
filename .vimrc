@@ -18,6 +18,7 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
 
+
 " Set some junk
 set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
@@ -156,8 +157,7 @@ if &term == "xterm-ipad"
   inoremap <Leader><Tab> <Tab>
 endif
 
-" Remap keys for auto-completion, disable arrow keys
-inoremap <expr> <Esc>  pumvisible() ? "\<C-e>" : "\<Esc>"
+" Remap keys for auto-completion menu
 inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>   pumvisible() ? "\<C-p>" : "\<Up>"
