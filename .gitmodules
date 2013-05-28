@@ -76,3 +76,6 @@
 [submodule ".vim/bundle/tabular.vim"]
 	path = .vim/bundle/tabular.vim
 	url = git://github.com/godlygeek/tabular.git
+[submodule ".vim/bundle/markdown.vim"]
+	path = .vim/bundle/markdown.vim
+	url = git://github.com/tpope/vim-markdown.git
