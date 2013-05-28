@@ -18,6 +18,7 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
 
+
 " Set some junk
 set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
@@ -156,8 +157,7 @@ if &term == "xterm-ipad"
   inoremap <Leader><Tab> <Tab>
 endif
 
-" Remap keys for auto-completion, disable arrow keys
-inoremap <expr> <Esc>  pumvisible() ? "\<C-e>" : "\<Esc>"
+" Remap keys for auto-completion menu
 inoremap <expr> <CR>   pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <Up>   pumvisible() ? "\<C-p>" : "\<Up>"
@@ -218,6 +218,18 @@ map <PageUp> <C-U>
 map <PageDown> <C-D>
 imap <PageUp> <C-O><C-U>
 imap <PageDown> <C-O><C-D>
+
+" Jumping to tags. (via Steve Losh)
+"
+" Basically, <c-]> jumps to tags (like normal) and <c-\> opens the tag in a new
+" split instead.
+"
+" Both of them will align the destination line to the upper middle part of the
+" screen.  Both will pulse the cursor line so you can see where the hell you
+" are.  <c-\> will also fold everything in the buffer and then unfold just
+" enough for you to see the destination line.
+nnoremap <c-]> <c-]>mzzvzz15<c-e>`z:Pulse<cr>
+nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<c-e>`z:Pulse<cr>
 
 " Restore cursor position
 autocmd BufReadPost *
