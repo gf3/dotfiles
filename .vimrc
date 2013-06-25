@@ -3,7 +3,7 @@ set nocompatible
 
 " Set syntax highlighting options.
 set t_Co=256
-set background=dark 
+set background=dark
 syntax on
 colorscheme molotov
 
@@ -304,4 +304,3 @@ let ruby_fold = 1
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 execute pathogen#infect()
 filetype plugin indent on
-
