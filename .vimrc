@@ -283,6 +283,9 @@ let g:ctrlp_split_window = 1 " <CR> = New Tab
 let g:ctrlp_open_new_file = 't' " Open newly created files in a new tab
 let g:ctrlp_open_multiple_files = 't' " Open multiple files in new tabs
 
+" Notes.vim
+let g:notes_directories = ['~/Dropbox/Notes']
+
 " Tabular.vim
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
