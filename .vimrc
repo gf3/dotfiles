@@ -231,6 +231,18 @@ imap <PageDown> <C-O><C-D>
 nnoremap <c-]> <c-]>mzzvzz15<c-e>`z:Pulse<cr>
 nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<c-e>`z:Pulse<cr>
 
+" Word processor mode (:WP)
+func! WordProcessorMode()
+  setlocal formatoptions=t1
+  setlocal textwidth=100
+  map j gj
+  map k gk
+  setlocal smartindent
+  setlocal spell spelllang=en_ca
+  setlocal noexpandtab
+endfu
+com! WP call WordProcessorMode()
+
 " Restore cursor position
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
