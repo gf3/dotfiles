@@ -1,5 +1,5 @@
 set go-=T " Hide toolbar on launch
-set guifont=Menlo\ Regular\ for\ Powerline:h14 " Set default font
+set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h14 " Set default font
 
 " Tab Navigation
 nmap <D-j> :tabprevious<CR>

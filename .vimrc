@@ -3,7 +3,7 @@ set nocompatible
 
 " Set syntax highlighting options.
 set t_Co=256
-set background=dark 
+set background=dark
 syntax on
 colorscheme molotov
 
@@ -285,6 +285,9 @@ let g:ctrlp_open_multiple_files = 't' " Open multiple files in new tabs
 
 " Markdown.vim
 let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
+
+" Notes.vim
+let g:notes_directories = ['~/Dropbox/Notes']
 
 " Tabular.vim
 nmap <Leader>a= :Tabularize /=<CR>
