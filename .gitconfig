@@ -1,62 +1,78 @@
 [user]
-  name = Gianni Chiappetta
+  name  = Gianni Chiappetta
   email = gianni@runlevel6.org
+
 [alias]
-  br = branch
-  ci = commit
-  co = checkout
-  df = diff
-  g = grep -I
-  lg = log -p
+  br  = branch
+  ci  = commit
+  co  = checkout
+  df  = diff
+  g   = grep -I
+  lg  = log -p
   loq = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-  pb = publish-branch
-  pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
-  rb = rbranch
-  rc = rank-contributors
-  rv = review
-  sm = show-merges
-  st = status
-  ksdiff = difftool -y -t Kaleidoscope
+  pb  = publish-branch
+  rb  = rbranch
+  rc  = rank-contributors
+  rv  = review
+  sm  = show-merges
+  st  = status
+
+[branch]
+  autosetuprebase = always
+
 [color]
   ui = auto
+
 [color "branch"]
   current = yellow reverse
-  local = yellow
-  remote = green
+  local   = yellow
+  remote  = green
+
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
-  old = red bold
-  new = green bold
+  old  = red bold
+  new  = green bold
+
 [color "status"]
-  added = yellow
-  changed = green
+  added     = yellow
+  changed   = green
   untracked = cyan
-[merge]
-  log = true
-[rerere]
-  enabled = 1
-[url "git@github.com:"]
-  insteadOf = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
-[url "git://github.com/"]
-  insteadOf = "github:"
-[url "git@gist.github.com:"]
-  insteadOf = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
-[url "git://gist.github.com/"]
-  insteadOf = "gist:"
-[url "git@heroku.com:"]
-  insteadOf = "heroku:"
-[difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
-[difftool]
-  prompt = false
+
 [diff]
   tool = Kaleidoscope
+
 [diff "exif"]
   textconv = exiftool
+
+[difftool]
+  prompt = false
+
+[merge]
+  log = true
+
 [push]
   default = simple
+
+[rerere]
+  enabled = 1
+
+[url "git@github.com:"]
+  insteadOf     = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  insteadOf     = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+
+[url "git@heroku.com:"]
+  insteadOf = "heroku:"
+
