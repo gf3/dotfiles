@@ -35,11 +35,12 @@ function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|
 function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end 
 function localip  ; ipconfig getifaddr en1 ; end 
 function mp       ; mvim -p $argv ; end 
+function mutt     ; command bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv; end
 function rkt      ; racket -il xrepl $argv ; end 
 function tmux     ; command tmux -2 $argv ; end 
+function tunnel   ; ssh -D 8080 -C -N $argv ; end
 function view     ; vim -p -R $argv ; end 
 function vp       ; vim -p $argv ; end 
-function mutt     ; command bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv; end
 
 function make_completion --argument-names alias command
     echo "
@@ -59,7 +60,7 @@ make_completion vp 'vim -p'
 
 # rbenv
 begin
-  set -l has_rbenv false
+  set -lx has_rbenv false
 
   if test -d $HOME/.rbenv
     set has_rbenv $HOME/.rbenv
