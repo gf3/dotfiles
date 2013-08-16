@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/notes.vim"]
 	path = .vim/bundle/notes.vim
 	url = https://github.com/xolox/vim-notes.git
+[submodule ".vim/bundle/airline.vim"]
+	path = .vim/bundle/airline.vim
+	url = https://github.com/bling/vim-airline.git

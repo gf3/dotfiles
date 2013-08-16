@@ -91,9 +91,6 @@ set wildmode=list:longest " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline.vim/powerline/bindings/vim
-
 " Speed up transition from modes
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -282,6 +279,10 @@ autocmd BufRead,BufNewFile *.[ch] let fname = expand('<afile>:p:h') . '/types.vi
 autocmd BufRead,BufNewFile *.[ch] if filereadable(fname)
 autocmd BufRead,BufNewFile *.[ch]   exe 'so ' . fname
 autocmd BufRead,BufNewFile *.[ch] endif
+
+" Airline.vim
+let g:airline_powerline_fonts = 1
+let g:airline_enable_syntastic = 1
 
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
