@@ -58,7 +58,7 @@ set magic " Enable extended regexes.
 set mouse=a " Enable moouse in all in all modes.
 set noerrorbells " Disable error bells.
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command.
-set noshowmode " Don't show the current mode (Powerline takes care of us)
+set noshowmode " Don't show the current mode (airline.vim takes care of us)
 set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
@@ -69,7 +69,6 @@ set scrolloff=3 " Start scrolling three lines before horizontal border of window
 set shell=/bin/sh " Use /bin/sh for executing shell commands
 set shiftwidth=2 " The # of spaces for indenting.
 set shortmess=atI " Don't show the intro message when starting vim.
-set showmode " Show the current mode.
 set showtabline=2 " Always show tab bar.
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window.
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters.
