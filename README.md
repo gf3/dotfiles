@@ -175,7 +175,7 @@ If you want to take full advantage of
 [airline.vim](https://github.com/bling/vim-airline) you'll want to install and
 use one of the [Powerline fonts](https://github.com/Lokaltog/powerline-fonts).
 I recommend either `Meslo` or `Deja Vu Sans Mono`. If you choose something
-other than `Meslo` don't forget to update your [.gvimrc][.gvimrc].
+other than `Meslo` don't forget to update your [.gvimrc](.gvimrc).
 
 
 Git
