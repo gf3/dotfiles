@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/syntastic.vim"]
 	path = .vim/bundle/syntastic.vim
 	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/rspec.vim"]
+	path = .vim/bundle/rspec.vim
+	url = git@github.com:thoughtbot/vim-rspec.git
