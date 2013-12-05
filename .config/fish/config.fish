@@ -29,6 +29,7 @@ function c        ; pygmentize -O style=monokai -f console256 -g $argv ; end
 function d        ; du -h -d=1 $argv ; end 
 function df       ; command df -h $argv ; end 
 function digga    ; command dig +nocmd $argv[1] any +multiline +noall +answer; end
+function f        ; foreman run bundle exec $argv ; end
 function g        ; git $argv ; end 
 function grep     ; command grep --color=auto $argv ; end
 function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end 
