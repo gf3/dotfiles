@@ -23,7 +23,7 @@ function l    ; tree --dirsfirst -aFCNL 1 $argv ; end
 function ll   ; tree --dirsfirst -ChFupDaLg 1 $argv ; end
 
 # Utilities
-function a        ; ack -ia $argv ; end 
+function a        ; command ag $argv ; end 
 function b        ; bundle exec $argv ; end 
 function c        ; pygmentize -O style=monokai -f console256 -g $argv ; end 
 function d        ; du -h -d=1 $argv ; end 
