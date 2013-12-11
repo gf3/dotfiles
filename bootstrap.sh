@@ -65,7 +65,7 @@ in_array() {
 
 backupdir="$HOME/.dotfiles-backup/$(date "+%Y%m%d%H%M.%S")"
 dependencies=(git hg pygmentize tree vim xmllint)
-excluded=(. .. .git .gitignore bootstrap.sh Gemfile Gemfile.lock Rakefile README.md)
+excluded=(. .. .git .gitignore .gitmodules bootstrap.sh Gemfile Gemfile.lock Rakefile README.md)
 
 
 #-----------------------------------------------------------------------------
