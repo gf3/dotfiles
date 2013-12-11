@@ -279,6 +279,9 @@ autocmd BufRead,BufNewFile *.[ch] if filereadable(fname)
 autocmd BufRead,BufNewFile *.[ch]   exe 'so ' . fname
 autocmd BufRead,BufNewFile *.[ch] endif
 
+" Ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " Airline.vim
 let g:airline_powerline_fonts = 1
 let g:airline_enable_syntastic = 1
