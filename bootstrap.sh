@@ -39,17 +39,15 @@ dep() {
 }
 
 backup() {
-  set -e
   mkdir -p $backupdir
 
   local files=( $(ls -a) )
   for file in "${files[@]}"; do
     in_array $file "${excluded[@]}" 
         if [ $? -ne 0 -a -r "$HOME/$file" ]; then
-            mv -f "$HOME/$file" "$backupdir/$file"
+            mv -f "$HOME/$file" "$backupdir/" || { error "Cannot backup $HOME/$file"; exit 1; }
         fi
   done
-  set +e
 }
 
 install() {
