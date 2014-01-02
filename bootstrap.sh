@@ -44,7 +44,10 @@ backup() {
 
   local files=( $(ls -a) )
   for file in "${files[@]}"; do
-    in_array $file "${excluded[@]}" || mv -f "$HOME/$file" "$backupdir/$file"
+    in_array $file "${excluded[@]}" 
+        if [ $? -ne 0 -a -r "$HOME/$file" ]; then
+            mv -f "$HOME/$file" "$backupdir/$file"
+        fi
   done
   set +e
 }
