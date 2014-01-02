@@ -3,18 +3,28 @@
 #-----------------------------------------------------------------------------
 # Functions
 #-----------------------------------------------------------------------------
+# The different colours as variables
+Y="\033[01;33m" # YELLOW
+C="\033[01;36m" # CYAN
+W="\033[01;37m" # WHITE
+B="\033[01;34m" # BLUE
+G="\033[01;32m" # GREEN
+D="\033[01;31m" # RED
+X="\033[00;37m" # Not sure...
+R="\033[0m"
+
 
 # Notice title
-notice() { echo  "\033[1;32m=> $1\033[0m"; }
+notice() { echo -e "${G}=> $1${R}"; }
 
 # Error title
-error() { echo "\033[1;31m=> Error: $1\033[0m"; }
+error() { echo -e "${D}=> Error: $1${R}"; }
 
 # List item
-c_list() { echo  "  \033[1;32m✔\033[0m $1"; }
+c_list() { echo -e "  ${G}+${R} $1"; }
 
 # Error list item
-e_list() { echo  "  \033[1;31m✖\033[0m $1"; }
+e_list() { echo -e "  ${D}-${R} $1"; }
 
 # Check for dependency
 dep() {
@@ -29,12 +39,14 @@ dep() {
 }
 
 backup() {
+  set -e
   mkdir -p $backupdir
 
   local files=( $(ls -a) )
   for file in "${files[@]}"; do
-    in_array $file "${excluded[@]}" || cp -Rf "$HOME/$file" "$backupdir/$file"
+    in_array $file "${excluded[@]}" || mv -f "$HOME/$file" "$backupdir/$file"
   done
+  set +e
 }
 
 install() {
