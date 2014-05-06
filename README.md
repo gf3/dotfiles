@@ -24,7 +24,7 @@ The bootstrapper will back up all your existing files before it installs
 anything new, it'll also warn you if a dependency isn't met.
 
 ``` bash-session
-$ bash < <( curl https://raw.github.com/gf3/dotfiles/master/bootstrap.sh )
+$ bash < <( curl https://raw.githubusercontent.com/gf3/dotfiles/master/bootstrap.sh )
 ```
 
 Don't worry, all your old files will be backed up!
