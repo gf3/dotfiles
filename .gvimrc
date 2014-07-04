@@ -1,7 +1,7 @@
 set go-=T " Hide toolbar
-set go-=L " Hide right scrollbar
+set go-=r " Hide right scrollbar
 set go-=L " Hide left scrollbar
-set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h14 " Set default font
+set guifont=Menlo\ Regular\ for\ Powerline:h16 " Set default font
 
 " Buffer Navigation
 nmap <D-[> :bufprev<CR>
