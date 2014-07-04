@@ -21,34 +21,35 @@ test -d ~/Projects/uniiverse/tracker/bin       ; and set PATH ~/Projects/uniiver
 test -d ~/Projects/uniiverse/elasticsearch/bin ; and set PATH ~/Projects/uniiverse/elasticsearch/bin $PATH
 
 # Navigation
-function ..   ; cd .. ; end
-function ...  ; cd ../.. ; end
-function .... ; cd ../../.. ; end
-function ~    ; cd ~ ; end
-function l    ; tree --dirsfirst -aFCNL 1 $argv ; end
-function ll   ; tree --dirsfirst -ChFupDaLg 1 $argv ; end
+function ..    ; cd .. ; end
+function ...   ; cd ../.. ; end
+function ....  ; cd ../../.. ; end
+function ..... ; cd ../../../.. ; end
+function l     ; tree --dirsfirst -aFCNL 1 $argv ; end
+function ll    ; tree --dirsfirst -ChFupDaLg 1 $argv ; end
 
 # Utilities
-function a        ; command ag $argv ; end 
-function b        ; bundle exec $argv ; end 
-function c        ; pygmentize -O style=monokai -f console256 -g $argv ; end 
-function d        ; du -h -d=1 $argv ; end 
-function df       ; command df -h $argv ; end 
+function a        ; command ag --ignore=.git --ignore=log --ignore=tags --ignore=tmp --ignore=vendor --ignore=spec/vcr $argv ; end
+function b        ; bundle exec $argv ; end
+function c        ; pygmentize -O style=monokai -f console256 -g $argv ; end
+function d        ; du -h -d=1 $argv ; end
+function df       ; command df -h $argv ; end
 function digga    ; command dig +nocmd $argv[1] any +multiline +noall +answer; end
 function f        ; foreman run bundle exec $argv ; end
-function g        ; git $argv ; end 
+function g        ; git $argv ; end
 function grep     ; command grep --color=auto $argv ; end
-function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end 
-function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end 
-function localip  ; ipconfig getifaddr en1 ; end 
-function mp       ; mvim -p $argv ; end 
+function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end
+function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
+function localip  ; ipconfig getifaddr en1 ; end
+function mp       ; mvim -p $argv ; end
 function mutt     ; command bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv; end
-function rkt      ; racket -il xrepl $argv ; end 
-function tmux     ; command tmux -2 $argv ; end 
+function rkt      ; racket -il xrepl $argv ; end
+function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
-function view     ; vim -p -R $argv ; end 
-function vp       ; vim -p $argv ; end 
+function view     ; vim -p -R $argv ; end
+function vp       ; vim -p $argv ; end
 
+# Completions
 function make_completion --argument-names alias command
     echo "
     function __alias_completion_$alias
@@ -61,6 +62,7 @@ function make_completion --argument-names alias command
 end
 
 make_completion b 'bundle exec'
+make_completion f 'foreman run'
 make_completion g 'git'
 make_completion mp 'vim -p'
 make_completion vp 'vim -p'
