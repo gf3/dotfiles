@@ -402,7 +402,7 @@ let ruby_fold = 1
 " Syntastic.vim
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_coffee_coffeelint_args = '-f /Users/gianni/.coffeelint.json'
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
 execute pathogen#infect()
