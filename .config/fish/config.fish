@@ -14,6 +14,11 @@ test -d /usr/local/racket/bin    ; and set PATH /usr/local/racket/bin $PATH
 test -d /usr/local/heroku/bin    ; and set PATH /usr/local/heroku/bin $PATH
 test -d /usr/local/sbin          ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin           ; and set PATH /usr/local/bin $PATH
+test -d ~/.cabal/bin             ; and set PATH ~/.cabal/bin $PATH
+
+test -d ~/Projects/uniiverse/boxoffice/bin     ; and set PATH ~/Projects/uniiverse/boxoffice/bin $PATH
+test -d ~/Projects/uniiverse/tracker/bin       ; and set PATH ~/Projects/uniiverse/tracker/bin $PATH
+test -d ~/Projects/uniiverse/elasticsearch/bin ; and set PATH ~/Projects/uniiverse/elasticsearch/bin $PATH
 
 # Navigation
 function ..   ; cd .. ; end
