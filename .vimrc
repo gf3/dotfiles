@@ -361,6 +361,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " Airline.vim
 let g:airline_powerline_fonts = 1
 let g:airline_enable_syntastic = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
