@@ -6,3 +6,6 @@ set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h14 " Set default font
 " Buffer Navigation
 nmap <D-[> :bufprev<CR>
 nmap <D-]> :bufnext<CR>
+
+" Toggle fullscreen
+nmap <D-CR> :set invfu<CR>
