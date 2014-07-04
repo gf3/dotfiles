@@ -4,21 +4,11 @@ ssh = ssh -C
 ignore = ~/.hgignore
 editor = vim
 
-# Prompt: http://stevelosh.com/projects/hg-prompt/
-# Shelve: http://mercurial.selenic.com/wiki/ShelveExtension
 # Bookmarks: http://mercurial.selenic.com/wiki/BookmarksExtension
 [extensions]
 color =
 bookmarks =
-hgext.extdiff =
-hgshelve = ~/.hgext/hgshelve/hgshelve.py
 fetch =
-prompt = ~/.hgext/hg-prompt/prompt.py
 
 [bookmarks]
 track.current = True
-
-# Kaleidoscope: http://www.kaleidoscopeapp.com/
-[extdiff]
-cmd.ksdiff = /usr/local/bin/ksdiff-wrapper
-opts.ksdiff = hg
