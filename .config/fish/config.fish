@@ -3,8 +3,9 @@ set fish_greeting
 set -x EDITOR vim
 set -x GREP_COLOR "1;37;45"
 set -x JRUBYOPT "-Xcext.enabled=true"
-set -x LC_ALL en_US.UTF-8  
+set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
+set -x RBENV_ROOT /usr/local/var/rbenv
 set -x RBXOPT -X19
 
 # Paths
@@ -60,19 +61,9 @@ make_completion mp 'vim -p'
 make_completion vp 'vim -p'
 
 # rbenv
-begin
-  set -lx has_rbenv false
-
-  if test -d $HOME/.rbenv
-    set has_rbenv $HOME/.rbenv
-  else if test -d /usr/local/rbenv
-    set has_rbenv /usr/local/rbenv
-  end
-
-  if test $has_rbenv
-    set PATH $has_rbenv/bin $PATH
-    set PATH $has_rbenv/shims $PATH
-    rbenv rehash >/dev/null ^&1
-  end
+if test -d $RBENV_ROOT
+  set PATH $RBENV_ROOT/bin $PATH
+  set PATH $RBENV_ROOT/shims $PATH
+  rbenv rehash >/dev/null ^&1
 end
 
