@@ -74,3 +74,5 @@ if test -d $RBENV_ROOT
   rbenv rehash >/dev/null ^&1
 end
 
+# nix
+. nix.fish
