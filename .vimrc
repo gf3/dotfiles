@@ -202,8 +202,18 @@ function! BufSel(pattern)
   endif
 endfunction
 
-" Bind the BufSel() function to a user-command
+function! PromptBufSel()
+  call inputsave()
+  let name = input('Buffer: ', '', 'buffer')
+  call inputrestore()
+  call BufSel(name)
+endfunction
+
+" Bind the BufSel() function to a user-command (:Bs)
 command! -nargs=1 Bs :call BufSel("<args>")
+
+" Prompt for buffer to select (,bs)
+nnoremap <leader>bs :call PromptBufSel()<CR>
 
 " Buffer navigation (,,) (gb) (gB) (,ls)
 map <Leader>, <C-^>
