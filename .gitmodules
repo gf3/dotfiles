@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/rspec.vim"]
 	path = .vim/bundle/rspec.vim
 	url = git@github.com:thoughtbot/vim-rspec.git
+[submodule ".vim/bundle/ruby-heredoc-syntax.vim"]
+	path = .vim/bundle/ruby-heredoc-syntax.vim
+	url = https://github.com/joker1007/vim-ruby-heredoc-syntax.git
