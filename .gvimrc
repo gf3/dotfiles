@@ -9,3 +9,6 @@ nmap <D-]> :bufnext<CR>
 
 " Toggle fullscreen
 nmap <D-CR> :set invfu<CR>
+
+" Maximize window
+set lines=999 columns=999
