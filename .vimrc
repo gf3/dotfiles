@@ -7,8 +7,8 @@ set background=dark
 syntax on
 colorscheme molotov
 
-" Enabled later, after Pathogen
-filetype off
+" Plugins indents ons!!!
+filetype plugin indent on
 
 " Change mapleader
 let mapleader=","
@@ -456,6 +456,39 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" Emulate bundles, allow plugins to live independantly. Easier to manage.
-execute pathogen#infect()
-filetype plugin indent on
+" Load plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
+Plug 'guns/vim-clojure-static'
+Plug 'joker1007/vim-ruby-heredoc-syntax'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-emoji'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'mileszs/ack.vim'
+Plug 'msanders/snipmate.vim'
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'slim-template/vim-slim',           { 'for': 'slim' }
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-markdown',               { 'for': 'markdown' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/fish.vim',             { 'for': 'fish' }
+Plug 'vim-scripts/jade.vim',             { 'for': 'jade' }
+Plug 'wavded/vim-stylus',                { 'for': 'stylus' }
+Plug 'wlangstroth/vim-racket'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+
+call plug#end()
