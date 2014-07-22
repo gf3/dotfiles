@@ -7,9 +7,6 @@ set background=dark
 syntax on
 colorscheme molotov
 
-" Plugins indents ons!!!
-filetype plugin indent on
-
 " Change mapleader
 let mapleader=","
 
@@ -415,6 +412,8 @@ let g:airline_enable_syntastic = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s '
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
@@ -467,23 +466,24 @@ Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'mileszs/ack.vim'
 Plug 'msanders/snipmate.vim'
-Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'oplatek/Conque-Shell'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'slim-template/vim-slim',           { 'for': 'slim' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
-Plug 'tpope/vim-markdown',               { 'for': 'markdown' }
+Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/fish.vim',             { 'for': 'fish' }
-Plug 'vim-scripts/jade.vim',             { 'for': 'jade' }
-Plug 'wavded/vim-stylus',                { 'for': 'stylus' }
+Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
+Plug 'vim-scripts/jade.vim',   { 'for': 'jade' }
+Plug 'wavded/vim-stylus',      { 'for': 'stylus' }
 Plug 'wlangstroth/vim-racket'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
