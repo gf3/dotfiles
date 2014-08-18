@@ -7,9 +7,6 @@ set background=dark
 syntax on
 colorscheme molotov
 
-" Enabled later, after Pathogen
-filetype off
-
 " Change mapleader
 let mapleader=","
 
@@ -202,8 +199,18 @@ function! BufSel(pattern)
   endif
 endfunction
 
-" Bind the BufSel() function to a user-command
+function! PromptBufSel()
+  call inputsave()
+  let name = input('Buffer: ', '', 'buffer')
+  call inputrestore()
+  call BufSel(name)
+endfunction
+
+" Bind the BufSel() function to a user-command (:Bs)
 command! -nargs=1 Bs :call BufSel("<args>")
+
+" Prompt for buffer to select (,bs)
+nnoremap <leader>bs :call PromptBufSel()<CR>
 
 " Buffer navigation (,,) (gb) (gB) (,ls)
 map <Leader>, <C-^>
@@ -405,6 +412,8 @@ let g:airline_enable_syntastic = 1
 let g:airline#extensions#tabline#buffer_nr_format = '%s '
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Clojure.vim
 let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
@@ -417,21 +426,18 @@ let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
 let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
 let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
 
+" EasyAlign.vim
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
+nmap <Leader>a <Plug>(EasyAlign)
+
 " Markdown.vim
 let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
 
 " Notes.vim
 let g:notes_directories = ['~/Dropbox/Notes']
-
-" Tabular.vim
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a=> :Tabularize /=><CR>
-vmap <Leader>a=> :Tabularize /=><CR>
-nmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
-vmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
-nmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
-vmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
 
 " RainbowParenthesis.vim
 nnoremap <leader>rp :RainbowParenthesesToggle<CR>
@@ -446,6 +452,40 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" Emulate bundles, allow plugins to live independantly. Easier to manage.
-execute pathogen#infect()
-filetype plugin indent on
+" Load plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'ap/vim-css-color'
+Plug 'bling/vim-airline'
+Plug 'guns/vim-clojure-static'
+Plug 'joker1007/vim-ruby-heredoc-syntax'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-emoji'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'mileszs/ack.vim'
+Plug 'msanders/snipmate.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'oplatek/Conque-Shell'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
+Plug 'vim-scripts/jade.vim',   { 'for': 'jade' }
+Plug 'wavded/vim-stylus',      { 'for': 'stylus' }
+Plug 'wlangstroth/vim-racket'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+
+call plug#end()
