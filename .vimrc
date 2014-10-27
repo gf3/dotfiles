@@ -357,12 +357,14 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 " Word processor mode (:WP)
 func! WordProcessorMode()
   setlocal formatoptions=t1
-  setlocal textwidth=100
   map j gj
   map k gk
   setlocal smartindent
   setlocal spell spelllang=en_ca
   setlocal noexpandtab
+  setlocal wrap
+  setlocal linebreak
+  Goyo 100
 endfu
 com! WP call WordProcessorMode()
 
@@ -464,6 +466,7 @@ Plug 'guns/vim-clojure-static'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-emoji'
+Plug 'junegunn/goyo.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kien/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
