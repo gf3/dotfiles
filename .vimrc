@@ -47,6 +47,7 @@ set hlsearch " Highlight searches
 set ignorecase " Ignore case of searches.
 set incsearch " Highlight dynamically as pattern is typed.
 set laststatus=2 " Always show status line
+set lazyredraw " Don't redraw when we don't have to
 set lispwords+=defroutes " Compojure
 set lispwords+=defpartial,defpage " Noir core
 set lispwords+=defaction,deffilter,defview,defsection " Ciste core
@@ -60,6 +61,7 @@ set nostartofline " Don't reset cursor to start of line when moving around.
 set nowrap " Do not wrap lines.
 set nu " Enable line numbers.
 set ofu=syntaxcomplete#Complete " Set omni-completion method.
+set regexpengine=1 " Use the old regular expression engine (it's faster for certain language syntaxes)
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
