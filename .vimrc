@@ -242,11 +242,11 @@ nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace ()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  :%s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace ()<CR>
 
@@ -280,30 +280,30 @@ nnoremap <c-\> <c-w>v<c-]>mzzMzvzz15<c-e>`z:Pulse<cr>
 
 " Pulse Line (thanks Steve Losh)
 function! s:Pulse()
-    redir => old_hi
-        silent execute 'hi CursorLine'
-    redir END
-    let old_hi = split(old_hi, '\n')[0]
-    let old_hi = substitute(old_hi, 'xxx', '', '')
+  redir => old_hi
+  silent execute 'hi CursorLine'
+  redir END
+  let old_hi = split(old_hi, '\n')[0]
+  let old_hi = substitute(old_hi, 'xxx', '', '')
 
-    let steps = 8
-    let width = 1
-    let start = width
-    let end = steps * width
-    let color = 233
+  let steps = 8
+  let width = 1
+  let start = width
+  let end = steps * width
+  let color = 233
 
-    for i in range(start, end, width)
-        execute "hi CursorLine ctermbg=" . (color + i)
-        redraw
-        sleep 6m
-    endfor
-    for i in range(end, start, -1 * width)
-        execute "hi CursorLine ctermbg=" . (color + i)
-        redraw
-        sleep 6m
-    endfor
+  for i in range(start, end, width)
+    execute "hi CursorLine ctermbg=" . (color + i)
+    redraw
+    sleep 6m
+  endfor
+  for i in range(end, start, -1 * width)
+    execute "hi CursorLine ctermbg=" . (color + i)
+    redraw
+    sleep 6m
+  endfor
 
-    execute 'hi ' . old_hi
+  execute 'hi ' . old_hi
 endfunction
 command! -nargs=0 Pulse call s:Pulse()
 
@@ -316,26 +316,26 @@ command! -nargs=0 Pulse call s:Pulse()
 " gives you one color of highlighting.  Now you can use <leader>N where N is
 " a number from 1-6 to highlight the current word in a specific color.
 function! HiInterestingWord(n) " {{{
-    " Save our location.
-    normal! mz
+  " Save our location.
+  normal! mz
 
-    " Yank the current word into the z register.
-    normal! "zyiw
+  " Yank the current word into the z register.
+  normal! "zyiw
 
-    " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
-    let mid = 86750 + a:n
+  " Calculate an arbitrary match ID.  Hopefully nothing else is using it.
+  let mid = 86750 + a:n
 
-    " Clear existing matches, but don't worry if they don't exist.
-    silent! call matchdelete(mid)
+  " Clear existing matches, but don't worry if they don't exist.
+  silent! call matchdelete(mid)
 
-    " Construct a literal pattern that has to match at boundaries.
-    let pat = '\V\<' . escape(@z, '\') . '\>'
+  " Construct a literal pattern that has to match at boundaries.
+  let pat = '\V\<' . escape(@z, '\') . '\>'
 
-    " Actually match the words.
-    call matchadd("InterestingWord" . a:n, pat, 1, mid)
+  " Actually match the words.
+  call matchadd("InterestingWord" . a:n, pat, 1, mid)
 
-    " Move back to our original location.
-    normal! `z
+  " Move back to our original location.
+  normal! `z
 endfunction
 
 " Mappings
