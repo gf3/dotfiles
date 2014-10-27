@@ -85,7 +85,8 @@ set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are rememb
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/smarty/*,*/vendor/*,*/node_modules/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
+set wildignore+=*/bower_components/*,*/node_modules/*
+set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
