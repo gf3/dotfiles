@@ -452,6 +452,10 @@ let ruby_operators = 1
 let ruby_space_errors = 1
 let ruby_fold = 1
 
+" Session.vim
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+
 " Syntastic.vim
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
@@ -493,5 +497,6 @@ Plug 'wavded/vim-stylus',      { 'for': 'stylus' }
 Plug 'wlangstroth/vim-racket'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'xolox/vim-session'
 
 call plug#end()
