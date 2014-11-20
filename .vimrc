@@ -387,6 +387,7 @@ let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be inde
 " CtrlP.vim
 let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
 let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use python fuzzy matcher for better performance
 let g:ctrlp_match_window_bottom = 0 " Show at top of window
 let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
 let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
@@ -450,6 +451,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'guns/vim-clojure-static'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
 Plug 'junegunn/vim-easy-align'
