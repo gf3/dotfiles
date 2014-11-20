@@ -84,6 +84,7 @@ set undofile " Persistent Undo.
 set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered,
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
+set wildignore+=.DS_Store
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.gif,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/bower_components/*,*/node_modules/*
 set wildignore+=*/smarty/*,*/vendor/*,*/.git/*,*/.hg/*,*/.svn/*,*/.sass-cache/*,*/log/*,*/tmp/*,*/build/*,*/ckeditor/*,*/doc/*,*/source_maps/*,*/dist/*
@@ -369,9 +370,6 @@ autocmd BufRead,BufNewFile *.[ch] if filereadable(fname)
 autocmd BufRead,BufNewFile *.[ch]   exe 'so ' . fname
 autocmd BufRead,BufNewFile *.[ch] endif
 
-" Ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column' " Use the silver searcher instead of ack
-
 " Airline.vim
 let g:airline_powerline_fonts = 1
 let g:airline_enable_syntastic = 1
@@ -387,10 +385,32 @@ let g:vimclojure#DynamicHighlighting = 1 " Dynamic highlighting
 let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be indented as if they were included in the 'lispwords' option
 
 " CtrlP.vim
+let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
+let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
 let g:ctrlp_match_window_bottom = 0 " Show at top of window
+let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
 let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
 let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
 let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
+
+if executable("ag")
+  " Note we extract the column as well as the file and line number
+  set grepprg=ag\ --nogroup\ --nocolor\ --column
+  set grepformat=%f:%l:%c%m
+
+  let g:ackprg = 'ag --nogroup --nocolor --column' " Use the silver searcher instead of ack
+
+  " Have the silver searcher ignore all the same things as wilgignore
+  let b:ag_command = 'ag %s -i --nocolor --nogroup'
+
+  for i in split(&wildignore, ",")
+    let i = substitute(i, '\*/\(.*\)/\*', '\1', 'g')
+    let b:ag_command = b:ag_command . ' --ignore "' . substitute(i, '\*/\(.*\)/\*', '\1', 'g') . '"'
+  endfor
+
+  let b:ag_command = b:ag_command . ' --hidden -g ""'
+  let g:ctrlp_user_command = b:ag_command
+endif
 
 " EasyAlign.vim
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
