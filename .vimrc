@@ -209,6 +209,7 @@ augroup general_config
 
   " Search and replace word under cursor (,*) {{{
   nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
+  vnoremap <leader>* "hy:%s/\V<C-r>h//<left>
   " }}}
 
   " Strip trailing whitespace (,ss) {{{
