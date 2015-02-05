@@ -37,12 +37,13 @@ function df       ; command df -h $argv ; end
 function digga    ; command dig +nocmd $argv[1] any +multiline +noall +answer; end
 function f        ; foreman run bundle exec $argv ; end
 function g        ; git $argv ; end
+function gh       ; git remote -v | grep origin | head -n 1 | grep -o 'github.com:\w\+\/\w\+' | sed 's/:/\//' | sed 's/^/http:\/\//' | xargs open ; end
 function grep     ; command grep --color=auto $argv ; end
 function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end
 function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
-function localip  ; ipconfig getifaddr en1 ; end
+function localip  ; ipconfig getifaddr en0 ; end
+function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
 function mp       ; mvim $argv ; end
-function mutt     ; command bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv; end
 function rkt      ; racket -il xrepl $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
@@ -64,8 +65,8 @@ end
 make_completion b 'bundle exec'
 make_completion f 'foreman run'
 make_completion g 'git'
-make_completion mp 'vim -p'
-make_completion vp 'vim -p'
+make_completion mp 'vim'
+make_completion vp 'vim'
 
 # rbenv
 if test -d $RBENV_ROOT
@@ -73,6 +74,3 @@ if test -d $RBENV_ROOT
   set PATH $RBENV_ROOT/shims $PATH
   rbenv rehash >/dev/null ^&1
 end
-
-# nix
-. nix.fish
