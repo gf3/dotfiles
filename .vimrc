@@ -597,14 +597,6 @@ augroup rainbow_parenthesis_config
 augroup END
 " }}}
 
-" Session.vim {{{
-augroup session_config
-  autocmd!
-  let g:session_autosave = 'yes'
-  let g:session_autoload = 'yes'
-augroup END
-" }}}
-
 " Syntastic.vim {{{
 augroup syntastic_config
   autocmd!
@@ -654,7 +646,6 @@ Plug 'wavded/vim-stylus',      { 'for': 'stylus' }
 Plug 'wlangstroth/vim-racket'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
-Plug 'xolox/vim-session'
 
 call plug#end()
 " }}}
