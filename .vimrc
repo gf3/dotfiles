@@ -561,8 +561,6 @@ augroup ag_config
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 
-    let g:ackprg = 'ag --nogroup --nocolor --column' " Use the silver searcher instead of ack
-
     " Have the silver searcher ignore all the same things as wilgignore
     let b:ag_command = 'ag %s -i --nocolor --nogroup'
 
@@ -633,12 +631,12 @@ Plug 'junegunn/goyo.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'mileszs/ack.vim'
 Plug 'msanders/snipmate.vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'oplatek/Conque-Shell'
 Plug 'pangloss/vim-javascript'
+Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
