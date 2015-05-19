@@ -35,71 +35,46 @@ let colors_name = "molotov"
 " }}}
 " Palette {{{
 
-" http://designmodo.github.com/Flat-UI/
-
-" Turquoise     → #1ABC9C
-" Green Sea     → #16A085
-
-" Emerland      → #2ECC71
-" Nephritis     → #27AE60
-
-" Peter River   → #3498DB
-" Belize Hole   → #2980B9
-
-" Amethyst      → #9B59B6
-" Wisteria      → #8E44AD
-
-" Wet Asphalt   → #34495E
-" Midnight Blue → #2C3E50
-
-" Sun Flower    → #F1C40F
-" Orange        → #F39C12
-
-" Carrot        → #E67E22
-" Pumpkin       → #D35400
-
-" Alizarin      → #E74C3C
-" Pomegranate   → #C0392B
-
-" Clouds        → #ECF0F1
-" Silver        → #BDC3C7
-
-" Concrete      → #95A5A6
-" Asbestos      → #7F8C8D
+" Inspired by: http://designmodo.github.com/Flat-UI/
 
 let s:mlc = {}
 
-let s:mlc.clouds         = ['ECF0F1',  15]
+let s:mlc.clouds         = ['ECF0F1',  15] " #ECF0F1
 
-let s:mlc.snow           = ['FFFFFF',  15]
-let s:mlc.coal           = ['000000',   0]
+let s:mlc.snow           = ['FFFFFF',  15] " #FFFFFF
+let s:mlc.coal           = ['000000',   0] " #000000
 
-let s:mlc.brightgravel   = ['D9CEC3', 252]
-let s:mlc.lightgravel    = ['998F84', 245]
-let s:mlc.gravel         = ['857F78', 243]
-let s:mlc.mediumgravel   = ['666462', 241]
-let s:mlc.deepgravel     = ['45413B', 238]
-let s:mlc.deepergravel   = ['35322D', 236]
-let s:mlc.darkgravel     = ['242321', 235]
-let s:mlc.blackgravel    = ['1C1B1A', 233]
-let s:mlc.blackestgravel = ['141413', 232]
+let s:mlc.brightgravel   = ['D9CEC3', 252] " #D9CEC3
+let s:mlc.lightgravel    = ['998F84', 245] " #998F84
+let s:mlc.gravel         = ['857F78', 243] " #857F78
+let s:mlc.mediumgravel   = ['666462', 241] " #666462
+let s:mlc.deepgravel     = ['45413B', 238] " #45413B
+let s:mlc.deepergravel   = ['35322D', 236] " #35322D
+let s:mlc.darkgravel     = ['242321', 234] " #242321
+let s:mlc.blackgravel    = ['1C1B1A', 233] " #1C1B1A
+let s:mlc.blackestgravel = ['141413', 232] " #141413
 
-let s:mlc.sunflower      = ['F1C40F', 220]
-let s:mlc.dirtyblonde    = ['F4CF86', 229]
-let s:mlc.alizarin       = ['E74C3C', 160]
-let s:mlc.emerald        = ['2ECC71',  47]
-let s:mlc.peter_river    = ['3498DB',  33]
-let s:mlc.orange         = ['F39C12', 208]
-let s:mlc.waspyellow     = ['FCB82B', 214]
-let s:mlc.turqoise       = ['1ABC9C',  36]
-let s:mlc.pumpkin        = ['D35400', 202]
-let s:mlc.pomegranate    = ['C0392B', 196]
-let s:mlc.greensea       = ['16A085',  29]
+let s:mlc.sunflower      = ['F1C40F', 220] " #F1C40F
+let s:mlc.dirtyblonde    = ['F4CF86', 229] " #F4CF86
+let s:mlc.alizarin       = ['E74C3C', 160] " #E74C3C
+let s:mlc.emerald        = ['2ECC71',  47] " #2ECC71
+let s:mlc.peter_river    = ['3498DB',  33] " #3498DB
+let s:mlc.orange         = ['F39C12', 208] " #F39C12
+let s:mlc.waspyellow     = ['FCB82B', 214] " #FCB82B
+let s:mlc.turqoise       = ['1ABC9C',  36] " #1ABC9C
+let s:mlc.pumpkin        = ['D35400', 202] " #D35400
+let s:mlc.pomegranate    = ['C0392B', 196] " #C0392B
+let s:mlc.greensea       = ['16A085',  29] " #16A085
 
-" Local colors (NOTE: Enable if you're using Molotov.itermcolors)
-" let s:mlc.alizarin       = ['E74C3C',   5]
-" let s:mlc.sunflower      = ['F1C40F',   3]
-" let s:mlc.dirtyblonde    = ['F4CF86',  11]
+" Enable if you're using Molotov.itermcolors
+if exists("g:molotov") && g:molotov
+  let s:mlc.gravel       = ['857F78',   8]
+  let s:mlc.sunflower    = ['F1C40F',   3]
+  let s:mlc.dirtyblonde  = ['F4CF86',  11]
+  let s:mlc.alizarin     = ['E74C3C',   5]
+  let s:mlc.pumpkin      = ['D35400',   9]
+  let s:mlc.pomegranate  = ['C0392B',  13]
+endif
 
 " }}}
 " Highlighting Function {{{
@@ -560,6 +535,11 @@ call s:HL('pythonPrecondit',   'waspyellow',   '', 'none')
 call s:HL('pythonDecorator',   'alizarin',  '', 'none')
 call s:HL('pythonRun',         'gravel', '', 'bold')
 call s:HL('pythonCoding',      'gravel', '', 'bold')
+
+" }}}
+" Ruby {{{
+
+call s:HL('rubySymbol', 'pumpkin', '', 'bold')
 
 " }}}
 " SLIMV {{{

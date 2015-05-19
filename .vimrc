@@ -9,6 +9,7 @@ set nocompatible
 " }}}
 
 " Syntax highlighting {{{
+let g:molotov = 1
 set t_Co=256
 set background=dark
 syntax on
