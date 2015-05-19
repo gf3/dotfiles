@@ -3,19 +3,17 @@
   email = gianni@runlevel6.org
 
 [alias]
-  br  = branch
-  ci  = commit
-  co  = checkout
-  df  = diff
-  g   = grep -I
-  lg  = log -p
-  loq = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-  pb  = publish-branch
-  rb  = rbranch
-  rc  = rank-contributors
-  rv  = review
-  sm  = show-merges
-  st  = status
+  br   = branch
+  ; Example: g ch master...staging
+  ch   = log --cherry --pretty=format:\"%C(auto)%h (%ar) %an: %s\" --date-order --reverse
+  ci   = commit
+  co   = checkout
+  df   = diff
+  g    = grep -I
+  lg   = log -p
+  loq  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+  st   = status
+  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
 
 [branch]
   autosetuprebase = always
@@ -40,7 +38,7 @@
   untracked = cyan
 
 [diff]
-  tool = Kaleidoscope
+  tool = diffconflicts
 
 [diff "exif"]
   textconv = exiftool
@@ -49,7 +47,8 @@
   prompt = false
 
 [merge]
-  log = true
+  log  = true
+  tool = diffconflicts
 
 [push]
   default = simple
@@ -76,3 +75,14 @@
 [url "git@heroku.com:"]
   insteadOf = "heroku:"
 
+[filter "media"]
+  clean  = git-media-clean %f
+  smudge = git-media-smudge %f
+
+[difftool "diffconflicts"]
+  cmd = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+
+[mergetool "diffconflicts"]
+  cmd           = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
+  trustExitCode = true
+  keepBackup    = false
