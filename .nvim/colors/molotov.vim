@@ -567,6 +567,14 @@ call s:HL('VimNotation',     'turqoise',       '', 'none')
 call s:HL('VimBracket',      'turqoise',       '', 'none')
 
 " }}}
+" YARDoc {{{
+
+call s:HL('yardGenericTag',     'snow',       '', 'none')
+call s:HL('yardParamName',      'pumpkin',    '', 'none')
+call s:HL('yardType',           'turqoise',   '', 'none')
+call s:HL('yardDuckType',       'turqoise',   '', 'none')
+
+" }}}
 
 " }}}
 

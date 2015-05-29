@@ -42,12 +42,12 @@ function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|
 function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
 function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
-function mp       ; mvim $argv ; end
+function mp       ; nvim $argv ; end
 function rkt      ; racket -il xrepl $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
-function view     ; vim -R $argv ; end
-function vp       ; vim $argv ; end
+function view     ; nvim -R $argv ; end
+function vp       ; nvim $argv ; end
 
 # Completions
 function make_completion --argument-names alias command

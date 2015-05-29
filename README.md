@@ -6,18 +6,18 @@ looking for the *bash* or *zsh* versions you'll want to check out [version
 
 ## Things You Should Install
 
-* Git (1.8+ recommended)
+* Git (2.0+ recommended)
 * [Fish Shell][fish]
 * [Pygments][pygments]
 * [rbenv][rbenv]
 * [Silver Searcher][ag]
 * [Tree][tree]
-* Vim (7.3+ recommended)
+* [NeoVim][neovim]
 
 (all of these things are available on [Homebrew][brew], btw)
 
 
-## Vim
+## NeoVim
 
 Sensible defaults for all the things! Check out [my vimrc][vimrc] for more
 info, it's pretty well documented.
@@ -38,9 +38,10 @@ other than `Meslo` don't forget to update your [.gvimrc](.gvimrc).
 [ag]:       http://geoff.greer.fm/ag/
 [brew]:     http://brew.sh
 [fish]:     http://fishshell.com
+[neovim]:   http://neovim.io
 [plug]:     https://github.com/junegunn/vim-plug
 [pygments]: http://pygments.org
 [rbenv]:    https://github.com/sstephenson/rbenv
 [tree]:     http://mama.indstate.edu/users/ice/tree/
 [v1]:       https://github.com/gf3/dotfiles/tree/v1.0.0
-[vimrc]:    .vimrc
+[vimrc]:    .nvimrc
