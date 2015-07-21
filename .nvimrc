@@ -21,9 +21,9 @@ let mapleader=","
 " }}}
 
 " Local directories {{{
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-set undodir=~/.vim/undo
+set backupdir=~/.nvim/backups
+set directory=~/.nvim/swaps
+set undodir=~/.nvim/undo
 " }}}
 
 " Set some junk {{{
@@ -222,6 +222,12 @@ augroup general_config
   map <PageDown> <C-D>
   imap <PageUp> <C-O><C-U>
   imap <PageDown> <C-O><C-D>
+  " }}}
+
+  " Show syntax highlighting group upder cursor (F10) {{{
+  map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+        \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+        \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
   " }}}
 
   " Relative numbers {{{
@@ -454,7 +460,7 @@ augroup END
 " JavaScript {{{
 augroup filetype_javascript
   autocmd!
-  let g:javascript_conceal = 1
+  let g:jsx_ext_required = 0
 augroup END
 " }}}
 
@@ -581,6 +587,7 @@ augroup syntastic_config
   autocmd!
   let g:syntastic_error_symbol = '✗'
   let g:syntastic_warning_symbol = '⚠'
+  let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 augroup END
 " }}}
@@ -588,9 +595,8 @@ augroup END
 " UltiSnip.vim {{{
 augroup ultisnip_config
   autocmd!
-  let g:UltiSnipsExpandTrigger="<C-Space>"
-  let g:UltiSnipsJumpForwardTrigger="<C-n>"
-  let g:UltiSnipsJumpBackwardTrigger="<C-S-n>"
+  let g:ycm_key_list_select_completion=[]
+  let g:ycm_key_list_previous_completion=[]
 augroup END
 " }}}
 
@@ -615,10 +621,11 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'honza/vim-snippets'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'noprompt/vim-yardoc'
-Plug '~/Projects/vim/vim-yardoc'
+Plug 'noprompt/vim-yardoc'
 Plug 'pangloss/vim-javascript'
+Plug 'rhysd/vim-crystal'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
