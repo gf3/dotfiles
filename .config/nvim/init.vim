@@ -1,4 +1,4 @@
-" vim:fdm=marker
+" vim:fdm=marker foldlevel=0
 
 " Settings -------------------------------------------------------------
 
@@ -21,9 +21,9 @@ let mapleader=","
 " }}}
 
 " Local directories {{{
-set backupdir=~/.nvim/backups
-set directory=~/.nvim/swaps
-set undodir=~/.nvim/undo
+set backupdir=~/.config/nvim/backups
+set directory=~/.config/nvim/swaps
+set undodir=~/.config/nvim/undo
 " }}}
 
 " Set some junk {{{
@@ -37,7 +37,7 @@ set esckeys " Allow cursor keys in insert mode
 set expandtab " Expand tabs to spaces
 set foldcolumn=0 " Column to show folds
 set foldenable " Enable folding
-set foldlevel=0 " Close all folds by default
+set foldlevel=5 " Open all folds by default
 set foldmethod=syntax " Syntax are used to specify folds
 set foldminlines=0 " Allow folding single lines
 set foldnestmax=5 " Set max fold nesting level
@@ -88,7 +88,7 @@ set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.br
 set switchbuf=""
 set title " Show the filename in the window titlebar
 set undofile " Persistent Undo
-set viminfo=%,'9999,s512,n~/.vim/viminfo " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
+set viminfo=%,'9999,s512 " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion)
 set wildignore+=.DS_Store
@@ -139,8 +139,8 @@ augroup general_config
   tnoremap <C-l> <C-\><C-n><C-w>l
   nnoremap <C-j> <C-W>j
   nnoremap <C-k> <C-W>k
-  nnoremap <C-H> <C-W>h
-  nnoremap <C-L> <C-W>l
+  nnoremap <C-h> <C-W>h
+  nnoremap <C-l> <C-W>l
   " }}}
 
   " Sudo write (,W) {{{
@@ -423,9 +423,7 @@ augroup END
 " Clojure {{{
 augroup filetype_clojure
   autocmd!
-  let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
-  let g:vimclojure#DynamicHighlighting = 1 " Dynamic highlighting
-  let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be indented as if they were included in the 'lispwords' option
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
 augroup END
 " }}}
 
@@ -578,7 +576,9 @@ augroup END
 " RainbowParenthesis.vim {{{
 augroup rainbow_parenthesis_config
   autocmd!
-  nnoremap <leader>rp :RainbowParenthesesToggle<CR>
+  nnoremap <leader>rp :RainbowParentheses!!<CR>
+  let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+  let g:rainbow#blacklist = ['#F4CF86', '#FFFFFF']
 augroup END
 " }}}
 
@@ -589,6 +589,7 @@ augroup syntastic_config
   let g:syntastic_warning_symbol = '⚠'
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+  let g:syntastic_mode_map = { 'mode': 'passive' }
 augroup END
 " }}}
 
@@ -604,7 +605,7 @@ augroup END
 " Plugins -------------------------------------------------------------
 
 " Load plugins {{{
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
@@ -612,19 +613,20 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'elzr/vim-json'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
+Plug 'honza/vim-snippets'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
 Plug 'JulesWang/css.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-emoji'
-Plug 'junegunn/goyo.vim'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'honza/vim-snippets'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'noprompt/vim-yardoc'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 Plug 'rhysd/vim-crystal'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -632,6 +634,7 @@ Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
