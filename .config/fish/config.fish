@@ -1,6 +1,6 @@
 set fish_greeting
 
-set -x EDITOR vim
+set -x EDITOR nvim
 set -x GREP_COLOR "1;37;45"
 set -x JRUBYOPT "-Xcext.enabled=true"
 set -x LC_ALL en_US.UTF-8
@@ -44,6 +44,7 @@ function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
 function mp       ; nvim $argv ; end
 function rkt      ; racket -il xrepl $argv ; end
+function t        ; command tree -C $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 function view     ; nvim -R $argv ; end
@@ -64,8 +65,8 @@ end
 make_completion b 'bundle exec'
 make_completion f 'foreman run'
 make_completion g 'git'
-make_completion mp 'vim'
-make_completion vp 'vim'
+make_completion mp 'nvim'
+make_completion vp 'nvim'
 
 # rbenv
 if test -d $RBENV_ROOT
@@ -73,3 +74,9 @@ if test -d $RBENV_ROOT
   set PATH $RBENV_ROOT/shims $PATH
   rbenv rehash >/dev/null ^&1
 end
+
+# nvm
+function mynvm
+  bass source ~/.nvm/nvm.sh ';' nvm $argv
+end
+mynvm > /dev/null
