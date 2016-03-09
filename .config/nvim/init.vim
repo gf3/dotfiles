@@ -509,6 +509,10 @@ augroup END
 " Airline.vim {{{
 augroup airline_config
   autocmd!
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_symbols.linenr = '␤'
   let g:airline_powerline_fonts = 1
   let g:airline#extensions#syntastic#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
@@ -642,7 +646,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-leiningen'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer --gocode-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
 Plug 'vim-scripts/jade.vim',   { 'for': 'jade' }
