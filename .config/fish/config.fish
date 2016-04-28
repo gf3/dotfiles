@@ -68,15 +68,19 @@ make_completion g 'git'
 make_completion mp 'nvim'
 make_completion vp 'nvim'
 
+# fisher
+set fisher_home ~/.local/share/fisherman
+set fisher_config ~/.config/fisherman
+source $fisher_home/config.fish
+
 # rbenv
-if test -d $RBENV_ROOT
-  set PATH $RBENV_ROOT/bin $PATH
-  set PATH $RBENV_ROOT/shims $PATH
-  rbenv rehash >/dev/null ^&1
-end
+status --is-interactive; and . (rbenv init -|psub)
 
 # nvm
-function mynvm
-  bass source ~/.nvm/nvm.sh ';' nvm $argv
+function nvm
+  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
-mynvm > /dev/null
+nvm > /dev/null
+
+# hub
+eval (hub alias -s)
