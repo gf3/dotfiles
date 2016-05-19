@@ -6,7 +6,6 @@
 
 " NeoVim {{{
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " }}}
 
 " Syntax highlighting {{{
@@ -87,6 +86,7 @@ set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 set switchbuf=""
 set title " Show the filename in the window titlebar
+set termguicolors " Enable true color support
 set undofile " Persistent Undo
 set viminfo=%,'9999,s512 " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
@@ -293,7 +293,7 @@ augroup jump_to_tags
   " Pulse Line (thanks Steve Losh)
   function! s:Pulse() " {{{
     redir => old_hi
-    silent execute 'hi CursorLine'
+      silent execute 'hi CursorLine'
     redir END
     let old_hi = split(old_hi, '\n')[0]
     let old_hi = substitute(old_hi, 'xxx', '', '')
@@ -317,7 +317,6 @@ augroup jump_to_tags
 
     execute 'hi ' . old_hi
   endfunction " }}}
-
   command! -nargs=0 Pulse call s:Pulse()
 augroup END
 " }}}
@@ -577,6 +576,14 @@ augroup notes_config
 augroup END
 " }}}
 
+" PgSQL.vim {{{
+augroup pgsql_config
+  autocmd!
+
+  let g:sql_type_default = 'pgsql'
+augroup END
+" }}}
+
 " RainbowParenthesis.vim {{{
 augroup rainbow_parenthesis_config
   autocmd!
@@ -600,11 +607,17 @@ augroup END
 " UltiSnip.vim {{{
 augroup ultisnip_config
   autocmd!
+augroup END
+" }}}
+
+" YouCompleteMe.vim {{{
+augroup ycm_config
+  autocmd!
+  let g:ycm_collect_identifiers_from_tags_files = 1
   let g:ycm_key_list_select_completion=[]
   let g:ycm_key_list_previous_completion=[]
 augroup END
 " }}}
-
 
 " Plugins -------------------------------------------------------------
 
@@ -614,7 +627,9 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'elixir-lang/vim-elixir'
 Plug 'elzr/vim-json'
+Plug 'exu/pgsql.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
