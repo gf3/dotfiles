@@ -440,17 +440,21 @@ call s:HL('javaDocParam',     'sunflower', '', '')
 " JavaScript {{{
 
 " vim-javascript
-call s:HL('jsThis',          'orange',     '', 'none')
-call s:HL('jsBraces',        'turqoise',   '', 'bold')
-call s:HL('jsBrackets',      'turqoise',   '', 'bold')
-call s:HL('jsParens',        'turqoise',   '', 'bold')
-call s:HL('jsFuncBraces',    'turqoise',   '', 'bold')
-call s:HL('jsFuncParens',    'turqoise',   '', 'bold')
-call s:HL('jsObjectKey',     'orange',     '', 'none')
-call s:HL('jsNoise',         'alizarin',   '', 'none')
-call s:HL('jsFuncArgCommas', 'turqoise',   '', 'none')
-call s:HL('jsArrowFunction', 'alizarin',   '', 'none')
-call s:HL('jsTemplateVar',   'waspyellow', '', 'none')
+call s:HL('jsThis',                'orange',     '', 'none')
+call s:HL('jsBraces',              'turqoise',   '', 'bold')
+call s:HL('jsBrackets',            'turqoise',   '', 'bold')
+call s:HL('jsClassBraces',         'turqoise',   '', 'bold')
+call s:HL('jsDestructuringBraces', 'turqoise',   '', 'bold')
+call s:HL('jsParens',              'turqoise',   '', 'bold')
+call s:HL('jsFuncBraces',          'turqoise',   '', 'bold')
+call s:HL('jsFuncParens',          'turqoise',   '', 'bold')
+call s:HL('jsObjectBraces',        'turqoise',   '', 'bold')
+call s:HL('jsObjectKey',           'orange',     '', 'none')
+call s:HL('jsObjectSeparator',     'alizarin',   '', 'none')
+call s:HL('jsNoise',               'alizarin',   '', 'none')
+call s:HL('jsFuncArgCommas',       'turqoise',   '', 'none')
+call s:HL('jsArrowFunction',       'alizarin',   '', 'none')
+call s:HL('jsTemplateVar',         'waspyellow', '', 'none')
 
 " yajs.vim
 call s:HL('javascriptIdentifier',       'orange',     '', 'none')
@@ -468,6 +472,13 @@ call s:HL('javascriptFuncComma',        'turqoise',   '', 'none')
 call s:HL('javascriptImport',           'waspyellow', '', 'bold')
 call s:HL('javascriptExport',           'waspyellow', '', 'bold')
 call s:HL('javascriptTemplateSB',       'waspyellow', '', 'bold')
+
+" flow.vim
+call s:HL('jsFlowNoise',      'alizarin', '', 'none')
+call s:HL('jsFlowType',       'pumpkin',  '', 'bold')
+call s:HL('jsFlowTypeKey',    'orange',   '', 'none')
+call s:HL('jsFlowTypeObject', 'turqoise', '', 'bold')
+call s:HL('jsFlowTypeValue',  'greensea', '', 'none')
 
 " }}}
 " LaTeX {{{
