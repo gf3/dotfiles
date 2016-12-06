@@ -458,6 +458,8 @@ augroup END
 augroup filetype_javascript
   autocmd!
   let g:jsx_ext_required = 0
+  let g:javascript_plugin_flow = 1
+  let g:javascript_plugin_jsdoc = 1
 augroup END
 " }}}
 
@@ -645,7 +647,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'noprompt/vim-yardoc'
-Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+Plug 'pangloss/vim-javascript'
 Plug 'rhysd/vim-crystal'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
