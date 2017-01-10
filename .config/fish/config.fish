@@ -15,23 +15,18 @@ test -d /usr/local/heroku/bin    ; and set PATH /usr/local/heroku/bin $PATH
 test -d /usr/local/sbin          ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin           ; and set PATH /usr/local/bin $PATH
 test -d ~/.cabal/bin             ; and set PATH ~/.cabal/bin $PATH
-
-test -d ~/Projects/uniiverse/boxoffice/bin     ; and set PATH ~/Projects/uniiverse/boxoffice/bin $PATH
-test -d ~/Projects/uniiverse/tracker/bin       ; and set PATH ~/Projects/uniiverse/tracker/bin $PATH
-test -d ~/Projects/uniiverse/elasticsearch/bin ; and set PATH ~/Projects/uniiverse/elasticsearch/bin $PATH
+test -d ~/Library/Python/2.7/bin ; and set PATH ~/Library/Python/2.7/bin $PATH
 
 # Navigation
 function ..    ; cd .. ; end
 function ...   ; cd ../.. ; end
 function ....  ; cd ../../.. ; end
 function ..... ; cd ../../../.. ; end
-function l     ; tree --dirsfirst -aFCNL 1 $argv ; end
 function ll    ; tree --dirsfirst -ChFupDaLg 1 $argv ; end
 
 # Utilities
 function a        ; command ag --ignore=.git --ignore=log --ignore=tags --ignore=tmp --ignore=vendor --ignore=spec/vcr $argv ; end
 function b        ; bundle exec $argv ; end
-function c        ; pygmentize -O style=monokai -f console256 -g $argv ; end
 function d        ; du -h -d=1 $argv ; end
 function df       ; command df -h $argv ; end
 function digga    ; command dig +nocmd $argv[1] any +multiline +noall +answer; end
@@ -49,6 +44,37 @@ function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 function view     ; nvim -R $argv ; end
 function vp       ; nvim $argv ; end
+
+# View files/dirs
+function c
+  set arg_count (count $argv)
+
+  if math "$arg_count==0" > /dev/null
+    tree --dirsfirst -aFCNL 1 ./
+    return
+  end
+
+  for i in $argv
+    set_color yellow
+    if math "$arg_count>1" > /dev/null; echo "$i:" 1>&2; end
+    set_color normal
+
+    if test -e $i; and test -r $i
+      if test -d $i
+        tree --dirsfirst -aFCNL 1 $i
+      else
+        pygmentize -O style=monokai -f console256 -g $i
+      end
+    else
+      set_color red
+      echo "Cannot open: $i" 1>&2
+    end
+
+    set_color normal
+  end
+end
+
+function l; c $argv; end
 
 # Completions
 function make_completion --argument-names alias command
@@ -84,3 +110,10 @@ nvm > /dev/null
 
 # hub
 eval (hub alias -s)
+
+if test -f /opt/dev/dev.fish
+  source /opt/dev/dev.fish
+end
+
+# opam
+eval (opam config env)
