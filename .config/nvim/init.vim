@@ -467,6 +467,15 @@ augroup filetype_markdown
 augroup END
 " }}}
 
+" Reason {{{
+augroup filetype_reason
+  autocmd!
+
+  let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+  execute "set rtp+=" . g:opamshare . "/merlin/vim"
+augroup END
+" }}}
+
 " Ruby {{{
 augroup filetype_ruby
   autocmd!
