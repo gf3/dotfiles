@@ -10,8 +10,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Syntax highlighting {{{
 set t_Co=256
-set background=dark
-syntax on
 colorscheme molotov
 " }}}
 
@@ -26,8 +24,6 @@ set undodir=~/.config/nvim/undo
 " }}}
 
 " Set some junk {{{
-set autoindent " Copy indent from last line when starting new line
-" set clipboard+=unnamedplus " Use system clipboards when available
 set cursorline " Highlight current line
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
@@ -51,18 +47,13 @@ set formatoptions+=l " Don't break lines that are already long
 set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle
 set hidden " When a buffer is brought to foreground, remember undo history and marks
-set history=1000 " Increase history from 20 default to 1000
-set hlsearch " Highlight searches
 set ignorecase " Ignore case of searches
-set incsearch " Highlight dynamically as pattern is typed
-set laststatus=2 " Always show status line
 set lazyredraw " Don't redraw when we don't have to
 set lispwords+=defroutes " Compojure
 set lispwords+=defpartial,defpage " Noir core
 set lispwords+=defaction,deffilter,defview,defsection " Ciste core
 set lispwords+=describe,it " Speclj TDD/BDD
 set magic " Enable extended regexes
-set mouse=a " Enable mouse in all in all modes
 set noerrorbells " Disable error bells
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command
 set noshowmode " Don't show the current mode (airline.vim takes care of us)
@@ -79,7 +70,6 @@ set shortmess=atI " Don't show the intro message when starting vim
 set showtabline=2 " Always show tab bar
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters
-set smarttab " At start of line, <Tab> inserts shiftwidth spaces, <Bs> deletes shiftwidth spaces
 set softtabstop=2 " Tab key results in 2 spaces
 set splitbelow " New window goes below
 set splitright " New windows goes right
