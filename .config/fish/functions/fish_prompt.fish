@@ -6,7 +6,8 @@ function fish_prompt
   printf ' at '
 
   set_color yellow
-  printf '%s' (hostname|cut -d . -f 1)
+  __prompt_hostname
+  # printf '%s' (hostname|cut -d . -f 1)
   set_color normal
   printf ' in '
 
@@ -23,6 +24,14 @@ function fish_prompt
   end
   printf '↪ '
   set_color normal
+end
+
+function __prompt_hostname
+  if [ -f "$HOME/.hostname" ]
+    cat "$HOME/.hostname" | tr "\n" ' '
+  else
+    printf '%s' (hostname|cut -d . -f 1)
+  end
 end
 
 function fish_right_prompt
@@ -84,4 +93,3 @@ function __git_ps1
     printf $argv "$b$r" ^/dev/null
   end
 end
-
