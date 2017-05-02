@@ -240,10 +240,6 @@ augroup END
 augroup buffer_control
   autocmd!
 
-  " Prompt for buffer to select (,bs) {{{
-  nnoremap <leader>bs :CtrlPBuffer<CR>
-  " }}}
-
   " Buffer navigation (,,) (gb) (gB) (,ls) {{{
   map <Leader>, <C-^>
   map <Leader>ls :buffers<CR>
@@ -522,20 +518,6 @@ augroup airline_config
 augroup END
 " }}}
 
-" CtrlP.vim {{{
-augroup ctrlp_config
-  autocmd!
-  let g:ctrlp_clear_cache_on_exit = 0 " Do not clear filenames cache, to improve CtrlP startup
-  let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
-  let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } " Use python fuzzy matcher for better performance
-  let g:ctrlp_match_window_bottom = 0 " Show at top of window
-  let g:ctrlp_max_files = 0 " Set no file limit, we are building a big project
-  let g:ctrlp_switch_buffer = 'Et' " Jump to tab AND buffer if already open
-  let g:ctrlp_open_new_file = 'r' " Open newly created files in the current window
-  let g:ctrlp_open_multiple_files = 'ij' " Open multiple files in hidden buffers, and jump to the first one
-augroup END
-" }}}
-
 " Silver Searcher {{{
 augroup ag_config
   autocmd!
@@ -554,7 +536,6 @@ augroup ag_config
     endfor
 
     let b:ag_command = b:ag_command . ' --hidden -g ""'
-    let g:ctrlp_user_command = b:ag_command
   endif
 augroup END
 " }}}
@@ -640,6 +621,7 @@ augroup ycm_config
 augroup END
 " }}}
 
+
 " Plugins -------------------------------------------------------------
 
 " Load plugins {{{
@@ -647,12 +629,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'elixir-lang/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'exu/pgsql.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
 Plug 'honza/vim-snippets'
