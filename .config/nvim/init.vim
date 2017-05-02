@@ -258,6 +258,20 @@ augroup buffer_control
   " Close Quickfix window (,qq) {{{
   map <leader>qq :cclose<CR>
   " }}}
+
+  " Rename buffer (:Rename) {{{
+  function! s:RenameBuffer(name)
+    silent! execute 'saveas! ' . a:name
+    let l:old_buffer = bufnr("#")
+    let l:old_filename = expand("#:t")
+    let l:new_buffer = bufnr("%")
+    let l:new_filename = expand("%:t")
+    silent! execute '!rm ' . shellescape(expand("#"), 1)
+    silent! execute 'bd' l:old_buffer
+    echom 'Renamed `' . l:old_filename . '` to `' . l:new_filename . '`'
+  endfunction
+  command! -nargs=1 Rename call s:RenameBuffer(<f-args>)
+  " }}}
 augroup END
 " }}}
 
