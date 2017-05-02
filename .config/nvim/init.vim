@@ -550,6 +550,34 @@ augroup easy_align_config
 augroup END
 " }}}
 
+" fzf {{{
+augroup fzf_config
+  set rtp+=/usr/local/opt/fzf
+
+  let g:fzf_layout = { 'up': '~40%' }
+  let g:fzf_history_dir = '~/.config/nvim/fzf-history'
+  let g:fzf_buffers_jump = 1 " Jump to existing buffer if available
+
+  nnoremap <C-p> :Files<CR>
+  nnoremap <C-g> :GFiles?<CR>
+  nnoremap <C-b> :Buffers<CR>
+  nnoremap <C-t> :Tags<CR>
+  nnoremap <C-m> :Marks<CR>
+  nnoremap <leader>l :Lines<CR>
+
+  " Mapping selecting mappings
+  nmap <leader><tab> <plug>(fzf-maps-n)
+  xmap <leader><tab> <plug>(fzf-maps-x)
+  omap <leader><tab> <plug>(fzf-maps-o)
+
+  " Insert mode completion
+  imap <c-x><c-k> <plug>(fzf-complete-word)
+  imap <c-x><c-f> <plug>(fzf-complete-path)
+  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+  imap <c-x><c-l> <plug>(fzf-complete-line)
+augroup END
+" }}}
+
 " incsearch.vim {{{
 augroup easy_align_config
   autocmd!
@@ -640,6 +668,8 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
 Plug 'JulesWang/css.vim'
+Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'

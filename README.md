@@ -8,11 +8,12 @@ looking for the *bash* or *zsh* versions you'll want to check out [version
 
 * Git (2.0+ recommended)
 * [Fish Shell][fish]
+* [fzf][fzf]
+* [NeoVim][neovim]
 * [Pygments][pygments]
 * [rbenv][rbenv]
 * [Silver Searcher][ag]
 * [Tree][tree]
-* [NeoVim][neovim]
 
 (all of these things are available on [Homebrew][brew], btw)
 
@@ -38,6 +39,7 @@ other than `Meslo` don't forget to update your [.gvimrc](.gvimrc).
 [ag]:       http://geoff.greer.fm/ag/
 [brew]:     http://brew.sh
 [fish]:     http://fishshell.com
+[fzf]:      https://github.com/junegunn/fzf
 [neovim]:   http://neovim.io
 [plug]:     https://github.com/junegunn/vim-plug
 [pygments]: http://pygments.org
