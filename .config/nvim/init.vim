@@ -495,6 +495,8 @@ augroup filetype_ruby
   let ruby_operators = 1
   let ruby_space_errors = 1
   let ruby_fold = 1
+  let g:ruby_indent_block_style = 'do'
+  let g:ruby_indent_assignment_style = 'variable'
 augroup END
 " }}}
 
@@ -687,6 +689,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'kchmck/vim-coffee-script'
+Plug 'lambdalisue/gina.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -698,9 +702,9 @@ Plug 'rhysd/vim-crystal'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
+Plug 'Shougo/vimproc.vim',     { 'do' : 'make' }
 Plug 'SirVer/ultisnips'
 Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
 Plug 'tpope/vim-rails'
