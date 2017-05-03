@@ -4,10 +4,6 @@
 
 " Preamble {{{
 
-" NeoVim {{{
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" }}}
-
 " Syntax highlighting {{{
 set t_Co=256
 colorscheme molotov
@@ -53,6 +49,7 @@ set lispwords+=defpartial,defpage " Noir core
 set lispwords+=defaction,deffilter,defview,defsection " Ciste core
 set lispwords+=describe,it " Speclj TDD/BDD
 set magic " Enable extended regexes
+set mouse=a " Enable the mouse
 set noerrorbells " Disable error bells
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command
 set noshowmode " Don't show the current mode (airline.vim takes care of us)
