@@ -497,6 +497,14 @@ augroup filetype_ruby
 augroup END
 " }}}
 
+" Typescript {{{
+augroup filetype_typescript
+  autocmd!
+
+  au BufNewFile,BufRead *.ts,*.tsx set ft=typescript syntax=typescript
+augroup END
+" }}}
+
 " XML {{{
 augroup filetype_xml
   autocmd!
@@ -522,12 +530,22 @@ augroup airline_config
   endif
   let g:airline_symbols.linenr = '␤'
   let g:airline_powerline_fonts = 1
-  let g:airline#extensions#syntastic#enabled = 1
+  let g:airline#extensions#ale#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#fnamecollapse = 0
   let g:airline#extensions#tabline#fnamemod = ':t'
+augroup END
+" }}}
+
+" Ale.vim {{{
+augroup ale_config
+  " let g:ale_sign_error = '>>'
+  " let g:ale_sign_warning = '--'
+  let g:ale_linters = {
+  \   'typescript': ['tslint', 'tsserver', 'typecheck'],
+  \}
 augroup END
 " }}}
 
@@ -636,17 +654,6 @@ augroup rainbow_parenthesis_config
 augroup END
 " }}}
 
-" Syntastic.vim {{{
-augroup syntastic_config
-  autocmd!
-  let g:syntastic_error_symbol = '✗'
-  let g:syntastic_warning_symbol = '⚠'
-  let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-  let g:syntastic_mode_map = { 'mode': 'passive' }
-augroup END
-" }}}
-
 " UltiSnip.vim {{{
 augroup ultisnip_config
   autocmd!
@@ -676,6 +683,7 @@ Plug 'elzr/vim-json'
 Plug 'exu/pgsql.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'honza/vim-snippets'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
@@ -688,17 +696,14 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kchmck/vim-coffee-script'
 Plug 'lambdalisue/gina.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'noprompt/vim-yardoc'
 Plug 'pangloss/vim-javascript'
-Plug 'Quramy/tsuquyomi'
 Plug 'reedes/vim-wordy'
 Plug 'rhysd/vim-crystal'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'Shougo/vimproc.vim',     { 'do' : 'make' }
 Plug 'SirVer/ultisnips'
 Plug 'thoughtbot/vim-rspec'
@@ -710,6 +715,7 @@ Plug 'tpope/vim-surround'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
+Plug 'w0rp/ale'
 Plug 'wlangstroth/vim-racket'
 
 call plug#end()
