@@ -54,6 +54,8 @@ let s:mlc.darkgravel     = ['242321', 234] " #242321
 let s:mlc.blackgravel    = ['1C1B1A', 233] " #1C1B1A
 let s:mlc.blackestgravel = ['141413', 232] " #141413
 
+let s:mlc.blueblack      = ['414F53', 234] " #414F53
+
 let s:mlc.sunflower      = ['F1C40F', 220] " #F1C40F
 let s:mlc.dirtyblonde    = ['F4CF86', 229] " #F4CF86
 let s:mlc.alizarin       = ['E74C3C', 160] " #E74C3C
@@ -132,7 +134,7 @@ call s:HL('Folded',       'mediumgravel', 'bg',          'none')
 
 call s:HL('VertSplit',    'lightgravel',  'bg',          'none')
 
-call s:HL('CursorLine',   '',             'darkgravel',  'none')
+call s:HL('CursorLine',   '',             'blueblack',   'none')
 call s:HL('CursorColumn', '',             'darkgravel')
 call s:HL('ColorColumn',  '',             'darkgravel')
 
@@ -423,42 +425,80 @@ call s:HL('javaDocTags',      'snow',      '', 'none')
 call s:HL('javaDocParam',     'sunflower', '', '')
 
 " }}}
+" Typescript {{{
+
+" yats.vim
+call s:HL('typescriptArrowFunc',         'alizarin',    '', 'none')
+call s:HL('typescriptBraces',            'turqoise',    '', 'bold')
+call s:HL('typescriptCall',              'snow',       '', 'none')
+call s:HL('typescriptDecorator',         'greensea',    '', 'none')
+call s:HL('typescriptDefaultParam',      'alizarin',    '', 'none')
+call s:HL('typescriptDotNotation',       'alizarin',    '', 'none')
+call s:HL('typescriptEndColons',         'alizarin',    '', 'none')
+call s:HL('typescriptEnumKeyword',       'alizarin',    '', 'none')
+call s:HL('typescriptExport',            'waspyellow',  '', 'none')
+call s:HL('typescriptFuncKeyword',       'turqoise',    '', 'none')
+call s:HL('typescriptGlobal',            'pumpkin',     '', 'bold')
+call s:HL('typescriptIdentifier',        'orange',      '', 'none')
+call s:HL('typescriptImport',            'waspyellow',  '', 'none')
+call s:HL('typescriptImportDef',         'snow',       '', 'none')
+call s:HL('typescriptLogicSymbols',      'alizarin',    '', 'none')
+call s:HL('typescriptObjectLabel',       'orange',      '', 'none')
+call s:HL('typescriptObjectLiteral',     'alizarin',    '', 'none')
+call s:HL('typescriptObjectType',        'alizarin',    '', 'none')
+call s:HL('typescriptOpSymbols',         'alizarin',    '', 'none')
+call s:HL('typescriptOperator',          'alizarin',    '', 'none')
+call s:HL('typescriptParens',            'turqoise',    '', 'bold')
+call s:HL('typescriptPredefinedType',    'pumpkin',     '', 'bold')
+call s:HL('typescriptProp',              'snow',       '', 'none')
+call s:HL('typescriptPropertyName',      'dirtyblonde', '', 'none')
+call s:HL('typescriptPropertySignature', 'orange',      '', 'none')
+call s:HL('typescriptTemplateSB',        'turqoise',    '', 'none')
+call s:HL('typescriptTypeAnnotation',    'alizarin',    '', 'none')
+call s:HL('typescriptVariable',          'alizarin',    '', 'none')
+
+" }}}
 " JavaScript {{{
 
 " vim-javascript
-call s:HL('jsThis',                'orange',     '', 'none')
+call s:HL('jsArrowFunction',       'alizarin',   '', 'none')
 call s:HL('jsBraces',              'turqoise',   '', 'bold')
 call s:HL('jsBrackets',            'turqoise',   '', 'bold')
 call s:HL('jsClassBraces',         'turqoise',   '', 'bold')
 call s:HL('jsDestructuringBraces', 'turqoise',   '', 'bold')
-call s:HL('jsIfElseBraces',        'turqoise',   '', 'bold')
-call s:HL('jsParens',              'turqoise',   '', 'bold')
+call s:HL('jsFuncArgCommas',       'turqoise',   '', 'none')
+call s:HL('jsFuncArgOperator',     'alizarin',   '', 'none')
 call s:HL('jsFuncBraces',          'turqoise',   '', 'bold')
 call s:HL('jsFuncParens',          'turqoise',   '', 'bold')
+call s:HL('jsIfElseBraces',        'turqoise',   '', 'bold')
+call s:HL('jsModuleBraces',        'turqoise',   '', 'bold')
+call s:HL('jsNoise',               'alizarin',   '', 'none')
 call s:HL('jsObjectBraces',        'turqoise',   '', 'bold')
 call s:HL('jsObjectKey',           'orange',     '', 'none')
 call s:HL('jsObjectSeparator',     'alizarin',   '', 'none')
-call s:HL('jsModuleBraces',        'turqoise',   '', 'bold')
-call s:HL('jsNoise',               'alizarin',   '', 'none')
-call s:HL('jsFuncArgCommas',       'turqoise',   '', 'none')
-call s:HL('jsArrowFunction',       'alizarin',   '', 'none')
+call s:HL('jsParens',              'turqoise',   '', 'bold')
+call s:HL('jsRepeatBraces',        'turqoise',   '', 'bold')
+call s:HL('jsSwitchBraces',        'turqoise',   '', 'bold')
+call s:HL('jsSwitchColon',         'alizarin',   '', 'none')
+call s:HL('jsTemplateBraces',      'turqoise',   '', 'none')
 call s:HL('jsTemplateVar',         'waspyellow', '', 'none')
+call s:HL('jsThis',                'orange',     '', 'none')
 
 " yajs.vim
-call s:HL('javascriptIdentifier',       'orange',     '', 'none')
-call s:HL('javascriptObjectLabel',      'orange',     '', 'none')
-call s:HL('javascriptObjectLabelColon', 'alizarin',   '', 'none')
-call s:HL('javascriptPropertyName',     'orange',     '', 'none')
 call s:HL('javascriptArrowFunc',        'alizarin',   '', 'none')
-call s:HL('javascriptDotNotation',      'alizarin',   '', 'none')
-call s:HL('javascriptOpSymbols',        'alizarin',   '', 'none')
 call s:HL('javascriptBraces',           'turqoise',   '', 'bold')
-call s:HL('javascriptParens',           'turqoise',   '', 'bold')
+call s:HL('javascriptDotNotation',      'alizarin',   '', 'none')
 call s:HL('javascriptEndColons',        'turqoise',   '', 'none')
+call s:HL('javascriptExport',           'waspyellow', '', 'bold')
 call s:HL('javascriptFuncCallArg',      'turqoise',   '', 'none')
 call s:HL('javascriptFuncComma',        'turqoise',   '', 'none')
+call s:HL('javascriptIdentifier',       'orange',     '', 'none')
 call s:HL('javascriptImport',           'waspyellow', '', 'bold')
-call s:HL('javascriptExport',           'waspyellow', '', 'bold')
+call s:HL('javascriptObjectLabel',      'orange',     '', 'none')
+call s:HL('javascriptObjectLabelColon', 'alizarin',   '', 'none')
+call s:HL('javascriptOpSymbols',        'alizarin',   '', 'none')
+call s:HL('javascriptParens',           'turqoise',   '', 'bold')
+call s:HL('javascriptPropertyName',     'orange',     '', 'none')
 call s:HL('javascriptTemplateSB',       'waspyellow', '', 'bold')
 
 " flow.vim
@@ -571,7 +611,13 @@ call s:HL('pythonCoding',      'gravel',     '', 'bold')
 " }}}
 " Ruby {{{
 
-call s:HL('rubySymbol', 'pumpkin', '', 'bold')
+call s:HL('rubyArrayDelimiter',      'turqoise', '', 'bold')
+call s:HL('rubyBlockParameterList',  'turqoise', '', 'bold')
+call s:HL('rubyCurlyBlockDelimiter', 'turqoise', '', 'bold')
+call s:HL('rubySymbol',              'pumpkin',  '', 'none')
+call s:HL('rubySymbolDelimiter',     'turqoise', '', 'bold')
+call s:HL('rubyDefine',              'turqoise', '', 'none')
+call s:HL('rubyClass',               'turqoise', '', 'none')
 
 " }}}
 " SLIMV {{{
