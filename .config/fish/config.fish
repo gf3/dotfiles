@@ -120,9 +120,13 @@ nvm > /dev/null
 # hub
 eval (hub alias -s)
 
+# dev
 if test -f /opt/dev/dev.fish
   source /opt/dev/dev.fish
 end
 
 # opam
 eval (opam config env)
+
+# iterm2
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
