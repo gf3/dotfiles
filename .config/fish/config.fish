@@ -58,16 +58,14 @@ end
 
 # View files/dirs
 function c
-  set arg_count (count $argv)
-
-  if math "$arg_count==0" > /dev/null
+  if test (count $argv) -eq 0
     tree --dirsfirst -aFCNL 1 ./
     return
   end
 
   for i in $argv
     set_color yellow
-    if math "$arg_count>1" > /dev/null; echo "$i:" 1>&2; end
+    if test (count $argv) -gt 1; echo "$i:" 1>&2; end
     set_color normal
 
     if test -e $i; and test -r $i
