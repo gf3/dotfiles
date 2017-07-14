@@ -1,6 +1,7 @@
 set fish_greeting
 
 set -x EDITOR nvim
+set -x FZF_LEGACY_KEYBINDINGS 0
 set -x GREP_COLOR "1;37;45"
 set -x JRUBYOPT "-Xcext.enabled=true"
 set -x LANG en_US.UTF-8
@@ -45,7 +46,15 @@ function t        ; command tree -C $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 function view     ; nvim -R $argv ; end
-function vp       ; nvim $argv ; end
+
+# Fuzzy find & vim
+function vp
+  if test (count $argv) -gt 0
+    command nvim $argv
+  else
+    fzf -m | xargs nvim
+  end
+end
 
 # View files/dirs
 function c
