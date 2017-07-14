@@ -3,19 +3,21 @@ set fish_greeting
 set -x EDITOR nvim
 set -x GREP_COLOR "1;37;45"
 set -x JRUBYOPT "-Xcext.enabled=true"
-set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
+set -x LC_ALL en_US.UTF-8
 set -x RBENV_ROOT /usr/local/var/rbenv
 set -x RBXOPT -X19
+set -x TDD 0
 
 # Paths
-test -d /usr/local/share/npm/bin ; and set PATH /usr/local/share/npm/bin $PATH
-test -d /usr/local/racket/bin    ; and set PATH /usr/local/racket/bin $PATH
-test -d /usr/local/heroku/bin    ; and set PATH /usr/local/heroku/bin $PATH
-test -d /usr/local/sbin          ; and set PATH /usr/local/sbin $PATH
-test -d /usr/local/bin           ; and set PATH /usr/local/bin $PATH
-test -d ~/.cabal/bin             ; and set PATH ~/.cabal/bin $PATH
-test -d ~/Library/Python/2.7/bin ; and set PATH ~/Library/Python/2.7/bin $PATH
+test -d /usr/local/share/npm/bin             ; and set PATH /usr/local/share/npm/bin $PATH
+test -d /usr/local/racket/bin                ; and set PATH /usr/local/racket/bin $PATH
+test -d /usr/local/heroku/bin                ; and set PATH /usr/local/heroku/bin $PATH
+test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
+test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
+test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
+test -d ~/Library/Android/sdk/platform-tools ; and set PATH ~/Library/Android/sdk/platform-tools $PATH
+test -d ~/Library/Python/2.7/bin             ; and set PATH ~/Library/Python/2.7/bin $PATH
 
 # Navigation
 function ..    ; cd .. ; end
