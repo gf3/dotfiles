@@ -36,7 +36,7 @@ end
 
 function fish_right_prompt
   set --local st $status
-  if math "$st > 0" > /dev/null
+  if test $st -gt 0
     set_color white
     printf "[%d] " $st
     set_color normal
