@@ -6,6 +6,7 @@
 
 " Syntax highlighting {{{
 set t_Co=256
+set background=dark
 colorscheme molotov
 " }}}
 
@@ -477,8 +478,8 @@ augroup END
 augroup filetype_reason
   autocmd!
 
-  let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-  execute "set rtp+=" . g:opamshare . "/merlin/vim"
+  " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+  " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 augroup END
 " }}}
 
@@ -571,6 +572,13 @@ augroup ag_config
 augroup END
 " }}}
 
+" deoplete.vim {{{
+augroup deoplete_config
+  autocmd!
+  let g:deoplete#enable_at_startup = 1
+augroup END
+" }}}
+
 " EasyAlign.vim {{{
 augroup easy_align_config
   autocmd!
@@ -578,6 +586,13 @@ augroup easy_align_config
   vmap <Enter> <Plug>(EasyAlign)
   " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
   nmap <Leader>a <Plug>(EasyAlign)
+augroup END
+" }}}
+
+" echodoc.vim {{{
+augroup echodoc_config
+  autocmd!
+  let g:echodoc#enable_at_startup = 1
 augroup END
 " }}}
 
@@ -622,11 +637,6 @@ augroup easy_align_config
   map #  <Plug>(incsearch-nohl-#)
   map g* <Plug>(incsearch-nohl-g*)
   map g# <Plug>(incsearch-nohl-g#)
-
-  " incsearch-easymotion.vim
-  map z/ <Plug>(incsearch-easymotion-/)
-  map z? <Plug>(incsearch-easymotion-?)
-  map zg/ <Plug>(incsearch-easymotion-stay)
 augroup END
 " }}}
 
@@ -657,6 +667,12 @@ augroup END
 " UltiSnip.vim {{{
 augroup ultisnip_config
   autocmd!
+  let g:UltiSnipsExpandTrigger='<tab>'
+  let g:UltiSnipsJumpForwardTrigger='<tab>'
+  let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+
+  inoremap <expr><tab> pumvisible() ? '\<C-n>' : '\<TAB>'
+  inoremap <expr><s-tab> pumvisible() ? '\<C-p>' : '\<TAB>'
 augroup END
 " }}}
 
@@ -677,7 +693,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
-Plug 'easymotion/vim-easymotion'
 Plug 'elixir-lang/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'exu/pgsql.vim'
@@ -686,12 +701,9 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'honza/vim-snippets'
 Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'joker1007/vim-ruby-heredoc-syntax'
 Plug 'JulesWang/css.vim'
 Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kchmck/vim-coffee-script'
@@ -704,15 +716,15 @@ Plug 'reedes/vim-wordy'
 Plug 'rhysd/vim-crystal'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'Shougo/deoplete.nvim',   { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/vimproc.vim',     { 'do' : 'make' }
 Plug 'SirVer/ultisnips'
 Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
 Plug 'w0rp/ale'
@@ -720,3 +732,5 @@ Plug 'wlangstroth/vim-racket'
 
 call plug#end()
 " }}}
+
+call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
