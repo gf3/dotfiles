@@ -529,8 +529,12 @@ augroup airline_config
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
-  let g:airline_symbols.linenr = '␤'
+
   let g:airline_powerline_fonts = 1
+  let g:airline_section_b = '%{gina#component#repo#name()}:%{gina#component#repo#branch()}'
+  let g:airline_skip_empty_sections = 1
+  let g:airline_symbols.linenr = '␤'
+
   let g:airline#extensions#ale#enabled = 1
   let g:airline#extensions#tabline#buffer_nr_format = '%s '
   let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -734,3 +738,4 @@ call plug#end()
 " }}}
 
 call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+
