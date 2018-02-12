@@ -54,8 +54,6 @@ let s:mlc.darkgravel     = ['242321', 234] " #242321
 let s:mlc.blackgravel    = ['1C1B1A', 233] " #1C1B1A
 let s:mlc.blackestgravel = ['141413', 232] " #141413
 
-let s:mlc.blueblack      = ['414F53', 234] " #414F53
-
 let s:mlc.sunflower      = ['F1C40F', 220] " #F1C40F
 let s:mlc.dirtyblonde    = ['F4CF86', 229] " #F4CF86
 let s:mlc.alizarin       = ['E74C3C', 160] " #E74C3C
@@ -134,7 +132,7 @@ call s:HL('Folded',       'mediumgravel', 'bg',          'none')
 
 call s:HL('VertSplit',    'lightgravel',  'bg',          'none')
 
-call s:HL('CursorLine',   '',             'blueblack',   'none')
+call s:HL('CursorLine',   '',             'deepergravel','none')
 call s:HL('CursorColumn', '',             'darkgravel')
 call s:HL('ColorColumn',  '',             'darkgravel')
 
