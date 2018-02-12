@@ -1,3 +1,4 @@
+" vim:fdm=marker foldlevel=0
 "                             ___           __
 "             /'\_/`\        /\_ \         /\ \__
 "            /\      \    ___\//\ \     ___\ \ ,_\   ___   __  __
@@ -10,8 +11,8 @@
 "
 " Author: Gianni Chiappetta <gianni@runlevel6.org>
 "
-" Note: This theme is basically a fork of Bad Wolf by Steve Losh with less
-" settings and different colours.
+" Note: This theme is a fork of Bad Wolf by Steve Losh with less settings and
+" different colours.
 "
 " }}}
 
@@ -114,6 +115,7 @@ function! s:HL(group, fg, ...)
 
   execute histring
 endfunction
+
 " }}}
 " Configuration Options {{{
 
@@ -267,74 +269,6 @@ if has("spell")
   call s:HL('SpellLocal', '',          '',   'undercurl',      'sunflower')
   call s:HL('SpellRare',  '',          '',   'undercurl',      'sunflower')
 endif
-
-" }}}
-
-" }}}
-" Plugins {{{
-
-" CtrlP {{{
-
-  " the message when no match is found
-  call s:HL('CtrlPNoEntries', 'snow', 'alizarin', 'bold')
-
-  " the matched pattern
-  call s:HL('CtrlPMatch', 'orange', 'bg', 'none')
-
-  " the line prefix '>' in the match window
-  call s:HL('CtrlPLinePre', 'deepgravel', 'bg', 'none')
-
-  " the prompt’s base
-  call s:HL('CtrlPPrtBase', 'deepgravel', 'bg', 'none')
-
-  " the prompt’s text
-  call s:HL('CtrlPPrtText', 'clouds', 'bg', 'none')
-
-  " the prompt’s cursor when moving over the text
-  call s:HL('CtrlPPrtCursor', 'coal', 'peter_river', 'bold')
-
-  " 'prt' or 'win', also for 'regex'
-  call s:HL('CtrlPMode1', 'coal', 'peter_river', 'bold')
-
-  " 'file' or 'path', also for the local working dir
-  call s:HL('CtrlPMode2', 'coal', 'peter_river', 'bold')
-
-  " the scanning status
-  call s:HL('CtrlPStats', 'coal', 'peter_river', 'bold')
-
-  " TODO: CtrlP extensions.
-  " CtrlPTabExtra  : the part of each line that’s not matched against (Comment)
-  " CtrlPqfLineCol : the line and column numbers in quickfix mode (|s:HL-Search|)
-  " CtrlPUndoT     : the elapsed time in undo mode (|s:HL-Directory|)
-  " CtrlPUndoBr    : the square brackets [] in undo mode (Comment)
-  " CtrlPUndoNr    : the undo number inside [] in undo mode (String)
-
-" }}}
-" EasyMotion {{{
-
-call s:HL('EasyMotionTarget', 'peter_river', 'bg', 'bold')
-call s:HL('EasyMotionShade',  'deepgravel',  'bg')
-
-" }}}
-" Interesting Words {{{
-
-" These are only used if you're me or have copied the <leader>hNUM mappings
-" from my Vimrc.
-call s:HL('InterestingWord1', 'coal', 'orange')
-call s:HL('InterestingWord2', 'coal', 'waspyellow')
-call s:HL('InterestingWord3', 'coal', 'emerald')
-call s:HL('InterestingWord4', 'coal', 'pumpkin')
-call s:HL('InterestingWord5', 'coal', 'turqoise')
-call s:HL('InterestingWord6', 'coal', 'alizarin')
-
-
-" }}}
-" ShowMarks {{{
-
-call s:HL('ShowMarksHLl', 'peter_river', 'blackgravel')
-call s:HL('ShowMarksHLu', 'peter_river', 'blackgravel')
-call s:HL('ShowMarksHLo', 'peter_river', 'blackgravel')
-call s:HL('ShowMarksHLm', 'peter_river', 'blackgravel')
 
 " }}}
 
@@ -656,6 +590,161 @@ call s:HL('yardGenericTag', 'snow',     '', 'none')
 call s:HL('yardParamName',  'pumpkin',  '', 'none')
 call s:HL('yardType',       'turqoise', '', 'none')
 call s:HL('yardDuckType',   'turqoise', '', 'none')
+
+" }}}
+
+" }}}
+" Plugins {{{
+
+" Airline {{{
+
+let g:airline#themes#molotov#palette = {}
+
+let g:airline#themes#molotov#palette.accents = {
+  \  'red': ['#E74C3C', '', 160, ''],
+  \}
+
+" Normal mode
+let g:airline#themes#molotov#palette.normal = {
+  \  'airline_a': [ '#35322D', '#D9CEC3', 236, 252, 'bold' ],
+  \  'airline_b': [ '#35322D', '#998F84', 236, 245 ],
+  \  'airline_c': [ '#857F78', '',        243,  '' ],
+  \  'airline_x': [ '#35322D', '#666462', 236, 234 ],
+  \  'airline_y': [ '#35322D', '#998F84', 236, 238 ],
+  \  'airline_z': [ '#35322D', '#D9CEC3', 236, 190 ],
+  \}
+
+let g:airline#themes#molotov#palette.normal_modified = {
+  \  'airline_c': [ '#FCB82B', '#1C1B1A', 214, '', 'bold' ],
+  \}
+
+" Insert mode
+let g:airline#themes#molotov#palette.insert = {
+  \  'airline_a': [ '#35322D', '#FCB82B', 15,  214, 'bold' ],
+  \  'airline_b': [ '#35322D', '#998F84', 236, 245 ],
+  \  'airline_c': [ '#857F78', '',        243,  '' ],
+  \  'airline_x': [ '#35322D', '#666462', 236, 234 ],
+  \  'airline_y': [ '#35322D', '#998F84', 236, 238 ],
+  \  'airline_z': [ '#35322D', '#FCB82B', 236, 214 ],
+  \}
+
+let g:airline#themes#molotov#palette.insert_modified = {
+  \  'airline_c': [ '#FCB82B', '#1C1B1A', 214, '', 'bold' ],
+  \}
+
+" Replace mode
+let g:airline#themes#molotov#palette.replace = {
+  \  'airline_a': [ '#FFFFFF', '#D35400', 15,  202, 'bold' ],
+  \  'airline_b': [ '#35322D', '#998F84', 236, 245 ],
+  \  'airline_c': [ '#857F78', '',        243,  '' ],
+  \  'airline_x': [ '#35322D', '#666462', 236, 234 ],
+  \  'airline_y': [ '#35322D', '#998F84', 236, 238 ],
+  \  'airline_z': [ '#FFFFFF', '#D35400', 15,  202 ],
+  \}
+
+let g:airline#themes#molotov#palette.replace_modified = {
+  \  'airline_c': [ '#FCB82B', '#1C1B1A', 214, '', 'bold' ],
+  \}
+
+" Visual mode
+let g:airline#themes#molotov#palette.visual = {
+  \  'airline_a': [ '#35322D', '#3498DB', 236, 33, 'bold' ],
+  \  'airline_b': [ '#35322D', '#998F84', 236, 245 ],
+  \  'airline_c': [ '#857F78', '',        243,  '' ],
+  \  'airline_x': [ '#35322D', '#666462', 236, 234 ],
+  \  'airline_y': [ '#35322D', '#998F84', 236, 238 ],
+  \  'airline_z': [ '#35322D', '#3498DB', 236,  33 ],
+  \}
+let g:airline#themes#molotov#palette.visual_modified = {
+  \  'airline_c': [ '#FCB82B', '#1C1B1A', 214, '', 'bold' ],
+  \}
+
+" Inactive
+let g:airline#themes#molotov#palette.inactive = {
+  \  'airline_a': [ '#857F78', '', 243, '' ],
+  \  'airline_b': [ '#857F78', '', 243, '' ],
+  \  'airline_c': [ '#857F78', '', 243, '' ],
+  \  'airline_x': [ '#857F78', '', 243, '' ],
+  \  'airline_y': [ '#857F78', '', 243, '' ],
+  \  'airline_z': [ '#857F78', '', 243, '' ],
+  \}
+
+let g:airline#themes#molotov#palette.inactive_modified = {
+  \  'airline_c': [ '#FCB82B', '#1C1B1A', 214, '', 'bold' ],
+  \}
+
+" Tabline
+let g:airline#themes#molotov#palette.tabline = {
+  \  'airline_tabhid':       [ '#35322D', '#666462', 236, 234 ],
+  \  'airline_tabfill':      [ '#35322D', '',        236,  '' ],
+  \  'airline_tabmod':       [ '#35322D', '#FCB82B', 236, 214, 'bold' ],
+  \  'airline_tabmod_unsel': [ '#35322D', '#FCB82B', 236, 214, 'italic' ],
+  \  'airline_tabtype':      [ '#35322D', '#FCB82B', 236, 214, 'italic' ],
+  \}
+
+" }}}
+" CtrlP {{{
+
+  " the message when no match is found
+  call s:HL('CtrlPNoEntries', 'snow', 'alizarin', 'bold')
+
+  " the matched pattern
+  call s:HL('CtrlPMatch', 'orange', 'bg', 'none')
+
+  " the line prefix '>' in the match window
+  call s:HL('CtrlPLinePre', 'deepgravel', 'bg', 'none')
+
+  " the prompt’s base
+  call s:HL('CtrlPPrtBase', 'deepgravel', 'bg', 'none')
+
+  " the prompt’s text
+  call s:HL('CtrlPPrtText', 'clouds', 'bg', 'none')
+
+  " the prompt’s cursor when moving over the text
+  call s:HL('CtrlPPrtCursor', 'coal', 'peter_river', 'bold')
+
+  " 'prt' or 'win', also for 'regex'
+  call s:HL('CtrlPMode1', 'coal', 'peter_river', 'bold')
+
+  " 'file' or 'path', also for the local working dir
+  call s:HL('CtrlPMode2', 'coal', 'peter_river', 'bold')
+
+  " the scanning status
+  call s:HL('CtrlPStats', 'coal', 'peter_river', 'bold')
+
+  " TODO: CtrlP extensions.
+  " CtrlPTabExtra  : the part of each line that’s not matched against (Comment)
+  " CtrlPqfLineCol : the line and column numbers in quickfix mode (|s:HL-Search|)
+  " CtrlPUndoT     : the elapsed time in undo mode (|s:HL-Directory|)
+  " CtrlPUndoBr    : the square brackets [] in undo mode (Comment)
+  " CtrlPUndoNr    : the undo number inside [] in undo mode (String)
+
+" }}}
+" EasyMotion {{{
+
+call s:HL('EasyMotionTarget', 'peter_river', 'bg', 'bold')
+call s:HL('EasyMotionShade',  'deepgravel',  'bg')
+
+" }}}
+" Interesting Words {{{
+
+" These are only used if you're me or have copied the <leader>hNUM mappings
+" from my Vimrc.
+call s:HL('InterestingWord1', 'coal', 'orange')
+call s:HL('InterestingWord2', 'coal', 'waspyellow')
+call s:HL('InterestingWord3', 'coal', 'emerald')
+call s:HL('InterestingWord4', 'coal', 'pumpkin')
+call s:HL('InterestingWord5', 'coal', 'turqoise')
+call s:HL('InterestingWord6', 'coal', 'alizarin')
+
+
+" }}}
+" ShowMarks {{{
+
+call s:HL('ShowMarksHLl', 'peter_river', 'blackgravel')
+call s:HL('ShowMarksHLu', 'peter_river', 'blackgravel')
+call s:HL('ShowMarksHLo', 'peter_river', 'blackgravel')
+call s:HL('ShowMarksHLm', 'peter_river', 'blackgravel')
 
 " }}}
 
