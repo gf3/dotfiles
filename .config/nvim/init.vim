@@ -221,6 +221,10 @@ augroup general_config
   set relativenumber " Use relative line numbers. Current line is still in status bar.
   au BufReadPost,BufNewFile * set relativenumber
   " }}}
+
+  " Window title {{{
+  set titlestring=%{expand(\"%:t\")} " Set to just the filename
+  " }}}
 augroup END
 " }}}
 
