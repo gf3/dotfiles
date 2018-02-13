@@ -714,6 +714,7 @@ Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'kchmck/vim-coffee-script'
 Plug 'lambdalisue/gina.vim'
 Plug 'mxw/vim-jsx'
