@@ -1,6 +1,7 @@
 [user]
   name  = Gianni Chiappetta
   email = gianni@runlevel6.org
+  signingkey = 644D5709D53E39CE
 
 [alias]
   br   = branch
@@ -27,10 +28,10 @@
   remote  = green
 
 [color "diff"]
-  meta = yellow 
-  frag = magenta 
-  old  = red 
-  new  = green 
+  meta = yellow
+  frag = magenta
+  old  = red
+  new  = green
 
 [color "status"]
   added     = yellow
@@ -38,7 +39,10 @@
   untracked = cyan
 
 [diff]
-  tool = diffconflicts
+  tool = araxis
+
+[difftool "araxis"]
+  path = /Applications/Araxis Merge.app/Contents/Utilities/compare
 
 [diff "exif"]
   textconv = exiftool
@@ -48,7 +52,10 @@
 
 [merge]
   log  = true
-  tool = diffconflicts
+  tool = araxis
+
+[mergetool "araxis"]
+  path = /Applications/Araxis Merge.app/Contents/Utilities/compare
 
 [push]
   default = simple
@@ -86,3 +93,9 @@
   cmd           = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
   trustExitCode = true
   keepBackup    = false
+
+[commit]
+  gpgsign = true
+
+[core]
+  pager = diff-so-fancy | less --tabs=2 -RFX
