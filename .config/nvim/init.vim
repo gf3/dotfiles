@@ -502,14 +502,6 @@ augroup filetype_ruby
 augroup END
 " }}}
 
-" Typescript {{{
-augroup filetype_typescript
-  autocmd!
-
-  au BufNewFile,BufRead *.ts,*.tsx set ft=typescript syntax=typescript
-augroup END
-" }}}
-
 " XML {{{
 augroup filetype_xml
   autocmd!
@@ -545,6 +537,7 @@ augroup airline_config
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#fnamecollapse = 0
   let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#formatter = 'jsformatter'
 augroup END
 " }}}
 
@@ -552,8 +545,14 @@ augroup END
 augroup ale_config
   " let g:ale_sign_error = '>>'
   " let g:ale_sign_warning = '--'
+  " let g:ale_set_loclist = 0
+  " let g:ale_set_quickfix = 1
+  let g:ale_completion_enabled = 1
   let g:ale_linters = {
   \   'typescript': ['tslint', 'tsserver', 'typecheck'],
+  \}
+  let g:ale_fixers = {
+  \   'javascript': ['eslint', 'prettier'],
   \}
 augroup END
 " }}}
@@ -648,6 +647,13 @@ augroup easy_align_config
 augroup END
 " }}}
 
+" jsx-pretty.vim {{{
+augroup jsx_pretty_config
+  autocmd!
+  let g:vim_jsx_pretty_colorful_config = 1
+augroup END
+" }}}
+
 " Notes.vim {{{
 augroup notes_config
   autocmd!
@@ -701,43 +707,35 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'bling/vim-airline'
-Plug 'elixir-lang/vim-elixir'
-Plug 'elzr/vim-json'
-Plug 'exu/pgsql.vim'
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-clojure-highlight'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'exu/pgsql.vim',                    { 'for': 'sql' }
+Plug 'HerringtonDarkholme/yats.vim',     { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'honza/vim-snippets'
 Plug 'haya14busa/incsearch.vim'
-Plug 'JulesWang/css.vim'
-Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'ianks/vim-tsx',                    { 'for': 'typescript.tsx' }
+Plug 'itspriddle/vim-marked'
+Plug 'junegunn/fzf',                     { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/rainbow_parentheses.vim', { 'for': 'clojure' }
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
-Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee' }
 Plug 'lambdalisue/gina.vim'
-Plug 'mxw/vim-jsx'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'noprompt/vim-yardoc'
-Plug 'pangloss/vim-javascript'
-Plug 'reedes/vim-wordy'
-Plug 'rhysd/vim-crystal'
+" Plug 'maxmellon/vim-jsx-pretty',         { 'for': [ 'javascript', 'typescript' ] }
+" Plug 'mxw/vim-jsx',                      { 'for': [ 'javascript', 'typescript' ] }
+Plug 'noprompt/vim-yardoc',              { 'for': 'ruby' }
+Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/deoplete.nvim',   { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/vimproc.vim',     { 'do' : 'make' }
+Plug 'Shougo/deoplete.nvim',             { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/vimproc.vim',               { 'do' : 'make' }
 Plug 'SirVer/ultisnips'
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-markdown',               { 'for': 'markdown' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/fish.vim',   { 'for': 'fish' }
+Plug 'vim-ruby/vim-ruby',                { 'for': 'ruby' }
+Plug 'vim-scripts/fish.vim',             { 'for': 'fish' }
 Plug 'w0rp/ale'
-Plug 'wlangstroth/vim-racket'
 
 call plug#end()
 " }}}

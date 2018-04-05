@@ -275,6 +275,12 @@ endif
 " }}}
 " Filetype-specific {{{
 
+" C {{{
+
+call s:HL('cParen', 'turqoise', '', 'bold')
+
+" }}}
+
 " Clojure {{{
 
 call s:HL('clojureSpecial',  'alizarin',    '', '')
@@ -362,8 +368,12 @@ call s:HL('javaDocParam',     'sunflower', '', '')
 " yats.vim
 call s:HL('typescriptArgumentList',              'alizarin',    '', 'none')
 call s:HL('typescriptArrowFunc',                 'alizarin',    '', 'none')
+call s:HL('typescriptAssign',                    'alizarin',    '', 'none')
+call s:HL('typescriptBinaryOp',                  'alizarin',    '', 'none')
 call s:HL('typescriptBraces',                    'turqoise',    '', 'bold')
 call s:HL('typescriptCall',                      'snow',        '', 'none')
+call s:HL('typescriptClassName',                 'pumpkin',     '', 'none')
+call s:HL('typescriptClassHeritage',             'pumpkin',     '', 'none')
 call s:HL('typescriptDecorator',                 'greensea',    '', 'none')
 call s:HL('typescriptDefaultParam',              'alizarin',    '', 'none')
 call s:HL('typescriptDotNotation',               'alizarin',    '', 'none')
@@ -377,9 +387,11 @@ call s:HL('typescriptIdentifier',                'orange',      '', 'none')
 call s:HL('typescriptImport',                    'waspyellow',  '', 'none')
 call s:HL('typescriptImportDef',                 'snow',        '', 'none')
 call s:HL('typescriptLogicSymbols',              'alizarin',    '', 'none')
+call s:HL('typescriptMemberOptionality',         'greensea',    '', 'none')
 call s:HL('typescriptMemberVariableDeclaration', 'orange',      '', 'none')
+call s:HL('typescriptObjectColon',               'alizarin',    '', 'none')
 call s:HL('typescriptObjectLabel',               'orange',      '', 'none')
-call s:HL('typescriptObjectLiteral',             'alizarin',    '', 'none')
+call s:HL('typescriptObjectDotNotation',         'alizarin',    '', 'none')
 call s:HL('typescriptObjectType',                'alizarin',    '', 'none')
 call s:HL('typescriptOpSymbols',                 'alizarin',    '', 'none')
 call s:HL('typescriptOperator',                  'alizarin',    '', 'none')
@@ -391,6 +403,7 @@ call s:HL('typescriptPropertySignature',         'orange',      '', 'none')
 call s:HL('typescriptReserved',                  'waspyellow',  '', 'none')
 call s:HL('typescriptTemplateSB',                'turqoise',    '', 'none')
 call s:HL('typescriptTypeAnnotation',            'alizarin',    '', 'none')
+call s:HL('typescriptTypeBrackets',              'alizarin',    '', 'none')
 call s:HL('typescriptUnionOrArrayType',          'turqoise',    '', 'bold')
 call s:HL('typescriptVariable',                  'alizarin',    '', 'none')
 
