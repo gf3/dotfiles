@@ -2,6 +2,9 @@ set fish_greeting
 
 set -x EDITOR nvim
 set -x FZF_LEGACY_KEYBINDINGS 0
+set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
+set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
 set -x JRUBYOPT "-Xcext.enabled=true"
 set -x LANG en_US.UTF-8
@@ -19,6 +22,10 @@ test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
 test -d ~/Library/Android/sdk/platform-tools ; and set PATH ~/Library/Android/sdk/platform-tools $PATH
 test -d ~/Library/Python/2.7/bin             ; and set PATH ~/Library/Python/2.7/bin $PATH
+test -d /Applications/Araxis\ Merge.app/Contents/Utilities ; and set PATH /Applications/Araxis\ Merge.app/Contents/Utilities $PATH
+
+# Java home
+test -d "/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/"; and set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/"
 
 # Navigation
 function ..    ; cd .. ; end
@@ -71,6 +78,8 @@ function c
     if test -e $i; and test -r $i
       if test -d $i
         tree --dirsfirst -aFCNL 1 $i
+      else if file -b --mime-type $i | string match -q -r '^image\/'
+        imgcat $i
       else
         pygmentize -O style=monokai -f console256 -g $i
       end
@@ -93,7 +102,7 @@ function make_completion --argument-names alias command
         set -e cmd[1]
         complete -C\"$command \$cmd\"
     end
-    " | .
+    " | source
     complete -c $alias -a "(__alias_completion_$alias)"
 end
 
@@ -105,20 +114,28 @@ make_completion vp 'nvim'
 
 # fisher
 set fisher_home ~/.local/share/fisherman
-set fisher_config ~/.config/fisherman
-source $fisher_home/config.fish
+if test -f $fisher_home/config.fish
+  set fisher_config ~/.config/fisherman
+  source $fisher_home/config.fish
+end
 
 # rbenv
-status --is-interactive; and . (rbenv init -|psub)
+if hash rbenv 2>/dev/null
+  status --is-interactive; and source (rbenv init -|psub)
+end
 
 # nvm
-function nvm
-  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+if hash bass 2>/dev/null
+  function nvm
+    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+  end
+  nvm > /dev/null
 end
-nvm > /dev/null
 
 # hub
-eval (hub alias -s)
+if hash hub 2>/dev/null
+  eval (hub alias -s)
+end
 
 # dev
 if test -f /opt/dev/dev.fish
@@ -126,7 +143,9 @@ if test -f /opt/dev/dev.fish
 end
 
 # opam
-eval (opam config env)
+if hash opam 2>/dev/null
+  eval (opam config env)
+end
 
 # iterm2
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
