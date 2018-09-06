@@ -138,6 +138,10 @@ augroup general_config
   command! W w
   " }}}
 
+  " Remap : to ; and vice versa {{{
+  set langmap=\\;:,:\\;
+  " }}}
+
   " Better mark jumping (line + col) {{{
   nnoremap ' `
   " }}}
@@ -632,19 +636,19 @@ augroup END
 " }}}
 
 " incsearch.vim {{{
-augroup easy_align_config
-  autocmd!
-  let g:incsearch#auto_nohlsearch = 1
-  map /  <Plug>(incsearch-forward)
-  map ?  <Plug>(incsearch-backward)
-  map g/ <Plug>(incsearch-stay)
-  map n  <Plug>(incsearch-nohl-n)
-  map N  <Plug>(incsearch-nohl-N)
-  map *  <Plug>(incsearch-nohl-*)
-  map #  <Plug>(incsearch-nohl-#)
-  map g* <Plug>(incsearch-nohl-g*)
-  map g# <Plug>(incsearch-nohl-g#)
-augroup END
+" augroup easy_align_config
+  " autocmd!
+  " let g:incsearch#auto_nohlsearch = 1
+  " map /  <Plug>(incsearch-forward)
+  " map ?  <Plug>(incsearch-backward)
+  " map g/ <Plug>(incsearch-stay)
+  " map n  <Plug>(incsearch-nohl-n)
+  " map N  <Plug>(incsearch-nohl-N)
+  " map *  <Plug>(incsearch-nohl-*)
+  " map #  <Plug>(incsearch-nohl-#)
+  " map g* <Plug>(incsearch-nohl-g*)
+  " map g# <Plug>(incsearch-nohl-g#)
+" augroup END
 " }}}
 
 " jsx-pretty.vim {{{
@@ -678,6 +682,15 @@ augroup rainbow_parenthesis_config
 augroup END
 " }}}
 
+" vim-repeat.vim {{{
+augroup repeat_config
+  autocmd!
+  nmap z <Plug>(RepeatUndo)
+  nmap gz <Plug>(RepeatUndoLine)
+  nmap Z <Plug>(RepeatRedo)
+augroup END
+" }}}
+
 " UltiSnip.vim {{{
 augroup ultisnip_config
   autocmd!
@@ -705,14 +718,13 @@ augroup END
 " Load plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color',                 { 'for': 'css' }
 Plug 'bling/vim-airline'
 Plug 'exu/pgsql.vim',                    { 'for': 'sql' }
-Plug 'HerringtonDarkholme/yats.vim',     { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'honza/vim-snippets'
-Plug 'haya14busa/incsearch.vim'
-Plug 'ianks/vim-tsx',                    { 'for': 'typescript.tsx' }
+Plug 'ianks/vim-tsx',                    { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'itspriddle/vim-marked'
+Plug 'jooize/vim-colemak'
 Plug 'junegunn/fzf',                     { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
@@ -721,10 +733,12 @@ Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee' }
 Plug 'lambdalisue/gina.vim'
-" Plug 'maxmellon/vim-jsx-pretty',         { 'for': [ 'javascript', 'typescript' ] }
-" Plug 'mxw/vim-jsx',                      { 'for': [ 'javascript', 'typescript' ] }
+Plug 'leafgarland/typescript-vim',       { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'machakann/vim-highlightedyank'
+Plug 'maxmellon/vim-jsx-pretty',         { 'for': [ 'javascript', 'javascript.jsx', 'typescript' ] }
 Plug 'noprompt/vim-yardoc',              { 'for': 'ruby' }
 Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
+Plug 'Quramy/tsuquyomi',                 { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Shougo/deoplete.nvim',             { 'do': ':UpdateRemotePlugins' }
@@ -740,5 +754,7 @@ Plug 'w0rp/ale'
 call plug#end()
 " }}}
 
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
 
+" Reload vim-colemak to remap any overridden keys
+silent! source "~/.config/nvim/plugged/vim-colemak/plugin/colemak.vim"
