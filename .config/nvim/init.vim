@@ -719,14 +719,9 @@ augroup END
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color',                 { 'for': 'css' }
-Plug 'bling/vim-airline'
 Plug 'exu/pgsql.vim',                    { 'for': 'sql' }
-Plug 'honza/vim-snippets'
 Plug 'ianks/vim-tsx',                    { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'itspriddle/vim-marked'
 Plug 'jooize/vim-colemak'
-Plug 'junegunn/fzf',                     { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim', { 'for': 'clojure' }
 Plug 'junegunn/vim-easy-align'
@@ -738,12 +733,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'maxmellon/vim-jsx-pretty',         { 'for': [ 'javascript', 'javascript.jsx', 'typescript' ] }
 Plug 'noprompt/vim-yardoc',              { 'for': 'ruby' }
 Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
-Plug 'Quramy/tsuquyomi',                 { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/deoplete.nvim',             { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/vimproc.vim',               { 'do' : 'make' }
-Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-markdown',               { 'for': 'markdown' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -754,7 +744,10 @@ Plug 'w0rp/ale'
 call plug#end()
 " }}}
 
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
-
-" Reload vim-colemak to remap any overridden keys
-silent! source "~/.config/nvim/plugged/vim-colemak/plugin/colemak.vim"
+" If using Oni's externalized statusline, hide vim's native statusline, 
+if exists("g:gui_oni")
+  set noshowmode
+  set noruler
+  set laststatus=0
+  set noshowcmd
+endif
