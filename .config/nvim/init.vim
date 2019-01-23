@@ -7,7 +7,9 @@
 " Syntax highlighting {{{
 set t_Co=256
 set background=dark
-colorscheme molotov
+if filereadable("~/.config/nvim/color/molotov.vim")
+  colorscheme molotov
+end
 " }}}
 
 " Mapleader {{{
@@ -15,9 +17,9 @@ let mapleader=","
 " }}}
 
 " Local directories {{{
-set backupdir=~/.config/nvim/backups
-set directory=~/.config/nvim/swaps
-set undodir=~/.config/nvim/undo
+set backupdir=~/.local/share/nvim/backup
+set directory=~/.local/share/nvim/swap
+set undodir=~/.local/share/nvim/undo
 " }}}
 
 " Set some junk {{{
@@ -44,7 +46,7 @@ set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle
 set hidden " When a buffer is brought to foreground, remember undo history and marks
 set ignorecase " Ignore case of searches
-set lazyredraw " Don't redraw when we don't have to
+" set lazyredraw " Don't redraw when we don't have to
 set lispwords+=defroutes " Compojure
 set lispwords+=defpartial,defpage " Noir core
 set lispwords+=defaction,deffilter,defview,defsection " Ciste core
@@ -58,13 +60,13 @@ set nostartofline " Don't reset cursor to start of line when moving around
 set nowrap " Do not wrap lines
 set nu " Enable line numbers
 set ofu=syntaxcomplete#Complete " Set omni-completion method
-set regexpengine=1 " Use the old regular expression engine (it's faster for certain language syntaxes)
+" set regexpengine=1 " Use the old regular expression engine (it's faster for certain language syntaxes)
 set report=0 " Show all changes
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window
 set shiftwidth=2 " The # of spaces for indenting
 set shortmess=atI " Don't show the intro message when starting vim
-set showtabline=2 " Always show tab bar
+" set showtabline=2 " Always show tab bar
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters
 set softtabstop=2 " Tab key results in 2 spaces
@@ -75,7 +77,7 @@ set switchbuf=""
 set title " Show the filename in the window titlebar
 set termguicolors " Enable true color support
 set undofile " Persistent Undo
-set viminfo=%,'9999,s512 " Restore buffer list, marks are remembered for 9999 files, registers up to 512Kb are remembered
+set viminfo='9999,s512,h " Restore marks are remembered for 9999 files, registers up to 512Kb are remembered, disable hlsearch on start
 set visualbell " Use visual bell instead of audible bell (annnnnoying)
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion)
 set wildignore+=.DS_Store
@@ -561,35 +563,6 @@ augroup ale_config
 augroup END
 " }}}
 
-" Silver Searcher {{{
-augroup ag_config
-  autocmd!
-
-  if executable("ag")
-    " Note we extract the column as well as the file and line number
-    set grepprg=ag\ --nogroup\ --nocolor\ --column
-    set grepformat=%f:%l:%c%m
-
-    " Have the silver searcher ignore all the same things as wilgignore
-    let b:ag_command = 'ag %s -i --nocolor --nogroup'
-
-    for i in split(&wildignore, ",")
-      let i = substitute(i, '\*/\(.*\)/\*', '\1', 'g')
-      let b:ag_command = b:ag_command . ' --ignore "' . substitute(i, '\*/\(.*\)/\*', '\1', 'g') . '"'
-    endfor
-
-    let b:ag_command = b:ag_command . ' --hidden -g ""'
-  endif
-augroup END
-" }}}
-
-" deoplete.vim {{{
-augroup deoplete_config
-  autocmd!
-  let g:deoplete#enable_at_startup = 1
-augroup END
-" }}}
-
 " EasyAlign.vim {{{
 augroup easy_align_config
   autocmd!
@@ -615,70 +588,33 @@ augroup fzf_config
   let g:fzf_history_dir = '~/.config/nvim/fzf-history'
   let g:fzf_buffers_jump = 1 " Jump to existing buffer if available
 
-  nnoremap <C-p> :Files<CR>
-  nnoremap <C-g> :GFiles?<CR>
-  nnoremap <C-b> :Buffers<CR>
-  nnoremap <C-t> :Tags<CR>
-  nnoremap <C-m> :Marks<CR>
-  nnoremap <leader>l :Lines<CR>
+  if !exists("g:gui_oni")
+    " Basic mappings
+    nnoremap <C-p> :Files<CR>
+    nnoremap <C-g> :GFiles?<CR>
+    nnoremap <C-b> :Buffers<CR>
+    nnoremap <C-t> :Tags<CR>
+    nnoremap <C-m> :Marks<CR>
+    nnoremap <leader>l :Lines<CR>
 
-  " Mapping selecting mappings
-  nmap <leader><tab> <plug>(fzf-maps-n)
-  xmap <leader><tab> <plug>(fzf-maps-x)
-  omap <leader><tab> <plug>(fzf-maps-o)
+    " Mapping selecting mappings
+    nmap <leader><tab> <plug>(fzf-maps-n)
+    xmap <leader><tab> <plug>(fzf-maps-x)
+    omap <leader><tab> <plug>(fzf-maps-o)
 
-  " Insert mode completion
-  imap <c-x><c-k> <plug>(fzf-complete-word)
-  imap <c-x><c-f> <plug>(fzf-complete-path)
-  imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-  imap <c-x><c-l> <plug>(fzf-complete-line)
+    " Insert mode completion
+    imap <c-x><c-k> <plug>(fzf-complete-word)
+    imap <c-x><c-f> <plug>(fzf-complete-path)
+    imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+    imap <c-x><c-l> <plug>(fzf-complete-line)
+  end
 augroup END
-" }}}
-
-" incsearch.vim {{{
-" augroup easy_align_config
-  " autocmd!
-  " let g:incsearch#auto_nohlsearch = 1
-  " map /  <Plug>(incsearch-forward)
-  " map ?  <Plug>(incsearch-backward)
-  " map g/ <Plug>(incsearch-stay)
-  " map n  <Plug>(incsearch-nohl-n)
-  " map N  <Plug>(incsearch-nohl-N)
-  " map *  <Plug>(incsearch-nohl-*)
-  " map #  <Plug>(incsearch-nohl-#)
-  " map g* <Plug>(incsearch-nohl-g*)
-  " map g# <Plug>(incsearch-nohl-g#)
-" augroup END
 " }}}
 
 " jsx-pretty.vim {{{
 augroup jsx_pretty_config
   autocmd!
   let g:vim_jsx_pretty_colorful_config = 1
-augroup END
-" }}}
-
-" Notes.vim {{{
-augroup notes_config
-  autocmd!
-  let g:notes_directories = ['~/Dropbox/Notes']
-augroup END
-" }}}
-
-" PgSQL.vim {{{
-augroup pgsql_config
-  autocmd!
-
-  let g:sql_type_default = 'pgsql'
-augroup END
-" }}}
-
-" RainbowParenthesis.vim {{{
-augroup rainbow_parenthesis_config
-  autocmd!
-  nnoremap <leader>rp :RainbowParentheses!!<CR>
-  let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-  let g:rainbow#blacklist = ['#F4CF86', '#FFFFFF']
 augroup END
 " }}}
 
@@ -691,70 +627,58 @@ augroup repeat_config
 augroup END
 " }}}
 
-" UltiSnip.vim {{{
-augroup ultisnip_config
-  autocmd!
-  let g:UltiSnipsExpandTrigger='<tab>'
-  let g:UltiSnipsJumpForwardTrigger='<tab>'
-  let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
-  inoremap <expr><tab> pumvisible() ? '\<C-n>' : '\<TAB>'
-  inoremap <expr><s-tab> pumvisible() ? '\<C-p>' : '\<TAB>'
-augroup END
-" }}}
-
-" YouCompleteMe.vim {{{
-augroup ycm_config
-  autocmd!
-  let g:ycm_collect_identifiers_from_tags_files = 1
-  let g:ycm_key_list_select_completion=[]
-  let g:ycm_key_list_previous_completion=[]
-augroup END
-" }}}
-
-
 " Plugins -------------------------------------------------------------
 
 " Load plugins {{{
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color',                 { 'for': 'css' }
-Plug 'bling/vim-airline'
-Plug 'exu/pgsql.vim',                    { 'for': 'sql' }
-Plug 'honza/vim-snippets'
 Plug 'ianks/vim-tsx',                    { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'itspriddle/vim-marked'
 Plug 'jooize/vim-colemak'
-Plug 'junegunn/fzf',                     { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/rainbow_parentheses.vim', { 'for': 'clojure' }
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee' }
 Plug 'lambdalisue/gina.vim'
-Plug 'leafgarland/typescript-vim',       { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'machakann/vim-highlightedyank'
 Plug 'maxmellon/vim-jsx-pretty',         { 'for': [ 'javascript', 'javascript.jsx', 'typescript' ] }
-Plug 'noprompt/vim-yardoc',              { 'for': 'ruby' }
 Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
-Plug 'Quramy/tsuquyomi',                 { 'for': ['typescript', 'typescript.tsx'] }
-Plug 'rking/ag.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/deoplete.nvim',             { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/vimproc.vim',               { 'do' : 'make' }
-Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-markdown',               { 'for': 'markdown' }
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby',                { 'for': 'ruby' }
 Plug 'vim-scripts/fish.vim',             { 'for': 'fish' }
-Plug 'w0rp/ale'
+
+" Terminal-only plugins
+if !exists("g:gui_oni")
+  Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'leafgarland/typescript-vim',     { 'for': ['typescript', 'typescript.tsx'] }
+  Plug 'tpope/vim-commentary'
+  Plug 'w0rp/ale'
+  Plug 'wellle/targets.vim'
+
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim',         { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+  endif
+
+  let g:deoplete#enable_at_startup = 1
+end
 
 call plug#end()
 " }}}
 
-call deoplete#custom#source('ultisnips', 'matchers', ['matcher_fuzzy'])
+" If using Oni's externalized statusline, hide vim's native statusline,
+if exists("g:gui_oni")
+  set noshowmode
+  set noruler
+  set laststatus=0
+  set noshowcmd
+endif
 
 " Reload vim-colemak to remap any overridden keys
 silent! source "~/.config/nvim/plugged/vim-colemak/plugin/colemak.vim"
