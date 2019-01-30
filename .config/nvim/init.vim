@@ -672,7 +672,7 @@ end
 call plug#end()
 " }}}
 
-" If using Oni's externalized statusline, hide vim's native statusline,
+" If using Oni's externalized statusline, hide vim's native statusline, 
 if exists("g:gui_oni")
   set noshowmode
   set noruler
