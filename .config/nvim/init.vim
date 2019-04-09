@@ -496,6 +496,7 @@ augroup END
 augroup lightline_config
   autocmd!
   let g:lightline = {}
+  let g:lightline.colorscheme = 'material'
   let g:lightline.component_expand = {
         \   'linter_checking': 'lightline#ale#checking',
         \   'linter_warnings': 'lightline#ale#warnings',
@@ -525,6 +526,16 @@ augroup repeat_config
 augroup END
 " }}}
 
+" vim-smooth-scroll {{{
+augroup vim_smooth_scroll_config
+  autocmd!
+  noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+  noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+  noremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+  noremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+augroup END
+" }}}
+
 " Plugins -------------------------------------------------------------
 
 " Load plugins {{{
@@ -548,6 +559,7 @@ if !exists('g:gui_oni')
   Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'maximbaz/lightline-ale'
+  Plug 'terryma/vim-smooth-scroll'
   Plug 'tpope/vim-commentary'
   Plug 'w0rp/ale'
   Plug 'wellle/targets.vim'
