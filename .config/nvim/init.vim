@@ -60,7 +60,7 @@ set magic " Enable extended regexes
 set mouse=a " Enable the mouse
 set noerrorbells " Disable error bells
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command
-set noshowmode " Don't show the current mode (airline.vim takes care of us)
+set noshowmode " Don't show the current mode (lightline.vim takes care of us)
 set nostartofline " Don't reset cursor to start of line when moving around
 set nowrap " Do not wrap lines
 set nu " Enable line numbers
@@ -221,16 +221,6 @@ augroup general_config
   " Window title {{{
   set titlestring=%{expand(\"%:t\")} " Set to just the filename
   " }}}
-augroup END
-" }}}
-
-" NERD Commenter {{{
-augroup nerd_commenter
-  autocmd!
-
-  let NERDSpaceDelims=1
-  let NERDCompactSexyComs=1
-  let g:NERDCustomDelimiters = { 'racket': { 'left': ';', 'leftAlt': '#|', 'rightAlt': '|#' } }
 augroup END
 " }}}
 
@@ -512,10 +502,10 @@ augroup lightline_config
         \   'linter_errors': 'lightline#ale#errors',
         \   'linter_ok': 'lightline#ale#ok',
         \ }
-  let g:lightline#ale#indicator_checking = "\uf110"
-  let g:lightline#ale#indicator_warnings = "\uf071"
-  let g:lightline#ale#indicator_errors = "\uf05e"
-  let g:lightline#ale#indicator_ok = "\uf00c"
+  let g:lightline#ale#indicator_checking = "\uf110 "
+  let g:lightline#ale#indicator_warnings = "\uf071 "
+  let g:lightline#ale#indicator_errors = "\uf05e "
+  let g:lightline#ale#indicator_ok = "\uf00c "
   let g:lightline.component_type = {
         \   'linter_checking': 'left',
         \   'linter_warnings': 'warning',
@@ -559,6 +549,7 @@ if !exists('g:gui_oni')
   Plug 'junegunn/fzf.vim'
   Plug 'maximbaz/lightline-ale'
   Plug 'tpope/vim-commentary'
+  Plug 'w0rp/ale'
   Plug 'wellle/targets.vim'
 
   if has('nvim')
