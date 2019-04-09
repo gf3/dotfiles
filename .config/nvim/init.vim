@@ -7,7 +7,13 @@
 " Syntax highlighting {{{
 set t_Co=256
 set background=dark
-if filereadable("~/.config/nvim/color/molotov.vim")
+if has('win32') || has ('win64')
+  let $VIMHOME = expand('~/AppData/Local/nvim/')
+else
+  let $VIMHOME = expand('~/.config/nvim/')
+endif
+
+if filereadable($VIMHOME . 'colors/molotov.vim')
   colorscheme molotov
 end
 " }}}
@@ -46,7 +52,6 @@ set formatoptions+=1 " Break before 1-letter words
 set gdefault " By default add g flag to search/replace. Add g to toggle
 set hidden " When a buffer is brought to foreground, remember undo history and marks
 set ignorecase " Ignore case of searches
-" set lazyredraw " Don't redraw when we don't have to
 set lispwords+=defroutes " Compojure
 set lispwords+=defpartial,defpage " Noir core
 set lispwords+=defaction,deffilter,defview,defsection " Ciste core
@@ -60,13 +65,11 @@ set nostartofline " Don't reset cursor to start of line when moving around
 set nowrap " Do not wrap lines
 set nu " Enable line numbers
 set ofu=syntaxcomplete#Complete " Set omni-completion method
-" set regexpengine=1 " Use the old regular expression engine (it's faster for certain language syntaxes)
 set report=0 " Show all changes
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window
 set shiftwidth=2 " The # of spaces for indenting
 set shortmess=atI " Don't show the intro message when starting vim
-" set showtabline=2 " Always show tab bar
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window
 set smartcase " Ignore 'ignorecase' if search patter contains uppercase characters
 set softtabstop=2 " Tab key results in 2 spaces
@@ -92,18 +95,6 @@ set wrapscan " Searches wrap around end of file
 
 
 " Configuration -------------------------------------------------------------
-
-" FastEscape {{{
-" Speed up transition from modes
-" if ! has('gui_running')
-  " set ttimeoutlen=10
-  " augroup FastEscape
-    " autocmd!
-    " au InsertEnter * set timeoutlen=0
-    " au InsertLeave * set timeoutlen=1000
-  " augroup END
-" endif
-" }}}
 
 " General {{{
 augroup general_config
@@ -164,7 +155,6 @@ augroup general_config
 
   " Clear last search (,qs) {{{
   map <silent> <leader>qs <Esc>:noh<CR>
-  " map <silent> <leader>qs <Esc>:let @/ = ""<CR>
   " }}}
 
   " Remap keys for auto-completion menu {{{
@@ -433,34 +423,6 @@ augroup filetype_clojure
 augroup END
 " }}}
 
-" Coffee {{{
-augroup filetype_coffee
-  autocmd!
-  au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-augroup END
-" }}}
-
-" Fish {{{
-augroup filetype_fish
-  autocmd!
-  au BufRead,BufNewFile *.fish set ft=fish
-augroup END
-" }}}
-
-" Handlebars {{{
-augroup filetype_hbs
-  autocmd!
-  au BufRead,BufNewFile *.hbs,*.handlebars,*.hbs.erb,*.handlebars.erb setl ft=mustache syntax=mustache
-augroup END
-" }}}
-
-" Jade {{{
-augroup filetype_jade
-  autocmd!
-  au BufRead,BufNewFile *.jade set ft=jade syntax=jade
-augroup END
-" }}}
-
 " JavaScript {{{
 augroup filetype_javascript
   autocmd!
@@ -470,26 +432,10 @@ augroup filetype_javascript
 augroup END
 " }}}
 
-" JSON {{{
-augroup filetype_json
-  autocmd!
-  au BufRead,BufNewFile *.json set ft=json syntax=javascript
-augroup END
-" }}}
-
 " Markdown {{{
 augroup filetype_markdown
   autocmd!
   let g:markdown_fenced_languages = ['ruby', 'html', 'javascript', 'css', 'erb=eruby.html', 'bash=sh']
-augroup END
-" }}}
-
-" Reason {{{
-augroup filetype_reason
-  autocmd!
-
-  " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-  " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 augroup END
 " }}}
 
@@ -508,58 +454,10 @@ augroup filetype_ruby
 augroup END
 " }}}
 
-" XML {{{
-augroup filetype_xml
-  autocmd!
-  au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-augroup END
-" }}}
-
-" ZSH {{{
-augroup filetype_zsh
-  autocmd!
-  au BufRead,BufNewFile .zsh_rc,.functions,.commonrc set ft=zsh
-augroup END
-" }}}
-
-
 " Plugin Configuration -------------------------------------------------------------
-
-" Airline.vim {{{
-augroup airline_config
-  autocmd!
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-
-  let g:airline_powerline_fonts = 1
-  let g:airline_section_b = '%{gina#component#repo#name()}:%{gina#component#repo#branch()}'
-  let g:airline_skip_empty_sections = 1
-  let g:airline_symbols.linenr = '␤'
-
-  let g:airline#extensions#ale#enabled = 1
-  let g:airline#extensions#tabline#buffer_nr_format = '%s '
-  let g:airline#extensions#tabline#buffer_nr_show = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#fnamecollapse = 0
-  let g:airline#extensions#tabline#fnamemod = ':t'
-  let g:airline#extensions#tabline#formatter = 'jsformatter'
-augroup END
-" }}}
 
 " Ale.vim {{{
 augroup ale_config
-  " let g:ale_sign_error = '>>'
-  " let g:ale_sign_warning = '--'
-  " let g:ale_set_loclist = 0
-  " let g:ale_set_quickfix = 1
-  let g:ale_completion_enabled = 1
-  let g:ale_linters = {
-  \   'typescript': ['tslint', 'tsserver', 'typecheck'],
-  \}
-  let g:ale_fixers = {
-  \   'javascript': ['eslint', 'prettier'],
-  \}
 augroup END
 " }}}
 
@@ -570,13 +468,6 @@ augroup easy_align_config
   vmap <Enter> <Plug>(EasyAlign)
   " Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
   nmap <Leader>a <Plug>(EasyAlign)
-augroup END
-" }}}
-
-" echodoc.vim {{{
-augroup echodoc_config
-  autocmd!
-  let g:echodoc#enable_at_startup = 1
 augroup END
 " }}}
 
@@ -611,10 +502,27 @@ augroup fzf_config
 augroup END
 " }}}
 
-" jsx-pretty.vim {{{
-augroup jsx_pretty_config
+" lightline.vim {{{
+augroup lightline_config
   autocmd!
-  let g:vim_jsx_pretty_colorful_config = 1
+  let g:lightline = {}
+  let g:lightline.component_expand = {
+        \   'linter_checking': 'lightline#ale#checking',
+        \   'linter_warnings': 'lightline#ale#warnings',
+        \   'linter_errors': 'lightline#ale#errors',
+        \   'linter_ok': 'lightline#ale#ok',
+        \ }
+  let g:lightline#ale#indicator_checking = "\uf110"
+  let g:lightline#ale#indicator_warnings = "\uf071"
+  let g:lightline#ale#indicator_errors = "\uf05e"
+  let g:lightline#ale#indicator_ok = "\uf00c"
+  let g:lightline.component_type = {
+        \   'linter_checking': 'left',
+        \   'linter_warnings': 'warning',
+        \   'linter_errors': 'error',
+        \   'linter_ok': 'left',
+        \ }
+  let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
 augroup END
 " }}}
 
@@ -630,36 +538,31 @@ augroup END
 " Plugins -------------------------------------------------------------
 
 " Load plugins {{{
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin($VIMHOME . 'plugged')
 
-Plug 'ap/vim-css-color',                 { 'for': 'css' }
-Plug 'ianks/vim-tsx',                    { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'ap/vim-css-color',         { 'for': 'css' }
+Plug 'icatalina/vim-case-change'
 Plug 'jooize/vim-colemak'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
-Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee' }
 Plug 'lambdalisue/gina.vim'
 Plug 'machakann/vim-highlightedyank'
-Plug 'maxmellon/vim-jsx-pretty',         { 'for': [ 'javascript', 'javascript.jsx', 'typescript' ] }
-Plug 'pangloss/vim-javascript',          { 'for': 'javascript' }
-Plug 'tpope/vim-markdown',               { 'for': 'markdown' }
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby',                { 'for': 'ruby' }
-Plug 'vim-scripts/fish.vim',             { 'for': 'fish' }
 
 " Terminal-only plugins
-if !exists("g:gui_oni")
-  Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
+if !exists('g:gui_oni')
+  Plug 'itchyny/lightline.vim'
+  Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
-  Plug 'leafgarland/typescript-vim',     { 'for': ['typescript', 'typescript.tsx'] }
+  Plug 'maximbaz/lightline-ale'
   Plug 'tpope/vim-commentary'
-  Plug 'w0rp/ale'
   Plug 'wellle/targets.vim'
 
   if has('nvim')
-    Plug 'Shougo/deoplete.nvim',         { 'do': ':UpdateRemotePlugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
@@ -674,7 +577,6 @@ call plug#end()
 
 " If using Oni's externalized statusline, hide vim's native statusline, 
 if exists("g:gui_oni")
-  set noshowmode
   set noruler
   set laststatus=0
   set noshowcmd
