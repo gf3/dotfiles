@@ -29,6 +29,7 @@ set undodir=~/.local/share/nvim/undo
 " }}}
 
 " Set some junk {{{
+set completeopt-=preview " Disable scratch buffer for completion preview
 set cursorline " Highlight current line
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
@@ -448,6 +449,15 @@ augroup END
 
 " Ale.vim {{{
 augroup ale_config
+  let g:ale_linters = {'rust': ['rls']}
+augroup END
+" }}}
+
+" coc.vim {{{
+augroup coc_config
+  function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+  endfunction
 augroup END
 " }}}
 
@@ -495,6 +505,11 @@ augroup END
 " lightline.vim {{{
 augroup lightline_config
   autocmd!
+  let g:lightline#ale#indicator_checking = "\uf110 "
+  let g:lightline#ale#indicator_warnings = "\uf071 "
+  let g:lightline#ale#indicator_errors = "\uf05e "
+  let g:lightline#ale#indicator_ok = "\uf00c "
+
   let g:lightline = {}
   let g:lightline.colorscheme = 'material'
   let g:lightline.component_expand = {
@@ -503,17 +518,21 @@ augroup lightline_config
         \   'linter_errors': 'lightline#ale#errors',
         \   'linter_ok': 'lightline#ale#ok',
         \ }
-  let g:lightline#ale#indicator_checking = "\uf110 "
-  let g:lightline#ale#indicator_warnings = "\uf071 "
-  let g:lightline#ale#indicator_errors = "\uf05e "
-  let g:lightline#ale#indicator_ok = "\uf00c "
+  let g:lightline.component_function = {
+        \   'cocstatus': 'coc#status',
+        \   'currentfunction': 'CocCurrentFunction'
+        \ }
   let g:lightline.component_type = {
         \   'linter_checking': 'left',
         \   'linter_warnings': 'warning',
         \   'linter_errors': 'error',
         \   'linter_ok': 'left',
         \ }
-  let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
+  let g:lightline.active = {
+        \   'left': [[ 'mode', 'paste' ],
+        \            [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ]],
+        \   'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
+        \ }
 augroup END
 " }}}
 
@@ -541,11 +560,12 @@ augroup END
 " Load plugins {{{
 call plug#begin($VIMHOME . 'plugged')
 
+Plug 'Shougo/neopairs.vim'
 Plug 'ap/vim-css-color',         { 'for': 'css' }
 Plug 'icatalina/vim-case-change'
 Plug 'jooize/vim-colemak'
-Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'lambdalisue/gina.vim'
 Plug 'machakann/vim-highlightedyank'
@@ -559,20 +579,11 @@ if !exists('g:gui_oni')
   Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'maximbaz/lightline-ale'
+  Plug 'neoclide/coc.nvim',      { 'tag': '*', 'do': './install.sh' }
   Plug 'terryma/vim-smooth-scroll'
   Plug 'tpope/vim-commentary'
   Plug 'w0rp/ale'
   Plug 'wellle/targets.vim'
-
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
-
-  let g:deoplete#enable_at_startup = 1
 end
 
 call plug#end()
