@@ -564,6 +564,7 @@ Plug 'Shougo/neopairs.vim'
 Plug 'ap/vim-css-color',         { 'for': 'css' }
 Plug 'icatalina/vim-case-change'
 Plug 'jooize/vim-colemak'
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-syntax-extra'
