@@ -38,30 +38,23 @@
   changed   = green
   untracked = cyan
 
-[diff]
-  tool = araxis
-
-[difftool "araxis"]
-  path = /Applications/Araxis Merge.app/Contents/Utilities/compare
-
-[diff "exif"]
-  textconv = exiftool
-
-[difftool]
-  prompt = false
-
-[merge]
-  log  = true
-  tool = araxis
-
-[mergetool "araxis"]
-  path = /Applications/Araxis Merge.app/Contents/Utilities/compare
-
 [push]
   default = simple
 
 [rerere]
   enabled = 1
+
+[commit]
+  gpgsign = true
+
+[core]
+  pager = diff-so-fancy | less --tabs=2 -RFX
+
+[protocol]
+  version = 2
+
+[credential]
+  helper = osxkeychain
 
 [url "git@github.com:"]
   insteadOf     = "gh:"
@@ -81,21 +74,3 @@
 
 [url "git@heroku.com:"]
   insteadOf = "heroku:"
-
-[filter "media"]
-  clean  = git-media-clean %f
-  smudge = git-media-smudge %f
-
-[difftool "diffconflicts"]
-  cmd = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
-
-[mergetool "diffconflicts"]
-  cmd           = diffconflicts mvim $BASE $LOCAL $REMOTE $MERGED
-  trustExitCode = true
-  keepBackup    = false
-
-[commit]
-  gpgsign = true
-
-[core]
-  pager = diff-so-fancy | less --tabs=2 -RFX
