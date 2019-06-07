@@ -550,8 +550,6 @@ augroup vim_smooth_scroll_config
   autocmd!
   noremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
   noremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-  noremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-  noremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 augroup END
 " }}}
 
