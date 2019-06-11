@@ -458,6 +458,16 @@ augroup coc_config
   function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
   endfunction
+
+  nmap <leader>d <Plug>(coc-definition)
+  nmap <leader>= <Plug>(coc-format-selected)
+  vmap <leader>= <Plug>(coc-format-selected)
+  nmap <leader>r <Plug>(coc-rename)
+  nmap <leader>y <Plug>(coc-codelens-action)
+  nmap <leader>x <Plug>(coc-fix-current)
+  nmap <leader>z <Plug>(coc-codeaction)
+
+  command! -nargs=0 Format :call CocAction('format')
 augroup END
 " }}}
 
@@ -588,7 +598,7 @@ end
 call plug#end()
 " }}}
 
-" If using Oni's externalized statusline, hide vim's native statusline, 
+" If using Oni's externalized statusline, hide vim's native statusline,
 if exists("g:gui_oni")
   set noruler
   set laststatus=0
