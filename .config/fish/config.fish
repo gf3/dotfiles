@@ -119,6 +119,12 @@ if test -f $fisher_home/config.fish
   source $fisher_home/config.fish
 end
 
+if not functions -q fisher
+  set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+  curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+  fish -c fisher
+end
+
 # rbenv
 if hash rbenv 2>/dev/null
   status --is-interactive; and source (rbenv init -|psub)
