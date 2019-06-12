@@ -81,7 +81,7 @@ function c
       else if file -b --mime-type $i | string match -q -r '^image\/'
         imgcat $i
       else
-        pygmentize -O style=monokai -f console256 -g $i
+        bat --paging never $i
       end
     else
       set_color red
