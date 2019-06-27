@@ -35,6 +35,7 @@ set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 nobomb " BOM often causes trouble
 set expandtab " Expand tabs to spaces
+set fillchars+=vert:\ 
 set foldcolumn=0 " Column to show folds
 set foldenable " Enable folding
 set foldlevel=5 " Open all folds by default
