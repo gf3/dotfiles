@@ -579,9 +579,9 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'lambdalisue/gina.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'machakann/vim-sandwich'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 
 " Terminal-only plugins
 if !exists('g:gui_oni')
