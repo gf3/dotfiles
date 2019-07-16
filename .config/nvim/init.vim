@@ -570,7 +570,7 @@ augroup END
 call plug#begin($VIMHOME . 'plugged')
 
 Plug 'Shougo/neopairs.vim'
-Plug 'ap/vim-css-color',         { 'for': 'css' }
+Plug 'ap/vim-css-color',    { 'for': 'css' }
 Plug 'icatalina/vim-case-change'
 Plug 'jooize/vim-colemak'
 Plug 'jparise/vim-graphql'
@@ -586,10 +586,10 @@ Plug 'tpope/vim-repeat'
 " Terminal-only plugins
 if !exists('g:gui_oni')
   Plug 'itchyny/lightline.vim'
-  Plug 'junegunn/fzf',           { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf',      { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'maximbaz/lightline-ale'
-  Plug 'neoclide/coc.nvim',      { 'tag': '*', 'do': './install.sh' }
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   Plug 'terryma/vim-smooth-scroll'
   Plug 'tpope/vim-commentary'
   Plug 'w0rp/ale'
