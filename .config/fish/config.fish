@@ -152,3 +152,8 @@ end
 
 # iterm2
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+# fnm
+if hash fnm 2>/dev/null
+  fnm env --multi --use-on-cd | source
+end
