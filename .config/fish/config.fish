@@ -24,9 +24,6 @@ test -d ~/Library/Android/sdk/platform-tools ; and set PATH ~/Library/Android/sd
 test -d ~/Library/Python/2.7/bin             ; and set PATH ~/Library/Python/2.7/bin $PATH
 test -d /Applications/Araxis\ Merge.app/Contents/Utilities ; and set PATH /Applications/Araxis\ Merge.app/Contents/Utilities $PATH
 
-# Java home
-test -d "/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/"; and set -x JAVA_HOME "/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/"
-
 # Navigation
 function ..    ; cd .. ; end
 function ...   ; cd ../.. ; end
