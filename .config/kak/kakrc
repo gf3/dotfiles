@@ -1,0 +1,53 @@
+# Preferences
+# ───────────
+
+# source "comnotes.kak"
+colorscheme gruvbox
+
+hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines -hlcursor }
+
+set global autoinfo command|onkey|normal
+set global grepcmd 'rg -Hn'
+set global indentwidth 2
+set global scrolloff 3,3
+set global tabstop 8
+set global ui_options ncurses_assistant=clippy ncurses_wheel_down_button=0
+
+# Highlight the word under the cursor
+# ───────────────────────────────────
+
+declare-option -hidden regex curword
+set-face global CurWord default,rgb:4a4a4a
+
+hook global NormalIdle .* %{
+    eval -draft %{ try %{
+        exec <space><a-i>w <a-k>\A\w+\z<ret>
+        set-option buffer curword "\b\Q%val{selection}\E\b"
+    } catch %{
+        set-option buffer curword ''
+    } }
+}
+add-highlighter global/ dynregex '%opt{curword}' 0:CurWord
+
+# Plugins
+# ───────
+
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+plug "andreyorst/fzf.kak"
+plug "lePerdu/kakboard" %{
+    hook global WinCreate .* %{ kakboard-enable }
+}
+
+# Mappings
+# ────────
+
+map global normal <%> '<c-s>%' # Save position before %
+map global normal '#' :comment-line<ret>
+map global normal <c-p> ': fzf-mode<ret>'
+
+# Enable <tab>/<s-tab> for insert completion selection
+# ────────────────────────────────────────────────────
+
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
+hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
