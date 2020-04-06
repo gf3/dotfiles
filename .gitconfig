@@ -47,8 +47,10 @@
 [commit]
   gpgsign = true
 
-[core]
-  pager = diff-so-fancy | less --tabs=2 -RFX
+[pager]
+  log  = diffr | less --tabs=2 -R
+  show = diffr | less --tabs=2 -R
+  diff = diffr | less --tabs=2 -R
 
 [protocol]
   version = 2
