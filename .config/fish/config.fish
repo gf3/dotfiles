@@ -1,6 +1,6 @@
 set fish_greeting
 
-set -x EDITOR nvim
+set -x EDITOR kak
 set -x FZF_LEGACY_KEYBINDINGS 0
 set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
@@ -20,16 +20,12 @@ test -d /usr/local/heroku/bin                ; and set PATH /usr/local/heroku/bi
 test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
-test -d ~/Library/Android/sdk/platform-tools ; and set PATH ~/Library/Android/sdk/platform-tools $PATH
-test -d ~/Library/Python/2.7/bin             ; and set PATH ~/Library/Python/2.7/bin $PATH
-test -d /Applications/Araxis\ Merge.app/Contents/Utilities ; and set PATH /Applications/Araxis\ Merge.app/Contents/Utilities $PATH
 
 # Navigation
 function ..    ; cd .. ; end
 function ...   ; cd ../.. ; end
 function ....  ; cd ../../.. ; end
 function ..... ; cd ../../../.. ; end
-function ll    ; tree --dirsfirst -ChFupDaLg 1 $argv ; end
 
 # Utilities
 function a        ; command rg --ignore=.git --ignore=log --ignore=tags --ignore=tmp --ignore=vendor --ignore=spec/vcr $argv ; end
@@ -46,24 +42,30 @@ function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
 function mp       ; nvim $argv ; end
 function rkt      ; racket -il xrepl $argv ; end
-function t        ; command tree -C $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
-function view     ; nvim -R $argv ; end
+function view     ; bat $argv ; end
 
 # Fuzzy find & vim
 function vp
   if test (count $argv) -gt 0
-    command nvim $argv
+    command $EDITOR $argv
   else
-    fzf -m | xargs nvim
+    fzf -m | xargs $EDITOR
   end
 end
 
 # View files/dirs
 function c
   if test (count $argv) -eq 0
-    tree --dirsfirst -aFCNL 1 ./
+    if type -q lsd
+      lsd --icon always --icon-theme unicode -l
+    else if type -q tree
+      tree --dirsfirst -aFCNL 1 ./
+    else
+      ls -l
+    end
+    
     return
   end
 
@@ -74,7 +76,13 @@ function c
 
     if test -e $i; and test -r $i
       if test -d $i
-        tree --dirsfirst -aFCNL 1 $i
+        if type -q lsd
+          lsd --icon always --icon-theme unicode -l $i
+        else if type -q tree
+          tree --dirsfirst -aFCNL 1 ./
+        else
+          ls -l $i
+        end
       else if file -b --mime-type $i | string match -q -r '^image\/'
         imgcat $i
       else
@@ -91,6 +99,16 @@ end
 
 function l; c $argv; end
 
+function ll
+  if type -q lsd
+    lsd --icon always --icon-theme unicode -l $argv
+  else if type -q tree
+    tree --dirsfirst -aFCNL 1 ./
+  else
+    ls -l $argv
+  end
+end
+
 # Completions
 function make_completion --argument-names alias command
     echo "
@@ -106,8 +124,7 @@ end
 make_completion b 'bundle exec'
 make_completion f 'foreman run'
 make_completion g 'git'
-make_completion mp 'nvim'
-make_completion vp 'nvim'
+make_completion vp 'kak'
 
 # fisher
 set fisher_home ~/.local/share/fisherman
@@ -123,12 +140,12 @@ if not functions -q fisher
 end
 
 # rbenv
-if hash rbenv 2>/dev/null
+if type -q rbenv
   status --is-interactive; and source (rbenv init -|psub)
 end
 
 # nvm
-if hash bass 2>/dev/null
+if type -q bass
   function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
   end
@@ -136,24 +153,19 @@ if hash bass 2>/dev/null
 end
 
 # hub
-if hash hub 2>/dev/null
+if type -q hub
   eval (hub alias -s)
-end
-
-# dev
-if test -f /opt/dev/dev.fish
-  source /opt/dev/dev.fish
-end
-
-# opam
-if hash opam 2>/dev/null
-  eval (opam config env)
 end
 
 # iterm2
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 # fnm
-if hash fnm 2>/dev/null
+if type -q fnm
   fnm env --multi --use-on-cd | source
+end
+
+# pywal
+if test -f ~/.cache/wal/colors.fish
+  source ~/.cache/wal/colors.fish
 end
