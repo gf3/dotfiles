@@ -101,7 +101,7 @@ function l; c $argv; end
 
 function ll
   if type -q lsd
-    lsd --icon always --icon-theme unicode -l $argv
+    lsd --icon always --icon-theme unicode -Al $argv
   else if type -q tree
     tree --dirsfirst -aFCNL 1 ./
   else
