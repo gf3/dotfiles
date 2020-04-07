@@ -21,7 +21,7 @@ Otherwise you can copy over individual files and directories as needed.
 ## Tools
 
 * [bat][bat] - `cat` replacement with syntax highlighting
-* [diffr][diff] - `diff` replacement with better highlighting
+* [diffr][diffr] - `diff` replacement with better highlighting
 * [Fish][fish] - Pretty and easy to use shell
 * [Kakoune][kak] - Vim-like editor
 * [Kitty][kitty] - GPU-accelerated terminal emulator
