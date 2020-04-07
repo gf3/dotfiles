@@ -1,0 +1,78 @@
+[user]
+  name  = Gianni Chiappetta
+  email = gianni@runlevel6.org
+  ; signingkey = 644D5709D53E39CE
+
+[alias]
+  br   = branch
+  ; Example: g ch master...staging
+  ch   = log --cherry --pretty=format:\"%C(auto)%h (%ar) %an: %s\" --date-order --reverse
+  ci   = commit
+  co   = checkout
+  df   = diff
+  g    = grep -I
+  lg   = log -p
+  loq  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+  st   = status
+  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+
+[branch]
+  autosetuprebase = always
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old  = red
+  new  = green
+
+[color "status"]
+  added     = yellow
+  changed   = green
+  untracked = cyan
+
+[push]
+  default = simple
+
+[rerere]
+  enabled = 1
+
+[commit]
+  ; gpgsign = true
+
+[pager]
+  log  = diffr | less --tabs=2 -R
+  show = diffr | less --tabs=2 -R
+  diff = diffr | less --tabs=2 -R
+
+[protocol]
+  version = 2
+
+[credential]
+  ; helper = osxkeychain
+
+[url "git@github.com:"]
+  insteadOf     = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+  insteadOf     = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+
+[url "git@heroku.com:"]
+  insteadOf = "heroku:"
