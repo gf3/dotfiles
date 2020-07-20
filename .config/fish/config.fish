@@ -6,21 +6,18 @@ set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd 
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
-set -x JRUBYOPT "-Xcext.enabled=true"
 set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
-set -x RBENV_ROOT /usr/local/var/rbenv
-set -x RBXOPT -X19
-set -x TDD 0
 
 # Paths
 test -d /usr/local/share/npm/bin             ; and set PATH /usr/local/share/npm/bin $PATH
-test -d /usr/local/racket/bin                ; and set PATH /usr/local/racket/bin $PATH
 test -d /usr/local/heroku/bin                ; and set PATH /usr/local/heroku/bin $PATH
 test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
-test -d ~/.bin                         ; and set PATH ~/.bin $PATH
+test -d ~/.bin                               ; and set PATH ~/.bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
+test -d ~/.cargo/bin                         ; and set PATH ~/.cargo/bin $PATH
+test -d ~/.fnm                               ; and set PATH ~/.fnm $PATH
 
 # Navigation
 function ..    ; cd .. ; end
@@ -30,24 +27,19 @@ function ..... ; cd ../../../.. ; end
 
 # Utilities
 function a        ; command rg --ignore=.git --ignore=log --ignore=tags --ignore=tmp --ignore=vendor --ignore=spec/vcr $argv ; end
-function b        ; bundle exec $argv ; end
 function d        ; du -h -d=1 $argv ; end
 function df       ; command df -h $argv ; end
 function digga    ; command dig +nocmd $argv[1] any +multiline +noall +answer; end
-function f        ; foreman run bundle exec $argv ; end
 function g        ; git $argv ; end
 function grep     ; command grep --color=auto $argv ; end
 function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end
 function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
 function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
-function mp       ; nvim $argv ; end
-function rkt      ; racket -il xrepl $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
-function view     ; bat $argv ; end
 
-# Fuzzy find & vim
+# Fuzzy find & edit
 function vp
   if test (count $argv) -gt 0
     command $EDITOR $argv
@@ -122,8 +114,6 @@ function make_completion --argument-names alias command
     complete -c $alias -a "(__alias_completion_$alias)"
 end
 
-make_completion b 'bundle exec'
-make_completion f 'foreman run'
 make_completion g 'git'
 make_completion vp 'kak'
 
@@ -143,14 +133,6 @@ end
 # rbenv
 if type -q rbenv
   status --is-interactive; and source (rbenv init -|psub)
-end
-
-# nvm
-if type -q bass
-  function nvm
-    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-  end
-  nvm > /dev/null
 end
 
 # hub
