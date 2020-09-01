@@ -21,6 +21,7 @@ test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PAT
 test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
 test -d ~/.bin                         ; and set PATH ~/.bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
+test -d ~/.cargo/bin                         ; and set PATH ~/.cargo/bin $PATH
 
 # Navigation
 function ..    ; cd .. ; end
@@ -60,7 +61,7 @@ end
 function c
   if test (count $argv) -eq 0
     if type -q lsd
-      lsd --icon always --icon-theme unicode -l
+      lsd --icon always --icon-theme fancy -l
     else if type -q tree
       tree --dirsfirst -aFCNL 1 ./
     else
@@ -78,7 +79,7 @@ function c
     if test -e $i; and test -r $i
       if test -d $i
         if type -q lsd
-          lsd --icon always --icon-theme unicode -l $i
+          lsd --icon always --icon-theme fancy -l $i
         else if type -q tree
           tree --dirsfirst -aFCNL 1 ./
         else
@@ -102,7 +103,7 @@ function l; c $argv; end
 
 function ll
   if type -q lsd
-    lsd --icon always --icon-theme unicode -Al $argv
+    lsd --icon always --icon-theme fancy -Al $argv
   else if type -q tree
     tree --dirsfirst -aFCNL 1 ./
   else
@@ -169,4 +170,15 @@ end
 # pywal
 if test -f ~/.cache/wal/colors.fish
   source ~/.cache/wal/colors.fish
+end
+
+# brew
+if type -q brew
+  if test -d (brew --prefix)"/share/fish/completions"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+  end
+
+  if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
+  end
 end
