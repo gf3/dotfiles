@@ -1,7 +1,6 @@
 # Preferences
 # ───────────
 
-# source "comnotes.kak"
 colorscheme gruvbox
 
 hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines -hlcursor }
@@ -29,14 +28,16 @@ hook global NormalIdle .* %{
 }
 add-highlighter global/ dynregex '%opt{curword}' 0:CurWord
 
+# Find files under current directory
+# ──────────────────────────────────
+
+def find -params 1 -shell-script-candidates %{ find -type f } %{ edit %arg{1} }
+
 # Plugins
 # ───────
 
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
-plug "andreyorst/fzf.kak" config %{
-    map -docstring 'fzf mode' global normal '<c-p>' ': fzf-mode<ret>'
-}
 plug "andreyorst/smarttab.kak" defer smarttab %{
     set-option global softtabstop 2
 } config %{
@@ -49,6 +50,41 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
 }
 plug "lePerdu/kakboard" config %{
     hook global WinCreate .* %{ kakboard-enable }
+}
+plug "ul/kak-lsp" do %{
+    cargo install --locked --force --path .
+} config %{
+    map -docstring "Language server commands" global user <l> %{:enter-user-mode lsp<ret>}
+
+    hook global WinSetOption filetype=(rust|python|go|javascript|typescript|c|cpp) %{
+        lsp-enable-window
+        lsp-auto-hover-enable
+    }
+
+    # Inlay hints for rust-analyzer
+    hook global WinSetOption filetype=rust %{
+        hook window -group rust-inlay-hints BufReload .* rust-analyzer-inlay-hints
+        hook window -group rust-inlay-hints NormalIdle .* rust-analyzer-inlay-hints
+        hook window -group rust-inlay-hints InsertIdle .* rust-analyzer-inlay-hints
+        hook -once -always window WinSetOption filetype=.* %{
+            remove-hooks window rust-inlay-hints
+        }
+    }
+
+    # Semantic tokens
+    hook global WinSetOption filetype=<language> %{
+        hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
+        hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
+        hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
+        hook -once -always window WinSetOption filetype=.* %{
+            remove-hooks window semantic-tokens
+        }
+    }
+
+    eval %sh{kak-lsp --kakoune -s $kak_session}
+}
+plug "https://gitlab.com/Screwtapello/kakoune-cargo" config %{
+    map -docstring "Cargo commands" global user <c> %{:enter-user-mode cargo<ret>}
 }
 
 # Mappings
