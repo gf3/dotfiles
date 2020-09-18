@@ -8,6 +8,7 @@ set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
 set -x LANG en_US.UTF-8
 set -x LC_ALL en_US.UTF-8
+set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
 
 # Paths
 test -d /usr/local/share/npm/bin             ; and set PATH /usr/local/share/npm/bin $PATH
@@ -163,3 +164,6 @@ if type -q brew
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
   end
 end
+
+# aws
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v (pwd):/aws amazon/aws-cli'

@@ -33,6 +33,77 @@ add-highlighter global/ dynregex '%opt{curword}' 0:CurWord
 
 def find -params 1 -shell-script-candidates %{ find -type f } %{ edit %arg{1} }
 
+# Fuzzy finder
+# ────────────
+
+define-command choose-buffers -docstring %{
+  Select an open buffer
+} %{
+  evaluate-commands %sh{
+    BUFFER=$(printf "%s\n" "${kak_buflist}" | tr " " "\n" | choose | tr -d \')
+    if [ -n "$BUFFER" ]; then
+      printf "%s\n" "buffer ${BUFFER}"
+    fi
+  }
+}
+
+define-command choose-files -docstring %{
+  Select files in project
+} %{
+  nop %sh{
+    FILE=$(git ls-files --cache | choose)
+    if [ -n "$FILE" ]; then
+      printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
+    fi
+  }
+}
+
+declare-user-mode fuzzy
+map -docstring "Fuzzy finder commands" global user <f> %{:enter-user-mode fuzzy<ret>}
+map global fuzzy -docstring "buffers - Select an open buffer" b ': choose-buffers<ret>'
+map global fuzzy -docstring "files - Select files in project" f ': choose-files<ret>'
+
+# Linting JavaScript
+# ──────────────────
+
+hook global WinSetOption filetype=javascript %{
+    set buffer lintcmd 'eslint --config .eslintrc.js -f ~/.fnm/node-versions/v14.9.0/installation/lib/node_modules/eslint-formatter-kakoune/index.js'
+    lint-enable
+    lint
+}
+
+define-command format-eslint -docstring %{
+    Formats the current buffer using eslint.
+    Respects your local project setup in eslintrc.
+} %{
+    evaluate-commands -draft -no-hooks -save-regs '|' %{
+        # Select all to format
+        execute-keys '%'
+
+        # eslint does a fix-dry-run with a json formatter which results in a JSON output to stdout that includes the fixed file.
+        # jq then extracts the fixed file output from the JSON. -j returns the raw output without any escaping.
+        set-register '|' %{
+            format_out="$(mktemp)"
+            cat | \
+            npx eslint --format json \
+                       --fix-dry-run \
+                       --stdin \
+                       --stdin-filename "$kak_buffile" | \
+            jq -j ".[].output" > "$format_out"
+            if [ $? -eq 0 ] && [ $(wc -c < "$format_out") -gt 4 ]; then
+                cat "$format_out"
+            else
+                printf 'eval -client %s %%{ fail eslint formatter returned an error %s }\n' "$kak_client" "$?" | kak -p "$kak_session"
+                printf "%s" "$kak_quoted_selection"
+            fi
+            rm -f "$format_out"
+        }
+
+        # Replace all with content from register:
+        execute-keys '|<ret>'
+    }
+}
+
 # Plugins
 # ───────
 
@@ -47,6 +118,11 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
     hook global WinSetOption filetype=(makefile|gas) noexpandtab
     # these languages will use `smarttab' behavior
     hook global WinSetOption filetype=(c|cpp) smarttab
+}
+plug "Bodhizafa/kak-rainbow" config %{
+  hook global WinSetOption filetype=(rust|python|c|c++|scheme|lisp|clojure|typescript|javascript|json) %{
+    rainbow-enable-window
+  }
 }
 plug "lePerdu/kakboard" config %{
     hook global WinCreate .* %{ kakboard-enable }

@@ -1,21 +1,21 @@
-# ╭─────────────╥──────────╥─────────────╮
-# │ Author:     ║ File:    ║ Branch:     │
-# │ Andrey Orst ║ plug.kak ║ master      │
-# ╞═════════════╩══════════╩═════════════╡
-# │ plug.kak is a plugin manager for     │
-# │ Kakoune. It can install plugins      │
-# │ keep them updated and uninstall      │
-# ╞══════════════════════════════════════╡
-# │ GitHub repo:                         │
-# │ GitHub.com/andreyorst/plug.kak       │
-# ╰──────────────────────────────────────╯
+# ╭─────────────╥────────────────────╮
+# │ Author:     ║ File:              │
+# │ Andrey Orst ║ plug.kak           │
+# ╞═════════════╩════════════════════╡
+# │ plug.kak is a plugin manager for │
+# │ Kakoune. It can install plugins  │
+# │ keep them updated and uninstall  │
+# ╞══════════════════════════════════╡
+# │ GitHub repo:                     │
+# │ GitHub.com/andreyorst/plug.kak   │
+# ╰──────────────────────────────────╯
 
 # Public options
 declare-option -docstring \
 "Path where plugins should be installed.
 
-    Default value: '%val{config}/plugins'" \
-str plug_install_dir "%val{config}/plugins"
+    Defaults to the plug.kak installation directory" \
+str plug_install_dir %sh{ echo "${kak_source%%/rc*}/../" }
 
 declare-option -docstring \
 "Default domain to access git repositories. Can be changed to any preferred domain, like gitlab, bitbucket, gitea, etc.
@@ -26,6 +26,10 @@ str plug_git_domain 'https://github.com'
 declare-option -docstring \
 "Sort sourced files by depth" \
 bool plug_depth_sort false
+
+declare-option -docstring \
+"Sort sourced files by depth" \
+bool plug_profile false
 
 declare-option -docstring \
 "Maximum amount of simultaneously active downloads when installing or updating all plugins
@@ -61,16 +65,24 @@ declare-option -hidden -docstring \
 str-list plug_domains
 
 # since we want to add highlighters to kak filetype we need to require kak module
-require-module kak
+# using `try' here since kakrc module may not be available in rare cases
+try %@
+    require-module kak
 
-# kakrc highlighters
-try %[
-    add-highlighter shared/kakrc/code/plug_keywords   regex (^|\h)\b(plug|do|config|load|domain|defer)\b(\h+)?((?=")|(?=')|(?=%)|(?=\w)) 0:keyword
-    add-highlighter shared/kakrc/code/plug_attributes regex (^|\h)\b(noload|ensure|branch|tag|commit|theme|(no-)?depth-sort)\b 0:attribute
-    add-highlighter shared/kakrc/plug_post_hooks      region -recurse '\{' '\bdo\K\h+%\{' '\}' ref sh
-] catch %{
-    echo -debug "plug.kak: Can't declare highlighters for 'kak' filetype."
-    echo -debug "          Detailed error: %val{error}"
+    try %$
+        add-highlighter shared/kakrc/code/plug_keywords   regex \b(plug|do|config|subset|domain|defer|demand|load-path|branch|tag|commit)\b 0:keyword
+        add-highlighter shared/kakrc/code/plug_attributes regex \b(noload|ensure|theme|(no-)?depth-sort)\b 0:attribute
+        add-highlighter shared/kakrc/plug_post_hooks1     region -recurse '\{' '\bdo\K\h+%\{' '\}' ref sh
+        add-highlighter shared/kakrc/plug_post_hooks2     region -recurse '\[' '\bdo\K\h+%\[' '\]' ref sh
+        add-highlighter shared/kakrc/plug_post_hooks3     region -recurse '\(' '\bdo\K\h+%\(' '\)' ref sh
+        add-highlighter shared/kakrc/plug_post_hooks4     region -recurse '<'  '\bdo\K\h+%<'  '>'  ref sh
+    $ catch %$
+        echo -debug "plug.kak: Can't declare highlighters for 'kak' filetype."
+        echo -debug "          Detailed error: %val{error}"
+    $
+@ catch %{
+    echo -debug "Can't require 'kak' module to declare highlighters for plug.kak."
+    echo -debug "Check if kakrc.kak is available in your autoload."
 }
 
 # *plug* highlighters
@@ -98,48 +110,53 @@ define-command -override -docstring \
 Switches:
     branch (tag, commit) <str>      checkout to <str> before loading plugin
     noload                          do not source plugin files
-    load <subset>                   source only <subset> of plugin files
+    subset <subset>                 source only <subset> of plugin files
+    load-path <path>                path for loading plugin from foreign location
     defer <module> <configurations> load plugin <configurations> only when <module> is loaded
     config <configurations>         plugin <configurations>" \
 plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} } %{ try %{
     evaluate-commands %sh{
+        [ "${kak_opt_plug_profile}" = "true" ] && start=$(date +%s%N)
         plugin="${1%%.git}"
         shift
         plugin_name="${plugin##*/}"
         plugin_opt_name=$(printf "%s\n" "${plugin_name}" | sed 's/[^a-zA-Z0-9_]/_/g')
         load_files='*.kak'
+        path_to_plugin="${kak_opt_plug_install_dir}/${plugin_name}"
 
         if [ $(expr "${kak_opt_plug_loaded_plugins}" : ".*${plugin}.*") -ne 0 ]; then
             printf "%s\n" "echo -markup %{{Information}${plugin_name} already loaded}"
             exit
         fi
 
-        if [ $(expr "${kak_opt_plug_plugins}" : ".*${plugin}.*") -eq 0 ]; then
-            printf "%s\n" "set-option -add global plug_plugins %{${plugin} }"
-        fi
-
+        [ $(expr "${kak_opt_plug_plugins}" : ".*${plugin}.*") -eq 0 ] && printf "%s\n" "set-option -add global plug_plugins %{${plugin} }"
         [ "${kak_opt_plug_depth_sort}" = "true" ] && depth_sort="true" || depth_sort="false"
 
         while [ $# -gt 0 ]; do
             case $1 in
                 (branch|tag|commit)
-                    branch_type=$1
+                    checkout_type=$1
                     shift
                     checkout="$1" ;;
                 (noload)
                     noload=1 ;;
-                (load)
+                (subset)
                     shift
-                    load=1
+                    subset=1
                     load_files="$1" ;;
+                (load-path)
+                    shift
+                    path_to_plugin=$(printf "%s\n" "$1" | sed "s:^\s*~/:${HOME}/:") ;;
                 (defer)
                     shift
                     module="$1"
                     shift
-                    deferred_conf=$(printf "%s\n" "$1" | sed "s/@/@@/g")
-                    deferred_conf=$(printf "%s\n%s\n" "hook global ModuleLoaded ${module} %@ ${deferred_conf} @")
+                    [ -z "${1##*@*}" ] && deferred_conf=$(printf "%s\n" "$1" | sed "s/@/@@/g") || deferred_conf="$1"
+                    deferred_conf=$(printf "%s\n" "hook global ModuleLoaded ${module} %@ ${deferred_conf} @")
                     configurations="${configurations}
                     ${deferred_conf}" ;;
+                (demand)
+                    demand=1 ;;
                 (do)
                     shift
                     hooks="${hooks} %{${plugin_name}} %{$1}" ;;
@@ -166,35 +183,30 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
             shift
         done
 
+        if [ -n "${demand}" ] && [ -n "${module}" ]; then
+            configurations="${configurations}
+                            require-module ${module}"
+        fi
+
         # bake configuration options. We need this in case plugins are not installed, but
         # their configurations are known to `plug.kak', so it can load those after installation
         # automatically.
-        if [ -n "${configurations}" ]; then
-            configurations=$(printf "%s\n" "${configurations}" | sed "s/&/&&/g")
-            printf "%s\n" "declare-option -hidden str plug_${plugin_opt_name}_conf %&${configurations}&"
-        else
-            printf "%s\n" "declare-option -hidden str plug_${plugin_opt_name}_conf"
-        fi
+        [ -z "${configurations##*&*}" ] && configurations=$(printf "%s\n" "${configurations}" | sed "s/&/&&/g")
+        printf "%s\n" "declare-option -hidden str plug_${plugin_opt_name}_conf %&${configurations}&"
+        [ -n "${hooks}" ] &&   printf "%s\n" "set-option -add global plug_post_hooks ${hooks}"
+        [ -n "${domains}" ] && printf "%s\n" "set-option -add global plug_domains ${domains}"
 
-        if [ -n "${hooks}" ]; then
-            printf "%s\n" "set-option -add global plug_post_hooks ${hooks}"
-        fi
-
-        if [ -n "${domains}" ]; then
-            printf "%s\n" "set-option -add global plug_domains ${domains}"
-        fi
-
-        if [ -n "${noload}" ] && [ -n "${load}" ]; then
+        if [ -n "${noload}" ] && [ -n "${subset}" ]; then
             printf "%s\n" "echo -debug %{Warning: plug.kak: ${plugin_name}: 'load' has higer priority than 'noload'}"
             noload=
         fi
 
-        if [ -d "${kak_opt_plug_install_dir}/${plugin##*/}" ]; then
+        if [ -d "${path_to_plugin}" ]; then
             if [ -n "${checkout}" ]; then
                 (
-                    cd "${kak_opt_plug_install_dir}/${plugin##*/}"
+                    cd "${path_to_plugin}"
                     [ -z "${GIT_TERMINAL_PROMPT}" ] && export GIT_TERMINAL_PROMPT=0
-                    if [ "${branch_type}" = "branch" ]; then
+                    if [ "${checkout_type}" = "branch" ]; then
                         current_branch=$(git branch | awk '/^\*/ { print $2 }')
                         [ "${current_branch}" != "${checkout}" ] && git fetch >/dev/null 2>&1
                     fi
@@ -211,15 +223,15 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
                     file="${file%"${file##*[![:space:]]}"}"
                     if [ "${depth_sort}" = "true" ]; then
                         # performance hungry place.
-                        find -L ${kak_opt_plug_install_dir}/${plugin_name} -path '*/.git' -prune -o -type f -name "${file}" -print | perl -e '
+                        find -L "${path_to_plugin}" -path '*/.git' -prune -o -type f -name "${file}" -print | perl -e '
                             print map  { $_->[0] }
                                   sort { $a->[1] <=> $b->[1] }
                                   map  { [$_, ($_ =~ s/^/source "/ && $_ =~ s/$/"/ && $_ =~ s/\//\//g)] }
                                            <>;'
                     else
                         # source files in order that `find' is returning
-                        # may or may not break some plugins
-                        find -L ${kak_opt_plug_install_dir}/${plugin_name} -path '*/.git' -prune -o -type f -name "${file}" -exec printf 'source "%s"\n' {} \;
+                        # may break some plugins
+                        find -L "${path_to_plugin}" -path '*/.git' -prune -o -type f -name "${file}" -exec printf 'source "%s"\n' {} \;
                     fi
                 done
             } fi
@@ -230,6 +242,7 @@ plug -params 1.. -shell-script-candidates %{ ls -1 ${kak_opt_plug_install_dir} }
                 printf "%s\n" "evaluate-commands plug-install ${plugin}"
             fi
         fi
+        [ "${kak_opt_plug_profile}" = "true" ] && printf "%s\n" "echo -debug %{'$plugin' loaded in $(echo "($(date +%s%N)-${start})/1000000" | bc) ms}"
     }
 } catch %{
     echo -debug "plug.kak: Error occured while loading '%arg{1}' plugin:"
@@ -467,7 +480,7 @@ plug-eval-hooks -params 1 %{ nop %sh{ (
 ) > /dev/null 2>&1 < /dev/null & }}
 
 define-command -override \
--docstring "plug-list [<noupdate>]: list all installed plugins in *plug* buffer. Chacks updates by default unless <noupdate> is specified." \
+-docstring "plug-list [<noupdate>]: list all installed plugins in *plug* buffer. Checks updates by default unless <noupdate> is specified." \
 plug-list -params ..1 %{ evaluate-commands -try-client %opt{toolsclient} %sh{
     noupdate=$1
     tmp=$(mktemp -d "${TMPDIR:-/tmp}/plug-kak.XXXXXXXX")
@@ -484,7 +497,8 @@ plug-list -params ..1 %{ evaluate-commands -try-client %opt{toolsclient} %sh{
                    map buffer normal 'U' ':<space>plug-fifo-operate update<ret>'
                    map buffer normal 'I' ':<space>plug-fifo-operate install<ret>'
                    map buffer normal 'L' ':<space>plug-fifo-operate log<ret>'
-                   map buffer normal 'D' ':<space>plug-fifo-operate clean<ret>'"
+                   map buffer normal 'D' ':<space>plug-fifo-operate clean<ret>'
+                   map buffer normal 'R' ':<space>plug-fifo-operate hooks<ret>'"
 
     # get those plugins which were loaded by plug.kak
     eval "set -- ${kak_opt_plug_plugins}"
@@ -569,9 +583,11 @@ plug-fifo-operate -params 1 %{ evaluate-commands -save-regs t %{
                 printf "%s\n" "echo -markup %{{Information}'${plugin}' already installed}"
             fi ;;
         (clean)
-                printf "%s\n" "plug-clean ${plugin}" ;;
+            printf "%s\n" "plug-clean ${plugin}" ;;
         (log)
             printf "%s\n" "plug-display-log ${plugin}" ;;
+        (hooks)
+            printf "%s\n" "plug-eval-hooks ${plugin##*/}" ;;
         (*)
             ;;
         esac
@@ -595,11 +611,12 @@ plug-display-log -params 1 %{ evaluate-commands %sh{
 define-command -override \
 -docstring "displays help message" \
 plug-show-help %{
-    info -title "plug.kak Help" "h,j,k,l - Move
-<ret> - Update or install plugin
-I - Install plugin
-U - Update plugin
-D - clean plugin
-L - show log, if any
-H - Show this message"
+    info -title "plug.kak Help" "h,j,k,l: Move
+<ret>:   Update or Install plugin
+I:       Install plugin
+U:       Update plugin
+D:       clean (Delete) plugin
+L:       show Log, if any
+R:       Run post-update hooks manually
+H        show Help message"
 }

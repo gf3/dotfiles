@@ -1,7 +1,7 @@
 [user]
   name  = Gianni Chiappetta
   email = gianni@runlevel6.org
-  ; signingkey = 644D5709D53E39CE
+  signingkey = 644D5709D53E39CE
 
 [alias]
   br   = branch
@@ -45,7 +45,7 @@
   enabled = 1
 
 [commit]
-  ; gpgsign = true
+  gpgsign = true
 
 [pager]
   log  = diffr | less --tabs=2 -R
