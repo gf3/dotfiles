@@ -2,6 +2,10 @@
 
 This repository contains the configuration files for the tools I use day-to-day.
 
+**Note**: these dotfiles are now for the [fish shell][fish] and [Kakoune][kak]
+only, if you're looking for the *bash* or *zsh* or *vim* or *neovim* versions 
+you'll want to  check out [version 2.2.0][v2].
+
 These configurations are designed to work out-of-the-box on both MacOS and
 Ubuntu Linux, but can be easily adapted to other distributions. 
 
@@ -56,4 +60,5 @@ which has been patched with additional glyphs.
 [lsd]: https://github.com/Peltoche/lsd
 [pywal]: https://github.com/dylanaraps/pywal
 [ripgrep]: https://github.com/BurntSushi/ripgrep
+[v2]: https://github.com/gf3/dotfiles/tree/v2.2.0
 [yadm]: https://yadm.io/
