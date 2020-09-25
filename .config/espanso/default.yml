@@ -33,6 +33,10 @@ matches:
   - trigger: "@addr"
     replace: "4 Ashby Pl., Toronto, ON, M5A 3E3"
 
+  # Misc.
+  - trigger: "@tm"
+    replace: "™"
+
   # Dates
   - trigger: "@date"
     replace: "{{mydate}}"
