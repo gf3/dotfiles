@@ -116,8 +116,6 @@ plug "kak-lsp/kak-lsp" do %{
     }
 
     set global lsp_hover_max_lines 15
-
-    eval %sh{kak-lsp --kakoune -s $kak_session}
 }
 plug "https://gitlab.com/Screwtapello/kakoune-cargo" config %{
     map -docstring "Cargo commands" global user <c> %{:enter-user-mode cargo<ret>}
