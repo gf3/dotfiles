@@ -2,8 +2,8 @@
 
 This repository contains the configuration files for the tools I use day-to-day.
 
-These configurations are designed to work out-of-the-box on both MacOS and Void
-Linux, but can be easily adapted to other distributions. 
+These configurations are designed to work out-of-the-box on both MacOS and
+Ubuntu Linux, but can be easily adapted to other distributions. 
 
 ## Installation
 
@@ -20,19 +20,40 @@ Otherwise you can copy over individual files and directories as needed.
 
 ## Tools
 
-* [bat][bat] - `cat` replacement with syntax highlighting
-* [diffr][diffr] - `diff` replacement with better highlighting
-* [Fish][fish] - Pretty and easy to use shell
-* [Kakoune][kak] - Vim-like editor
-* [Kitty][kitty] - GPU-accelerated terminal emulator
-* [lsd][lsd] - `ls` replacement
-* [pywal][pywal] - Colour scheme generation and management
+* [bat][bat] - A cat(1) clone with wings. 
+* [diffr][diffr] - Yet another diff highlighting tool 
+* [espanso][espanso] - Cross-platform Text Expander written in Rust
+* [fd][fd] - A simple, fast and user-friendly alternative to 'find'
+* [Fish][fish] - The user-friendly command line shell.
+* [fzf][fzf] - 🌸 A command-line fuzzy finder
+* [glow][glow] - Render markdown on the CLI, with pizzazz! 💅🏻
+* [jq][jq] - Command-line JSON processor 
+* [Kakoune][kak] - Modal editor — Faster as in fewer keystrokes — Multiple selections — Orthogonal design
+* [Kitty][kitty] - the fast, featureful, GPU based terminal emulator
+* [lazygit][lazygit] - simple terminal UI for git commands 
+* [lsd][lsd] - The next gen ls command
+* [pywal][pywal] - 🎨 Generate and change color-schemes on the fly.
+* [ripgrep][ripgrep] - ripgrep recursively searches directories for a regex pattern
+
+## Fonts
+
+I use the [Hack Nerd Font][hack-nerd-font] which is the [Hack][hack-font] font
+which has been patched with additional glyphs.
 
 [bat]: https://github.com/sharkdp/bat
 [diffr]: https://github.com/mookid/diffr
+[espanso]: https://github.com/federico-terzi/espanso
+[fd]: https://github.com/sharkdp/fd
 [fish]: https://fishshell.com/
+[fzf]: https://github.com/junegunn/fzf
+[glow]: https://github.com/charmbracelet/glow
+[hack-font]: https://sourcefoundry.org/hack/
+[hack-nerd-font]: https://github.com/ryanoasis/nerd-fonts#patched-fonts
+[jq]: https://github.com/stedolan/jq
 [kak]: http://kakoune.org/
 [kitty]: https://sw.kovidgoyal.net/kitty/
+[lazygit]: https://github.com/jesseduffield/lazygit
 [lsd]: https://github.com/Peltoche/lsd
 [pywal]: https://github.com/dylanaraps/pywal
+[ripgrep]: https://github.com/BurntSushi/ripgrep
 [yadm]: https://yadm.io/
