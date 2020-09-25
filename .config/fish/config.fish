@@ -1,5 +1,7 @@
 set fish_greeting
 
+# fisher add fishpkg/fish-prompt-mono
+
 set -x EDITOR kak
 set -x FZF_LEGACY_KEYBINDINGS 0
 set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
@@ -13,6 +15,7 @@ set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
 # Paths
 test -d /usr/local/share/npm/bin             ; and set PATH /usr/local/share/npm/bin $PATH
 test -d /usr/local/heroku/bin                ; and set PATH /usr/local/heroku/bin $PATH
+test -d /usr/local/go/bin                    ; and set PATH /usr/local/go/bin $PATH
 test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
 test -d ~/.bin                               ; and set PATH ~/.bin $PATH
@@ -43,7 +46,11 @@ function tunnel   ; ssh -D 8080 -C -N $argv ; end
 # Fuzzy find & edit
 function vp
   if test (count $argv) -gt 0
-    command $EDITOR $argv
+    if set -q KAKOUNE_SESSION
+      command kak -c $KAKOUNE_SESSION $argv
+    else
+      command $EDITOR $argv
+    end
   else
     fzf -m | xargs $EDITOR
   end
