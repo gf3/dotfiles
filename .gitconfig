@@ -1,7 +1,6 @@
 [user]
   name  = Gianni Chiappetta
   email = gianni@runlevel6.org
-  signingkey = 644D5709D53E39CE
 
 [alias]
   br   = branch
@@ -45,34 +44,22 @@
   enabled = 1
 
 [commit]
-  gpgsign = true
-
-[pager]
-  log  = diffr | less --tabs=2 -R
-  show = diffr | less --tabs=2 -R
-  diff = diffr | less --tabs=2 -R
+  ; gpgsign = true
 
 [protocol]
   version = 2
 
-[credential]
-  ; helper = osxkeychain
+[core]
+    pager = delta
 
-[url "git@github.com:"]
-  insteadOf     = "gh:"
-  pushInsteadOf = "github:"
-  pushInsteadOf = "git://github.com/"
+[interactive]
+    diffFilter = delta --color-only
 
-[url "git://github.com/"]
-  insteadOf = "github:"
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
 
-[url "git@gist.github.com:"]
-  insteadOf     = "gst:"
-  pushInsteadOf = "gist:"
-  pushInsteadOf = "git://gist.github.com/"
-
-[url "git://gist.github.com/"]
-  insteadOf = "gist:"
-
-[url "git@heroku.com:"]
-  insteadOf = "heroku:"
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none

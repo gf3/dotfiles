@@ -21,7 +21,7 @@ Otherwise you can copy over individual files and directories as needed.
 ## Tools
 
 * [bat][bat] - A cat(1) clone with wings. 
-* [diffr][diffr] - Yet another diff highlighting tool 
+* [delta][delta] - A viewer for git and diff output
 * [espanso][espanso] - Cross-platform Text Expander written in Rust
 * [fd][fd] - A simple, fast and user-friendly alternative to 'find'
 * [Fish][fish] - The user-friendly command line shell.
@@ -41,7 +41,7 @@ I use the [Hack Nerd Font][hack-nerd-font] which is the [Hack][hack-font] font
 which has been patched with additional glyphs.
 
 [bat]: https://github.com/sharkdp/bat
-[diffr]: https://github.com/mookid/diffr
+[delta]: https://github.com/dandavison/delta
 [espanso]: https://github.com/federico-terzi/espanso
 [fd]: https://github.com/sharkdp/fd
 [fish]: https://fishshell.com/
