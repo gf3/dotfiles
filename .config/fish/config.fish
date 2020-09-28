@@ -2,6 +2,8 @@ set fish_greeting
 
 # fisher add fishpkg/fish-prompt-mono
 
+set -x COMPOSE_DOCKER_CLI_BUILD 1
+set -x DOCKER_BUILDKIT 1
 set -x EDITOR kak
 set -x FZF_LEGACY_KEYBINDINGS 0
 set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
