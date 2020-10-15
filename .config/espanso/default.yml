@@ -12,15 +12,15 @@ matches:
     replace: "Hi there!"
 
   # Arrows
-  - trigger: ":>>"
+  - trigger: ":>"
     replace: "→"
-  - trigger: ":<<"
+  - trigger: ":<"
     replace: "←"
-  - trigger: ":^^"
+  - trigger: ":^"
     replace: "↑"
-  - trigger: ":vv"
+  - trigger: ":v"
     replace: "↓"
-  - trigger: ":<>"
+  - trigger: "<>"
     replace: "↔"
 
   # Emails
@@ -33,9 +33,11 @@ matches:
   - trigger: "@addr"
     replace: "4 Ashby Pl., Toronto, ON, M5A 3E3"
 
-  # Misc.
+  # Typography
   - trigger: "@tm"
     replace: "™"
+  - trigger: "@-"
+    replace: "—"
 
   # Dates
   - trigger: "@date"
