@@ -118,7 +118,12 @@ plug "kak-lsp/kak-lsp" do %{
     set global lsp_hover_max_lines 15
 }
 plug "https://gitlab.com/Screwtapello/kakoune-cargo" config %{
-    map -docstring "Cargo commands" global user <c> %{:enter-user-mode cargo<ret>}
+    hook global WinSetOption filetype=(rust) %{
+        map -docstring "Cargo commands" buffer user <a> %{:enter-user-mode cargo<ret>}
+    }
+}
+plug "https://gitlab.com/FlyingWombat/case.kak" config %{
+    map -docstring "Case conversion" global user <c> %{:enter-user-mode case<ret>}
 }
 
 # Mappings
