@@ -45,6 +45,11 @@ function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 
+# Gruvbox command line colors
+set -x fish_color_command 689d6a
+set -x fish_color_param 83a598
+set -x fish_color_quote d79921
+
 # Fuzzy find & edit
 function vp
   if test (count $argv) -gt 0
