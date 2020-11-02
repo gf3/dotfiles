@@ -107,12 +107,12 @@ args = ["--stdio"]
 [language.javascript]
 filetypes = ["javascript"]
 roots = ["package.json"]
-command = "/home/gianni/.fnm/node-versions/v14.9.0/installation/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio.js"
+command = "/home/gianni/.fnm/node-versions/v12.18.4/installation/bin/javascript-typescript-stdio"
 
 [language.typescript]
 filetypes = ["typescript"]
 roots = ["tsconfig.json"]
-command = "/home/gianni/.fnm/node-versions/v12.18.4/installation/lib/node_modules/typescript-language-server/lib/cli.js"
+command = "/home/gianni/.fnm/node-versions/v12.18.4/installation/bin/typescript-language-server"
 args = ["--stdio"]
 
 [language.json]

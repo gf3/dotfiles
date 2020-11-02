@@ -122,6 +122,20 @@ plug "https://gitlab.com/Screwtapello/kakoune-cargo" config %{
         map -docstring "Cargo commands" buffer user <a> %{:enter-user-mode cargo<ret>}
     }
 }
+plug "https://gitlab.com/Screwtapello/kakoune-state-save" config %{
+    hook global KakBegin .* %{
+        state-save-reg-load colon
+        state-save-reg-load pipe
+        state-save-reg-load slash
+    }
+    hook global KakEnd .* %{
+        state-save-reg-save colon
+        state-save-reg-save pipe
+        state-save-reg-save slash
+    }
+    hook global FocusOut .* %{ state-save-reg-save dquote }
+    hook global FocusIn  .* %{ state-save-reg-load dquote }
+}
 plug "https://gitlab.com/FlyingWombat/case.kak" config %{
     map -docstring "Case conversion" global user <c> %{:enter-user-mode case<ret>}
 }
