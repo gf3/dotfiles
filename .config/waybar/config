@@ -1,0 +1,95 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["pulseaudio", "temperature", "cpu", "memory", "backlight", "battery", "network", "tray", "clock"],
+  "sway/mode": {
+    "format": " {}"
+  },
+  "sway/workspaces": {
+    "disable-markup": false,
+    "disable-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1 <span font='Font Awesome 5 Free 11'> </span>",
+      "2": "2 <span font='Font Awesome 5 Free 11'> </span>",
+      "3": "3 <span font='Font Awesome 5 Free 11'> </span>",
+      "4": "4 <span font='Font Awesome 5 Free 11'> </span>",
+      "5": "5 <span font='Font Awesome 5 Free 11'> </span>",
+      "6": "6 <span font='Font Awesome 5 Free 11'> </span>"
+    }
+  },
+  "sway/window": {
+    "max-length": 80
+  },
+  "clock": {
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%A, %B %d}",
+    "on-click": "gnome-calendar",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+  },
+  "cpu": {
+    "format": " {}%",
+    "interval": 1
+  },
+  "memory": {
+    "format": " {}%",
+    "interval": 1
+  },
+  "battery": {
+    "format-alt": "{time} {icon}",
+    "format": "{capacity}% {icon}",
+    "format-charging": " {capacity}%",
+    "format-discharging": "{icon} {capacity}% ({time})",
+    "format-icons": ["", "", "", "", ""],
+    "format-plugged": " {capacity}%",
+    "interval": 60,
+    "max-length": 25,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  },
+  "network": {
+    "format-alt-click": "click-right",
+    "format-alt": "<span font='Font Awesome 5 Free 10'></span>  {essid} ({signalStrength}%)",
+    "format-disconnected": "⚠ Disconnected",
+    "format-ethernet": " {ifname}",
+    "format": "{icon}",
+    "format-wifi": "<span font='Font Awesome 5 Free 10'></span>  {essid}",
+    "tooltip-format": "{ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
+    },
+    "format-muted": "",
+    "on-click": "pavucontrol",
+    "scroll-step": 1
+  },
+  "backlight": {
+    "format-alt-click": "click-right",
+    "format-alt": "{icon} {percent}%",
+    "format": "{icon}",
+    "format-icons": ["🌑", "🌒", "🌓", "🌔", "🌕"],
+    "interval": 5,
+    "on-scroll-down": "pkexec /usr/bin/brillo -equ 1500 -A 1",
+    "on-scroll-up": "pkexec /usr/bin/brillo -equ 1500 -U 1"
+  },
+  "temperature": {
+    "format": "<span font='Font Awesome 5 Free 9'></span> {temperatureC:3}°C"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  }
+}

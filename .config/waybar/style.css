@@ -1,0 +1,275 @@
+* {
+   border: none;
+   font-size: 13px;
+   margin: 2;
+   font-family: Google Sans, Product Sans ,Arial, Helvetica, sans-serif;
+}
+
+window#waybar {
+  background-color: #3b4252;
+  color: #ffffff;
+}
+
+#workspaces {
+  background-color:  #434c5e;
+  padding: 1 5 1 5;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-right: 10;
+}
+
+#workspaces button {
+  font-size: 14px;
+  border-radius: 0px;
+  margin: 0;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+#window {
+  background-color: transparent;
+  color: #2e3440;
+	padding-right: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    color: #5e81ac;
+}
+
+#workspaces button.focused {
+    color: #81a1c1;
+}
+
+#workspaces button.urgent {
+    color: #eb4d4b;
+}
+
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
+}
+
+/* TASKBAR */
+
+#taskbar {
+  background-color: transparent;
+  font-size: 15px;
+  border-radius: 15px;
+  margin-right: 7;
+}
+
+#taskbar button {
+	border-radius: 0px;
+  margin: 0;
+	padding: 0 8 0 8;
+  background-color: transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+#taskbar button.active {
+    color: #81a1c1;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid #81a1c1;
+}
+
+#taskbar button.minimized {
+    color: #7c818c;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid #7c818c;
+}
+
+#taskbar button:hover {
+    box-shadow: inherit;
+    color: #5e81ac;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid #5e81ac;
+}
+
+/* BROWSER BOOKMARKS */
+
+#custom-newtab, #custom-name, #custom-github,#custom-reddit,#custom-crunchyroll,#custom-youtube,#custom-mail {	
+  background-color:  #3b4252;
+  font-size: 14px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 13 0 13;
+}
+
+#custom-newtab {
+  color: #bf616a;
+  font-size: 18px;
+  border-radius: 10px 0 0 10px;
+}
+
+#custom-github {
+	color: #d08770;
+}
+
+#custom-reddit {
+	color: #ebcb8b;
+}
+
+#custom-crunchyroll {
+  font-size: 13px;
+  color: #a3be8c;
+  margin-right: 15px;
+  border-radius: 0 10px 10px 0;
+}
+
+#custom-youtube {
+	font-size: 13px;
+	color: #b48ead;
+}
+
+#custom-mail {
+  color: #88c0d0;
+}
+
+/* WIDGETS */
+
+#custom-name {
+  border-radius: 15px;
+  margin-right: 10;
+}
+
+#cpu, #idle_inhibitor, #custom-media, #clock, #custom-pacman, #memory, #backlight, #disk, #network, #pulseaudio, #custom-weather, #temperature, #mpd {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0px 10px 0px 10px;
+}
+
+#disk {
+  color:#b48ead;
+}
+
+#memory {
+  color:#d08770;
+}
+
+#cpu {
+  color:#bf616a;
+}
+
+#custom-weather {
+  color:#81a1c1;
+}
+
+#clock {
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#custom-weather {
+  padding: 0px 8px 0px 8px;
+}
+
+#custom-media {
+  border-radius: 10px;
+}
+
+#custom-media.playing {
+  background-color: #434c5e;
+}
+
+#custom-media.paused {
+}
+
+#custom-pacman {
+	padding: 0px 8px 0px 8px;
+  color: #ebcb8b;
+  font-weight: 600;
+}
+
+#custom-playerctl {
+  border-radius: 15px
+}
+
+#pulseaudio {
+  color:#ebcb8b;
+  border-radius: 10px 0 0 10px;
+}
+
+#pulseaudio.muted {
+  background-color: #b1b190;
+  color: #2a5c45;
+}
+
+#temperature{
+  color: #88c0d0;
+}
+
+#temperature.critical {
+  color: #eb4d4b;
+}
+
+#tray {
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #3b4252 ;
+	padding: 0px 12px 0px 8px;
+  border-radius: 0 10px 10px 0;
+  color: #8fbcbb;
+}
+
+#battery {
+  color: #8fbcbb;
+	padding: 0px 8px 0px 8px;
+}
+
+#battery.charging {
+  color: #ffffff;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#idle_inhibitor {
+  font-size: 20px;
+  color: #6f7787;
+}
+
+#idle_inhibitor.activated {
+  color: #ffffff;
+}
+
+#custom-power {
+  font-size: 17px;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
