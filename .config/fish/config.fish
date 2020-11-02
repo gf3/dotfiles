@@ -24,6 +24,7 @@ test -d ~/.bin                               ; and set PATH ~/.bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
 test -d ~/.cargo/bin                         ; and set PATH ~/.cargo/bin $PATH
 test -d ~/.fnm                               ; and set PATH ~/.fnm $PATH
+test -d ~/.local/bin                         ; and set PATH ~/.local/bin $PATH
 
 # Navigation
 function ..    ; cd .. ; end
@@ -44,6 +45,7 @@ function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
+function ks       ; command kak-shell ; end
 
 # Gruvbox command line colors
 set -x fish_color_command 689d6a
