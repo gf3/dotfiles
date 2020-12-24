@@ -34,6 +34,7 @@ font pango: Google Sans 13
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 set $image ~/.config/wallpaper.png
 output * bg $image fill
+
 #
 # Example configuration:
 #
@@ -43,7 +44,6 @@ output * bg $image fill
 
 output eDP-1 pos 0 0 res 1920x1080
 
-# output DP-2 scale 2
 output DP-2 pos 1920 0 res 2560x1440
 
 ### Idle configuration
@@ -254,6 +254,7 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym Print exec ~/.local/bin/screenshot.sh
 
 #
 # Status Bar:
@@ -275,7 +276,6 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 xwayland enable
 
-exec_always "systemctl --user import-environment"
 
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
@@ -303,14 +303,16 @@ assign [class="Slack"] 5
 
 for_window [urgent="latest"] focus
 
-exec thunar --daemon
-exec udiskie --automount --tray --notify --appindicator
-exec mako
+exec_always "systemctl --user import-environment"
+exec --no-startup-id libinput-gestures-setup start
 exec gammastep-indicator
+exec mako
 exec swayidle -w \
          timeout 300  'swaylock -f -c 000000 -i "$image"' \
          timeout 600  'swaymsg "output * dpms off"' \
               resume  'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000 -i "$image"'
+exec thunar --daemon
+exec udiskie --automount --tray --notify --appindicator
 
 include /etc/sway/config.d/*

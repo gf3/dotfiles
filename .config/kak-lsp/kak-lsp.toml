@@ -86,7 +86,7 @@ elmTestPath = "elm-test"
 
 [language.go]
 filetypes = ["go"]
-roots = ["Gopkg.toml", "go.mod", ".git", ".hg"]
+roots = ["Gopkg.toml", "go.mod", ".git"]
 command = "gopls"
 offset_encoding = "utf-8"
 
@@ -104,10 +104,10 @@ roots = ["package.json"]
 command = "html-languageserver"
 args = ["--stdio"]
 
-[language.javascript]
-filetypes = ["javascript"]
-roots = ["package.json"]
-command = "/home/gianni/.fnm/node-versions/v12.18.4/installation/bin/javascript-typescript-stdio"
+# [language.javascript]
+# filetypes = ["javascript"]
+# roots = ["package.json"]
+# command = "/home/gianni/.fnm/node-versions/v12.18.4/installation/bin/javascript-typescript-stdio"
 
 [language.typescript]
 filetypes = ["typescript"]

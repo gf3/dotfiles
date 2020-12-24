@@ -8,7 +8,7 @@ hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines -hlcursor 
 set global grepcmd 'rg -Hn'
 set global indentwidth 2
 set global scrolloff 6,6
-set global tabstop 8
+set global tabstop 2
 set global ui_options ncurses_assistant=clippy ncurses_wheel_down_button=0
 set global ui_options ncurses_set_title=no
 
@@ -36,6 +36,13 @@ add-highlighter global/ dynregex '%opt{curword}' 0:CurWord
 # ──────────────────────────────────
 
 def find -params 1 -shell-script-candidates %{ find -type f } %{ edit %arg{1} }
+
+# Create parent directories if missing
+# ────────────────────────────────────
+
+hook global BufWritePre .* %{ nop %sh{ dir=$(dirname $kak_bufname)
+    [ -d $dir ] || mkdir --parents $dir
+}}
 
 # Plugins
 # ───────
@@ -75,7 +82,7 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
     # these languages will use `expandtab' behavior
     hook global WinSetOption filetype=(javascript|typescript|rust|markdown|kak|lisp|scheme|sh|perl) expandtab
     # these languages will use `noexpandtab' behavior
-    hook global WinSetOption filetype=(makefile|gas) noexpandtab
+    hook global WinSetOption filetype=(makefile|gas|go) noexpandtab
     # these languages will use `smarttab' behavior
     hook global WinSetOption filetype=(c|cpp) smarttab
 }
