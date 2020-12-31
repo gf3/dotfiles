@@ -112,13 +112,13 @@ args = ["--stdio"]
 [language.typescript]
 filetypes = ["typescript"]
 roots = ["tsconfig.json"]
-command = "/home/gianni/.fnm/node-versions/v12.18.4/installation/bin/typescript-language-server"
+command = "typescript-language-server"
 args = ["--stdio"]
 
 [language.json]
 filetypes = ["json"]
 roots = ["package.json"]
-command = "json-languageserver"
+command = "vscode-json-languageserver"
 args = ["--stdio"]
 
 [language.latex]
