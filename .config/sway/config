@@ -24,9 +24,10 @@ set $term kitty
 # set $menu wofi --allow-images --allow-markup --gtk-dark --show run
 # set $menu ulauncher
 
-set $menu sgtk-menu --center
+# set $menu sgtk-menu --center
+set $menu wofi --allow-images --allow-markup --gtk-dark --show drun,run
 
-font pango: Google Sans 13
+font pango: SF Pro Display 11
 
 ### Output configuration
 #
@@ -113,8 +114,7 @@ input "10730:258:Kinesis_Advantage2_Keyboard" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+Space exec $menu
-    bindsym $mod+Alt+Space exec nwgdmenu
+    bindsym $mod+p exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -293,6 +293,8 @@ bar {
     swaybar_command waybar
 }
 
+seat * hide_cursor 3000
+
 default_border pixel 3
 gaps inner 20
 gaps outer 10
@@ -302,17 +304,17 @@ assign [class="QueryAssist"] 3
 assign [class="Slack"] 5
 
 for_window [urgent="latest"] focus
+for_window [window_role="pop-up"] floating enable
 
 exec_always "systemctl --user import-environment"
 exec --no-startup-id libinput-gestures-setup start
-exec gammastep-indicator
+exec wlsunset
 exec mako
 exec swayidle -w \
-         timeout 300  'swaylock -f -c 000000 -i "$image"' \
+         timeout 300  'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5' \
          timeout 600  'swaymsg "output * dpms off"' \
               resume  'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000 -i "$image"'
-exec thunar --daemon
+         before-sleep 'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5'
 exec udiskie --automount --tray --notify --appindicator
 
 include /etc/sway/config.d/*
