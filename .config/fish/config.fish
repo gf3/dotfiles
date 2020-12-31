@@ -164,7 +164,7 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 
 # fnm
 if type -q fnm
-  fnm env --multi --use-on-cd | source
+  fnm env --use-on-cd | source
 end
 
 # brew
