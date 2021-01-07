@@ -5,15 +5,16 @@ set fish_greeting
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x DOCKER_BUILDKIT 1
 set -x EDITOR kak
-set -x FZF_LEGACY_KEYBINDINGS 0
-set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
+set -x FZF_LEGACY_KEYBINDINGS 0
 set -x GOPATH ~/.go
 set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
-set -x LANG en_US.UTF-8
-set -x LC_ALL en_US.UTF-8
+set -x LANG en_CA.UTF-8
+set -x LC_ALL en_CA.UTF-8
 set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
+set -x RUST_BACKTRACE 1
 
 # Paths
 test -d /usr/local/share/npm/bin             ; and set PATH /usr/local/share/npm/bin $PATH
@@ -24,7 +25,6 @@ test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
 test -d ~/.bin                               ; and set PATH ~/.bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
 test -d ~/.cargo/bin                         ; and set PATH ~/.cargo/bin $PATH
-test -d ~/.fnm                               ; and set PATH ~/.fnm $PATH
 test -d ~/.local/bin                         ; and set PATH ~/.local/bin $PATH
 test -d $GOPATH/bin                          ; and set PATH $GOPATH/bin $PATH
 
@@ -43,9 +43,10 @@ function g        ; git $argv ; end
 function grep     ; command grep --color=auto $argv ; end
 function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end
 function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
-function ks       ; command kak-shell ; end
+function ks       ; command kak-shell $argv ; end
 function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
+function ls       ; command lsd $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 
@@ -164,7 +165,8 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 
 # fnm
 if type -q fnm
-  fnm env --use-on-cd | source
+  fnm env --shell fish --use-on-cd | source
+  fnm completions --shell fish | source
 end
 
 # brew
