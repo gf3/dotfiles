@@ -82,7 +82,15 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
   natural_scroll enabled
 }
 
-input "1452:613:Apple_Inc._Magic_Trackpad_2_Mouse" {
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+  accel_profile adaptive
+  dwt enabled
+  drag enabled
+  tap enabled
+  natural_scroll enabled
+}
+
+input "1452:613:Apple_Inc._Magic_Trackpad_2" {
   accel_profile adaptive
   dwt disabled
   drag enabled
@@ -111,7 +119,7 @@ input "10730:258:Kinesis_Advantage2_Keyboard" {
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+w kill
 
     # Start your launcher
     bindsym $mod+p exec $menu
@@ -192,7 +200,7 @@ input "10730:258:Kinesis_Advantage2_Keyboard" {
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
+    bindsym $mod+t layout tabbed
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
@@ -254,7 +262,17 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym Print exec ~/.local/bin/screenshot.sh
+
+# Screenshots:
+# Cmd+Ctrl+Print: Current window
+# Cmd+Print: Select area
+# Print: Current output
+# Cmd+Shift+Print: Select a window
+
+bindsym Mod4+Ctrl+Print   exec grimshot --notify save active
+bindsym Mod4+Print        exec grimshot --notify save area
+bindsym Print             exec grimshot --notify save output
+bindsym Mod4+Shift+Print  exec grimshot --notify save window
 
 #
 # Status Bar:
@@ -305,9 +323,11 @@ assign [class="Slack"] 5
 
 for_window [urgent="latest"] focus
 for_window [window_role="pop-up"] floating enable
+for_window [title="Firefox — Sharing Indicator"] floating enable
 
 exec_always "systemctl --user import-environment"
 exec --no-startup-id libinput-gestures-setup start
+exec emacs --daemon
 exec wlsunset
 exec mako
 exec swayidle -w \
