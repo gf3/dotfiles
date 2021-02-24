@@ -65,3 +65,5 @@
     file-decoration-style = none
 [init]
 	defaultBranch = main
+[github]
+	user = gf3
