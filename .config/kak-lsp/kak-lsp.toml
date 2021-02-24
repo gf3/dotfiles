@@ -90,6 +90,12 @@ roots = ["Gopkg.toml", "go.mod", ".git"]
 command = "gopls"
 offset_encoding = "utf-8"
 
+[language.graphql]
+filetypes = ["graphql"]
+roots = ["package.json", "go.mod", ".git"]
+command = "graphql-lsp"
+args = ["server"]
+
 [language.haskell]
 filetypes = ["haskell"]
 roots = ["Setup.hs", "stack.yaml", "*.cabal"]

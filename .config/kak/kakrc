@@ -52,8 +52,14 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "alexherbo2/prelude.kak"
 plug "alexherbo2/terminal-mode.kak"
 plug "alexherbo2/connect.kak" config %{
+    hook global ModuleLoaded kitty %{
+      alias global terminal kitty-terminal
+      alias global popup kitty-terminal
+    }
+
     require-module connect
     require-module connect-fzf
+    require-module connect-wofi
 
     alias global explore-files fzf-files
     alias global explore-buffers fzf-buffers
