@@ -34,8 +34,7 @@
         "custom/keyboard-layout",
         "battery",
         "tray",
-        "clock#date",
-        "clock#time"
+        "clock#date"
     ],
 
 
@@ -63,16 +62,11 @@
         "tooltip": true
     },
 
-    "clock#time": {
-        "interval": 1,
-        "format": "{:%H:%M}",
-        "tooltip": false
-    },
-
     "clock#date": {
       "interval": 10,
-      "format": "  {:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+      "format": "  {:%b. %e, %Y   %l:%M %p}", // Icon: calendar-alt
+      "on-click": "gnome-calendar",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
 
     "cpu": {
