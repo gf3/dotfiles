@@ -37,7 +37,8 @@ This function should only modify configuration layer settings."
    ;; Uncomment some layer names and press `SPC f e R'  or
    ;; `M-m f e R' (Emacs style) to install them.
    ;; ----------------------------------------------------------------
-   '(html
+   '(helm
+     html
      react
      shell-scripts
      yaml
@@ -56,21 +57,29 @@ This function should only modify configuration layer settings."
                  javascript-repl 'nodejs
                  node-add-modules-path t)
      docker
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-use-company-box t
+                      auto-completion-enable-sort-by-usage t)
      better-defaults
      emacs-lisp
      emoji
      (git :variables git-gutter-use-fringe t)
      graphql
-     helm
      lsp
      markdown
      multiple-cursors
      (org :variables
           org-enable-github-support t
-          org-projectile-file "~/TODOs.org")
+          org-enable-org-journal-support t
+          org-enable-hugo-support t
+          ;; org-enable-trello-support t
+          org-enable-sticky-header t
+          org-projectile-file "~/org/TODO.org"
+          org-journal-dir "~/org/journal/")
      syntax-checking
-     version-control
+     ;; version-control
      treemacs)
 
 
@@ -82,7 +91,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(drag-stuff gruvbox-theme)
+   dotspacemacs-additional-packages '(drag-stuff eterm-256color gruvbox-theme)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -205,6 +214,8 @@ It should only modify the values of Spacemacs settings."
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
    dotspacemacs-startup-lists '((recents . 5)
+                                (agenda . 5)
+                                (todos . 5)
                                 (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
@@ -244,7 +255,8 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   ;; dotspacemacs-mode-line-theme '(spacemacs :separator wave :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(doom)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -314,7 +326,7 @@ It should only modify the values of Spacemacs settings."
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
-   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-auto-save-file-location nil
 
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
@@ -535,6 +547,18 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; eterm-256color
+  (add-hook 'term-mode-hook #'eterm-256color-mode)
+  ;; Git editor
+  (global-git-commit-mode t)
+  ;; Magit repositories
+  (setq magit-repository-directories '("~/Code/github.com/"))
+  ;; Org journal files
+  (setq org-journal-dir "~/org/journal/")
+  ;; Org agenda files
+  (setq org-agenda-files (list "~/org/TODO.org"))
+  ;; Disable lock files
+  (setq create-lockfiles nil)
   ;; Drag lines up
   (define-key evil-normal-state-map (kbd "<up>") 'drag-stuff-up)
   (define-key evil-visual-state-map (kbd "<up>") 'drag-stuff-up)
@@ -577,8 +601,9 @@ This function is called at the very end of Spacemacs initialization."
  '(ibuffer-filter-group-name-face 'modus-theme-mark-symbol)
  '(ibuffer-marked-face 'modus-theme-mark-sel)
  '(ibuffer-title-face 'modus-theme-pseudo-header)
+ '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
-   '(drag-stuff tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss haml-mode counsel-css counsel swiper ivy company-web web-completion-data tern rjsx-mode ox-gfm orgit org-rich-yank org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain htmlize helm-org-rifle gnuplot evil-org emojify emoji-cheat-sheet-plus company-emoji git-gutter-fringe+ fringe-helper git-gutter+ browse-at-remote gruvbox-theme autothemer yaml-mode graphql-mode treemacs-magit smeargle magit-svn magit-section magit-gitflow magit-popup helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link forge ghub closql emacsql-sqlite emacsql treepy evil-magit magit git-commit with-editor transient yasnippet-snippets web-beautify unfill tide prettier-js nodejs-repl mwim mmm-mode markdown-toc lsp-ui lsp-treemacs lsp-origami origami livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-lsp lsp-mode markdown-mode dash-functional helm-company helm-c-yasnippet gh-md fuzzy flycheck-pos-tip pos-tip auto-yasnippet ac-ispell auto-complete yasnippet web-mode typescript-mode import-js grizzl emmet-mode company add-node-modules-path ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(eterm-256color xterm-color doom-modeline shrink-path ox-hugo org-trello request-deferred deferred org-sticky-header org-journal drag-stuff tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss haml-mode counsel-css counsel swiper ivy company-web web-completion-data tern rjsx-mode ox-gfm orgit org-rich-yank org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain htmlize helm-org-rifle gnuplot evil-org emojify emoji-cheat-sheet-plus company-emoji git-gutter-fringe+ fringe-helper git-gutter+ browse-at-remote gruvbox-theme autothemer yaml-mode graphql-mode treemacs-magit smeargle magit-svn magit-section magit-gitflow magit-popup helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link forge ghub closql emacsql-sqlite emacsql treepy evil-magit magit git-commit with-editor transient yasnippet-snippets web-beautify unfill tide prettier-js nodejs-repl mwim mmm-mode markdown-toc lsp-ui lsp-treemacs lsp-origami origami livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-lsp lsp-mode markdown-mode dash-functional helm-company helm-c-yasnippet gh-md fuzzy flycheck-pos-tip pos-tip auto-yasnippet ac-ispell auto-complete yasnippet web-mode typescript-mode import-js grizzl emmet-mode company add-node-modules-path ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
