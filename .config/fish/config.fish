@@ -2,12 +2,14 @@ set fish_greeting
 
 # fisher add fishpkg/fish-prompt-mono
 
+set -x CLUTTER_BACKEND wayland
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x DOCKER_BUILDKIT 1
-set -x EDITOR kak
+set -x EDITOR "emacs -nw"
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
 set -x FZF_LEGACY_KEYBINDINGS 0
+set -x GDK_BACKEND wayland
 set -x GOPATH ~/.go
 set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
@@ -78,7 +80,7 @@ function c
     else
       ls -l
     end
-    
+
     return
   end
 
@@ -179,9 +181,6 @@ if type -q brew
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
   end
 end
-
-# aws
-alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v (pwd):/aws amazon/aws-cli'
 
 # mongosh
 alias mongosh="docker run -it --rm --network host -v (pwd):/root gianni/mongosh:latest"
