@@ -43,7 +43,8 @@ output * bg $image fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output eDP-1 pos 0 0 res 1920x1080
+output eDP-1 scale 2
+output eDP-1 pos 0 0 res 3840x2400
 
 output DP-2 pos 1920 0 res 2560x1440
 
@@ -83,6 +84,14 @@ input "2:14:ETPS/2_Elantech_Touchpad" {
 }
 
 input "2:7:SynPS/2_Synaptics_TouchPad" {
+  accel_profile adaptive
+  dwt enabled
+  drag enabled
+  tap enabled
+  natural_scroll enabled
+}
+
+input "1739:52710:DLL0945:00_06CB:CDE6_Touchpad" {
   accel_profile adaptive
   dwt enabled
   drag enabled
@@ -260,13 +269,12 @@ bindsym $mod+r mode "resize"
 # Media keys
 #
 
-set $brillo exec pkexec /usr/bin/brillo -equ 1500
-bindsym XF86MonBrightnessDown exec $brillo -U 5
-bindsym XF86MonBrightnessUp exec $brillo -A 5
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec light -T 0.72
+bindsym --locked XF86MonBrightnessUp exec light -T 1.4
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Screenshots:
 # Cmd+Ctrl+Print: Current window
@@ -316,6 +324,7 @@ client.placeholder      #000000  #0c0c0c #ffffff #000000   #0c0c0c
 # }
 
 seat * hide_cursor 3000
+seat * xcursor_theme WhiteSur 24
 
 default_border pixel 3
 gaps inner 20
@@ -330,6 +339,7 @@ assign [class="Spotify"] 5
 for_window [urgent="latest"] focus
 for_window [window_role="pop-up"] floating enable
 for_window [app_id="firefox" title="^Firefox – Sharing Indicator$"] kill
+for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] kill
 for_window [app_id="firefox" title="^Picture-in-Picture$"] \
     floating enable, move position 877 450, sticky enable
 
@@ -339,6 +349,7 @@ exec --no-startup-id libinput-gestures-setup start
 exec emacs --daemon
 exec wlsunset
 exec mako
+exec wluma
 exec swayidle -w \
          timeout 300  'swaylock -f -c 000000 -i "$image" --fade-in 0.5 --grace 15 --effect-blur 7x5 --effect-vignette 0.5:0.5' \
          timeout 600  'swaymsg "output * dpms off"' \
