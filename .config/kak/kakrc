@@ -16,6 +16,8 @@ add-highlighter global/ show-matching
 add-highlighter global/ regex \b(TODO|FIXME|XXX|NOTE)\b 0:default+rb
 add-highlighter global/ regex @\b(todo|fixme|xxx|note)\b 0:default+rb
 
+map global normal <space> , -docstring 'leader'
+
 # Highlight the word under the cursor
 # ───────────────────────────────────
 
