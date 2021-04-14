@@ -15,7 +15,6 @@
 
     "position": "top",
 
-    // If height property would be not present, it'd be calculated dynamically
     "height": 30,
 
     "modules-left": [
@@ -27,14 +26,14 @@
         "sway/window"
     ],
     "modules-right": [
-        "network",
+        "pulseaudio",
         "memory",
         "cpu",
         "temperature",
         "custom/keyboard-layout",
         "battery",
         "tray",
-        "clock#date"
+        "clock"
     ],
 
 
@@ -62,9 +61,9 @@
         "tooltip": true
     },
 
-    "clock#date": {
+    "clock": {
       "interval": 10,
-      "format": "  {:%b. %e, %Y   %l:%M %p}", // Icon: calendar-alt
+      "format": "{:%a. %b %e, %Y - %l:%M %p}", // Icon: calendar-alt
       "on-click": "gnome-calendar",
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
     },
@@ -90,10 +89,11 @@
 
     "custom/spotify": {
         "format": " {}",
-        "max-length": 40,
         "interval": 30, // Remove this if your script is endless and write in loop
-        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null", // Script in resources folder
-        "exec-if": "pgrep spotify"
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null",
+        "exec-if": "$HOME/.config/waybar/playing.sh 2> /dev/null",
     },
 
     "memory": {
