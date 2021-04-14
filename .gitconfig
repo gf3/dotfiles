@@ -1,36 +1,37 @@
 [user]
   name  = Gianni Chiappetta
   email = gianni@runlevel6.org
+  signingkey = FD8942A7CBA94FD3
 
 [alias]
-  br   = branch
-  ; Example: g ch master...staging
-  ch   = log --cherry --pretty=format:\"%C(auto)%h (%ar) %an: %s\" --date-order --reverse
-  ci   = commit
-  co   = checkout
-  df   = diff
-  g    = grep -I
-  lg   = log -p
-  loq  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-  st   = status
-  find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+br   = branch
+; Example: g ch master...staging
+ch   = log --cherry --pretty=format:\"%C(auto)%h (%ar) %an: %s\" --date-order --reverse
+ci   = commit
+co   = checkout
+df   = diff
+g    = grep -I
+lg   = log -p
+loq  = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+st   = status
+find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
 
 [branch]
-  autosetuprebase = always
+autosetuprebase = always
 
 [color]
-  ui = auto
+ui = auto
 
 [color "branch"]
-  current = yellow reverse
-  local   = yellow
-  remote  = green
+current = yellow reverse
+local   = yellow
+remote  = green
 
 [color "diff"]
-  meta = yellow
-  frag = magenta
-  old  = red
-  new  = green
+meta = yellow
+frag = magenta
+old  = red
+new  = green
 
 [color "status"]
   added     = yellow
