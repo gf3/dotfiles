@@ -5,7 +5,7 @@ set fish_greeting
 set -x CLUTTER_BACKEND wayland
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x DOCKER_BUILDKIT 1
-set -x EDITOR "emacs -nw"
+set -x EDITOR "nvim"
 set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
 set -x FZF_LEGACY_KEYBINDINGS 0
@@ -184,3 +184,6 @@ end
 
 # mongosh
 alias mongosh="docker run -it --rm --network host -v (pwd):/root gianni/mongosh:latest"
+
+# opam configuration
+source /home/gianni/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
