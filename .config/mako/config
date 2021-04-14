@@ -1,10 +1,10 @@
-anchor=bottom-right
+anchor=top-center
 background-color=#3b4252
 border-color=#4c566a
 border-radius=9
 border-size=3
 default-timeout=9000
-font=Google Sans 13
+font=SF Pro Display 13
 height=500
 margin=5
 padding=10
