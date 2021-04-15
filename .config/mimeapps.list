@@ -1,0 +1,17 @@
+[Default Applications]
+application/pdf=org.pwmt.zathura.desktop
+application/x-extension-html=qutebrowser.desktop
+application/x-extension-htm=qutebrowser.desktop
+text/html=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/mailto=userapp-Evolution-VGES10.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+
+[Added Associations]
+application/pdf=org.pwmt.zathura.desktop;
+image/jpeg=imv.desktop;
+image/png=imv.desktop;
+x-scheme-handler/mailto=userapp-Evolution-VGES10.desktop;
