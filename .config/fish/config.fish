@@ -52,6 +52,9 @@ function ls       ; command lsd $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 
+alias ssh="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
+
 # Gruvbox command line colors
 set -x fish_color_command 689d6a
 set -x fish_color_param 83a598
