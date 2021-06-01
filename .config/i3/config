@@ -1,0 +1,272 @@
+# `man 5 i3` for reference
+
+#================================================================
+# Variables
+#================================================================
+
+# Logo key
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term i3-sensible-terminal
+
+# Background image
+set $image ~/.config/wallpaper.png
+
+# Screens
+set $laptop eDP-1
+set $external DP-3
+
+# Drag windows with mouse+mod
+floating_modifier $mod
+
+# Refresh i3status
+set $refresh_i3status killall -SIGUSR1 i3status
+
+#================================================================
+# Settings
+#================================================================
+
+# Automatic workspace switching
+workspace_auto_back_and_forth yes
+
+# Mouse follows focus
+mouse_warping output
+
+default_orientation auto
+
+#================================================================
+# Font
+#================================================================
+
+font pango: SF Pro Display 11
+
+#================================================================
+# Resize mode
+#================================================================
+
+# set $mode_resize "Resize windows mode"
+# mode $mode_resize {
+#   bindsym --to-code {
+#     $left resize shrink width 10px
+#     $down resize grow height 10px
+#     $up resize shrink height 10px
+#     $right resize grow width 10px
+
+#     # Exit mode
+#     Return mode "default"
+#     Escape mode "default"
+#   }
+# }
+
+#================================================================
+# Exit mode
+#================================================================
+
+set $mode_exit "Exit"
+mode $mode_exit {
+	bindsym l exec i3-msg exit
+	bindsym r exec systemctl -i reboot
+	bindsym s exec systemctl -i poweroff
+	bindsym e mode "default"; exec pkill -15 nagbar
+	bindsym Escape mode "default"; exec pkill -15 nagbar
+}
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e mode $mode_exit; exec i3-nagbar \
+	-t warning \
+	-m '❕ SESSION EXIT OPTIONS' \
+	-B '❌ [L]ogout' 	'i3-msg exit' \
+	-B '🌀️ [R]estart'	'systemctl -i reboot' \
+	-B '⚡️ [S]hutdown'	'systemctl -i poweroff' 
+
+#================================================================
+# Key bindings
+#================================================================
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Switch windows
+bindsym $mod+Tab exec --no-startup-id "rofi -show"
+
+# Launchers
+bindsym $mod+p exec "rofi -combi-modi drun,run,ssh -show combi -icon-theme 'WhiteSur-dark' -show-icons"
+bindsym $mod+equal exec bash -c "pkill -f com.github.parnold-x.nasc || com.github.parnold-x.nasc"
+bindsym $mod+Shift+p exec clipcat-menu insert
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Split
+bindsym $mod+s split toggle
+
+# Switch the current container between different layout styles
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Cycle scratchpad windows
+bindsym $mod+minus scratchpad show
+
+# Screenshots
+# bindsym Mod4+Ctrl+Print   exec grimshot --notify save active
+# bindsym Mod4+Print        exec grimshot --notify save area
+# bindsym Print             exec grimshot --notify save output
+# bindsym Mod4+Shift+Print  exec grimshot --notify save window
+bindsym Print exec --no-startup-id xfce4-screenshooter
+
+# Modes
+# bindsym $mod+r mode $mode_resize
+
+#================================================================
+# Locked screen key bindings
+#================================================================
+
+# Brightness
+bindsym XF86MonBrightnessDown exec light -T 0.72
+bindsym XF86MonBrightnessUp exec light -T 1.4
+
+# Media keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+#================================================================
+# Styles
+#================================================================
+
+default_border pixel 2
+gaps inner 20
+gaps outer 10
+
+# Color scheme (Gruvbox dark)
+set $color_normal_white  #a89984
+set $color_bright_white  #ebdbb2
+set $color_normal_gray   #222222
+set $color_bright_gray   #3c3836
+set $color_bright_yellow #fabd2f
+set $color_bright_red    #fb4934
+set $color_normal_black  #282828
+set $color_unused        #ff0000
+
+# Colors                  border                 background             text                   indicator            child_border
+client.focused            $color_bright_yellow   $color_bright_gray     $color_bright_white    $color_bright_gray   $color_bright_yellow
+client.focused_inactive   $color_bright_gray     $color_bright_gray     $color_bright_white    $color_bright_gray   $color_normal_black
+client.unfocused          $color_normal_gray     $color_normal_gray     $color_normal_white    $color_normal_gray   $color_normal_black
+client.urgent             $color_bright_red      $color_bright_red      $color_normal_black    $color_unused        $color_unused
+client.placeholder        $color_unused          $color_unused          $color_unused          $color_unused        $color_unused
+
+
+#================================================================
+# App configuration
+#================================================================
+
+# assign [app_id="firefox"] 1
+assign [class="qutebrowser"] 1
+# assign [app_id="Studio 3T"] 3
+# assign [class="QueryAssist"] 3
+assign [class="Slack"] 5
+assign [class="Evolution"] 5
+assign [class="Lollypop"] 5
+# 
+# for_window [urgent="latest"] focus
+# for_window [window_role="pop-up"] floating enable
+# for_window [app_id="firefox" title="^Firefox – Sharing Indicator$"] kill
+# for_window [app_id="firefox" title="^Firefox — Sharing Indicator$"] kill
+# for_window [app_id="firefox" title="^Picture-in-Picture$"] \
+#     floating enable, move position 877 450, sticky enable
+# for_window [app_id="firefoxdeveloperedition" title="^Firefox Developer Edition — Sharing Indicator$"] kill
+
+for_window [class="Evolution-alarm-notify"] floating enable, sticky enable
+
+#================================================================
+# Bar
+#================================================================
+
+# Polybar
+#exec --no-startup-id bash ~/.config/polybar/launch.sh --panels
+# Tint2
+exec --no-startup-id tint2
+
+#================================================================
+# Startup
+#================================================================
+
+exec_always "systemctl --user import-environment"
+exec_always --no-startup-id clipcatd
+exec_always --no-startup-id neap-hotkey
+exec --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id gnome-flashback
+exec --no-startup-id xscreensaver -no-splash
+exec --no-startup-id xss-lock -- xscreensaver-command -l
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id emacs --daemon
+exec --no-startup-id udiskie --automount --tray --notify --appindicator
+exec --no-startup-id nitrogen --restore &
+exec --no-startup-id picom --config ~/.config/compton.conf -b
