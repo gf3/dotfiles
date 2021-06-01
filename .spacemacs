@@ -43,17 +43,19 @@ This function should only modify configuration layer settings."
      react
      shell-scripts
      yaml
-     imenu-list
+     ;; imenu-list
      tide
      import-js
      prettier
      (typescript :variables
-                 typescript-backend 'tide
+                 ; typescript-backend 'tide
+                 typescript-backend 'lsp
                  typescript-fmt-tool 'prettier
                  typescript-linter 'eslint
                  node-add-modules-path t)
      (javascript :variables
-                 javascript-backend 'tide
+                 ; javascript-backend 'tide
+                 javascript-backend 'lsp
                  javascript-fmt-tool 'prettier
                  javascript-import-tool 'import-js
                  javascript-repl 'nodejs
@@ -64,29 +66,32 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t
                       auto-completion-use-company-box t
                       auto-completion-enable-sort-by-usage t)
-     better-defaults
+     ;; better-defaults
      emacs-lisp
-     emoji
+     ;; emoji
      (git :variables git-gutter-use-fringe t)
      graphql
-     lsp
+     (lsp :variables
+          lsp-lens-enable t
+          lsp-use-lsp-ui t
+          lsp-rust-analyzer-display-chaining-hints t
+          lsp-rust-analyzer-display-parameter-hints t
+          lsp-rust-server 'rust-analyzer)
      markdown
-     multiple-cursors
-     (org :variables
-          org-enable-github-support t
-          org-enable-org-journal-support t
-          org-enable-hugo-support t
-          ;; org-enable-trello-support t
-          org-enable-sticky-header t
-          org-projectile-file "~/org/TODO.org"
-          org-journal-dir "~/org/journal/")
+     ;; multiple-cursors
+     ;; (org :variables
+     ;;      org-enable-github-support t
+     ;;      org-enable-org-journal-support t
+     ;;      org-enable-hugo-support t
+     ;;      ;; org-enable-trello-support t
+     ;;      org-enable-sticky-header t
+     ;;      org-projectile-file "~/org/TODO.org"
+     ;;      org-journal-dir "~/org/journal/")
      syntax-checking
      version-control
-     treemacs
-     reasonml
-     ocaml
-     rust
-     dap
+     ;; treemacs
+     ;; rust
+     ;; dap
      (shell :variables shell-default-shell 'vterm))
 
    ;; List of additional packages that will be installed without being wrapped
@@ -97,13 +102,13 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(drag-stuff doom-themes dune-format tera-mode)
+   dotspacemacs-additional-packages '(drag-stuff doom-themes rustic)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(vi-tilde-fringe flycheck-ocaml)
+   dotspacemacs-excluded-packages '(vi-tilde-fringe)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -164,7 +169,7 @@ It should only modify the values of Spacemacs settings."
    ;; Setting this >= 1 MB should increase performance for lsp servers
    ;; in emacs 27.
    ;; (default (* 1024 1024))
-   dotspacemacs-read-process-output-max (* 1024 1024)
+   dotspacemacs-read-process-output-max (* 4096 4096)
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
@@ -220,8 +225,8 @@ It should only modify the values of Spacemacs settings."
    ;; number is the project limit and the second the limit on the recent files
    ;; within a project.
    dotspacemacs-startup-lists '((recents . 5)
-                                (agenda . 5)
-                                (todos . 5)
+                                ;; (agenda . 5)
+                                ;; (todos . 5)
                                 (projects . 7))
 
    ;; True if the home buffer should respond to resize events. (default t)
@@ -557,9 +562,13 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; Use rust-analyzer
-  (setq-default dotspacemacs-configuration-layers
-                '(lsp :variables lsp-rust-server 'rust-analyzer))
+  ;; LSP
+  ;; (setq-default dotspacemacs-configuration-layers
+  ;;               '((lsp :variables lsp-lens-enable t
+  ;;                                 lsp-use-lsp-ui t
+  ;;                                 lsp-idle-delay 0.500
+  ;;                                 lsp-rust-server 'rust-analyzer
+  ;;                                 )))
   ;; Underscores
   (setq-default evil-symbol-word-search t)
   (add-hook 'after-change-major-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
@@ -634,7 +643,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ispell-dictionary "en_CA")
  '(org-trello-current-prefix-keybinding "C-c o")
  '(package-selected-packages
-   '(toml-mode ron-mode racer flycheck-rust dap-mode bui cargo rust-mode dune-format reformatter doom-themes good-scroll vterm terminal-here shell-pop multi-term eshell-z eshell-prompt-extras esh-help reason-mode utop tuareg caml ocp-indent ocamlformat merlin-eldoc flycheck-ocaml merlin dune eterm-256color xterm-color doom-modeline shrink-path ox-hugo org-trello request-deferred deferred org-sticky-header org-journal drag-stuff tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss haml-mode counsel-css counsel swiper ivy company-web web-completion-data tern rjsx-mode ox-gfm orgit org-rich-yank org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain htmlize helm-org-rifle gnuplot evil-org emojify emoji-cheat-sheet-plus company-emoji git-gutter-fringe+ fringe-helper git-gutter+ browse-at-remote gruvbox-theme autothemer yaml-mode graphql-mode treemacs-magit smeargle magit-svn magit-section magit-gitflow magit-popup helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link forge ghub closql emacsql-sqlite emacsql treepy evil-magit magit git-commit with-editor transient yasnippet-snippets web-beautify unfill tide prettier-js nodejs-repl mwim mmm-mode markdown-toc lsp-ui lsp-treemacs lsp-origami origami livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc helm-lsp lsp-mode markdown-mode dash-functional helm-company helm-c-yasnippet gh-md fuzzy flycheck-pos-tip pos-tip auto-yasnippet ac-ispell auto-complete yasnippet web-mode typescript-mode import-js grizzl emmet-mode company add-node-modules-path ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
+   '(company-statistics company-quickhelp company-box frame-local rustic toml-mode ron-mode racer flycheck-rust dap-mode bui cargo rust-mode dune-format reformatter doom-themes good-scroll vterm terminal-here shell-pop multi-term eshell-z eshell-prompt-extras esh-help reason-mode utop tuareg caml ocp-indent ocamlformat merlin-eldoc flycheck-ocaml merlin dune eterm-256color xterm-color doom-modeline shrink-path ox-hugo org-trello request-deferred deferred org-sticky-header org-journal drag-stuff tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode helm-css-scss haml-mode counsel-css counsel swiper ivy company-web web-completion-data tern rjsx-mode ox-gfm orgit org-rich-yank org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain htmlize helm-org-rifle gnuplot evil-org emojify emoji-cheat-sheet-plus company-emoji git-gutter-fringe+ fringe-helper git-gutter+ browse-at-remote gruvbox-theme autothemer yaml-mode graphql-mode treemacs-magit smeargle magit-svn magit-section magit-gitflow magit-popup helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link forge ghub closql emacsql-sqlite emacsql treepy evil-magit magit git-commit with-editor transient yasnippet-snippets web-beautify unfill tide prettier-js nodejs-repl mwim mmm-mode markdown-toc origami livid-mode skewer-mode simple-httpd json-navigator hierarchy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc markdown-mode dash-functional helm-company helm-c-yasnippet gh-md fuzzy flycheck-pos-tip pos-tip auto-yasnippet ac-ispell auto-complete yasnippet web-mode typescript-mode import-js grizzl emmet-mode company add-node-modules-path ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav editorconfig dumb-jump dotenv-mode dired-quick-sort diminish devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#32302f"))
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
