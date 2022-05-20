@@ -68,3 +68,8 @@ new  = green
 	defaultBranch = main
 [github]
 	user = gf3
+[diff]
+	external = difft
+
+[diff "org"]
+  xfuncname = "^(\\*+ +.*)$"
