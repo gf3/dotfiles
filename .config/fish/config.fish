@@ -4,10 +4,8 @@ set fish_greeting
 
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x DOCKER_BUILDKIT 1
-set -x EDITOR "nvim"
-set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -x FZF_DEFAULT_COMMAND 'git ls-tree -r --name-only HEAD 2> /dev/null; or fd --type f --hidden --follow --exclude .git 2> /dev/null'
-set -x FZF_LEGACY_KEYBINDINGS 0
+set -x EDITOR emacsclient -nw
+set -x VISUAL emacsclient -c
 set -x GOPATH ~/.go
 set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
@@ -22,11 +20,13 @@ test -d /usr/local/heroku/bin                ; and set PATH /usr/local/heroku/bi
 test -d /usr/local/go/bin                    ; and set PATH /usr/local/go/bin $PATH
 test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
+test -d /opt/homebrew/bin                    ; and set PATH /opt/homebrew/bin $PATH
 test -d ~/.bin                               ; and set PATH ~/.bin $PATH
 test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
 test -d ~/.cargo/bin                         ; and set PATH ~/.cargo/bin $PATH
+test -d ~/.emacs.d/bin                       ; and set PATH ~/.emacs.d/bin $PATH
 test -d ~/.local/bin                         ; and set PATH ~/.local/bin $PATH
-test -d $GOPATH/bin                          ; and set PATH $GOPATH/bin $PATH
+test -d (go env GOPATH)/bin                  ; and set PATH (go env GOPATH)/bin $PATH
 
 # Navigation
 function ..    ; cd .. ; end
@@ -43,7 +43,6 @@ function g        ; git $argv ; end
 function grep     ; command grep --color=auto $argv ; end
 function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end
 function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
-function ks       ; command kak-shell $argv ; end
 function localip  ; ipconfig getifaddr en0 ; end
 function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
 function ls       ; command lsd $argv ; end
@@ -61,11 +60,7 @@ set -x fish_color_quote d79921
 # Fuzzy find & edit
 function vp
   if test (count $argv) -gt 0
-    if set -q KAKOUNE_SESSION
-      command kak -c $KAKOUNE_SESSION $argv
-    else
-      command $EDITOR $argv
-    end
+    command $EDITOR $argv
   else
     fzf -m | xargs $EDITOR
   end
@@ -168,11 +163,12 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 
 # fnm
 if type -q fnm
-  fnm env --shell fish --use-on-cd | source
+  fnm env | source
   fnm completions --shell fish | source
 end
 
 # brew
+/opt/homebrew/bin/brew shellenv | source
 if type -q brew
   if test -d (brew --prefix)"/share/fish/completions"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
@@ -183,3 +179,10 @@ if type -q brew
   end
 end
 
+fish_add_path /opt/homebrew/opt/ruby/bin
+fish_add_path /opt/homebrew/lib/ruby/gems/3.0.0/bin
+
+# direnv
+if type -q direnv
+  direnv hook fish | source
+end

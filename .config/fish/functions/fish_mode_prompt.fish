@@ -9,7 +9,7 @@ function fish_mode_prompt
             case insert
                 set vi_mode_color (set_color $fish_color_selection)
                 set vi_mode_symbol I
-            case replace_one
+            case replace replace_one
                 set vi_mode_color (set_color --reverse $fish_color_selection)
                 set vi_mode_symbol R
             case visual
