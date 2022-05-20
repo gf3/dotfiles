@@ -1,0 +1,3 @@
+[submodule ".doom.d/modules/editor/meow"]
+	path = .doom.d/modules/editor/meow
+	url = git@github.com:meow-edit/doom-meow.git
