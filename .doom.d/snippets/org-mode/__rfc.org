@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: rfc
+# contributor: Gianni Chiappetta <gianni@runlevel6.org>
+# key: rfc
+# --
+#+TITLE: ${1:RFC Title}
+#+AUTHOR: `(user-full-name)` <`(user-mail-address)`>
+#+DESCRIPTION: ${2:RFC Description}
+#+CREATED: `(current-time-string)`
+#+KEYWORDS: ${3:keyword}
+
+* Problem
+
+$0
+
+* Solution
+
+* Implementation
+
+* Action Items [/]
