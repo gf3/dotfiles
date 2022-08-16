@@ -70,6 +70,7 @@ new  = green
 	user = gf3
 [diff]
 	external = difft
+	submodule = log
 
 [diff "org"]
   xfuncname = "^(\\*+ +.*)$"
