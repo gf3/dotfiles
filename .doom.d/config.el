@@ -29,7 +29,7 @@
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
 (setq doom-font                (font-spec :family "JetBrains Mono" :size 14 :weight 'light :height 1.3)
-      doom-variable-pitch-font (font-spec :family "Merriweather" :weight 'regular))
+      doom-variable-pitch-font (font-spec :family "Greycliff CF" :weight 'regular))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -38,7 +38,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -83,86 +83,43 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Meow (modal editing)
-(define-key global-map (kbd "C-c `") 'meow-last-buffer)
-(define-key global-map (kbd "C-c B") 'consult-project-buffer)
-(define-key global-map (kbd "C-x C-b") 'projectile-ibuffer)
+;; GUI Emacs
+(setq frame-resize-pixelwise t)
 
-(map! :leader
-      ;; make doom-leader-buffer-map alive
-      (:prefix-map ("b" . "buffer")
-       :desc "Toggle narrowing"            "-"   #'doom/toggle-narrow-buffer
-       :desc "Previous buffer"             "["   #'previous-buffer
-       :desc "Next buffer"                 "]"   #'next-buffer
-       (:when (featurep! :ui workspaces)
-        :desc "Switch workspace buffer"    "b" #'persp-switch-to-buffer
-        :desc "Switch buffer"              "B" #'switch-to-buffer)
-       (:unless (featurep! :ui workspaces)
-        :desc "Switch buffer"               "b"   #'switch-to-buffer)
-       :desc "Clone buffer"                "c"   #'clone-indirect-buffer
-       :desc "Clone buffer other window"   "C"   #'clone-indirect-buffer-other-window
-       :desc "Kill buffer"                 "d"   #'kill-current-buffer
-       :desc "ibuffer"                     "i"   #'ibuffer
-       :desc "Kill buffer"                 "k"   #'kill-current-buffer
-       :desc "Kill all buffers"            "K"   #'doom/kill-all-buffers
-       :desc "Switch to last buffer"       "l"   #'evil-switch-to-windows-last-buffer
-       :desc "Set bookmark"                "m"   #'bookmark-set
-       :desc "Delete bookmark"             "M"   #'bookmark-delete
-       :desc "Next buffer"                 "n"   #'next-buffer
-       :desc "New empty buffer"            "N"   #'+default/new-buffer
-       :desc "Kill other buffers"          "O"   #'doom/kill-other-buffers
-       :desc "Previous buffer"             "p"   #'previous-buffer
-       :desc "Revert buffer"               "r"   #'revert-buffer
-       :desc "Save buffer"                 "s"   #'basic-save-buffer
-       :desc "Save all buffers"            "S"   #'evil-write-all
-       :desc "Save buffer as root"         "u"   #'doom/sudo-save-buffer
-       :desc "Pop up scratch buffer"       "x"   #'doom/open-scratch-buffer
-       :desc "Switch to scratch buffer"    "X"   #'doom/switch-to-scratch-buffer
-       :desc "Bury buffer"                 "z"   #'bury-buffer
-       :desc "Kill buried buffers"         "Z"   #'doom/kill-buried-buffers))
+;; Evil cutting and pasting
+(setq evil-v$-excludes-newline t
+      evil-kill-on-visual-paste nil
+      select-enable-clipboard nil)
 
+(map! :desc "Clipboard commands"
+      (:when IS-MAC
+        :v "s-c" 'clipboard-kill-ring-save
+        :g "s-v" 'clipboard-yank))
 
-(setq doom-localleader-alt-key "C-l")
-(map! :map meow-leader-keymap
-  "l" doom-localleader-alt-key)
+;; Global regex by default
+(setq evil-ex-substitute-global t)
 
-(defun gf3/meow-append-line ()
-  "Enter insert mode at the end of a line"
-  (interactive)
-  (meow-line 0)
-  (meow-insert))
+;; Mixed pitch fonts
+(use-package! mixed-pitch
+  :hook
+  ;; If you want it in all text modes:
+  (text-mode . mixed-pitch-mode))
 
-(after! meow
-  (defun meow--post-isearch-function ()
-    (unless isearch-mode-end-hook-quit
-      (when isearch-success
-        (let ((beg (car isearch-match-data))
-              (end (cadr isearch-match-data)))
+;; LSP
+(after! lsp-ui
+  (setq lsp-ui-sideline-show-hover t
+        lsp-ui-doc-show-with-cursor t
+        lsp-ui-imenu-auto-refresh t
+        lsp-headerline-breadcrumb-enable t
+        lsp-headerline-breadcrumb-mode 1))
 
-          (thread-first
-            (meow--make-selection '(select . visit)
-                                  beg
-                                  (if isearch-forward end isearch-other-end))
-            (meow--select (not isearch-forward)))))))
+;; String inflection
+(use-package! string-inflection
+  :config
+  (define-key global-map (kbd "C-c ~") 'string-inflection-all-cycle))
 
-  (add-hook 'isearch-mode-end-hook 'meow--post-isearch-function)
-
-  (setq
-   meow-use-cursor-position-hack t
-   meow-use-enhanced-selection-effect t
-   meow-use-clipboard t)
-
-  (meow-define-keys
-      'normal
-
-    '("/" . isearch-forward)
-    '("?" . meow-query-replace-regexp)
-    '("<tab>" . indent-for-tab-command)
-    '("<<" . doom/dumb-dedent)
-    '(">>" . doom/dumb-indent)
-    '("A" . gf3/meow-append-line)
-    '("O" . meow-open-below)
-    '("V" . consult-imenu)))
+;; HCL
+(use-package! hcl-mode)
 
 ;; ibuffer VC
 (use-package! ibuffer-vc
@@ -172,39 +129,29 @@
   :after org)
 
 (use-package! org-super-agenda
-  :after org)
-
-(use-package! org-modern
   :after org
   :config
-  (setq
-   ;; Edit settings
-   org-auto-align-tags nil
-   org-tags-column 0
-   org-catch-invisible-edits 'show-and-error
-   org-special-ctrl-a/e t
-   org-insert-heading-respect-content t
-
-   ;; Org styling, hide markup etc.
-   org-hide-emphasis-markers t
-   org-pretty-entities t
-   org-ellipsis "…"
-
-   ;; Agenda styling
-   org-agenda-block-separator ?─
-   org-agenda-time-grid
-   '((daily today require-timed)
-     (800 1000 1200 1400 1600 1800 2000)
-     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
-   org-agenda-current-time-string
-   "⭠ now ─────────────────────────────────────────────────")
-
-  ;; Enable org-modern
-  (global-org-modern-mode)
-
-  :hook
-  (org-mode . org-modern-mode)
-  (org-agenda-finalize . org-modern-agenda))
+  (setq org-super-agenda-groups
+       '((:log t)  ; Automatically named "Log"
+         (:name "Schedule"
+                :time-grid t)
+         (:name "Today"
+                :scheduled today)
+         (:habit t)
+         (:name "Due today"
+                :deadline today)
+         (:name "Overdue"
+                :deadline past)
+         (:name "Due soon"
+                :deadline future)
+         (:name "Unimportant"
+                :todo ("SOMEDAY" "MAYBE" "CHECK" "TO-READ" "TO-WATCH")
+                :order 100)
+         (:name "Waiting..."
+                :todo "WAITING"
+                :order 98)
+         (:name "Scheduled earlier"
+                :scheduled past))))
 
 (defun gf3/capture-report-date-file ()
   "Creates a filename from a prompt and includes a date"
@@ -216,10 +163,26 @@
              name)
      (concat org-directory "RFCs"))))
 
+(use-package org-contacts
+  :ensure nil
+  :after org
+  :custom (org-contacts-files '("~/Documents/org/people.org")))
+
+(defun gf3/org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (org-element-property :begin (org-element-at-point))))
+   "/DONE" 'file))
+
 ;; Org config
 (after! org
   ;; Disable indent
   (org-indent-mode -1)
+
+  ;; Visual line mode
+  (add-hook 'org-mode-hook 'visual-line-mode)
 
   ;; Journal
   (setq org-journal-date-prefix "#+TITLE: "
@@ -230,6 +193,47 @@
   ;; Agenda
   (setq org-agenda-include-diary t)
 
+  ;; Text
+  (add-hook 'org-mode-hook (lambda () (text-scale-increase 1)))
+  (setq
+   ;; Edit settings
+   org-auto-align-tags t
+   ;; org-tags-column 0
+   org-fold-catch-invisible-edits 'show-and-error
+   ;; org-special-ctrl-a/e t
+   org-insert-heading-respect-content t
+
+   ;; Org styling, hide markup etc.
+   org-hide-emphasis-markers t
+   org-pretty-entities nil
+   org-ellipsis " ↓")
+
+  ;; Fonts
+  (custom-theme-set-faces
+   'user
+   '(org-block ((t (:inherit fixed-pitch))))
+   '(org-code ((t (:inherit (shadow fixed-pitch)))))
+   '(org-document-info ((t (:foreground "dark orange"))))
+   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+   '(org-document-title ((t (:height 650 :font "Wayfinder CF" :spacing 50 :weight bold :underline nil))))
+   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+   '(org-link ((t (:foreground "royal blue" :underline t))))
+   '(org-level-1 ((t (:inherit nil :weight thin))))
+   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-property-value ((t (:inherit fixed-pitch))) t)
+   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+   '(org-todo ((t (:inherit nil :font "Ellograph CF" :height 0.8 :weight bold))))
+   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8)))))
+
+  ;; Templates
+  (defvar gf3/org-contacts-template "* %(org-contacts-template-name)
+:PROPERTIES:
+:ADDRESS: %^{289 Front St., Toronto ON, M4P 2L5}
+:BIRTHDAY: %^{yyyy-mm-dd}
+:EMAIL: %(org-contacts-template-email)
+:NOTE: %^{NOTE}
+:END:" "Template for org-contacts.")
+
   ;; Org
   (setq org-capture-templates
         `(("i" "Inbox" entry  (file "inbox.org")
@@ -238,6 +242,9 @@
                     ":PROPERTIES:\n"
                     ":CREATED: %U\n"
                     ":END:\n")
+           :empty-lines 1)
+          ("p" "Person" entry (file+headline "people.org" "People"),
+           gf3/org-contacts-template
            :empty-lines 1)
           ("r" "RFC" plain (function gf3/capture-report-date-file)
            ,(concat "#+TITLE: %^{RFC Title} %^G\n"
@@ -250,6 +257,7 @@
                     "* Solution\n\n"
                     "* Implementation\n")
            :jump-to-captured t)))
+
 
   (defun org-capture-inbox ()
     (interactive)
@@ -325,24 +333,21 @@
 
 ;; Move stuff around with arrow keys
 (use-package! drag-stuff
-  :after meow
+  :after evil
   :config
   (drag-stuff-global-mode 1)
+  (when (featurep! :editor meow)
+   (meow-define-keys 'normal
+     '("<up>" . drag-stuff-up)
+     '("<down>" . drag-stuff-down)))
 
-    (meow-define-keys
-      'normal
-
-    '("<up>" . drag-stuff-up)
-    '("<down>" . drag-stuff-down)))
-
-;; Match-it!
-(use-package! evil-matchit
-  :after meow
-  :config
-  (meow-define-keys
-      'normal
-
-    '("%" . evilmi-jump-items-native)))
+  (when (featurep! :editor evil)
+   ;; Drag lines up
+   (define-key evil-normal-state-map (kbd "<up>") 'drag-stuff-up)
+   (define-key evil-visual-state-map (kbd "<up>") 'drag-stuff-up)
+   ;; Drag lines down
+   (define-key evil-normal-state-map (kbd "<down>") 'drag-stuff-down)
+   (define-key evil-visual-state-map (kbd "<down>") 'drag-stuff-down)))
 
 ;; Link to git things
 (use-package! git-link
@@ -352,12 +357,18 @@
 ;; Generate go tests
 (use-package! gotests)
 
-;; Auto minor modes
-(add-to-list 'auto-minor-mode-alist '("\\.(go|[jt]sx?)$" . minimap-mode))
-
 ;; Go Tmpl files
-(after! web-mode
+(use-package! web-mode
+  :config
   (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
+  (setq web-mode-enable-block-face t)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-comment-interpolation t)
+  (setq web-mode-enable-css-colorization t)
+  (setq web-mode-enable-part-face t)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-current-column-highlight t)
   (setq web-mode-engines-alist
         '(("go"    . "\\.html\\'")
+          ("erb"   . "\\.plush\\.html\\'")
           ("go"    . "\\.tmpl\\'"))))
