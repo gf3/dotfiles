@@ -55,4 +55,5 @@ I use the [JetBrains Mono][jetbrains-mono] which is a beautiful font designed fo
 [lsd]: https://github.com/Peltoche/lsd
 [ripgrep]: https://github.com/BurntSushi/ripgrep
 [v2]: https://github.com/gf3/dotfiles/tree/v2.2.0
+[wezterm]: https://github.com/wez/wezterm
 [yadm]: https://yadm.io/
