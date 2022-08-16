@@ -186,3 +186,8 @@ fish_add_path /opt/homebrew/lib/ruby/gems/3.0.0/bin
 if type -q direnv
   direnv hook fish | source
 end
+
+# wezterm
+if type -q wezterm
+   wezterm shell-completion --shell fish | source
+end
