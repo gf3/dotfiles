@@ -2,7 +2,8 @@
 
 This repository contains the configuration files for the tools I use day-to-day.
 
-![Screenshot](/.config/yadm/Screenshot.png?raw=true "Some of the tools in use")
+![Light](/.config/yadm/screenshot-light.png?raw=true "Light mode")
+![Dark](/.config/yadm/screenshot-light.png?raw=true "Dark mode")
 
 **Note**: these dotfiles are now for the [fish shell][fish] and
 emacs only, if you're looking for the _bash_ or _zsh_ or _vim_
