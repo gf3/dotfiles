@@ -4,8 +4,8 @@ set fish_greeting
 
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x DOCKER_BUILDKIT 1
-set -x EDITOR emacsclient -nw
-set -x VISUAL emacsclient -c
+set -x EDITOR emacs -nw
+set -x VISUAL emacs
 set -x GOPATH ~/.go
 set -x GPG_TTY (tty)
 set -x GREP_COLOR "1;37;45"
@@ -49,9 +49,6 @@ function ls       ; command lsd $argv ; end
 function tmux     ; command tmux -2 $argv ; end
 function tunnel   ; ssh -D 8080 -C -N $argv ; end
 
-alias ssh="kitty +kitten ssh"
-alias icat="kitty +kitten icat"
-
 # Gruvbox command line colors
 set -x fish_color_command 689d6a
 set -x fish_color_param 83a598
@@ -69,7 +66,9 @@ end
 # View files/dirs
 function c
   if test (count $argv) -eq 0
-    if type -q lsd
+    if type -q exa
+      exa -lFh --icons --git --octal-permissions -@
+    else if type -q lsd
       lsd --icon always --icon-theme fancy -l
     else if type -q tree
       tree --dirsfirst -aFCNL 1 ./
@@ -87,7 +86,9 @@ function c
 
     if test -e $i; and test -r $i
       if test -d $i
-        if type -q lsd
+        if type -q exa
+          exa -lFh --icons --git --octal-permissions -@ $i
+        else if type -q lsd
           lsd --icon always --icon-theme fancy -l $i
         else if type -q tree
           tree --dirsfirst -aFCNL 1 ./
