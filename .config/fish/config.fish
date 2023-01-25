@@ -2,8 +2,11 @@ set fish_greeting
 
 # fisher add fishpkg/fish-prompt-mono
 
+set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+
 set -x COMPOSE_DOCKER_CLI_BUILD 1
 set -x DOCKER_BUILDKIT 1
+set -x ERL_AFLAGS "-kernel shell_history enabled"
 set -x EDITOR emacs -nw
 set -x VISUAL emacs
 set -x GOPATH ~/.go
@@ -15,9 +18,6 @@ set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
 set -x RUST_BACKTRACE 1
 
 # Paths
-test -d /usr/local/share/npm/bin             ; and set PATH /usr/local/share/npm/bin $PATH
-test -d /usr/local/heroku/bin                ; and set PATH /usr/local/heroku/bin $PATH
-test -d /usr/local/go/bin                    ; and set PATH /usr/local/go/bin $PATH
 test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
 test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
 test -d /opt/homebrew/bin                    ; and set PATH /opt/homebrew/bin $PATH
@@ -144,7 +144,6 @@ if test -f $fisher_home/config.fish
 end
 
 if not functions -q fisher
-  set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
   curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
   fish -c fisher
 end
@@ -178,10 +177,14 @@ if type -q brew
   if test -d (brew --prefix)"/share/fish/vendor_completions.d"
     set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
   end
+
+  fish_add_path (brew --prefix ruby)/bin
 end
 
-fish_add_path /opt/homebrew/opt/ruby/bin
-fish_add_path /opt/homebrew/lib/ruby/gems/3.0.0/bin
+# ruby + gems
+if type -q gem
+   fish_add_path (gem environment gemdir)/bin
+end
 
 # direnv
 if type -q direnv
@@ -192,3 +195,4 @@ end
 if type -q wezterm
    wezterm shell-completion --shell fish | source
 end
+
