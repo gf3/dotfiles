@@ -1,5 +1,4 @@
 ;;; init-lang-typescript.el --- Typescript configuration. -*- lexical-binding: t -*-
-
 ;;; Commentary:
 ;;; Code:
 

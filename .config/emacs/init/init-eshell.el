@@ -57,9 +57,14 @@ MAX-LEN."
   :config
   (eshell-vterm-mode))
 
+(defun gf3/eshell-new()
+  "Open a new instance of eshell."
+  (interactive)
+  (eshell 'Z))
+
 (use-package eshell
   :straight t
-  :bind ("C-!" . eshell)
+  :bind ("C-!" . gf3/eshell-new)
   :init
   (setenv "PAGER" "cat")
   (setq eshell-highlight-prompt nil)

@@ -42,6 +42,7 @@
 			  (require 'init-benchmarkinit)
 			  (require 'init-direnv)
 			  (require 'init-emacs)
+			  (require 'init-perspective)
 			  (require 'init-backup)
 			  (require 'init-saveplace)
 			  (require 'init-theme)
@@ -51,7 +52,8 @@
 			  (require 'init-completion)
 			  (require 'init-miniframe)
 			  (require 'init-buffers)
-			  (require 'init-lsp)
+			  (require 'init-hltodo)
+			  (require 'init-eglot)
 			  (require 'init-flycheck)
 			  (require 'init-apheleia)
 			  (require 'init-whichkey)
@@ -63,8 +65,18 @@
 			  (require 'init-vterm)
 			  (require 'init-browseatremote)
 			  (require 'init-movetext)
+			  (require 'init-dotmode)
+			  (require 'init-beacon)
+			  (require 'init-helpful)
+			  (require 'init-yasnippet)
+			  (require 'init-logview)
+			  (require 'init-visualreplace)
+			  ;; (require 'init-markdownxwidget)
+			  (require 'init-codereview)
 
 			  ;; Languages
+			  (require 'init-lang-elixir)
+			  (require 'init-lang-docker)
 			  (require 'init-lang-go)
 			  (require 'init-lang-graphql)
 			  (require 'init-lang-rust)
@@ -79,8 +91,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("afa47084cb0beb684281f480aa84dab7c9170b084423c7f87ba755b15f6776ef" "f64189544da6f16bab285747d04a92bd57c7e7813d8c24c30f382f087d460a33" default))
  '(safe-local-variable-values
-   '((magit-todos-group-by magit-todos-item-first-path-component magit-todos-item-suffix magit-todos-item-keyword))))
+   '((web-mode-code-indent . 2)
+	 (eval prettier-mode t)
+	 (magit-todos-group-by magit-todos-item-first-path-component magit-todos-item-suffix magit-todos-item-keyword))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

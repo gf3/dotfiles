@@ -8,8 +8,18 @@
 (setq help-window-select t)
 (setq read-process-output-max (* 1024 1024 8)) ; Increase amount of data emacs can read from child processes to 8mb
 
+;; Disable native comp warnings
+(setq native-comp-async-report-warnings-errors nil)
+
 ;; Sentences end with a single space.
 (setq sentence-end-double-space nil)
+
+;; isearch tweaks
+(setq-default
+     isearch-allow-scroll t
+     lazy-highlight-cleanup nil
+     lazy-highlight-initial-delay 0
+	 lazy-highlight-buffer t)
 
 ;; One Esc is enough
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -62,6 +72,12 @@
                 (car args))
         (cdr args)))
 (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+;; Autocomplete word
+(global-set-key (kbd "M-/") 'hippie-expand)
+
+;; Compilation scrolling
+(setq compilation-scroll-output 'first-error)
 
 ;; Do not allow the cursor in the minibuffer prompt
 (setq minibuffer-prompt-properties

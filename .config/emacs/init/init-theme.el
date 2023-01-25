@@ -3,7 +3,7 @@
 ;;; Code:
 
 (defadvice load-theme (before theme-dont-propagate activate)
-  (mapcar #'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 (use-package doom-themes
   :straight (:host github :repo "doomemacs/themes"

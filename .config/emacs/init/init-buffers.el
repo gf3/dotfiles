@@ -26,7 +26,7 @@
 	(define-key map (kbd "l") #'consult-line)
 	(define-key map (kbd "n") #'new-buffer)
 	(define-key map (kbd "r") #'consult-recent-file)
-	(define-key map (kbd "s") #'consult-lsp-file-symbols)
+	(define-key map (kbd "s") #'consult-eglot-symbols)
 	map)
   "Buffer management.")
 
