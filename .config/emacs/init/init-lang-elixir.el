@@ -2,19 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package elixir-mode
-  :straight (:host github :repo "elixir-editors/emacs-elixir")
-  :mode ("\\.exs?\\'" "\\.heex\\'" "\\.elixir\\'")
-  :after tree-sitter)
-
 (use-package eglot-elixir
-  :straight (:host github :repo "bvnierop/eglot-elixir")
+  :straight (:host github :repo "hochata/eglot-elixir")
+  :config
+  ;; After eglot is loaded
+  (add-to-list 'eglot-server-programs `(elixir-ts-mode . eglot-elixir))
+  (add-to-list 'eglot-server-programs `(heex-ts-mode . eglot-elixir))
   :after eglot)
-
-;; (use-package mix
-;;   :straight (:host github :repo "ayrat555/mix.el")
-;;   :hook ((elixir-mode . mix-minor-mode))
-;;   :after elixir-mode)
 
 (provide 'init-lang-elixir)
 ;;; init-lang-elixir.el ends here

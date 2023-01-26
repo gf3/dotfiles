@@ -17,7 +17,7 @@
   :straight (:host github :repo "fxbois/web-mode" :branch "master")
   :after (projectile)
   :defer t
-  :mode ("\\.heex\\'" "\\.html\\'" "\\.erb\\'")
+  :mode ("\\.html\\'" "\\.erb\\'")
   :hook (web-mode . gf3/web-mode-erb-hook)
   :config
   (setq web-mode-markup-indent-offset 2)
@@ -31,15 +31,12 @@
   (setq web-mode-enable-part-face t)
   (setq web-mode-enable-comment-interpolation t)
   (add-to-list 'auto-mode-alist
-			   '("\\.heex\\'" . web-mode))
-  (add-to-list 'auto-mode-alist
 			   '("\\.html\\'" . web-mode))
   (add-to-list 'auto-mode-alist
 			   '("\\.erb\\'" . web-mode))
   (setq web-mode-engines-alist
 		'(("go" . "\\.html\\'")
-		  ("erb" . "\\.html\\.erb\\'")
-		  ("elixir" . "\\.html\\.heex\\'"))))
+		  ("erb" . "\\.html\\.erb\\'"))))
 
 (provide 'init-lang-webmode)
 ;;; init-lang-webmode.el ends here
