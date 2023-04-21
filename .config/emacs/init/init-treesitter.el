@@ -9,11 +9,15 @@
 
 (add-to-list
  'treesit-language-source-alist
- '(elixir "https://github.com/elixir-lang/tree-sitter-elixir.git"))
+ '(typescript "https://github.com/tree-sitter/tree-sitter-typescript.git"))
 
 (add-to-list
  'treesit-language-source-alist
  '(heex "https://github.com/phoenixframework/tree-sitter-heex.git"))
+
+(add-to-list
+ 'treesit-language-source-alist
+ '(elixir "https://github.com/elixir-lang/tree-sitter-elixir.git"))
 
 (use-package heex-ts-mode
   :straight (:host github :repo "wkirschbaum/heex-ts-mode"))

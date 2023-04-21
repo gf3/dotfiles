@@ -14,12 +14,15 @@
 ;; Sentences end with a single space.
 (setq sentence-end-double-space nil)
 
+;; More detailed info for completions
+(setq completions-detailed t)
+
 ;; isearch tweaks
 (setq-default
-     isearch-allow-scroll t
-     lazy-highlight-cleanup nil
-     lazy-highlight-initial-delay 0
-	 lazy-highlight-buffer t)
+ isearch-allow-scroll t
+ lazy-highlight-cleanup nil
+ lazy-highlight-initial-delay 0
+ lazy-highlight-buffer t)
 
 ;; One Esc is enough
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -42,6 +45,13 @@
 (setq pixel-scroll-precision-use-momentum t)
 (pixel-scroll-precision-mode)
 
+;;;; Mouse scrolling in terminal emacs
+(unless (display-graphic-p)
+  ;; activate mouse-based scrolling
+  (xterm-mouse-mode 1)
+  (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
+
 ;; Mark ring
 ;; See: https://www.gnu.org/software/emacs/manual/html_node/emacs/Mark-Ring.html
 ;; 
@@ -61,6 +71,8 @@
 
 ;; Auto close brackets
 (electric-pair-mode)
+(setq electric-pair-inhibit-predicate 'ignore)
+(setq electric-pair-skip-self t)
 
 ;; Add prompt indicator to `completing-read-multiple'.
 ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.

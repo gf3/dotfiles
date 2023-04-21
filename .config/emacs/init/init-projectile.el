@@ -5,9 +5,7 @@
 (use-package projectile
   :straight t
   :init
-  (setq projectile-enable-caching t)
   (setq projectile-sort-order 'recently-active)
-  (setq projectile-indexing-method 'alien)
   :config
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))

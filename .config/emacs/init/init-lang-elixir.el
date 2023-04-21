@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package elixir-ts-mode
+  :straight (:host github :repo "wkirschbaum/elixir-ts-mode")
+  :ensure t)
+
 (use-package eglot-elixir
   :straight (:host github :repo "hochata/eglot-elixir")
   :config

@@ -5,9 +5,13 @@
 (defadvice load-theme (before theme-dont-propagate activate)
   (mapc #'disable-theme custom-enabled-themes))
 
+(use-package os1-theme
+  :straight (:type git :host github :repo "sashimacs/os1-theme")
+  :custom (os1-modeline-padding 12))
+
 (use-package doom-themes
   :straight (:host github :repo "doomemacs/themes"
-			 :branch "master")
+				   :branch "master")
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -23,10 +27,17 @@
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
   (pcase appearance
-    ('light (load-theme 'doom-one-light t))
-    ('dark (load-theme 'doom-snazzy t))))
+    ('light (load-theme 'os1 t))
+    ('dark (load-theme 'doom-snazzy t)))
+  (set-face-attribute 'mode-line nil
+                      :box `(:line-width 12 :color ,(face-attribute 'mode-line :background)))
+  (set-face-attribute 'mode-line-inactive nil
+                      :box `(:line-width 12 :color ,(face-attribute 'mode-line-inactive :background))))
+
+(add-hook 'after-init-hook (lambda () (gf3/apply-theme 'light)))
 
 (add-hook 'ns-system-appearance-change-functions #'gf3/apply-theme)
+
 
 (provide 'init-theme)
 ;;; init-theme.el ends here
