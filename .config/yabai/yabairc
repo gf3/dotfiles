@@ -1,0 +1,75 @@
+#!/usr/bin/env sh
+
+# the scripting-addition must be loaded manually if
+# you are running yabai on macOS Big Sur. Uncomment
+# the following line to have the injection performed
+# when the config is executed during startup.
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+#
+# sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# global settings
+yabai -m config                                 \
+    mouse_follows_focus          off            \
+    focus_follows_mouse          autofocus      \
+    window_origin_display        default        \
+    window_placement             second_child   \
+    window_shadow                float          \
+    window_opacity               off            \
+    window_opacity_duration      0.0            \
+    window_topmost               off            \
+    active_window_opacity        1.0            \
+    normal_window_opacity        0.90           \
+    window_border                off            \
+    window_border_width          6              \
+    active_window_border_color   0xff775759     \
+    normal_window_border_color   0xff555555     \
+    insert_feedback_color        0xffd75f5f     \
+    split_ratio                  0.50           \
+    auto_balance                 on             \
+    mouse_modifier               fn             \
+    mouse_action1                move           \
+    mouse_action2                resize         \
+    mouse_drop_action            swap           \
+    top_padding                  12             \
+    bottom_padding               12             \
+    left_padding                 12             \
+    right_padding                12             \
+    window_gap                   06             \
+    layout                       bsp
+
+# Space names
+yabai -m space 1 --label main
+yabai -m space 2 --label comm
+yabai -m space 3 --label chat
+yabai -m space 4 --label misc
+yabai -m space 5 --label work
+
+# float system preferences
+yabai -m rule --add app="^System Preferences$" manage=off
+
+# float Things
+yabai -m rule --add app="^Things$" manage=off
+
+# float 1Password Login Window
+yabai -m rule --add app="^1Password$" title="^Lock Screen" manage=off sticky=on
+
+# flaot ProtonVPN
+yabai -m rule --add app="^ProtonVPN$" manage=off sticky=on
+
+# Sketchybar
+# yabai -m config external_bar all:45:0
+# yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+# yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+# yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+
+echo "yabai configuration loaded.."
