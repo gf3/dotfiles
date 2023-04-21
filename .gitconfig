@@ -1,7 +1,7 @@
 [user]
-  name  = Gianni Chiappetta
-  email = gianni@runlevel6.org
-  signingkey = FD8942A7CBA94FD3
+name       = Gianni Chiappetta
+email      = gianni@runlevel6.org
+signingkey = FD8942A7CBA94FD3
 
 [alias]
 br   = branch
@@ -34,43 +34,44 @@ old  = red
 new  = green
 
 [color "status"]
-  added     = yellow
-  changed   = green
-  untracked = cyan
+added     = yellow
+changed   = green
+untracked = cyan
 
 [push]
-  default = simple
+default = simple
 
 [rerere]
-  enabled = 1
+enabled = 1
 
 [commit]
-  gpgsign = true
+gpgsign = true
 
 [protocol]
-  version = 2
+version = 2
 
-[core]
-    pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    features = side-by-side line-numbers decorations
-    whitespace-error-style = 22 reverse
-
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
 [init]
-	defaultBranch = main
+defaultBranch = main
+	
 [github]
-	user = gf3
-[diff]
-	external = difft
-	submodule = log
+user = gf3
 
-[diff "org"]
-  xfuncname = "^(\\*+ +.*)$"
+[diff]
+submodule = log
+
+; Diff tool
+[diff]
+        tool = difftastic
+	external = difft
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+		
+[pager]
+        difftool = true
+
+[alias]
+        dft = difftool
