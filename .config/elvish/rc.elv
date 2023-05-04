@@ -100,3 +100,6 @@ set-env FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 only-when-external fd {
   set-env FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix'
 }
+use asdf _asdf; var asdf~ = $_asdf:asdf~
+
+use asdf _asdf; var asdf~ = $_asdf:asdf~
