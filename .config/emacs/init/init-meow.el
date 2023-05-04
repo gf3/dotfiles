@@ -3,7 +3,7 @@
 ;;; Code:
 
 (defun meow-setup-dvorak ()
-  ;; General meow config
+  "General meow config."
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-dvorak)
   
   (meow-leader-define-key
@@ -74,7 +74,7 @@
    '("t" . meow-right)
    '("T" . meow-right-expand)
    '("u" . meow-undo)
-   '("U" . meow-undo-in-selection)
+   ;; '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
    '("w" . meow-next-word)
    '("W" . meow-next-symbol)
@@ -88,7 +88,7 @@
    '("<down>" . move-text-down)))
 
 (defun meow-setup-qwerty ()
-  ;; General meow config
+  "General meow config."
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
 
   (meow-motion-overwrite-define-key
@@ -169,7 +169,7 @@
    '("S" . embrace-commander)
    '("t" . meow-till)
    '("u" . meow-undo)
-   '("U" . meow-undo-in-selection)
+   ;; '("U" . meow-undo-in-selection)
    '("v" . meow-visit)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)

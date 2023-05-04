@@ -10,7 +10,14 @@
   (setq company-tooltip-align-annotations t)
   (setq company-tooltip-flip-when-above t)
   :init
-  (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
+  ;; (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
+  (with-eval-after-load 'company
+	(define-key company-active-map (kbd "M-/") #'company-complete)
+	(define-key company-active-map (kbd "TAB") #'company-complete-common-or-cycle)
+	(define-key company-active-map (kbd "<backtab>")
+				(lambda ()
+                  (interactive)
+                  (company-complete-common-or-cycle -1))))
   (global-company-mode))
 
 (use-package company-quickhelp

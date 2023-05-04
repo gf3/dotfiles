@@ -34,6 +34,7 @@
 		  (let ((map (make-sparse-keymap)))
 			(define-key map (kbd "a") #'switch-to-last-buffer)
 			(define-key map (kbd "b") #'gf3/buffer)
+			(define-key map (kbd "c") #'consult-imenu)
 			(define-key map (kbd "f") #'gf3/find)
 			(define-key map (kbd "g") #'consult-ripgrep)
 			(define-key map (kbd "k") #'kill-current-buffer)

@@ -56,6 +56,8 @@
 			  (require 'init-vertico)
 			  (require 'init-anzu)
 			  (require 'init-buffers)
+			  (require 'init-deadgrep)
+			  (require 'init-popwin)
 			  (require 'init-hltodo)
 			  (require 'init-eglot)
 			  (require 'init-flycheck)
