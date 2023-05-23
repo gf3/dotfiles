@@ -1,10 +1,11 @@
 # Shell stuff
-set E:EDITOR = "emacs -nw"
-set E:GOPATH = /Users/gianni/.go
-set E:LANG = en_CA.UTF-8
-set E:LC_ALL = en_US.UTF-8
-set E:LESS = "-i -R"
-set E:VISUAL = "emacs"
+set-env EDITOR "emacs -nw"
+set-env GOPATH ~/gianni/.go
+set-env GPG_TTY (tty)
+set-env LANG en_CA.UTF-8
+set-env LC_ALL en_US.UTF-8
+set-env LESS "-i -R"
+set-env VISUAL "emacs"
 
 fn have-external { |prog|
   put ?(which $prog >/dev/null 2>&1)
@@ -14,25 +15,7 @@ fn only-when-external { |prog lambda|
 }
 
 # Paths
-use path
-
-var optpaths = [
-  ~/.bin
-  ~/.cabal/bin
-  ~/.cargo/bin
-  $E:GOPATH/bin
-  /Applications/Postgres.app/Contents/Versions/15/bin
-  /opt/homebrew/bin
-  /usr/local/bin
-  /usr/bin
-  /bin
-  /usr/sbin
-  /sbin
-]
-
-set paths = [(each {|p|
-  if (path:is-dir $p) { put $p }
-} $optpaths)]
+use set-path
 
 # Direnv
 use direnv
@@ -64,6 +47,7 @@ only-when-external zoxide {
 
 only-when-external exa {
   alias:new &save l exa --icons -1
+  alias:new &save ls exa --icons -1
   alias:new &save ll exa --icons --long --header --group --created --modified --git
 }
 
