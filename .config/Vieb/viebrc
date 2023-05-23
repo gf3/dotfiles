@@ -1,0 +1,281 @@
+" Options
+set adblocker=update
+set cache=clearonquit
+set noclearcookiesonquit
+set nocleardownloadsoncompleted
+set nocleardownloadsonquit
+set clearhistoryinterval=none
+set noclearlocalstorageonquit
+set noclosablepinnedtabs
+set commandhist=persistuseronly
+set containercolors=temp\d+~#ff0
+set containerkeeponreopen
+set containernames=
+set containernewtab=s:usecurrent
+set containershowname=automatic
+set containersplitpage=s:usecurrent
+set containerstartuppage=main
+set countlimit=100
+set nodarkreader
+set darkreaderbg=#181a1b
+set darkreaderblocklist=
+set darkreaderbrightness=100
+set darkreadercontrast=100
+set darkreaderfg=#e8e6e3
+set darkreadergrayscale=0
+set darkreadermode=dark
+set darkreadersepia=0
+set darkreadertextstroke=0
+set devtoolsposition=split
+set dialogalert=notifyblock
+set dialogconfirm=notifyblock
+set dialogprompt=notifyblock
+set downloadmethod=confirm
+set downloadpath=
+set encodeurlcopy=nospaces
+set encodeurlext=nospaces
+set explorehist=persist
+set externalcommand=
+set favicons=session
+set favoritepages=
+set followchars=alpha
+set followelement=
+set followelement+=url
+set followelement+=onclick
+set followelement+=inputs-insert
+set followelement+=inputs-click
+set followelement+=media
+set followelement+=image
+set followelement+=other
+set followelementpointer=
+set followelementpointer+=url
+set followelementpointer+=onclick
+set followelementpointer+=inputs-insert
+set followelementpointer+=inputs-click
+set followelementpointer+=media
+set followelementpointer+=image
+set followelementpointer+=other
+set followfallbackaction=filter
+set follownewtabswitch=false
+set guifontsize=16
+set guifullscreennavbar=oninput
+set guifullscreentabbar=onupdate
+set guihidetimeout=10000
+set guinavbar=always
+set guiscrollbar=always
+set guitabbar=always
+set ignorecase
+set incsearch
+set inputfocusalignment=rememberend
+set keeprecentlyclosed
+set mapsuggest=9000000000000000
+set mapsuggestposition=bottomleft
+set markposition=newtab
+set markpositionshifted=default
+set maxmapdepth=10
+set menupage=elementasneeded
+set menusuggest=both
+set menuvieb=both
+set mintabwidth=28
+set modifiers=
+set modifiers+=Ctrl
+set modifiers+=Shift
+set modifiers+=Alt
+set modifiers+=Meta
+set modifiers+=NumLock
+set modifiers+=CapsLock
+set modifiers+=ScrollLock
+set mouse=all
+set mousedisabledbehavior=nothing
+set nomousefocus
+set mousenewtabswitch
+set mousevisualmode=onswitch
+set nativenotification=never
+set nativetheme=system
+set newtaburl=
+set notificationduration=6000
+set notificationforpermissions=silent
+set notificationforsystemcommands=errors
+set notificationposition=bottomright
+set permissioncamera=ask
+set permissioncertificateerror=block
+set permissionclipboardread=block
+set permissionclipboardwrite=allow
+set permissionclosepage=allow
+set permissiondisplaycapture=ask
+set permissionfullscreen=allow
+set permissiongeolocation=block
+set permissionhid=block
+set permissionmediadevices=allow
+set permissionmicrophone=ask
+set permissionmidi=block
+set permissionmidisysex=block
+set permissionnotifications=block
+set permissionopenexternal=ask
+set permissionpersistentstorage=allow
+set permissionpointerlock=block
+set permissionsallowed=https://(.*)freshline.dev(|\/.*|:.*)~certificateerror
+set permissionsasked=
+set permissionsblocked=
+set permissionscreenwakelock=block
+set permissionsensors=block
+set permissionserial=block
+set permissionunknown=block
+set pointerposlocalid=domain
+set pointerpostype=casing
+set quickmarkpersistence=
+set quickmarkpersistence+=scroll
+set quickmarkpersistence+=marks
+set quickmarkpersistence+=pointer
+set noquitonlasttabclose
+set redirects=https?://(www\.)?google\.com(\.\w+)?/amp/s/amp\.(.*)~https://$3
+set noredirecttohttp
+set noreloadtaboncrash
+set replacespecial=newtab
+set replacestartup=never
+set requesttimeout=20000
+set resourcesallowed=
+set resourcesblocked=
+set resourcetypes=
+set resourcetypes+=object
+set resourcetypes+=script
+set resourcetypes+=media
+set resourcetypes+=image
+set resourcetypes+=stylesheet
+set resourcetypes+=font
+set resourcetypes+=xhr
+set resourcetypes+=ping
+set resourcetypes+=websocket
+set restoretabs=all
+set restorewindowmaximize
+set restorewindowposition
+set restorewindowsize
+set scrollposlocalid=domain
+set scrollpostype=casing
+set searchemptyscope=global
+set searchengine=https://kagi.com/search?q=%s
+set searchpointeralignment=left
+set searchscope=global
+set searchwords=
+set shell=
+set showcmd
+set smartcase
+set spell
+set spelllang=system
+set nosplitbelow
+set nosplitright
+set nosponsorblock
+set sponsorblockcategories=
+set sponsorblockcategories+=sponsor~lime
+set sponsorblockcategories+=intro~cyan
+set sponsorblockcategories+=outro~blue
+set sponsorblockcategories+=interaction~red
+set sponsorblockcategories+=selfpromo~yellow
+set sponsorblockcategories+=music_offtopic
+set startuppages=
+set storenewvisits=pages
+set suggestbouncedelay=100
+set suggestcommands=9000000000000000
+set suggestorder=
+set suggestorder+=history
+set suggestorder+=searchword
+set suggestorder+=file
+set suggesttopsites=10
+set suspendbackgroundtab
+set suspendonrestore=regular
+set nosuspendplayingtab
+set suspendtimeout=0
+set tabclosefocus=left
+set tabcycle
+set tabnewposition=end
+set tabopenmuted=never
+set taboverflow=wrap
+set tabreopenmuted=remember
+set tabreopenposition=previous
+set timeout
+set timeoutlen=2000
+set translateapi=auto
+set translatekey=
+set translatelang=en-us
+set translateurl=https://api-free.deepl.com/v2/
+set useragent=%firefox
+set userscript=true
+set userstyle=true
+set vimcommand="emacs -nw"
+set windowtitle='%title - %url'
+
+" Mappings
+cmap <C-a> <Home>
+cmap <C-e> <editWithVim>
+cmap <A-f> <C-Right>
+cmap <A-b> <C-Left>
+cmap <A-d> <C-S-Right><BS>
+cmap <A-BS> <C-S-Left><BS>
+cmap <C-?> <Del>
+cmap <C-h> <BS>
+cmap <C-b> <Left>
+cmap <C-f> <Right>
+cmap <C-k> <S-End><BS>
+cmap <C-u> <S-Home><BS>
+cmap <C-w> <C-S-Left><BS>
+emap <C-S-Tab> <prevSuggestionSection>
+emap <C-Tab> <nextSuggestionSection>
+emap <C-e> <editWithVim>
+imap <C-e> <editWithVim>
+nmap <C-p> <:pin>
+nmap = <zoomReset>
+nmap O <:tabnew><toExploreMode>
+nmap gU <openNewTabWithCurrentUrl><CR><toParentUrl>
+nmap gt <toCommandMode>buffer<Space>
+nunmap p
+nmap <C-S-PageDown> <moveTabBackward>
+nmap <C-S-PageUp> <moveTabForward>
+nmap <C-Tab> <:buffer #>
+nmap wi <:devtools>
+nmap Sh <:history>
+nmap Ss <:help>
+nmap <C-A-p> <:print>
+nmap <C-W> <:quit>
+nmap ZQ <:quit>
+nmap gd <:write>
+nmap <A-1> <:b 0>
+nmap g0 <:b 0>
+nmap g^ <:b -1>
+nmap g$ <:b -1>
+nmap <A-2> <:b 1>
+nmap <A-3> <:b 2>
+nmap <A-4> <:b 3>
+nmap <A-5> <:b 4>
+nmap <A-6> <:b 5>
+nmap <A-7> <:b 6>
+nmap <A-8> <:b 7>
+nmap <A-9> <:b 8>
+nmap <C-^> <:buffer #>
+nmap ga <:tabnew>
+nmap gC <openNewTabWithCurrentUrl><CR>
+nmap gJ <moveTabForward>
+nmap gK <moveTabBackward>
+nmap co <:lclose><:rclose>
+nmap <A-m> <:mute>
+nmap <C-s> <stopLoadingPage>
+nmap o <toExploreMode><BS>
+nmap go <toExploreMode><End>
+nmap pp <openFromClipboard>
+nmap Pp <:tabnew><openFromClipboard>
+nmap sk <toCommandMode>map<Space>
+nmap ss <toCommandMode>set<Space>
+pmap H <p.scrollLeft>
+pmap L <p.scrollRight>
+pmap e <p.moveFastRight>
+pmap c <toNormalMode>
+pmap <Space> <p.startVisualSelect>
+smap <C-e> <editWithVim>
+vmap v <p.start>
+vmap <CR> <p.copyText>
+vmap <C-Space> <toNormalMode><p.start><p.startVisualSelect>
+
+" Commands
+colorscheme default
+
+" Viebrc generated by Vieb
+" vim: ft=vim
