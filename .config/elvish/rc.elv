@@ -67,8 +67,6 @@ set edit:prompt-stale-transform = { each [x]{ styled x[text] "bright-black" } }
 set chain:prompt-segment-delimiters = "  "
 
 # Completions
-# fn g {|@a| e:git $@a }
-# edit:completion:arg-completer[g] = git
 set edit:command-abbr['g'] = 'git'
 use github.com/zzamboni/elvish-completions/git git-completions
 git-completions:init
@@ -84,6 +82,11 @@ set-env FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 only-when-external fd {
   set-env FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix'
 }
+
+# ASDF
 use asdf _asdf; var asdf~ = $_asdf:asdf~
 
-use asdf _asdf; var asdf~ = $_asdf:asdf~
+# Systemctl
+only-when-external systemctl {
+  systemctl --user import-environment PATH
+}
