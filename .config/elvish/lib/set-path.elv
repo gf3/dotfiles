@@ -6,6 +6,7 @@ var optpaths = [
   ~/.cabal/bin
   ~/.cargo/bin
   ~/.local/bin
+  ~/.asdf/installs/rust/nightly/bin
   $E:GOPATH/bin
   /Applications/Postgres.app/Contents/Versions/15/bin
   /opt/homebrew/bin
