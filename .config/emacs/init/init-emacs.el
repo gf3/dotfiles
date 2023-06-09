@@ -17,6 +17,9 @@
 ;; More detailed info for completions
 (setq completions-detailed t)
 
+;; Indent with spaces
+(set-default 'indent-tabs-mode nil)
+
 ;; isearch tweaks
 (setq-default
  isearch-allow-scroll t
