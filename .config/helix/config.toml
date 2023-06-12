@@ -1,0 +1,13 @@
+theme = "base16_transparent"
+
+[editor]
+scrolloff = 10
+cursorline = true
+cursorcolumn = true
+text-width = 120
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.cursor-shape]
+insert = "bar"
