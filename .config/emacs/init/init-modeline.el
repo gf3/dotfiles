@@ -9,6 +9,16 @@
 ;;   (setq doom-modeline-height 32)
 ;;   (setq doom-modeline-hud t))
 
+(defcustom mood-line-kakoune-state-alist
+  '((normal . ("<N>" . font-lock-variable-name-face))
+    (insert . ("<I>" . font-lock-string-face)))
+  "Set the string and corresponding face for each kakoune state."
+  :group 'mood-line
+  :type '(alist
+          :key-type symbol
+          :value-type (cons (string :tag "Display Text")
+                            (choice :tag "Face" face plist))))
+
 (use-package mood-line
   :straight t
   :config

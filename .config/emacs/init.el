@@ -48,7 +48,7 @@
 			  (require 'init-backup)
 			  (require 'init-saveplace)
 			  (require 'init-theme)
-			  (require 'init-meow)
+			  ;; (require 'init-meow)
 			  (require 'init-embrace)
 			  (require 'init-multiplecursors)
 			  (require 'init-treesitter)
@@ -77,6 +77,8 @@
 			  (require 'init-writegood)
 			  (require 'init-writeroom)
 			  (require 'init-copilot)
+              (require 'init-whichkey)
+              (require 'init-kakoune)
 
 			  ;; Languages
 			  (require 'init-lang-docker)
@@ -92,8 +94,7 @@
 			  (require 'init-lang-zig)
 
 			  ;; Font
-			  (gf3/set-font)
-			  )))
+			  (gf3/set-font))))
 
 ;;; init.el ends here
 (custom-set-variables
@@ -117,7 +118,6 @@
  '(safe-local-variable-values
    '((projectile-root-local . "/home/gianni/Code/github.com/freshlineapp/wharf")
      (js-indent-level . 2)
-     (projectile-root-local . "/Users/gianni/Code/freshline/wharf_umbrella")
      (web-mode-code-indent . 2)
      (eval prettier-mode t)
      (magit-todos-group-by magit-todos-item-first-path-component magit-todos-item-suffix magit-todos-item-keyword))))

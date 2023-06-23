@@ -20,6 +20,7 @@ apps are not started from a shell."
                           "[ \t\n]*$" "" (shell-command-to-string
                                           "echo $E:PATH"
                                           ))))
+    (message "Setting path: %S" path-from-shell)
     (setenv "PATH" path-from-shell)
     (setq exec-path (split-string path-from-shell path-separator))))
 

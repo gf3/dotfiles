@@ -28,7 +28,11 @@
  lazy-highlight-buffer t)
 
 ;; One Esc is enough
-(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+;; See: init-kakoune.el
+
+;; Set cursor shape
+(setq-default cursor-type 'bar)
 
 ;; Highlight current line
 (global-hl-line-mode 1)
@@ -48,12 +52,19 @@
 (setq pixel-scroll-precision-use-momentum t)
 (pixel-scroll-precision-mode)
 
-;;;; Mouse scrolling in terminal emacs
+;; Mouse scrolling in terminal emacs
 (unless (display-graphic-p)
   ;; activate mouse-based scrolling
   (xterm-mouse-mode 1)
   (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
   (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
+
+;; Frame parameters
+(when (display-graphic-p)
+  (add-to-list 'default-frame-alist '(border-width  . 1)))
+
+;; Mouse yank
+(global-set-key (kbd "<mouse-2>") 'clipboard-yank)
 
 ;; Mark ring
 ;; See: https://www.gnu.org/software/emacs/manual/html_node/emacs/Mark-Ring.html
