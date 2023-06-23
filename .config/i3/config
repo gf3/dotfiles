@@ -37,7 +37,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Compositor
-exec_always --no-startup-id picom -bc
+# exec_always --no-startup-id picom -bc --experimental-backend
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -56,14 +56,28 @@ tiling_drag modifier titlebar
 # Disable titlebar
 default_border pixel 2
 default_floating_border pixel 2
+# for_window [class="^.*"] border pixel 0
+
+# Border colours
+# class                 border  backgr. text    indicator child_border
+client.focused          #cbd1cd #1e1e20 #cbd1cd #cbd1cd #cbd1cd
+client.focused_inactive #cbd1cd #1e1e20 #cbd1cd #919893 #919893
+client.unfocused        #cbd1cd #1e1e20 #cbd1cd #919893 #919893
+client.urgent           #cbd1cd #1e1e20 #cbd1cd #919893 #919893
+client.placeholder      #cbd1cd #1e1e20 #cbd1cd #919893 #919893
+
+client.background       #1e1e20
 
 # Marks
 show_marks yes
 
 # Gaps
-gaps inner 16px
-gaps outer 4px
+gaps inner 16
+gaps outer 4
 smart_gaps on
+
+# Border radius
+# border_radius 16
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal

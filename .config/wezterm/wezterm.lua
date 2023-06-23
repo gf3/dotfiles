@@ -31,7 +31,6 @@ return {
   font = wezterm.font 'JetBrainsMono Nerd Font',
   font_size = 15.0,
   color_scheme = scheme_for_appearance(get_appearance()),
-  -- default_prog = { '/opt/homebrew/bin/fish', '-l' },
   tab_bar_at_bottom = true,
   visual_bell = {
     fade_in_function = 'EaseIn',
@@ -46,7 +45,15 @@ return {
   keys = {
     {
       key = 'k',
-      mods = 'SUPER',
+      mods = 'CMD',
+      action = act.Multiple {
+        -- act.SendKey { key = 'l', mods = 'CTRL' },
+        act.ClearScrollback 'ScrollbackAndViewport',
+      },
+    },
+    {
+      key = 'k',
+      mods = 'CTRL|SHIFT',
       action = act.Multiple {
         -- act.SendKey { key = 'l', mods = 'CTRL' },
         act.ClearScrollback 'ScrollbackAndViewport',
