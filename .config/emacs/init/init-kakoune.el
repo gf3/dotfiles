@@ -68,14 +68,18 @@
                                          (if ryo-modal-mode
                                              (keyboard-escape-quit)
                                            (ryo-modal-mode 1))
-                                     (keyboard-escape-quit))))
+                                       (keyboard-escape-quit))))
   (defun ryo-enter () "Enter normal mode" (interactive) (ryo-modal-mode 1))
   (kakoune-setup-keybinds)
   (setq ryo-modal-cursor-type 'box)
   (add-hook 'prog-mode-hook #'ryo-enter)
-                                        ;(define-key ryo-modal-mode-map (kbd "SPC h") 'help-command)
   ;; Access all C-x bindings easily
-  (define-key ryo-modal-mode-map (kbd "z") ctl-x-map)
+  (define-key ryo-modal-mode-map (kbd "SPC") (lookup-key global-map (kbd "C-c")))
+  (global-set-key (kbd "C-c SPC") '("M-x" . execute-extended-command))
+  (global-set-key (kbd "C-c x") `("C-x" . ,(lookup-key global-map (kbd "C-x"))))
+  (global-set-key (kbd "C-c ;") '("Toggle comment" . comment-or-uncomment-region))
+  (global-set-key (kbd "C-c h") '("Help" . help-command))
+
   (ryo-modal-major-mode-keys
    'prog-mode
    ("b" kakoune-backward-same-syntax :first '(kakoune-set-mark-here) :mc-all t)
@@ -102,20 +106,23 @@
    ("C-k" windmove-up)
    ("C-l" windmove-right)
    ("C-u" scroll-down-command :first '(deactivate-mark))
-   ("C-d" scroll-up-command :first '(deactivate-mark)))
+   ("C-d" scroll-up-command :first '(deactivate-mark))
+   ("<up>" move-text-up :name "Move line up")
+   ("<down>" move-text-down :name "Move line down"))
 
-  (ryo-modal-key
-   "SPC" '(("SPC" execute-extended-command :name "M-x")
-           ;; ("x" "C-x" :name "C-x")
-           (";" comment-or-uncomment-region :name "Toggle comment")
-           ("f" find-file :name "Find file")
-           ("r" consult-recent-file :name "Recent files")
-           ("p" consult-projectile :name "Project files")
-           ("P" projectile-switch-project :name "Switch project")
-           ("k" kill-buffer :name "Kill buffer")
-           ("s" save-buffer :name "Save buffer")
-           ("g" magit-status :name "Git status")
-           ("b" consult-buffer :name "Select buffer")))
+  ;; (ryo-modal-key
+  ;;  "SPC" `(("SPC" execute-extended-command :name "M-x")
+  ;;          ("c" ,(lookup-key (current-local-map) (kbd "C-c")) :name "C-c")
+  ;;          ;; ("x" "C-x" :name "C-x")
+  ;;          (";" comment-or-uncomment-region :name "Toggle comment")
+  ;;          ("f" find-file :name "Find file")
+  ;;          ("r" consult-recent-file :name "Recent files")
+  ;;          ("p" consult-projectile :name "Project files")
+  ;;          ("P" projectile-switch-project :name "Switch project")
+  ;;          ("k" kill-buffer :name "Kill buffer")
+  ;;          ("s" save-buffer :name "Save buffer")
+  ;;          ("g" magit-status :name "Git status")
+  ;;          ("b" consult-buffer :name "Select buffer")))
   )
 
 ;; This overrides the default mark-in-region with a prettier-looking one,

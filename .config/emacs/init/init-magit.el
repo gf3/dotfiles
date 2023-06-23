@@ -9,7 +9,15 @@
   (setq magit-diff-options '("-b")) ; ignore whitespace
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (setq magit-define-global-key-bindings t)
-  (transient-suffix-put 'magit-dispatch "k" :key "x"))
+  ;; (transient-suffix-put 'magit-dispatch "k" :key "x")
+
+  (defalias 'gf3/git
+	(let ((map (make-sparse-keymap)))
+	  (define-key map (kbd "g") '("Status" . magit-status))
+	  map)
+	"Git")
+
+  (global-set-key (kbd "C-c g") '("Git". gf3/git)))
 
 (use-package forge
   :straight t
