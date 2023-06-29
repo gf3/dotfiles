@@ -5,6 +5,7 @@ var optpaths = [
   ~/.bin
   ~/.cabal/bin
   ~/.cargo/bin
+  ~/.fly/bin
   ~/.local/bin
   ~/.asdf/installs/rust/nightly/bin
   $E:GOPATH/bin

@@ -1,11 +1,11 @@
 # Shell stuff
-set-env EDITOR "emacs -nw"
+set-env EDITOR "kak"
 set-env GOPATH ~/gianni/.go
 set-env GPG_TTY (tty)
 set-env LANG en_CA.UTF-8
 set-env LC_ALL en_US.UTF-8
 set-env LESS "-i -R"
-set-env VISUAL "emacs"
+set-env FLYCTL_INSTALL "/home/gianni/.fly"
 
 fn have-external { |prog|
   put ?(which $prog >/dev/null 2>&1)
