@@ -1,2 +1,3 @@
---theme ansi
 --paging never
+--style "changes,header,rule,snip"
+--theme ansi
