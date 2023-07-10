@@ -9,7 +9,9 @@
 		 (heex-ts-mode . eglot-ensure)
 		 (zig-mode . eglot-ensure))
   :config
-  (setq eldoc-echo-area-use-multiline-p t))
+  (setq eldoc-echo-area-use-multiline-p t)
+  (setq eglot-confirm-server-initiated-edits nil)
+  (setq eglot-extend-to-xref t))
 
 (use-package eldoc-box
   :straight (:host github :repo "casouri/eldoc-box")
