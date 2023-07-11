@@ -52,6 +52,13 @@
 ;;   (global-set-key (kbd "SPC") 'god-local-mode)
 ;;   (define-key ctl-x-map (kbd "SPC") 'execute-extended-command))
 
+(defun kakoune-delete (count)
+  "Delete selected text or COUNT chars."
+  (interactive "p")
+  (if (use-region-p)
+      (delete-region (region-beginning) (region-end))
+    (delete-char count t)))
+
 (use-package kakoune
   :straight t
   :demand t
@@ -88,6 +95,7 @@
    ("W" forward-same-syntax :first '(kakoune-set-mark-if-inactive) :mc-all t))
   (ryo-modal-keys
    ("," save-buffer)
+   ("d" kakoune-delete)
    ("P" consult-yank-pop)
    ("m" mc/mark-next-like-this)
    ("M" mc/skip-to-next-like-this)

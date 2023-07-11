@@ -20,6 +20,9 @@
 ;; Indent with spaces
 (set-default 'indent-tabs-mode nil)
 
+;; Delete selection when pasting, etc...
+(delete-selection-mode 1)
+
 ;; isearch tweaks
 (setq-default
  isearch-allow-scroll t
