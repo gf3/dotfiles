@@ -29,6 +29,9 @@
  lazy-highlight-cleanup nil
  lazy-highlight-initial-delay 0
  lazy-highlight-buffer t)
+(setq-default isearch-lazy-count t)
+(setq-default lazy-count-prefix-format nil)
+(setq-default lazy-count-suffix-format " (%s/%s)")
 
 ;; One Esc is enough
 ;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)

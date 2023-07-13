@@ -142,12 +142,6 @@
   ("?" vr/replace)
   ("M-/" vr/query-replace))
 
-;; Emacs incremental search doesn't work with multiple cursors, but this fixes that
-(use-package phi-search
-  :straight t
-  :bind (("C-s" . phi-search)
-         ("C-r" . phi-search-backward)))
-
 ;; Probably the first thing you'd miss is undo and redo, which requires an extra package
 ;; to work like it does in kakoune (and almost every other editor).
 (use-package undo-tree

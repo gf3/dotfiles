@@ -26,9 +26,5 @@
   :init
   (company-quickhelp-mode))
 
-;; (use-package company-box
-;;   :straight (:host github :repo "sebastiencs/company-box")
-;;   :hook (company-mode . company-box-mode))
-
 (provide 'init-company)
 ;;; init-company.el ends here
