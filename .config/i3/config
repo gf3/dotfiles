@@ -30,14 +30,17 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Compositor
-# exec_always --no-startup-id picom -bc --experimental-backend
+exec_always --no-startup-id picom -bc --experimental-backend
+
+# Wallpaper
+exec_always --no-startup-id ~/.fehbg
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -56,7 +59,6 @@ tiling_drag modifier titlebar
 # Disable titlebar
 default_border pixel 2
 default_floating_border pixel 2
-# for_window [class="^.*"] border pixel 0
 
 # Border colours
 # class                 border  backgr. text    indicator child_border
@@ -234,7 +236,6 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
 for_window [class="yakuake"] floating enable
-for_window [class="systemsettings"] floating enable
 for_window [class="plasmashell"] floating enable;
 for_window [class="Plasma"] floating enable; border none
 for_window [title="plasma-desktop"] floating enable; border none
@@ -244,6 +245,7 @@ for_window [class="Kmix"] floating enable; border none
 for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
+# for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
 no_focus [class="plasmashell" window_type="notification"]
+for_window [class="plasmashell" window_type="notification"] border none
 for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
