@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#f6ece8',
+    '#cc3333',
+    '#217a3c',
+    '#8a5d00',
+    '#375cd8',
+    '#ba35af',
+    '#1f6fbf',
+    '#222222'
+]
+brights = [
+    '#c7c0ba',
+    '#c04440',
+    '#008058',
+    '#8f5a3a',
+    '#065fff',
+    '#6052cf',
+    '#1f77bb',
+    '#63728f'
+]
+cursor_bg = '#1144ff'
+cursor_border = '#1144ff'
+cursor_fg = '#222222'
+background = '#fff8f0'
+foreground = '#222222'
+selection_bg = '#caeafa'
+selection_fg = '#222222'
+
+[metadata]
+name = 'Ef-Duo-Light'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-duo-light-theme.el'

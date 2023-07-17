@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#1d1a26',
+    '#ef656a',
+    '#1fa526',
+    '#c48702',
+    '#379cf6',
+    '#d369af',
+    '#5faaef',
+    '#d0d0d0'
+]
+brights = [
+    '#4a4759',
+    '#ef798f',
+    '#00b982',
+    '#df805f',
+    '#029fff',
+    '#af85ff',
+    '#0dafdf',
+    '#857f8f'
+]
+cursor_bg = '#ef6f11'
+cursor_border = '#ef6f11'
+cursor_fg = '#d0d0d0'
+background = '#070019'
+foreground = '#d0d0d0'
+selection_bg = '#042a50'
+selection_fg = '#d0d0d0'
+
+[metadata]
+name = 'Ef-Duo-Dark'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-duo-dark-theme.el'

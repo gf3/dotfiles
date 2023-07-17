@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#efefef',
+    '#d3303a',
+    '#217a3c',
+    '#a45f22',
+    '#375cd8',
+    '#ba35af',
+    '#1f6fbf',
+    '#202020'
+]
+brights = [
+    '#b3b3b3',
+    '#d50f7f',
+    '#008858',
+    '#b65050',
+    '#065fff',
+    '#6052cf',
+    '#1f77bb',
+    '#70627f'
+]
+cursor_bg = '#0033cc'
+cursor_border = '#0033cc'
+cursor_fg = '#202020'
+background = '#ffffff'
+foreground = '#202020'
+selection_bg = '#bfefff'
+selection_fg = '#202020'
+
+[metadata]
+name = 'Ef-Light'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-light-theme.el'

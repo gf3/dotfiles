@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#d7d7d7',
+    '#972500',
+    '#315b00',
+    '#70480f',
+    '#2544bb',
+    '#8f0075',
+    '#30517f',
+    '#000000'
+]
+brights = [
+    '#505050',
+    '#a60000',
+    '#005e00',
+    '#813e00',
+    '#0031a9',
+    '#721045',
+    '#00538b',
+    '#000000'
+]
+cursor_bg = '#282828'
+cursor_border = '#282828'
+cursor_fg = '#000000'
+background = '#ffffff'
+foreground = '#000000'
+selection_bg = '#bcbcbc'
+selection_fg = '#000000'
+
+[metadata]
+name = 'Modus-Operandi'
+author = "anhsirk0"
+origin_url = "https://git.sr.ht/~protesilaos/modus-themes/tree/main/item/modus-operandi-theme.el"

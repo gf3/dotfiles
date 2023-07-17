@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#e3e9d6',
+    '#c3303a',
+    '#00601f',
+    '#9a501f',
+    '#375cc6',
+    '#80308f',
+    '#1f70af',
+    '#221321'
+]
+brights = [
+    '#b0b7aa',
+    '#b02440',
+    '#007047',
+    '#88541f',
+    '#162f8f',
+    '#5032aa',
+    '#00677f',
+    '#676470'
+]
+cursor_bg = '#770080'
+cursor_border = '#770080'
+cursor_fg = '#221321'
+background = '#edf5e2'
+foreground = '#221321'
+selection_bg = '#d9d2ef'
+selection_fg = '#221321'
+
+[metadata]
+name = 'Ef-Elea-Light'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-elea-light-theme.el'

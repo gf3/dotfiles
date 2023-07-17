@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#f0ece0',
+    '#9f0d0f',
+    '#006f00',
+    '#a7601f',
+    '#375cc6',
+    '#9a456f',
+    '#1f70af',
+    '#242521'
+]
+brights = [
+    '#c5c3b8',
+    '#ca3400',
+    '#00824f',
+    '#a2604f',
+    '#065fbf',
+    '#8448aa',
+    '#007a9f',
+    '#59786f'
+]
+cursor_bg = '#007f00'
+cursor_border = '#007f00'
+cursor_fg = '#242521'
+background = '#fcf7ef'
+foreground = '#242521'
+selection_bg = '#e0e7e5'
+selection_fg = '#242521'
+
+[metadata]
+name = 'Ef-Cyprus'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-cyprus-theme.el'

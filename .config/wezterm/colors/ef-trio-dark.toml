@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#43353d',
+    '#f48359',
+    '#60b444',
+    '#d4a052',
+    '#7fa5f6',
+    '#d37faf',
+    '#8fbaff',
+    '#d8cfd5'
+]
+brights = [
+    '#908890',
+    '#ff85aa',
+    '#60bf88',
+    '#ef9680',
+    '#72afff',
+    '#a698ef',
+    '#8fcfdf',
+    '#afdacf'
+]
+cursor_bg = '#ff99ff'
+cursor_border = '#ff99ff'
+cursor_fg = '#d8cfd5'
+background = '#160f0f'
+foreground = '#d8cfd5'
+selection_bg = '#16304f'
+selection_fg = '#b8c6d5'
+
+[metadata]
+name = 'Ef-Trio-Dark'
+author = "anhsirk0"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-trio-dark-theme.el"

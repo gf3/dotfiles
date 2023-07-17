@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#221920',
+    '#ef6360',
+    '#0faa26',
+    '#bf9032',
+    '#3f95f6',
+    '#d369af',
+    '#4fbaef',
+    '#d0d0d0'
+]
+brights = [
+    '#4b3f47',
+    '#fe5a7a',
+    '#00a692',
+    '#df8a5a',
+    '#029fff',
+    '#af85ff',
+    '#1dbfcf',
+    '#857f8f'
+]
+cursor_bg = '#f0af7f'
+cursor_border = '#f0af7f'
+cursor_fg = '#d0d0d0'
+background = '#130911'
+foreground = '#d0d0d0'
+selection_bg = '#2f2630'
+selection_fg = '#d0d0d0'
+
+[metadata]
+name = 'Ef-Symbiosis'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-symbiosis-theme.el'

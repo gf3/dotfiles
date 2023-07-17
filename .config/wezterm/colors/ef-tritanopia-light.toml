@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#756275',
+    '#aa0010',
+    '#217a3c',
+    '#805d00',
+    '#375cd8',
+    '#aa357f',
+    '#2070af',
+    '#1a1a1a'
+]
+brights = [
+    '#bdb9b9',
+    '#c50f4f',
+    '#008058',
+    '#765040',
+    '#065fff',
+    '#af40af',
+    '#007faa',
+    '#194f90'
+]
+cursor_bg = '#bb0000'
+cursor_border = '#bb0000'
+cursor_fg = '#1a1a1a'
+background = '#fff9f9'
+foreground = '#1a1a1a'
+selection_bg = '#dadadf'
+selection_fg = '#1a1a1a'
+
+[metadata]
+name = 'Ef-Tritanopia-Light'
+author = "anhsirk0"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-tritanopia-light-theme.el"

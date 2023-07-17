@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#f2e9db',
+    '#ba2d2f',
+    '#007a0a',
+    '#a45a22',
+    '#375cc6',
+    '#ca3e54',
+    '#3f60af',
+    '#584141'
+]
+brights = [
+    '#c9c0b8',
+    '#cf2f4f',
+    '#0f7f5f',
+    '#aa4f30',
+    '#265fbf',
+    '#8448aa',
+    '#0f7b8f',
+    '#63728f'
+]
+cursor_bg = '#cf1f00'
+cursor_border = '#cf1f00'
+cursor_fg = '#584141'
+background = '#fff5ea'
+foreground = '#584141'
+selection_bg = '#f0d2df'
+selection_fg = '#584141'
+
+[metadata]
+name = 'Ef-Day'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-day-theme.el'

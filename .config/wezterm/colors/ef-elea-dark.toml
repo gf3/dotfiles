@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#303332',
+    '#ff656a',
+    '#7fc87f',
+    '#cac85f',
+    '#57aff6',
+    '#f59acf',
+    '#6fcfd2',
+    '#eaf2ef'
+]
+brights = [
+    '#3e4140',
+    '#fa7f88',
+    '#50cf89',
+    '#cfb27f',
+    '#62cfef',
+    '#cfaaff',
+    '#60d5c2',
+    '#969faf'
+]
+cursor_bg = '#ef7fa8'
+cursor_border = '#ef7fa8'
+cursor_fg = '#eaf2ef'
+background = '#222524'
+foreground = '#eaf2ef'
+selection_bg = '#543040'
+selection_fg = '#eaf2ef'
+
+[metadata]
+name = 'Ef-Elea-Dark'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-elea-dark-theme.el'

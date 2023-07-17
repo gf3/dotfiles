@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#d3d0d9',
+    '#c3303a',
+    '#057800',
+    '#a45f22',
+    '#375cd6',
+    '#ad45ba',
+    '#1f6fbf',
+    '#4f3363'
+]
+brights = [
+    '#786e74',
+    '#d03033',
+    '#057800',
+    '#b8532f',
+    '#5165e4',
+    '#c035aa',
+    '#3f6faf',
+    '#4f3363'
+]
+cursor_bg = '#375cd6'
+cursor_border = '#375cd6'
+cursor_fg = '#4f3363'
+background = '#f8f5ff'
+foreground = '#4f3363'
+selection_bg = '#eed0ff'
+selection_fg = '#4f3363'
+
+[metadata]
+name = 'Ef-Trio-Light'
+author = "anhsirk0"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-trio-light-theme.el"

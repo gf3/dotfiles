@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#1a202b',
+    '#ef656a',
+    '#1fa526',
+    '#c48502',
+    '#379cf6',
+    '#d570af',
+    '#4fb0cf',
+    '#afbcbf'
+]
+brights = [
+    '#444e59',
+    '#ef798f',
+    '#00a972',
+    '#df8f6f',
+    '#029fff',
+    '#af8aff',
+    '#3dc0b0',
+    '#70819f'
+]
+cursor_bg = '#00ccff'
+cursor_border = '#00ccff'
+cursor_fg = '#afbcbf'
+background = '#000e17'
+foreground = '#afbcbf'
+selection_bg = '#222f40'
+selection_fg = '#afbcbf'
+
+[metadata]
+name = 'Ef-Night'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-night-theme.el'

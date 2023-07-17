@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#efe7e7',
+    '#b00234',
+    '#217a3c',
+    '#9a6012',
+    '#3c3bbe',
+    '#a01f64',
+    '#2f5f9f',
+    '#201f36'
+]
+brights = [
+    '#c0bbbb',
+    '#d5305f',
+    '#008358',
+    '#a04646',
+    '#065fff',
+    '#7022bf',
+    '#1077ab',
+    '#776f79'
+]
+cursor_bg = '#d06f30'
+cursor_border = '#d06f30'
+cursor_fg = '#201f36'
+background = '#fff7f7'
+foreground = '#201f36'
+selection_bg = '#dfe4f4'
+selection_fg = '#201f36'
+
+[metadata]
+name = 'Ef-Kassio'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-kassio-theme.el'

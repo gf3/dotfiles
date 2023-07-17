@@ -12,11 +12,11 @@ end
 
 function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
-    return 'Ayu Mirage'
+    -- return 'Ayu Mirage'
+    return 'Ef-Cherie'
   else
-    -- return 'rose-pine-dawn'
-    return 'Yousai (terminal.sexy)'
-    -- return 'Horizon Light (base16)'
+    return 'Ef-Day'
+    -- return 'Yousai (terminal.sexy)'
   end
 end
 

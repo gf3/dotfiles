@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#d0d6d3',
+    '#c42d2f',
+    '#1a870f',
+    '#a45f22',
+    '#375cc6',
+    '#d5206f',
+    '#1f6fbf',
+    '#34494a'
+]
+brights = [
+    '#777294',
+    '#cf2f4f',
+    '#007f68',
+    '#ae5a30',
+    '#265fbf',
+    '#9435b4',
+    '#0f7b8f',
+    '#34494a'
+]
+cursor_bg = '#bf005f'
+cursor_border = '#bf005f'
+cursor_fg = '#34494a'
+background = '#f6fff9'
+foreground = '#34494a'
+selection_bg = '#d0e6ff'
+selection_fg = '#34494a'
+
+[metadata]
+name = 'Ef-Spring'
+author = "anhsirk0"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-spring-theme.el"

@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#594a4f',
+    '#ff7359',
+    '#60b444',
+    '#e5b76f',
+    '#8fa5f6',
+    '#ef80bf',
+    '#8fbaef',
+    '#d3cfcf'
+]
+brights = [
+    '#5f509f',
+    '#ff78aa',
+    '#60bf88',
+    '#f59280',
+    '#7fa5ff',
+    '#df7fff',
+    '#8fcfdf',
+    '#808898'
+]
+cursor_bg = '#ff99ff'
+cursor_border = '#ff99ff'
+cursor_fg = '#d8cfd5'
+background = '#190a0f'
+foreground = '#d3cfcf'
+selection_bg = '#232f3f'
+selection_fg = '#d3cfcf'
+
+[metadata]
+name = 'Ef-Cherie'
+author = "anhsirk0"
+origin_url = "https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-cherie-theme.el"

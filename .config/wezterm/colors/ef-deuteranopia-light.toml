@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#e8e8ea',
+    '#d3303a',
+    '#217a3c',
+    '#805d00',
+    '#375cd8',
+    '#ba35af',
+    '#1f6fbf',
+    '#1a1a2f'
+]
+brights = [
+    '#b3b3c0',
+    '#d50f7f',
+    '#008058',
+    '#765040',
+    '#065fff',
+    '#6052cf',
+    '#1f77bb',
+    '#70627f'
+]
+cursor_bg = '#0000bb'
+cursor_border = '#0000bb'
+cursor_fg = '#1a1a2f'
+background = '#f5f5ff'
+foreground = '#1a1a2f'
+selection_bg = '#dadadf'
+selection_fg = '#1a1a2f'
+
+[metadata]
+name = 'Ef-Deuteranopia-Light'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-deuteranopia-light-theme.el'

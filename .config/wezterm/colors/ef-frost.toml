@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#eaefef',
+    '#c42d2f',
+    '#008a00',
+    '#aa6100',
+    '#004fc0',
+    '#aa44c5',
+    '#1f6fbf',
+    '#232323'
+]
+brights = [
+    '#b5b8b8',
+    '#cf2f4f',
+    '#00845f',
+    '#996c4f',
+    '#065fff',
+    '#7f5ae0',
+    '#007a85',
+    '#66657f'
+]
+cursor_bg = '#0055bb'
+cursor_border = '#0055bb'
+cursor_fg = '#232323'
+background = '#fcffff'
+foreground = '#232323'
+selection_bg = '#d4eaf3'
+selection_fg = '#232323'
+
+[metadata]
+name = 'Ef-Frost'
+author = 'anhsirk0'
+origin_url = 'https://git.sr.ht/~protesilaos/ef-themes/tree/main/item/ef-frost-theme.el'
