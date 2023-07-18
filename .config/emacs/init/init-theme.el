@@ -5,30 +5,28 @@
 (defadvice load-theme (before theme-dont-propagate activate)
   (mapc #'disable-theme custom-enabled-themes))
 
-(use-package os1-theme
-  :straight (:type git :host github :repo "sashimacs/os1-theme")
-  :custom (os1-modeline-padding 12))
-
-(use-package doom-themes
-  :straight (:host github :repo "doomemacs/themes"
-				   :branch "master")
+(use-package ef-themes
+  :straight (:type git :host github :repo "protesilaos/ef-themes")
+  :demand t
+  :custom
+  (ef-themes-to-toggle '(ef-day ef-cherie))
+  (ef-themes-mixed-fonts t)
+  (ef-themes-variable-pitch-ui t)
+  (ef-themes-region '(intense no-extend))
   :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t  ; if nil, italics is universally disabled
-		doom-themes-padded-modeline t)
+  (ef-themes-select 'ef-day))
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;; (use-package os1-theme
+;;   :straight (:type git :host github :repo "sashimacs/os1-theme")
+;;   :custom (os1-modeline-padding 12))
 
-(defun gf3/apply-theme (appearance)
+(defun gf3/apply-theme (&optional appearance)
   "Load theme, taking current system APPEARANCE into consideration."
   (mapc #'disable-theme custom-enabled-themes)
+  (unless appearance (setq appearance 'light))
   (pcase appearance
-    ('light (load-theme 'os1 t))
-    ('dark (load-theme 'doom-snazzy t)))
+    ('light (load-theme 'ef-day t))
+    ('dark (load-theme 'ef-night t)))
   (set-face-attribute 'mode-line nil
                       :box `(:line-width 12 :color ,(face-attribute 'mode-line :background)))
   (set-face-attribute 'mode-line-inactive nil
