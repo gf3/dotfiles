@@ -13,7 +13,7 @@ end
 function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
     -- return 'Ayu Mirage'
-    return 'Ef-Cherie'
+    return 'Ef-Autumn'
   else
     return 'Ef-Day'
     -- return 'Yousai (terminal.sexy)'
