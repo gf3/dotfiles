@@ -11,7 +11,11 @@
   :config
   (setq eldoc-echo-area-use-multiline-p t)
   (setq eglot-confirm-server-initiated-edits nil)
-  (setq eglot-extend-to-xref t))
+  (setq eglot-extend-to-xref t)
+  (when (file-directory-p (expand-file-name "~/Code/github.com/elixir-tools/next-ls/bin"))
+    (add-to-list 'exec-path (expand-file-name "~/Code/github.com/elixir-tools/next-ls/bin"))
+    (add-to-list 'eglot-server-programs
+                 `((elixir-ts-mode heex-ts-mode elixir-mode) . ("nextls" "--stdio=true")))))
 
 (use-package eldoc-box
   :straight (:host github :repo "casouri/eldoc-box")
