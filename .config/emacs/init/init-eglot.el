@@ -4,10 +4,11 @@
 
 (use-package eglot
   :straight (:host github :repo "joaotavora/eglot")
-  :hook ((go-mode . eglot-ensure)
-		 (elixir-ts-mode . eglot-ensure)
-		 (heex-ts-mode . eglot-ensure)
-		 (zig-mode . eglot-ensure))
+  :hook ((elixir-ts-mode . eglot-ensure)
+         (go-ts-mode . eglot-ensure)
+         (hcl-ts-mode . eglot-ensure)
+         (heex-ts-mode . eglot-ensure)
+         (zig-mode . eglot-ensure))
   :config
   (setq eldoc-echo-area-use-multiline-p t)
   (setq eglot-confirm-server-initiated-edits nil)
