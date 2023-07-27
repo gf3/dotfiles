@@ -29,6 +29,8 @@
  lazy-highlight-cleanup nil
  lazy-highlight-initial-delay 0
  lazy-highlight-buffer t)
+(setq-default isearch-wrap-pause 'no)
+(setq-default isearch-repeat-on-direction-change t)
 (setq-default isearch-lazy-count t)
 (setq-default lazy-count-prefix-format nil)
 (setq-default lazy-count-suffix-format " (%s/%s)")
