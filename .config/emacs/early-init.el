@@ -49,14 +49,4 @@ apps are not started from a shell."
 ;; Disable scroll bar
 (scroll-bar-mode -1)
 
-;; Set font
-(defun gf3/set-font ()
-  "Set default fonts."
-  (set-face-attribute 'default nil :height 110 :font "JetBrainsMono Nerd Font" :weight 'light)
-  (set-face-attribute 'fixed-pitch nil :height 110 :font "JetBrainsMono Nerd Font" :weight 'light)
-  (set-face-attribute 'variable-pitch nil :height 135 :font "Greycliff CF")
-  (set-frame-font "JetBrainsMono Nerd Font Light 11"))
-
-(gf3/set-font)
-
 ;;; early-init.el ends here

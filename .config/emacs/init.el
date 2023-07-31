@@ -26,6 +26,47 @@
 			(setq gc-cons-threshold 16777216 ; 16mb
 				  gc-cons-percentage 0.1)))
 
+;; Fonts
+(defun gf3/get-dpi ()
+  "Get the DPI of FRAME (or current if nil)."
+  (let* ((attrs (car (display-monitor-attributes-list)))
+         (size (assoc 'mm-size attrs))
+         (sizex (cadr size))
+         (res (cdr (assoc 'geometry attrs)))
+         (resx (- (caddr res) (car res)))
+         dpi)
+    (catch 'exit
+      ;; in terminal
+      (unless sizex
+        (throw 'exit 10))
+      ;; on big screen
+      (when (> sizex 1000)
+        (throw 'exit 10))
+      ;; DPI
+      (* (/ (float resx) sizex) 25.4))))
+
+(defun gf3/preferred-font-size ()
+  "Calculate the preferred font size based on the monitor DPI."
+  (let ((dpi (gf3/get-dpi)))
+    (cond
+     ((< dpi 110) 13)
+     ((< dpi 130) 14)
+     ((< dpi 160) 15)
+     (t 15))))
+
+(defvar fixed-pitch-font-name "JetBrainsMono Nerd Font" "The fixed pitch font name.")
+(defvar variable-pitch-font-name "Greycliff CF" "The variable pitch font name.")
+(defvar preferred-font-size (gf3/preferred-font-size) "The preferred font size.")
+(defvar preferred-font (format "%s-%d:weight=light" fixed-pitch-font-name preferred-font-size) "The preferred font.")
+
+(defun gf3/set-fonts ()
+  "Set the default fonts."
+  (message "Setting fonts: dpi: %d, size: %d" (gf3/get-dpi) preferred-font-size)
+  (set-frame-font preferred-font t t)
+  (set-face-font 'fixed-pitch-serif fixed-pitch-font-name)
+  (set-face-font 'variable-pitch variable-pitch-font-name))
+
+
 ;; User configs
 (let ((custom-path (expand-file-name "init" user-emacs-directory)))
   ;; (eval-when-compile
@@ -48,7 +89,6 @@
 			  (require 'init-backup)
 			  (require 'init-saveplace)
 			  (require 'init-theme)
-			  ;; (require 'init-meow)
 			  (require 'init-embrace)
 			  (require 'init-multiplecursors)
 			  (require 'init-treesitter)
@@ -88,13 +128,14 @@
 			  (require 'init-lang-graphql)
 			  (require 'init-lang-odin)
 			  (require 'init-lang-rust)
+              (require 'init-lang-terraform)
 			  (require 'init-lang-typescript)
 			  (require 'init-lang-webmode)
 			  (require 'init-lang-yaml)
 			  (require 'init-lang-zig)
 
 			  ;; Font
-			  (gf3/set-font))))
+			  (gf3/set-fonts))))
 
 ;;; init.el ends here
 (custom-set-variables
