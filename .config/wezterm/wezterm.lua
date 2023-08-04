@@ -28,7 +28,7 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
 return {
   audible_bell = "Disabled",
-  font = wezterm.font 'JetBrainsMono Nerd Font',
+  font = wezterm.font 'Source Code Pro',
   font_size = 15.0,
   color_scheme = scheme_for_appearance(get_appearance()),
   tab_bar_at_bottom = true,

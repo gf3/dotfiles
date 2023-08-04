@@ -54,15 +54,15 @@
      ((< dpi 160) 15)
      (t 15))))
 
-(defvar fixed-pitch-font-name "JetBrainsMono Nerd Font" "The fixed pitch font name.")
-(defvar variable-pitch-font-name "Greycliff CF" "The variable pitch font name.")
+(defvar fixed-pitch-font-name "Source Code Pro" "The fixed pitch font name.")
+(defvar variable-pitch-font-name "GreycliffCF Nerd Font" "The variable pitch font name.")
 (defvar preferred-font-size (gf3/preferred-font-size) "The preferred font size.")
-(defvar preferred-font (format "%s-%d:weight=light" fixed-pitch-font-name preferred-font-size) "The preferred font.")
+(defvar preferred-font (format "%s-%d:weight=regular" fixed-pitch-font-name preferred-font-size) "The preferred font.")
 
 (defun gf3/set-fonts ()
   "Set the default fonts."
-  (message "Setting fonts: dpi: %d, size: %d" (gf3/get-dpi) preferred-font-size)
-  (set-frame-font preferred-font t t)
+  (message "Setting fonts: dpi: %d, size: %d, fixed: %s, variable: %s" (gf3/get-dpi) preferred-font-size fixed-pitch-font-name variable-pitch-font-name)
+  (set-frame-font preferred-font nil t)
   (set-face-font 'fixed-pitch-serif fixed-pitch-font-name)
   (set-face-font 'variable-pitch variable-pitch-font-name))
 
