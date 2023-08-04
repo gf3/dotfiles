@@ -31,3 +31,4 @@ x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/morgen=morgen.desktop
 x-scheme-handler/slack=slack.desktop
 x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
+x-scheme-handler/element=Beeper.desktop
