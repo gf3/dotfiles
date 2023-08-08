@@ -66,7 +66,6 @@
   (set-face-font 'fixed-pitch-serif fixed-pitch-font-name)
   (set-face-font 'variable-pitch variable-pitch-font-name))
 
-
 ;; User configs
 (let ((custom-path (expand-file-name "init" user-emacs-directory)))
   ;; (eval-when-compile
@@ -135,7 +134,8 @@
 			  (require 'init-lang-zig)
 
 			  ;; Font
-			  (gf3/set-fonts))))
+			  (gf3/set-fonts)
+              (gf3/apply-theme 'light))))
 
 ;;; init.el ends here
 (custom-set-variables
