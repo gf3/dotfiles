@@ -7,8 +7,7 @@
   :defer t
   :mode ("\\.yaml\\'" "\\.yml\\'")
   :hook ((yaml-mode . (lambda ()
-						 (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
-  :after tree-sitter)
+						 (define-key yaml-mode-map "\C-m" 'newline-and-indent)))))
 
 (provide 'init-lang-yaml)
 ;;; init-lang-yaml.el ends here

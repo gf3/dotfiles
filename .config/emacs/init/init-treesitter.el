@@ -26,6 +26,7 @@
       '((bash "https://github.com/tree-sitter/tree-sitter-bash")
         (cmake "https://github.com/uyha/tree-sitter-cmake")
         (css "https://github.com/tree-sitter/tree-sitter-css")
+        (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
         (elisp "https://github.com/Wilfred/tree-sitter-elisp")
         (elixir "https://github.com/elixir-lang/tree-sitter-elixir.git")
         (go "https://github.com/tree-sitter/tree-sitter-go")
