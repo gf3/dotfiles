@@ -5,6 +5,12 @@
 (defadvice load-theme (before theme-dont-propagate activate)
   (mapc #'disable-theme custom-enabled-themes))
 
+(use-package timu-spacegrey-theme
+  :straight t
+  :ensure t
+  :config
+  (load-theme 'timu-spacegrey t))
+
 (use-package circadian
   :straight t
   :ensure t
@@ -30,10 +36,6 @@
   (pcase appearance
     ('light (load-theme 'doom-one-light t))
     ('dark (load-theme 'doom-one t))))
-;; (set-face-attribute 'mode-line nil
-;;                     :box `(:line-width 12 :color ,(face-attribute 'mode-line :background)))
-;; (set-face-attribute 'mode-line-inactive nil
-;;                     :box `(:line-width 12 :color ,(face-attribute 'mode-line-inactive :background))))
 
 (add-hook 'after-init-hook (lambda () (gf3/apply-theme 'light)))
 

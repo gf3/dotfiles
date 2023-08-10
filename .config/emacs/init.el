@@ -134,8 +134,7 @@
 			  (require 'init-lang-zig)
 
 			  ;; Font
-			  (gf3/set-fonts)
-              (gf3/apply-theme 'light))))
+			  (gf3/set-fonts))))
 
 ;;; init.el ends here
 (custom-set-variables

@@ -15,8 +15,9 @@
   (setq eglot-extend-to-xref t)
   (when (file-directory-p (expand-file-name "~/Code/github.com/elixir-tools/next-ls/bin"))
     (add-to-list 'exec-path (expand-file-name "~/Code/github.com/elixir-tools/next-ls/bin"))
-    (add-to-list 'eglot-server-programs
-                 `((elixir-ts-mode heex-ts-mode elixir-mode) . ("nextls" "--stdio=true")))))
+    (add-to-list 'eglot-server-programs '(elixir-ts-mode . ("nextls" "--stdio=true")))
+    (add-to-list 'eglot-server-programs '(heex-ts-mode . ("nextls" "--stdio=true")))
+    (add-to-list 'eglot-server-programs '(elixir-mode . ("nextls" "--stdio=true")))))
 
 (use-package eldoc-box
   :straight (:host github :repo "casouri/eldoc-box")
