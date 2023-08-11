@@ -12,7 +12,7 @@ function in_path {
   builtin whence -p "$1" &> /dev/null
 }
 
-# Shell stuff
+# Environment
 export PATH
 export EDITOR="hx"
 export GOPATH=~/.go
@@ -67,6 +67,9 @@ fi
 if (in_path "zoxide"); then
   eval "$(zoxide init zsh)"
 fi
+
+# Complete on tab
+bindkey '\t' menu-complete
 
 # Initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
