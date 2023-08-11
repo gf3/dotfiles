@@ -18,7 +18,7 @@ apps are not started from a shell."
   (interactive)
   (let ((path-from-shell (replace-regexp-in-string
                           "[ \t\n]*$" "" (shell-command-to-string
-                                          "echo $E:PATH"
+                                          "echo $PATH"
                                           ))))
     (message "Setting path: %S" path-from-shell)
     (setenv "PATH" path-from-shell)
