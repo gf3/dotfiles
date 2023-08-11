@@ -1,3 +1,15 @@
+# Packages
+ZNAP_DIR=~/Code/github.com/marlonrichert/zsh-snap
+if [ ! -f $ZNAP_DIR/znap.zsh ]; then
+  mkdir -p $ZNAP_DIR &&
+  git clone --depth 1 -- \
+      https://github.com/marlonrichert/zsh-snap.git $ZNAP_DIR
+fi
+source "${ZNAP_DIR}/znap.zsh"
+
+# Autocomplete
+znap source marlonrichert/zsh-autocomplete
+
 # Path
 typeset -U path PATH
 
@@ -67,9 +79,3 @@ fi
 if (in_path "zoxide"); then
   eval "$(zoxide init zsh)"
 fi
-
-# Complete on tab
-bindkey '\t' menu-complete
-
-# Initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
