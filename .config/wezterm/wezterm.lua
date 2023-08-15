@@ -41,7 +41,6 @@ return {
   colors = {
     visual_bell = '#202020',
   },
-  window_decorations = "RESIZE",
   keys = {
     {
       key = 'k',
