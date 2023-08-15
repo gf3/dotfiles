@@ -9,8 +9,7 @@
   (doom-modeline-height 32)
   (doom-modeline-hud t)
   (doom-modeline-support-imenu t)
-  (doom-modeline-buffer-encoding nil)
-  (doom-modeline-github t))
+  (doom-modeline-buffer-encoding nil))
 
 (provide 'init-modeline)
 ;;; init-modeline.el ends here
