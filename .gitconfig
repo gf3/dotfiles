@@ -75,3 +75,6 @@ submodule = log
 
 [alias]
         dft = difftool
+[maintenance]
+	repo = /home/gianni/Code/github.com/marlonrichert/zsh-snap
+	repo = /home/gianni/Code/github.com/marlonrichert/marlonrichert/zsh-autocomplete
