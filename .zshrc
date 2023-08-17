@@ -17,6 +17,7 @@ path+=(~/.bin)
 path+=(~/.cabal/bin)
 path+=(~/.cargo/bin)
 path+=(~/.fly/bin)
+path+=(~/.go/bin)
 path+=(~/.local/bin)
 path+=(~/.asdf/installs/rust/nightly/bin)
 
