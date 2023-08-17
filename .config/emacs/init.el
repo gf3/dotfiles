@@ -27,23 +27,23 @@
 				  gc-cons-percentage 0.1)))
 
 ;; Fonts
-(defun gf3/get-dpi ()
+(require 'cl-lib)
+
+(defun gf3/get-dpi (&optional frame)
   "Get the DPI of FRAME (or current if nil)."
-  (let* ((attrs (car (display-monitor-attributes-list)))
-         (size (assoc 'mm-size attrs))
-         (sizex (cadr size))
-         (res (cdr (assoc 'geometry attrs)))
-         (resx (- (caddr res) (car res)))
-         dpi)
-    (catch 'exit
-      ;; in terminal
-      (unless sizex
-        (throw 'exit 10))
-      ;; on big screen
-      (when (> sizex 1000)
-        (throw 'exit 10))
-      ;; DPI
-      (* (/ (float resx) sizex) 25.4))))
+  (cl-flet ((pyth (lambda (w h)
+                    (sqrt (+ (* w w)
+                             (* h h)))))
+            (mm2in (lambda (mm)
+                     (/ mm 25.4))))
+    (let* ((atts (frame-monitor-attributes frame))
+           (pix-w (cl-fourth (assoc 'geometry atts)))
+           (pix-h (cl-fifth (assoc 'geometry atts)))
+           (pix-d (pyth pix-w pix-h))
+           (mm-w (cl-second (assoc 'mm-size atts)))
+           (mm-h (cl-third (assoc 'mm-size atts)))
+           (mm-d (pyth mm-w mm-h)))
+      (/ pix-d (mm2in mm-d)))))
 
 (defun gf3/preferred-font-size ()
   "Calculate the preferred font size based on the monitor DPI."
@@ -62,7 +62,7 @@
 (defun gf3/set-fonts ()
   "Set the default fonts."
   (message "Setting fonts: dpi: %d, size: %d, fixed: %s, variable: %s" (gf3/get-dpi) preferred-font-size fixed-pitch-font-name variable-pitch-font-name)
-  (set-frame-font preferred-font nil t)
+  (set-frame-font preferred-font t t)
   (set-face-font 'fixed-pitch-serif fixed-pitch-font-name)
   (set-face-font 'variable-pitch variable-pitch-font-name))
 
@@ -134,7 +134,9 @@
 			  (require 'init-lang-zig)
 
 			  ;; Font
-			  (gf3/set-fonts))))
+              (gf3/set-fonts)
+              (circadian-setup)
+			  )))
 
 ;;; init.el ends here
 (custom-set-variables
