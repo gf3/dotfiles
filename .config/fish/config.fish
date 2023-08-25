@@ -1,198 +1,50 @@
-set fish_greeting
+# Prompt
+set --universal tide_left_prompt_items context pwd git character
 
-# fisher add fishpkg/fish-prompt-mono
+# Abbreviations
+abbr --add g git
+abbr --add b bat
 
-set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-
-set -x COMPOSE_DOCKER_CLI_BUILD 1
-set -x DOCKER_BUILDKIT 1
-set -x ERL_AFLAGS "-kernel shell_history enabled"
-set -x EDITOR emacs -nw
-set -x VISUAL emacs
-set -x GOPATH ~/.go
-set -x GPG_TTY (tty)
-set -x GREP_COLOR "1;37;45"
-set -x LANG en_CA.UTF-8
-set -x LC_ALL en_CA.UTF-8
-set -x RIPGREP_CONFIG_PATH ~/.config/ripgrep/config
-set -x RUST_BACKTRACE 1
-
-# Paths
-test -d /usr/local/sbin                      ; and set PATH /usr/local/sbin $PATH
-test -d /usr/local/bin                       ; and set PATH /usr/local/bin $PATH
-test -d /opt/homebrew/bin                    ; and set PATH /opt/homebrew/bin $PATH
-test -d ~/.bin                               ; and set PATH ~/.bin $PATH
-test -d ~/.cabal/bin                         ; and set PATH ~/.cabal/bin $PATH
-test -d ~/.cargo/bin                         ; and set PATH ~/.cargo/bin $PATH
-test -d ~/.emacs.d/bin                       ; and set PATH ~/.emacs.d/bin $PATH
-test -d ~/.local/bin                         ; and set PATH ~/.local/bin $PATH
-test -d (go env GOPATH)/bin                  ; and set PATH (go env GOPATH)/bin $PATH
-
-# Navigation
-function ..    ; cd .. ; end
-function ...   ; cd ../.. ; end
-function ....  ; cd ../../.. ; end
-function ..... ; cd ../../../.. ; end
-
-# Utilities
-function a        ; command rg --ignore=.git --ignore=log --ignore=tags --ignore=tmp --ignore=vendor --ignore=spec/vcr $argv ; end
-function d        ; du -h -d=1 $argv ; end
-function df       ; command df -h $argv ; end
-function digga    ; command dig +nocmd $argv[1] any +multiline +noall +answer; end
-function g        ; git $argv ; end
-function grep     ; command grep --color=auto $argv ; end
-function httpdump ; sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*" ; end
-function ip       ; curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g' ; end
-function localip  ; ipconfig getifaddr en0 ; end
-function lookbusy ; cat /dev/urandom | hexdump -C | grep --color "ca fe" ; end
-function ls       ; command lsd $argv ; end
-function tmux     ; command tmux -2 $argv ; end
-function tunnel   ; ssh -D 8080 -C -N $argv ; end
-
-# Gruvbox command line colors
-set -x fish_color_command 689d6a
-set -x fish_color_param 83a598
-set -x fish_color_quote d79921
-
-# Fuzzy find & edit
-function vp
-  if test (count $argv) -gt 0
-    command $EDITOR $argv
-  else
-    fzf -m | xargs $EDITOR
-  end
+# Aliases
+if type -q exa
+    alias l="exa -l"
+    alias ll="exa --icons --long --header --group --created --modified --git -a"
+    alias ls="exa -l"
 end
 
-# View files/dirs
-function c
-  if test (count $argv) -eq 0
-    if type -q exa
-      exa -lFh --icons --git --octal-permissions -@
-    else if type -q lsd
-      lsd --icon always --icon-theme fancy -l
-    else if type -q tree
-      tree --dirsfirst -aFCNL 1 ./
-    else
-      ls -l
+# Environment
+set -x EDITOR "hx"
+set -x GOPATH "~/.go"
+set -x GPG_TTY $(tty)
+set -x LANG "en_CA.UTF-8"
+set -x LC_ALL "en_US.UTF-8"
+set -x LESS "-i -R"
+set -x FLYCTL_INSTALL "/home/gianni/.fly"
+
+# Path
+fish_add_path ~/.bin
+fish_add_path ~/.cabal/bin
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.fly/bin
+fish_add_path ~/.go/bin
+fish_add_path ~/.local/bin
+
+# ASDF
+if test -e ~/.asdf/asdf.fish
+    source ~/.asdf/asdf.fish
+    fish_add_path ~/.asdf/installs/rust/nightly/bin
+
+    if ! test -e ~/.config/fish/completions/asdf.fish
+        mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
     end
-
-    return
-  end
-
-  for i in $argv
-    set_color yellow
-    if test (count $argv) -gt 1; echo "$i:" 1>&2; end
-    set_color normal
-
-    if test -e $i; and test -r $i
-      if test -d $i
-        if type -q exa
-          exa -lFh --icons --git --octal-permissions -@ $i
-        else if type -q lsd
-          lsd --icon always --icon-theme fancy -l $i
-        else if type -q tree
-          tree --dirsfirst -aFCNL 1 ./
-        else
-          ls -l $i
-        end
-      else if file -b --mime-type $i | string match -q -r '^image\/'
-        imgcat $i
-      else
-        bat --paging never $i
-      end
-    else
-      set_color red
-      echo "Cannot open: $i" 1>&2
-    end
-
-    set_color normal
-  end
 end
 
-function l; c $argv; end
-
-function ll
-  if type -q lsd
-    lsd --icon always --icon-theme fancy -Al $argv
-  else if type -q tree
-    tree --dirsfirst -aFCNL 1 ./
-  else
-    ls -l $argv
-  end
-end
-
-# Completions
-function make_completion --argument-names alias command
-    echo "
-    function __alias_completion_$alias
-        set -l cmd (commandline -o)
-        set -e cmd[1]
-        complete -C\"$command \$cmd\"
-    end
-    " | source
-    complete -c $alias -a "(__alias_completion_$alias)"
-end
-
-make_completion g 'git'
-make_completion vp 'kak'
-
-# fisher
-set fisher_home ~/.local/share/fisherman
-if test -f $fisher_home/config.fish
-  set fisher_config ~/.config/fisherman
-  source $fisher_home/config.fish
-end
-
-if not functions -q fisher
-  curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-  fish -c fisher
-end
-
-# rbenv
-if type -q rbenv
-  status --is-interactive; and source (rbenv init -|psub)
-end
-
-# hub
-if type -q hub
-  eval (hub alias -s)
-end
-
-# iterm2
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-# fnm
-if type -q fnm
-  fnm env | source
-  fnm completions --shell fish | source
-end
-
-# brew
-/opt/homebrew/bin/brew shellenv | source
-if type -q brew
-  if test -d (brew --prefix)"/share/fish/completions"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-  end
-
-  if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-    set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-  end
-
-  fish_add_path (brew --prefix ruby)/bin
-end
-
-# ruby + gems
-if type -q gem
-   fish_add_path (gem environment gemdir)/bin
-end
-
-# direnv
+# Direnv
 if type -q direnv
-  direnv hook fish | source
+    direnv hook fish | source
 end
 
-# wezterm
-if type -q wezterm
-   wezterm shell-completion --shell fish | source
+# Systemctl
+if type -q systemctl
+    systemctl --user import-environment PATH
 end
-
