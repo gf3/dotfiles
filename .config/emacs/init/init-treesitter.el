@@ -41,7 +41,8 @@
         (markdown "https://github.com/ikatyang/tree-sitter-markdown")
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (toml "https://github.com/tree-sitter/tree-sitter-toml")
-        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
         (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
 (provide 'init-treesitter)

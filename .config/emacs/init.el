@@ -150,7 +150,16 @@
  '(anzu-replace-to-string-separator " → ")
  '(anzu-search-threshold 1000)
  '(custom-safe-themes
-   '("904ccc456f6be7860252f4bf47dab4bbe684328a925749a3cd11fab8faf4d8d0" "a8970b307ece3e37d7d56df11a7199733793b6a8482e1010dc40b027b4994183" "1e3243439aa654f07302277b43fb741619903a7b67993c0fb76fcb1db7b42924" "2007ae44334eda7781d3d17a6235cd2d7f236e1b8b090e33c8e7feb74c92b634" "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "5ec088e25ddfcfe37b6ae7712c9cb37fd283ea5df7ac609d007cafa27dab6c64" "d43860349c9f7a5b96a090ecf5f698ff23a8eb49cd1e5c8a83bb2068f24ea563" "afa47084cb0beb684281f480aa84dab7c9170b084423c7f87ba755b15f6776ef" "f64189544da6f16bab285747d04a92bd57c7e7813d8c24c30f382f087d460a33" default))
+   '("904ccc456f6be7860252f4bf47dab4bbe684328a925749a3cd11fab8faf4d8d0"
+     "a8970b307ece3e37d7d56df11a7199733793b6a8482e1010dc40b027b4994183"
+     "1e3243439aa654f07302277b43fb741619903a7b67993c0fb76fcb1db7b42924"
+     "2007ae44334eda7781d3d17a6235cd2d7f236e1b8b090e33c8e7feb74c92b634"
+     "02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644"
+     "5ec088e25ddfcfe37b6ae7712c9cb37fd283ea5df7ac609d007cafa27dab6c64"
+     "d43860349c9f7a5b96a090ecf5f698ff23a8eb49cd1e5c8a83bb2068f24ea563"
+     "afa47084cb0beb684281f480aa84dab7c9170b084423c7f87ba755b15f6776ef"
+     "f64189544da6f16bab285747d04a92bd57c7e7813d8c24c30f382f087d460a33"
+     default))
  '(mood-line-meow-state-alist
    '((normal "🅽" . font-lock-variable-name-face)
      (insert "🅸" . font-lock-string-face)
@@ -158,11 +167,14 @@
      (beacon "🅱" . font-lock-type-face)
      (motion "🅼" . font-lock-constant-face)))
  '(safe-local-variable-values
-   '((projectile-root-local . "/home/gianni/Code/github.com/freshlineapp/wharf")
-     (js-indent-level . 2)
-     (web-mode-code-indent . 2)
+   '((js-indent-level 0.2)
+     (projectile-root-local .
+                            "/home/gianni/Code/github.com/freshlineapp/wharf")
+     (js-indent-level . 2) (web-mode-code-indent . 2)
      (eval prettier-mode t)
-     (magit-todos-group-by magit-todos-item-first-path-component magit-todos-item-suffix magit-todos-item-keyword))))
+     (magit-todos-group-by magit-todos-item-first-path-component
+                           magit-todos-item-suffix
+                           magit-todos-item-keyword))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

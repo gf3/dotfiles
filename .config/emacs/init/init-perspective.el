@@ -7,7 +7,7 @@
   :after consult
   :demand t
   :custom
-  (persp-mode-prefix-key (kbd "C-x x"))
+  (persp-mode-prefix-key (kbd "C-c k"))
   (persp-suppress-no-prefix-key-warning t)
   :config
   (consult-customize consult--source-buffer :hidden t :default nil)
