@@ -1,4 +1,4 @@
-theme = "base16_transparent"
+theme = "ayu_light"
 
 [editor]
 scrolloff = 10
