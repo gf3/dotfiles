@@ -62,11 +62,6 @@
 (use-package kakoune
   :straight t
   :demand t
-  ;;   (progn
-  ;;     (setq-local cursor-type ryo-modal-cursor-type)
-  ;;     (setq-local cursor-in-non-selected-windows nil))
-  ;; (setq-local cursor-type t)
-  ;; (setq-local cursor-in-non-selected-windows t))))
   :bind ("C-z" . ryo-modal-mode)
   :config
   (global-set-key (kbd "<escape>") (lambda ()
@@ -94,16 +89,19 @@
    ("w" forward-same-syntax :first '(kakoune-set-mark-here) :mc-all t)
    ("W" forward-same-syntax :first '(kakoune-set-mark-if-inactive) :mc-all t))
   (ryo-modal-keys
+   ("*" mc/mark-all-like-this)
    ("," save-buffer)
    ("d" kakoune-delete)
-   ("P" consult-yank-pop)
+   ("e" forward-symbol :first '(kakoune-set-mark-here))
+   ("E" backward-word :first '(kakoune-set-mark-here))
    ("m" mc/mark-next-like-this)
    ("M" mc/skip-to-next-like-this)
+   ("M-m" mc/edit-lines)
    ("n" mc/mark-previous-like-this)
    ("N" mc/skip-to-previous-like-this)
-   ("M-m" mc/edit-lines)
-   ("*" mc/mark-all-like-this)
+   ("P" consult-yank-pop)
    ("v" er/expand-region)
+   ("x" kakoune-X)
    ("C-v" set-rectangular-region-anchor)
    ("M-s" mc/split-region)
    (";" (("q" delete-window :name "Delete window")

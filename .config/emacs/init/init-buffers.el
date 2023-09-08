@@ -36,6 +36,7 @@
 			(define-key map (kbd "b") '("Buffers". gf3/buffer))
 			(define-key map (kbd "c") '("Symbols" . consult-imenu))
 			(define-key map (kbd "f") '("Files" . gf3/find))
+			(define-key map (kbd "F") '("Browse files" . find-file))
 			(define-key map (kbd "g") '("Grep" . deadgrep))
 			(define-key map (kbd "k") '("Kill buffer" . kill-current-buffer))
 			(define-key map (kbd "l") '("Lines" . consult-line))
