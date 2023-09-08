@@ -4,8 +4,10 @@ image/jpeg=imv.desktop;
 image/png=imv.desktop;
 inode/directory=org.kde.dolphin.desktop;
 text/html=firefox.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/geo=openstreetmap-geo-handler.desktop;
+x-scheme-handler/http=librewolf.desktop;firefox.desktop;
+x-scheme-handler/https=librewolf.desktop;firefox.desktop;
+x-scheme-handler/mailto=org.kde.kmail2.desktop;
 x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
 
 [Default Applications]
@@ -19,9 +21,11 @@ application/xhtml+xml=firefox.desktop
 inode/directory=org.kde.dolphin.desktop;
 text/html=google-chrome.desktop
 x-scheme-handler/chrome=firefox.desktop
-x-scheme-handler/http=google-chrome.desktop
-x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/element=Beeper.desktop
+x-scheme-handler/geo=openstreetmap-geo-handler.desktop;
+x-scheme-handler/http=librewolf.desktop;
+x-scheme-handler/https=librewolf.desktop;
+x-scheme-handler/mailto=org.kde.kmail2.desktop;
 x-scheme-handler/morgen=morgen.desktop
 x-scheme-handler/slack=slack.desktop
 x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
-x-scheme-handler/element=Beeper.desktop
