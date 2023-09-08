@@ -14,8 +14,8 @@ end
 
 # Environment
 set -x EDITOR "hx"
-set -x GOPATH "~/.go"
-set -x GPG_TTY $(tty)
+set -x GOPATH (realpath ~/.go)
+set -x GPG_TTY (tty)
 set -x LANG "en_CA.UTF-8"
 set -x LC_ALL "en_US.UTF-8"
 set -x LESS "-i -R"
