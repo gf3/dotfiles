@@ -130,5 +130,14 @@
 ;; `completion-at-point' is often bound to M-TAB.
 (setq tab-always-indent 'complete)
 
+;; Preserve selection after certain operations
+(defun gf3/with-mark-active (&rest _args)
+  "Keep mark active after command.
+To be used as advice AFTER any function that sets `deactivate-mark' to t."
+  (setq deactivate-mark nil))
+
+(advice-add 'comment-region :after #'gf3/with-mark-active)
+(advice-add 'kill-ring-save :after #'gf3/with-mark-active)
+
 (provide 'init-emacs)
 ;;; init-emacs.el ends here

@@ -26,6 +26,15 @@ apps are not started from a shell."
 
 (set-exec-path-from-shell-PATH)
 
+;; User paths
+(setq gf3/user-paths '("~/.bin"
+                       "~/.cabal/bin"
+                       "~/.cargo/bin"
+                       "~/.go/bin"
+                       "~/.local/bin"))
+(setenv "PATH" (concat (mapconcat 'identity gf3/user-paths ":") ":" (getenv "PATH")))
+(setq exec-path (nconc gf3/user-paths exec-path))
+
 ;; Prevent package.el loading packages prior to their init-file loading.
 (setq package-enable-at-startup nil)
 
@@ -33,7 +42,8 @@ apps are not started from a shell."
 (setq package--init-file-ensured t)
 
 ;; Set the frame to rounded
-(add-to-list 'default-frame-alist '(undecorated-round . t))
+(when (eq system-type 'darwin)
+  (add-to-list 'default-frame-alist '(undecorated-round . t)))
 
 ;; Resize the frame by pixels instead of cols/rows
 (setq-default
