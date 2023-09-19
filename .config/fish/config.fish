@@ -25,7 +25,6 @@ set -x FLYCTL_INSTALL "/home/gianni/.fly"
 fish_add_path ~/.bin
 fish_add_path ~/.cabal/bin
 fish_add_path ~/.cargo/bin
-fish_add_path ~/.fly/bin
 fish_add_path ~/.go/bin
 fish_add_path ~/.local/bin
 
@@ -37,6 +36,10 @@ if test -e ~/.asdf/asdf.fish
     if ! test -e ~/.config/fish/completions/asdf.fish
         mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
     end
+end
+
+if test -e ~/.asdf/plugins/golang/set-env.fish
+    source ~/.asdf/plugins/golang/set-env.fish
 end
 
 # Direnv
