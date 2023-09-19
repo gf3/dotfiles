@@ -12,15 +12,15 @@ x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
 
 [Default Applications]
 application/pdf=org.pwmt.zathura.desktop
-application/x-extension-htm=firefox.desktop
-application/x-extension-html=firefox.desktop
-application/x-extension-shtml=firefox.desktop
-application/x-extension-xht=firefox.desktop
-application/x-extension-xhtml=firefox.desktop
-application/xhtml+xml=firefox.desktop
+application/x-extension-htm=librewolf.desktop
+application/x-extension-html=librewolf.desktop
+application/x-extension-shtml=librewolf.desktop
+application/x-extension-xht=librewolf.desktop
+application/x-extension-xhtml=librewolf.desktop
+application/xhtml+xml=librewolf.desktop
 inode/directory=org.kde.dolphin.desktop;
 text/html=google-chrome.desktop
-x-scheme-handler/chrome=firefox.desktop
+x-scheme-handler/chrome=librewolf.desktop
 x-scheme-handler/element=Beeper.desktop
 x-scheme-handler/geo=openstreetmap-geo-handler.desktop;
 x-scheme-handler/http=librewolf.desktop;
