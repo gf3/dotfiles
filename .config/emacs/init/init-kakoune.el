@@ -36,22 +36,6 @@
 (use-package multiple-cursors
   :straight t)
 
-;; (use-package god-mode
-;;   :straight t
-;;   :hook
-;;   ((ryo-modal-mode . (lambda ()
-;;                        (if ryo-modal-mode
-;;                            (progn
-;;                              (god-local-mode 1)
-;;                              (message "god-mode enabled"))
-;;                          (progn
-;;                            (god-local-mode -1)
-;;                            (message "god-mode disabled"))))))
-;;   :config
-;;   (god-mode)
-;;   (global-set-key (kbd "SPC") 'god-local-mode)
-;;   (define-key ctl-x-map (kbd "SPC") 'execute-extended-command))
-
 (defun kakoune-delete (count)
   "Delete selected text or COUNT chars."
   (interactive "p")
@@ -114,22 +98,7 @@
    ("C-u" scroll-down-command :first '(deactivate-mark))
    ("C-d" scroll-up-command :first '(deactivate-mark))
    ("<up>" move-text-up :name "Move line up")
-   ("<down>" move-text-down :name "Move line down"))
-
-  ;; (ryo-modal-key
-  ;;  "SPC" `(("SPC" execute-extended-command :name "M-x")
-  ;;          ("c" ,(lookup-key (current-local-map) (kbd "C-c")) :name "C-c")
-  ;;          ;; ("x" "C-x" :name "C-x")
-  ;;          (";" comment-or-uncomment-region :name "Toggle comment")
-  ;;          ("f" find-file :name "Find file")
-  ;;          ("r" consult-recent-file :name "Recent files")
-  ;;          ("p" consult-projectile :name "Project files")
-  ;;          ("P" projectile-switch-project :name "Switch project")
-  ;;          ("k" kill-buffer :name "Kill buffer")
-  ;;          ("s" save-buffer :name "Save buffer")
-  ;;          ("g" magit-status :name "Git status")
-  ;;          ("b" consult-buffer :name "Select buffer")))
-  )
+   ("<down>" move-text-down :name "Move line down")))
 
 ;; This overrides the default mark-in-region with a prettier-looking one,
 ;; and provides a couple extra commands
@@ -139,6 +108,12 @@
   ("s" vr/mc-mark)
   ("?" vr/replace)
   ("M-/" vr/query-replace))
+
+;; Add/change/delete pairs of delimiters
+(use-package embrace
+  :straight (:host github :repo "cute-jumper/embrace.el")
+  :ryo
+  ("S" embrace-commander))
 
 ;; Probably the first thing you'd miss is undo and redo, which requires an extra package
 ;; to work like it does in kakoune (and almost every other editor).
