@@ -22,47 +22,48 @@ case ${system} in
     sudo sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf
 
     # Basics
-    pacman -S --noconfirm --needed base-devel ncurses libssh unixodbc libxslt fop
+    sudo pacman -S --noconfirm --needed base-devel ncurses libssh unixodbc libxslt fop
+
+    # Install system packages
+    declare -a packages=(direnv helix cider fish wezterm kwin-bismuth yin-yang mosh unzip ttf-sourcecodepro-nerd ttf-apple-emoji pre-commit)
+    pamac install --no-upgrade --no-confirm ${packages}
+
+    declare -a package_deps=(wezterm-terminfo wezterm-shell-integration plasma-wayland-session)
+    pamac install --as-deps --no-upgrade --no-confirm ${package_deps}
 
     # Install asdf
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+    if [ ! -d "$HOME/.asdf" ]; then
+      git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+    fi
     . "$HOME/.asdf/asdf.sh"
 
     # Install asdf plugins
     for plugin in "${!asdf_plugins[@]}"; do
       asdf plugin add $plugin
-      asdf install $plugin $asdf_plugins[$plugin]
+      asdf install $plugin ${asdf_plugins[$plugin]}
     done
 
     # Install rust
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    if [ ! -f "$HOME/.cargo/bin/cargo" ]; then
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    fi
+    source "$HOME/.cargo/env"
 
     # Install some rust tools
     for tool in "${cargo_install[@]}"; do
       cargo install $tool
     done
 
-    # Install system packages
-    local packages=(direnv helix cider fish wezterm kwin-bismuth yin-yang mosh unzip ttf-sourcecodepro-nerd ttf-apple-emoji pre-commit)
-    for pkg in "${packages[@]}"; do
-      pamac install --no-upgrade --no-confirm $pkg
-    done
-
-    local package_deps(wezterm-terminfo wezterm-shell-integration plasma-wayland-session)
-    for pkg in "${package_deps[@]}"; do
-      pamac install --as-deps --no-upgrade --no-confirm $pkg
-    done
-
     # Fisher package manager
-    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
     yadm restore -- ~/.config/fish/fish_plugins
-    fisher update
+    fish -c 'fisher update'
 
     # Enable librewolf native messenger
     ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
     sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
     sudo mkdir -p /etc/1password
-    echo "librewolf\nlibrewolf-bin" | sudo tee -a custom_allowed_browsers
+    echo -e "librewolf\nlibrewolf-bin" | sudo tee -a /etc/1password/custom_allowed_browsers
 
     ;;
   \?)
