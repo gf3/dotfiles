@@ -25,7 +25,7 @@ case ${system} in
     sudo pacman -S --noconfirm --needed base-devel ncurses libssh unixodbc libxslt fop
 
     # Install system packages
-    declare -a packages=(direnv helix cider fish wezterm kwin-bismuth yin-yang mosh unzip ttf-sourcecodepro-nerd ttf-apple-emoji pre-commit watchexec)
+    declare -a packages=(direnv helix-git cider fish wezterm kwin-bismuth yin-yang mosh unzip ttf-sourcecodepro-nerd ttf-apple-emoji pre-commit watchexec)
     pamac install --no-upgrade --no-confirm ${packages}
 
     declare -a package_deps=(wezterm-terminfo wezterm-shell-integration plasma-wayland-session)
