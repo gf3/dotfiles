@@ -54,7 +54,8 @@
      ((< dpi 160) 15)
      (t 15))))
 
-(defvar fixed-pitch-font-name "Source Code Pro" "The fixed pitch font name.")
+;; (defvar fixed-pitch-font-name "Source Code Pro" "The fixed pitch font name.")
+(defvar fixed-pitch-font-name "SauceCodePro Nerd Font Mono" "The fixed pitch font name.")
 (defvar variable-pitch-font-name "GreycliffCF Nerd Font" "The variable pitch font name.")
 (defvar preferred-font-size (gf3/preferred-font-size) "The preferred font size.")
 (defvar preferred-font (format "%s-%d:weight=regular" fixed-pitch-font-name preferred-font-size) "The preferred font.")

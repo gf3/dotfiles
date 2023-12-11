@@ -21,15 +21,12 @@ set -x LC_ALL "en_US.UTF-8"
 set -x LESS "-i -R"
 set -x FLYCTL_INSTALL "/home/gianni/.fly"
 
-# Path
-fish_add_path ~/.bin
-fish_add_path ~/.cabal/bin
-fish_add_path ~/.cargo/bin
-fish_add_path ~/.go/bin
-fish_add_path ~/.local/bin
-
 # ASDF
 if test -e ~/.asdf/asdf.fish
+    # Manually add asdf dirs to path, to avoid having them prepended
+    fish_add_path -aP ~/.asdf/bin
+    fish_add_path -aP ~/.asdf/shims
+
     source ~/.asdf/asdf.fish
     fish_add_path ~/.asdf/installs/rust/nightly/bin
 
@@ -41,6 +38,15 @@ end
 if test -e ~/.asdf/plugins/golang/set-env.fish
     source ~/.asdf/plugins/golang/set-env.fish
 end
+
+# Path
+fish_add_path -m /bin
+fish_add_path -m /usr/bin
+fish_add_path ~/.bin
+fish_add_path ~/.cabal/bin
+fish_add_path ~/.cargo/bin
+fish_add_path ~/.go/bin
+fish_add_path -m ~/.local/bin
 
 # Direnv
 if type -q direnv

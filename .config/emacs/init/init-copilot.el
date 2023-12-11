@@ -8,7 +8,7 @@
       (indent-for-tab-command)))
 
 (with-eval-after-load 'copilot
-  (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
+  (define-key copilot-mode-map (kbd "<tab>") #'gf3/copilot-tab))
 
 (with-eval-after-load 'company
   ;; disable inline previews
@@ -17,6 +17,7 @@
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
+  :custom (copilot-node-executable "/usr/bin/node" "Set node executable.")
   :hook (prog-mode . copilot-mode)
   :config  
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)

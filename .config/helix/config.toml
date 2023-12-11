@@ -1,4 +1,4 @@
-theme = "ayu_light"
+theme = "base16_default"
 
 [editor]
 scrolloff = 10
@@ -11,3 +11,6 @@ display-inlay-hints = true
 
 [editor.cursor-shape]
 insert = "bar"
+
+[keys.normal]
+"C-," = ":w"
