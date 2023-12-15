@@ -25,7 +25,7 @@ case ${system} in
     sudo pacman -S --noconfirm --needed base-devel ncurses libssh unixodbc libxslt fop
 
     # Install system packages
-    declare -a packages=(direnv helix-git cider fish wezterm kwin-bismuth yin-yang mosh unzip ttf-sourcecodepro-nerd ttf-apple-emoji pre-commit watchexec)
+    declare -a packages=(direnv helix-git cider fish wezterm kwin-bismuth yin-yang mosh unzip ttf-sourcecodepro-nerd ttf-apple-emoji ttf-ibm-plex pre-commit watchexec)
     pamac install --no-upgrade --no-confirm ${packages}
 
     declare -a package_deps=(wezterm-terminfo wezterm-shell-integration plasma-wayland-session)
@@ -63,7 +63,7 @@ case ${system} in
     ln -s ~/.mozilla/native-messaging-hosts ~/.librewolf/native-messaging-hosts
     sudo ln -s /usr/lib/mozilla/native-messaging-hosts /usr/lib/librewolf/native-messaging-hosts
     sudo mkdir -p /etc/1password
-    echo -e "librewolf\nlibrewolf-bin" | sudo tee -a /etc/1password/custom_allowed_browsers
+    echo -e "librewolf\nwaterfox" | sudo tee -a /etc/1password/custom_allowed_browsers
 
     ;;
   \?)
