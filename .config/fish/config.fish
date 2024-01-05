@@ -14,6 +14,7 @@ end
 
 # Environment
 set -x EDITOR "hx"
+set -x ELIXIR_ERL_OPTIONS "-kernel shell_history enabled"
 set -x GOPATH (realpath ~/.go)
 set -x GPG_TTY (tty)
 set -x LANG "en_CA.UTF-8"
