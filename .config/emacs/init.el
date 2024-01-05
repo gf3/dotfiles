@@ -17,6 +17,8 @@
 
 (add-hook 'emacs-startup-hook #'gf3/display-startup-time)
 
+;; (setq debug-on-error t)
+
 ;; Adjust garbage collector thresholds
 (setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
       gc-cons-percentage 0.6)
@@ -105,6 +107,7 @@
 (require 'init-flycheck)
 (require 'init-apheleia)
 (require 'init-projectile)
+(require 'init-dape)
 (require 'init-magit)
 (require 'init-diffhl)
 (require 'init-alltheicons)

@@ -20,6 +20,10 @@
                   (company-complete-common-or-cycle -1))))
   (global-company-mode))
 
+(use-package company-box
+  :straight (:host github :repo "sebastiencs/company-box")
+  :hook (company-mode . company-box-mode))
+
 (use-package company-quickhelp
   :straight (:host github :repo "company-mode/company-quickhelp")
   :after company

@@ -1,4 +1,4 @@
-;;; init-direnv.el --- Mode line configuration. -*- lexical-binding: t -*-
+;;; init-direnv.el --- Environment variables. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
