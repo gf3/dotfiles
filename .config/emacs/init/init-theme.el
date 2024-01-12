@@ -11,7 +11,7 @@
   "The dark theme to use.")
 
 (use-package modus-themes
-  :straight t
+  :straight (:host github :repo "protesilaos/modus-themes")
   :ensure t
   :custom
   (modus-themes-bold-constructs t)
@@ -23,7 +23,7 @@
   (modus-themes-variable-pitch-ui t))
 
 (use-package circadian
-  :straight t
+  :straight (:host github :repo "guidoschmidt/circadian.el")
   :ensure t
   :custom
   (calendar-latitude 43.651070)
