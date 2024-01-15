@@ -33,9 +33,6 @@
 (use-package expand-region
   :straight t)
 
-(use-package multiple-cursors
-  :straight t)
-
 (defun kakoune-delete (count)
   "Delete selected text or COUNT chars."
   (interactive "p")
@@ -52,9 +49,9 @@
                                      (interactive)
                                      (if (boundp 'ryo-modal-mode)
                                          (if ryo-modal-mode
-                                             (keyboard-escape-quit)
+                                             (keyboard-quit)
                                            (ryo-modal-mode 1))
-                                       (keyboard-escape-quit))))
+                                       (keyboard-quit))))
   (defun ryo-enter () "Enter normal mode" (interactive) (ryo-modal-mode 1))
   (kakoune-setup-keybinds)
   (setq ryo-modal-cursor-type 'box)
@@ -107,7 +104,7 @@
   :ryo
   ("s" vr/mc-mark)
   ("?" vr/replace)
-  ("M-/" vr/query-replace))
+  ("S-/" vr/query-replace))
 
 ;; Add/change/delete pairs of delimiters
 (use-package embrace

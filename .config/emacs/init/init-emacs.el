@@ -67,10 +67,6 @@
   (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
   (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
 
-;; Frame parameters
-(when (display-graphic-p)
-  (add-to-list 'default-frame-alist '(border-width  . 1)))
-
 ;; Mouse yank
 (global-set-key (kbd "<mouse-2>") 'clipboard-yank)
 
@@ -108,7 +104,7 @@
 (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
 ;; Autocomplete word
-(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "S-/") 'hippie-expand)
 
 ;; Compilation scrolling
 (setq compilation-scroll-output 'first-error)
