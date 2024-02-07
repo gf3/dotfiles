@@ -5,10 +5,10 @@ set -Eeuo pipefail
 system=$(lsb_release -si)
 
 declare -A asdf_plugins
-asdf_plugins[erlang]="26.0.2"
-asdf_plugins[elixir]="1.15.7-otp-26"
-asdf_plugins[golang]="1.20.4"
-asdf_plugins[nodejs]="20.4.0"
+asdf_plugins[erlang]="26.2.1"
+asdf_plugins[elixir]="1.16.0-otp-26"
+asdf_plugins[golang]="1.21.5"
+asdf_plugins[nodejs]="21.5.0"
 asdf_plugins[pnpm]="7.32.5"
 asdf_plugins[ruby]="3.2.2"
 
