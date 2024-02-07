@@ -29,9 +29,8 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 return {
   audible_bell = "Disabled",
   default_prog = { '/bin/env', 'fish', '-l' },
-  font = wezterm.font 'SauceCodePro Nerd Font Mono',
+  font = wezterm.font 'JetBrains Mono',
   font_size = 13.0,
-  front_end = "WebGpu",
   color_scheme = scheme_for_appearance(get_appearance()),
   tab_bar_at_bottom = true,
   visual_bell = {
