@@ -46,7 +46,11 @@
 "ui.selection.primary" = { fg = "white", bg = "blue" }
 "ui.statusline" = { fg = "white", bg = "black" }
 "ui.statusline.inactive" = { fg = "gray", bg = "black" }
+"ui.statusline.normal" = { fg = "gray" }
+"ui.statusline.insert" = { bg = "light-green" }
+"ui.statusline.select" = { bg = "light-blue" }
 "ui.text.inactive" = { fg = "gray" }
+"ui.virtual.indent-guide" = { fg = "gray", style = "dim" }
 
 "variable.other.member" = "green"
 "variable" = "red"

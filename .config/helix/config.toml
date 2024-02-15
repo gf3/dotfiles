@@ -13,7 +13,8 @@ color-modes = true
 
 [editor.indent-guides]
 character = "┊"
-render = false
+render = true
+skip-levels = 1
 
 [editor.lsp]
 display-inlay-hints = true
