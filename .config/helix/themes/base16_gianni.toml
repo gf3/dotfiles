@@ -1,0 +1,52 @@
+# Author: Gianni Chiappetta <gianni@runlevel6.org>
+
+"attributes" = "yellow"
+"comment" = { fg = "gray" }
+"constant.character.escape" = "cyan"
+"constant.numeric" = "yellow"
+"constant" = "yellow"
+"constructor" = "blue"
+"debug" = "gray"
+"diagnostic" = { modifiers = ["underlined"] }
+"error" = "red"
+"function" = "blue"
+"hint" = "gray"
+"info" = "blue"
+"keyword" = "magenta"
+"label" = "magenta"
+"namespace" = "magenta"
+"special" = "blue"
+"string"  = "green"
+"type" = "yellow"
+"warning" = "yellow"
+
+"diff.delta" = "yellow"
+"diff.minus" = "red"
+"diff.plus" = "green"
+
+"markup.bold" = { fg = "yellow", modifiers = ["bold"] }
+"markup.heading" = "blue"
+"markup.italic" = { fg = "magenta", modifiers = ["italic"] }
+"markup.link.text" = "red"
+"markup.link.url" = { fg = "yellow", modifiers = ["underlined"] }
+"markup.list" = "red"
+"markup.quote" = "cyan"
+"markup.raw" = "green"
+
+"ui.cursor" = { fg = "white", modifiers = ["reversed"] }
+"ui.gutter" = { bg = "black" }
+"ui.cursor.match" = { fg = "yellow", modifiers = ["underlined"] }
+"ui.help" = { fg = "white", bg = "black" }
+"ui.linenr" = { fg = "gray", bg = "black" }
+"ui.linenr.selected" = { fg = "white", bg = "black", modifiers = ["bold"] }
+"ui.menu" = { fg = "light-gray", bg = "gray" }
+"ui.menu.selected" = { modifiers = ["reversed"] }
+"ui.popup" = { modifiers = ["reversed"] }
+"ui.selection" = { fg = "black", bg = "blue" }
+"ui.selection.primary" = { fg = "white", bg = "blue" }
+"ui.statusline" = { fg = "white", bg = "black" }
+"ui.statusline.inactive" = { fg = "gray", bg = "black" }
+"ui.text.inactive" = { fg = "gray" }
+
+"variable.other.member" = "green"
+"variable" = "red"

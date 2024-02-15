@@ -1,40 +1,52 @@
-theme = "base16_default"
+theme = "base16_gianni"
 
 [editor]
+auto-format = true
 scrolloff = 10
 cursorline = true
 cursorcolumn = true
 text-width = 120
+true-color = true
+undercurl = true
+bufferline = "multiple"
+color-modes = true
+
+[editor.indent-guides]
+character = "┊"
+render = false
 
 [editor.lsp]
 display-inlay-hints = true
+display-messages = true
 
 [editor.cursor-shape]
 insert = "bar"
 
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["version-control", "spacer", "diagnostics", "selections", "register", "position", "file-encoding"]
+
+[editor.file-picker]
+hidden = false
+ignore = false
+
 [keys.normal]
 "C-g" = ["keep_primary_selection"]
-"," = [":w"]
+"C-," = [":w"]
 "D" = ["delete_selection", "move_char_left"]
 "V" = ["select_mode"]
 
-J = ["extend_to_line_bounds", "select_mode"]                      # Select whole line, then select lines downwards
-K = ["extend_to_line_bounds", "select_mode", "flip_selections"]   # Select whole line, then select lines upwards
+"A-," = "goto_previous_buffer"
+"A-." = "goto_next_buffer"
+"A-w" = ":buffer-close"
+"A-/" = "repeat_last_motion"
 
-"A-j" = "join_selections"          # Join lines
-"A-J" = "join_selections_space"    # Join lines, selecting the space in between 
+"A-x" = "extend_to_line_bounds"
+"X" = ["extend_line_up", "extend_to_line_bounds"]
 
-X = "remove_primary_selection"    # Remove primary selection
-x = "keep_selections"             # Keep selections that match regex
-"A-x" = "remove_selections"       # Remove selections that match regex
+[keys.normal."space"]
+"F" = "file_picker_in_current_buffer_directory"
 
 [keys.select]
-J = ["extend_line_down", "extend_to_line_bounds"]
-K = ["extend_line_up", "extend_to_line_bounds"]
-
-"A-j" = "join_selections"
-"A-J" = "join_selections_space"
-
-X = "remove_primary_selection"
-x = "keep_selections"
-"A-x" = "remove_selections"
+"A-x" = "extend_to_line_bounds"
+"X" = ["extend_line_up", "extend_to_line_bounds"]
