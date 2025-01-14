@@ -70,69 +70,22 @@
 
 ;; User configs
 (let ((custom-path (expand-file-name "init" user-emacs-directory)))
-  ;; (eval-when-compile
-  ;; 	(add-to-list 'load-path custom-path))
   (add-to-list 'load-path custom-path))
 
 (add-to-list 'load-path (expand-file-name "vendor" user-emacs-directory))
 
-;; Hmm
-;; (add-hook 'after-init-hook
-;; 		  (lambda ()
-;; 			(progn
+(defun gf3/load-directory (dir)
+  "Load all .el files in DIR."
+  (interactive "D")
+  (let ((libraries-loaded (mapcar #'file-name-sans-extension (delq nil (mapcar #'car load-history)))))
+    (dolist (file (directory-files dir t ".+\\.elc?$"))
+      (let ((library (file-name-sans-extension file)))
+        (unless (member library libraries-loaded)
+          (load library nil t)
+          (push library libraries-loaded))))))
 
-;; Packages & configuration
-(require 'init-straight)
-(require 'init-benchmarkinit)
-(require 'init-asdf)
-(require 'init-direnv)
-(require 'init-psession)
-(require 'init-emacs)
-(require 'init-popper)
-(require 'init-perspective)
-(require 'init-backup)
-(require 'init-saveplace)
-(require 'init-theme)
-(require 'init-multiplecursors)
-(require 'init-treesitter)
-(require 'init-company)
-(require 'init-vertico)
-(require 'init-anzu)
-(require 'init-buffers)
-(require 'init-deadgrep)
-(require 'init-popwin)
-(require 'init-hltodo)
-(require 'init-eglot)
-(require 'init-flycheck)
-(require 'init-apheleia)
-(require 'init-dape)
-(require 'init-magit)
-(require 'init-diffhl)
-(require 'init-alltheicons)
-(require 'init-modeline)
-(require 'init-eshell)
-(require 'init-vterm)
-(require 'init-movetext)
-(require 'init-beacon)
-(require 'init-helpful)
-(require 'init-yasnippet)
-(require 'init-copilot)
-(require 'init-whichkey)
-(require 'init-meow)
-
-;; Languages
-(require 'init-lang-docker)
-(require 'init-lang-elixir)
-(require 'init-lang-elvish)
-(require 'init-lang-go)
-(require 'init-lang-graphql)
-(require 'init-lang-odin)
-(require 'init-lang-rust)
-(require 'init-lang-terraform)
-(require 'init-lang-typescript)
-(require 'init-lang-webmode)
-(require 'init-lang-yaml)
-(require 'init-lang-zig)
+;; Load 'em up!
+(gf3/load-directory (expand-file-name "init" user-emacs-directory))
 
 ;; Font
 (gf3/set-fonts)
@@ -150,7 +103,8 @@
  '(anzu-replace-to-string-separator " → ")
  '(anzu-search-threshold 1000)
  '(custom-safe-themes
-   '("a75aff58f0d5bbf230e5d1a02169ac2fbf45c930f816f3a21563304d5140d245"
+   '("712dda0818312c175a60d94ba676b404fc815f8c7e6c080c9b4061596c60a1db"
+     "a75aff58f0d5bbf230e5d1a02169ac2fbf45c930f816f3a21563304d5140d245"
      "2e7dc2838b7941ab9cabaa3b6793286e5134f583c04bde2fba2f4e20f2617cf7"
      "904ccc456f6be7860252f4bf47dab4bbe684328a925749a3cd11fab8faf4d8d0"
      "a8970b307ece3e37d7d56df11a7199733793b6a8482e1010dc40b027b4994183"
