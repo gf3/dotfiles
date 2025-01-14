@@ -1,0 +1,28 @@
+font-family = "Maple Mono NF"
+font-feature = zero ss01 cv11
+font-size = 12
+
+theme = light:OneHalfLight,dark:OneHalfDark
+
+mouse-hide-while-typing = true
+focus-follows-mouse = true
+
+command = /usr/bin/fish
+shell-integration = detect
+shell-integration-features = true
+
+window-padding-x = 8
+window-padding-y = 16
+window-padding-color = extend
+window-inherit-working-directory = true
+window-theme = ghostty
+
+gtk-titlebar = true
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+copy-on-select = true
+
+keybind = ctrl+shift+k=clear_screen
+keybind = super+k=clear_screen
