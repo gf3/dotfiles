@@ -52,29 +52,26 @@ version = 2
 
 [init]
 defaultBranch = main
-	
+
 [github]
 user = gf3
 
-[diff]
-submodule = log
+[credential "https://github.com"]
+helper =
+helper = !/usr/bin/gh auth git-credential
 
-; Diff tool
-[diff]
-        tool = difftastic
-	external = difft
+[credential "https://gist.github.com"]
+helper =
+helper = !/usr/bin/gh auth git-credential
 
-[difftool]
-        prompt = false
+[core]
+pager = delta
 
-[difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
-		
-[pager]
-        difftool = true
+[interactive]
+diffFilter = delta --color-only
 
-[alias]
-        dft = difftool
-[maintenance]
-	repo = /home/gianni/Code/github.com/marlonrichert/zsh-snap
-	repo = /home/gianni/Code/github.com/marlonrichert/marlonrichert/zsh-autocomplete
+[delta]
+navigate = true
+
+[merge]
+conflictStyle = zdiff3
