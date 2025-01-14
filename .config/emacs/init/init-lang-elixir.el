@@ -12,8 +12,8 @@
   :ensure t
   :config
   (global-subword-mode t)
-  (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_build/language_server.sh"))
-  (add-to-list 'eglot-server-programs '(heex-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_build/language_server.sh")))
+  (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_release/language_server.sh"))
+  (add-to-list 'eglot-server-programs '(heex-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_release/language_server.sh")))
 
 (use-package exunit
   :straight (:host github :repo "ananthakumaran/exunit.el")

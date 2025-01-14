@@ -51,14 +51,13 @@
   "Calculate the preferred font size based on the monitor DPI."
   (let ((dpi (gf3/get-dpi)))
     (cond
-     ((< dpi 110) 13)
-     ((< dpi 130) 14)
-     ((< dpi 160) 15)
-     (t 15))))
+     ((< dpi 110) 11)
+     ((< dpi 130) 12)
+     ((< dpi 160) 13)
+     (t 14))))
 
-;; (defvar fixed-pitch-font-name "Source Code Pro" "The fixed pitch font name.")
-(defvar fixed-pitch-font-name "SauceCodePro Nerd Font Mono" "The fixed pitch font name.")
-(defvar variable-pitch-font-name "GreycliffCF Nerd Font" "The variable pitch font name.")
+(defvar fixed-pitch-font-name "Maple Mono NF" "The fixed pitch font name.")
+(defvar variable-pitch-font-name "Rec Mono Semicasual" "The variable pitch font name.")
 (defvar preferred-font-size (gf3/preferred-font-size) "The preferred font size.")
 (defvar preferred-font (format "%s-%d:weight=regular" fixed-pitch-font-name preferred-font-size) "The preferred font.")
 
@@ -106,7 +105,6 @@
 (require 'init-eglot)
 (require 'init-flycheck)
 (require 'init-apheleia)
-(require 'init-projectile)
 (require 'init-dape)
 (require 'init-magit)
 (require 'init-diffhl)
@@ -120,7 +118,7 @@
 (require 'init-yasnippet)
 (require 'init-copilot)
 (require 'init-whichkey)
-(require 'init-kakoune)
+(require 'init-meow)
 
 ;; Languages
 (require 'init-lang-docker)
@@ -138,7 +136,6 @@
 
 ;; Font
 (gf3/set-fonts)
-(circadian-setup)
 ;; )))
 
 ;;; init.el ends here
@@ -153,7 +150,9 @@
  '(anzu-replace-to-string-separator " → ")
  '(anzu-search-threshold 1000)
  '(custom-safe-themes
-   '("904ccc456f6be7860252f4bf47dab4bbe684328a925749a3cd11fab8faf4d8d0"
+   '("a75aff58f0d5bbf230e5d1a02169ac2fbf45c930f816f3a21563304d5140d245"
+     "2e7dc2838b7941ab9cabaa3b6793286e5134f583c04bde2fba2f4e20f2617cf7"
+     "904ccc456f6be7860252f4bf47dab4bbe684328a925749a3cd11fab8faf4d8d0"
      "a8970b307ece3e37d7d56df11a7199733793b6a8482e1010dc40b027b4994183"
      "1e3243439aa654f07302277b43fb741619903a7b67993c0fb76fcb1db7b42924"
      "2007ae44334eda7781d3d17a6235cd2d7f236e1b8b090e33c8e7feb74c92b634"
@@ -171,8 +170,8 @@
      (motion "🅼" . font-lock-constant-face)))
  '(safe-local-variable-values
    '((js-indent-level 0.2)
-     (projectile-root-local .
-                            "/home/gianni/Code/github.com/freshlineapp/wharf")
+     (projectile-root-local
+      . "/home/gianni/Code/github.com/freshlineapp/wharf")
      (js-indent-level . 2) (web-mode-code-indent . 2)
      (eval prettier-mode t)
      (magit-todos-group-by magit-todos-item-first-path-component

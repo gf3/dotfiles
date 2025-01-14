@@ -4,6 +4,8 @@
 
 (require 'treesit)
 
+(setq treesit-font-lock-level 6)
+
 (setq major-mode-remap-alist
       '((bash-mode . bash-ts-mode)
         (css-mode . css-ts-mode)

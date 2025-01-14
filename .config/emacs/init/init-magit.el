@@ -10,6 +10,8 @@
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (setq magit-define-global-key-bindings t)
   ;; (transient-suffix-put 'magit-dispatch "k" :key "x")
+  (setq magit-diff-refine-hunk 'all)
+  (setq magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
 
   (defalias 'gf3/git
 	(let ((map (make-sparse-keymap)))
@@ -28,6 +30,11 @@
 	["Edit"
 	 ("e a" "assignees" forge-edit-topic-assignees)
 	 ("e r" "review requests" forge-edit-topic-review-requests)]))
+
+(use-package magit-delta
+  :straight (:host github :repo "dandavison/magit-delta" :branch "master")
+  :after magit
+  :hook (magit-mode . magit-delta-mode))
 
 (provide 'init-magit)
 ;;; init-magit.el ends here

@@ -14,6 +14,10 @@
   :straight (:host github :repo "protesilaos/modus-themes")
   :ensure t
   :custom
+  (modus-themes-mode-line '(accented borderless (padding . 4) (height . 0.9)))
+  (modus-themes-hl-line '(accented))
+  (modus-themes-paren-match '(bold intense))
+  (modus-themes-links '(neutral-underline background))
   (modus-themes-bold-constructs t)
   (modus-themes-disable-other-themes t)
   (modus-themes-italic-constructs t)
@@ -22,28 +26,14 @@
   (modus-themes-to-toggle `(,light-theme ,dark-theme))
   (modus-themes-variable-pitch-ui t))
 
-(use-package circadian
-  :straight (:host github :repo "guidoschmidt/circadian.el")
-  :ensure t
+(use-package auto-dark
+  :after modus-themes
+  :straight (:host github :repo "LionyxML/auto-dark-emacs")
+  :init (auto-dark-mode)
   :custom
-  (calendar-latitude 43.651070)
-  (calendar-longitude -79.347015)
-  (circadian-themes `((:sunrise . ,light-theme)
-                      (:sunset  . ,dark-theme)))
+  (auto-dark-themes `((,dark-theme) (,light-theme)))
   :config
-  (circadian-setup))
-
-(defun gf3/apply-theme (&optional appearance)
-  "Load theme, taking current system APPEARANCE into consideration."
-  (mapc #'disable-theme custom-enabled-themes)
-  (unless appearance (setq appearance 'light))
-  (pcase appearance
-    ('light (load-theme light-theme t))
-    ('dark (load-theme dark-theme t))))
-
-(add-hook 'after-init-hook (lambda () (gf3/apply-theme 'light)))
-
-(add-hook 'ns-system-appearance-change-functions #'gf3/apply-theme)
+  (setq custom-safe-themes t))
 
 (provide 'init-theme)
 ;;; init-theme.el ends here
