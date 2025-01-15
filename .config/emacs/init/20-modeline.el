@@ -28,5 +28,25 @@
 
 (add-hook 'after-change-major-mode-hook 'gf3/purge-minor-modes)
 
+(use-package mood-line
+  :straight t
+  :ensure t
+
+  :custom
+  (mood-line-segment-modal-meow-state-alist
+   '((normal "🅽" . font-lock-variable-name-face)
+     (insert "🅸" . font-lock-string-face)
+     (keypad "🅺" . font-lock-keyword-face)
+     (beacon "🅱" . font-lock-type-face)
+     (motion "🅼" . font-lock-constant-face)))
+
+  ;; Enable mood-line
+  :config
+  (mood-line-mode 1)
+
+  ;; Use pretty unicode glyphs
+  :custom
+  (mood-line-glyph-alist mood-line-glyphs-unicode))
+
 (provide 'init-modeline)
 ;;; init-modeline.el ends here

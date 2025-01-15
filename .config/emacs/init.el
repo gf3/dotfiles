@@ -103,7 +103,11 @@
  '(anzu-replace-to-string-separator " → ")
  '(anzu-search-threshold 1000)
  '(custom-safe-themes
-   '("712dda0818312c175a60d94ba676b404fc815f8c7e6c080c9b4061596c60a1db"
+   '("1e6997bc08f0b11a2b5b6253525aed4e1eb314715076a0c0c2486bd97569f18a"
+     "7ed236688b971b70744d1410d4e86cebde9b2980e0568f38d22db4f319e8d135"
+     "e4a441d3cea911e8ef36de2eaed043cbe2079484c44c3f2bbab67a46f863a9f6"
+     "c394b324ec24119c83cab898239300a721fadb695b8c5b313dd9f9726590efdf"
+     "712dda0818312c175a60d94ba676b404fc815f8c7e6c080c9b4061596c60a1db"
      "a75aff58f0d5bbf230e5d1a02169ac2fbf45c930f816f3a21563304d5140d245"
      "2e7dc2838b7941ab9cabaa3b6793286e5134f583c04bde2fba2f4e20f2617cf7"
      "904ccc456f6be7860252f4bf47dab4bbe684328a925749a3cd11fab8faf4d8d0"
@@ -121,7 +125,7 @@
      (insert "🅸" . font-lock-string-face)
      (keypad "🅺" . font-lock-keyword-face)
      (beacon "🅱" . font-lock-type-face)
-     (motion "🅼" . font-lock-constant-face)))
+     (motion "🅼" . font-lock-constant-face)) nil nil "Customized with use-package mood-line")
  '(safe-local-variable-values
    '((js-indent-level 0.2)
      (projectile-root-local
