@@ -1,4 +1,4 @@
-;;; init-emacs.el --- General emacs configuration. -*- lexical-binding: t -*-
+;;; 10-emacs.el --- General emacs configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -50,15 +50,15 @@
 
 ;; Scroll like a normal editor
 (setq scroll-margin 8
-	  scroll-conservatively 101
-	  scroll-up-aggressively 0.01
-	  scroll-down-aggressively 0.01
-	  scroll-preserve-screen-position t
-	  auto-window-vscroll nil)
+	    scroll-conservatively 1000
+	    scroll-up-aggressively nil
+	    scroll-down-aggressively nil
+	    scroll-preserve-screen-position nil
+	    auto-window-vscroll nil)
 
 ;; Smooth scrolling
 (setq pixel-scroll-precision-use-momentum t)
-(pixel-scroll-precision-mode)
+(pixel-scroll-precision-mode 1)
 
 ;; Mouse scrolling in terminal emacs
 (unless (display-graphic-p)
@@ -69,6 +69,10 @@
 
 ;; Mouse yank
 (global-set-key (kbd "<mouse-2>") 'clipboard-yank)
+
+(setq mouse-autoselect-window t)
+
+(keymap-global-set "<down-mouse-9>" 'strokes-do-stroke)
 
 ;; Mark ring
 ;; See: https://www.gnu.org/software/emacs/manual/html_node/emacs/Mark-Ring.html
@@ -85,12 +89,7 @@
 (bind-key "C-x p" 'pop-to-mark-command)
 
 ;; Tab width
-(setq-default tab-width 4)
-
-;; Auto close brackets
-(electric-pair-mode)
-(setq electric-pair-inhibit-predicate 'ignore)
-(setq electric-pair-skip-self t)
+(setq-default tab-width 2)
 
 ;; Add prompt indicator to `completing-read-multiple'.
 ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
@@ -111,13 +110,13 @@
 
 ;; Do not allow the cursor in the minibuffer prompt
 (setq minibuffer-prompt-properties
-	  '(read-only t cursor-intangible t face minibuffer-prompt))
+	    '(read-only t cursor-intangible t face minibuffer-prompt))
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
 ;; Emacs 28: Hide commands in M-x which do not work in the current mode.
 ;; Vertico commands are hidden in normal buffers.
 (setq read-extended-command-predicate
-	  #'command-completion-default-include-p)
+	    #'command-completion-default-include-p)
 
 ;; Enable recursive minibuffers
 (setq enable-recursive-minibuffers t)
@@ -135,5 +134,22 @@ To be used as advice AFTER any function that sets `deactivate-mark' to t."
 (advice-add 'comment-region :after #'gf3/with-mark-active)
 (advice-add 'kill-ring-save :after #'gf3/with-mark-active)
 
-(provide 'init-emacs)
-;;; init-emacs.el ends here
+;; Eldoc
+(use-package eldoc
+  :ensure t
+  :preface
+  (add-to-list 'display-buffer-alist
+               '("^\\*eldoc for" display-buffer-at-bottom
+                 (window-height . 4)))
+  (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
+  :custom (eldoc-echo-area-use-multiline-p t)
+  :config
+  (eldoc-add-command-completions "paredit-")
+  (eldoc-add-command-completions "combobulate-"))
+
+;; Clear the screen
+(add-hook 'shell-command-mode-hook
+          (lambda () (local-set-key (kbd "C-K") 'erase-buffer)))
+
+(provide '10-emacs)
+;;; 10-emacs.el ends here

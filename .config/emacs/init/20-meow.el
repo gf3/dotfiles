@@ -2,6 +2,35 @@
 ;;; Commentary:
 ;;; Code:
 
+;;; See: http://xahlee.info/emacs/emacs/emacs_toggle_letter_case.html
+(defun xah-toggle-letter-case ()
+  "Toggle the letter case of current word or selection.
+Always cycle in this order: Init Caps, ALL CAPS, all lower.
+
+URL `http://xahlee.info/emacs/emacs/emacs_toggle_letter_case.html'
+Version: 2020-06-26 2023-11-14"
+  (interactive)
+  (let ( (deactivate-mark nil) xp1 xp2)
+    (if (region-active-p)
+        (setq xp1 (region-beginning) xp2 (region-end))
+      (save-excursion
+        (skip-chars-backward "[:alpha:]")
+        (setq xp1 (point))
+        (skip-chars-forward "[:alpha:]")
+        (setq xp2 (point))))
+    (when (not (eq last-command this-command))
+      (put this-command 'state 0))
+    (cond
+     ((equal 0 (get this-command 'state))
+      (upcase-initials-region xp1 xp2)
+      (put this-command 'state 1))
+     ((equal 1 (get this-command 'state))
+      (upcase-region xp1 xp2)
+      (put this-command 'state 2))
+     ((equal 2 (get this-command 'state))
+      (downcase-region xp1 xp2)
+      (put this-command 'state 0)))))
+
 (defun gf3/meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
   (meow-motion-overwrite-define-key
@@ -14,6 +43,7 @@
    '("<escape>" . ignore))
   (meow-leader-define-key
    '("SPC" . meow-M-x)
+   (cons "p" project-prefix-map)
    ;; '("<left>" . previous-buffer)
    ;; '("<right>" . next-buffer)
    ;; ;; The suggested bindings would have allowed us to use 'SPC j' and 'SPC k'
@@ -90,7 +120,7 @@
    '("Q" . meow-goto-line)
    '("r" . meow-replace)
    '("R" . meow-swap-grab)
-   '("s" . delete-region)
+   '("s" . meow-kill)
    '("t" . meow-till)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
@@ -103,12 +133,15 @@
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
-   '("<escape>" . ignore)))
+   '("~" . xah-toggle-letter-case)
+   '("<escape>" . ignore)
+   '("<up>" . ignore)
+   '("<down>" . ignore)))
 
 (use-package meow
+  :demand t
   :straight (:host github :repo "meow-edit/meow" :branch "master")
   :config
-  (setq meow-goto-line-function 'consult-line)
   (meow-thing-register 'angle '(regexp "<" ">") '(regexp "<" ">"))
   (add-to-list 'meow-char-thing-table '(?a . angle))
   (meow-setup-indicator)

@@ -12,7 +12,7 @@
 
 (use-package kaolin-themes
   :straight (:host github :repo "ogdenwebb/emacs-kaolin-themes")
-  :ensure t
+  :demand t
   :config
   (setq kaolin-themes-bold t       ; If nil, disable the bold style.
         kaolin-themes-italic t     ; If nil, disable the italic style.
@@ -20,11 +20,10 @@
 
 (use-package auto-dark
   :after kaolin-themes
-  :ensure t
+  :demand t
   :straight (:host github :repo "LionyxML/auto-dark-emacs")
   :init (auto-dark-mode)
   :custom
-  (custome-safe-themes t)
   (auto-dark-themes `((,dark-theme) (,light-theme)))
   :config
   (setq custom-safe-themes t))

@@ -15,8 +15,8 @@
   (vertico-mode 1))
 
 (use-package vertico-repeat
-  :after vertico
   :ensure nil
+  :after vertico
   :config
   (keymap-global-set "M-R" #'vertico-repeat)
   (add-to-list 'psession-object-to-save-alist 
@@ -25,8 +25,8 @@
 
 ;; Configure directory extension.
 (use-package vertico-directory
-  :after vertico
   :ensure nil
+  :after vertico
   ;; More convenient directory navigation commands
   :bind (:map vertico-map
               ("RET" . vertico-directory-enter)

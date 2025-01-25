@@ -4,7 +4,7 @@
 
 (use-package deadgrep
   :straight (:host github :repo "Wilfred/deadgrep")
-  :ensure t
+  :demand t
   :bind (("C-c g" . deadgrep)))
 
 (provide 'init-deadgrep)

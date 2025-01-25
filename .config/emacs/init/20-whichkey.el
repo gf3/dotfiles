@@ -2,7 +2,7 @@
 
 (use-package which-key
   :straight t
-  :ensure t
+  :demand t
   :config
   (which-key-mode)
   (push '((nil . "ryo:.*:") . (nil . "")) which-key-replacement-alist)

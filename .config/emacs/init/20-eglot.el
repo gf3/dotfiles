@@ -4,7 +4,12 @@
 
 (use-package eglot
   :straight (:host github :repo "joaotavora/eglot")
-  :hook ((elixir-ts-mode . eglot-ensure)
+  :preface
+  (defun mp-eglot-eldoc ()
+    (setq eldoc-documentation-strategy
+          'eldoc-documentation-compose-eagerly))
+  :hook ((eglot-managed-mode . mp-eglot-eldoc)
+         (elixir-ts-mode . eglot-ensure)
          (go-ts-mode . eglot-ensure)
          (hcl-ts-mode . eglot-ensure)
          (heex-ts-mode . eglot-ensure)
@@ -18,11 +23,6 @@
     (add-to-list 'eglot-server-programs '(elixir-ts-mode . ("nextls" "--stdio=true")))
     (add-to-list 'eglot-server-programs '(heex-ts-mode . ("nextls" "--stdio=true")))
     (add-to-list 'eglot-server-programs '(elixir-mode . ("nextls" "--stdio=true")))))
-
-(use-package eldoc-box
-  :straight (:host github :repo "casouri/eldoc-box")
-  :hook (eglot-managed-mode . eldoc-box-hover-at-point-mode)
-  :after eglot)
 
 (use-package consult-eglot
   :straight (:host github :repo "mohkale/consult-eglot")

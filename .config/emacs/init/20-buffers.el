@@ -2,7 +2,42 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'ibuffer)
+(require 'ibuf-ext)
+
 (recentf-mode)
+
+(global-set-key (kbd "C-x C-b") 'ibuffer) ; instead of buffer-list
+
+(setq ibuffer-expert t) ; stop yes no prompt on delete
+
+(use-package all-the-icons-ibuffer
+  :straight t
+  :demand t)
+
+(use-package ibuffer-vc
+  :straight t
+  :after (ibuffer all-the-icons-ibuffer ibuffer-project)
+  :hook (ibuffer-mode . (lambda ()
+                          (ibuffer-vc-set-filter-groups-by-vc-root)
+                          (unless (eq ibuffer-sorting-mode 'alphabetic)
+                            (ibuffer-do-sort-by-alphabetic))))
+  :config
+  (require 'all-the-icons-ibuffer)
+  (require 'ibuffer-project)
+  (setq ibuffer-formats
+        '((modified read-only vc-status-mini " "
+                    (icon 2 2)
+                    (name 30 30 :left :elide)
+                    " "
+                    (size-h 9 -1 :right)
+                    " "
+                    (mode+ 16 16 :left :elide)
+                    " "
+                    (vc-status 16 16 :left)
+                    " "
+                    project-file-relative))))
+
 
 (defun switch-to-last-buffer ()
   "Switch to the previously open buffer."

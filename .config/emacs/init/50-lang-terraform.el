@@ -4,7 +4,7 @@
 
 (use-package terraform-mode
   :straight t
-  :ensure t)
+  :mode "\\.tf\\'")
 
 (provide 'init-lang-terraform)
 ;;; init-lang-terraform.el ends here

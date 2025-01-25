@@ -30,7 +30,7 @@
 
 (use-package mood-line
   :straight t
-  :ensure t
+  :demand t
 
   :custom
   (mood-line-segment-modal-meow-state-alist

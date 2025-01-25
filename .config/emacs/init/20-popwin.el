@@ -1,24 +1,29 @@
-;;; init-popwin.el --- Fix popup windows. -*- lexical-binding: t -*-
+;;; 20-popwin.el --- Ugh windows. -*- lexical-binding: t -*-
+
+;; Author: Gianni Chiappetta
+;; Maintainer: Gianni Chiappetta
+;; Version: 0
+;; Package-Requires: (popwin)
+;; Homepage: homepage
+;; Keywords: keywords
+
 ;;; Commentary:
+
+;; commentary
+
 ;;; Code:
 
 (use-package popwin
   :straight t
-  :config
-  ;; M-x compile
-  (push '(compilation-mode :noselect t) popwin:special-display-config)
-
-  ;; vc
+  :map (("C-z" . popwin:keymap))
+  :init
+  (push "*Shell Command Output*" popwin:special-display-config)
+  (push "*Async Shell Command*" popwin:special-display-config)
   (push "*vc-diff*" popwin:special-display-config)
   (push "*vc-change-log*" popwin:special-display-config)
-
-  ;; undo-tree
-  (push '(" *undo-tree*" :width 0.3 :position right) popwin:special-display-config)
-
-  ;; Warnings
-  (push '("*Warnings*" :noselect t) popwin:special-display-config)
-  :init
+  (push '(compilation-mode :noselect t) popwin:special-display-config)
   (popwin-mode 1))
 
-(provide 'init-popwin)
-;;; init-popwin.el ends here
+(provide '20-popwin)
+
+;;; 20-popwin.el ends here

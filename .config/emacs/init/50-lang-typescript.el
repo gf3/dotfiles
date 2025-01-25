@@ -4,7 +4,7 @@
 
 (use-package js
   :straight t
-  :ensure nil
+  :defer t
   :custom
   (js-indent-level 2))
 
