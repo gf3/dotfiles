@@ -15,8 +15,8 @@
 
 (use-package popwin
   :straight t
-  :map (("C-z" . popwin:keymap))
-  :init
+  :bind-keymap ("C-z" . popwin:keymap)
+  :config
   (push "*Shell Command Output*" popwin:special-display-config)
   (push "*Async Shell Command*" popwin:special-display-config)
   (push "*vc-diff*" popwin:special-display-config)
