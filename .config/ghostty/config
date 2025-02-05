@@ -6,6 +6,7 @@ theme = light:OneHalfLight,dark:OneHalfDark
 
 mouse-hide-while-typing = true
 focus-follows-mouse = true
+cursor-color = #FF0000
 
 command = /usr/bin/fish
 shell-integration = detect
