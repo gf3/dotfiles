@@ -69,7 +69,6 @@
   (set-face-attribute 'diredfl-dir-name nil :bold t))
 
 (use-package dired-sidebar
-  :bind (([f9] . +sidebar-toggle))
   :straight t
   :commands (dired-sidebar-toggle-sidebar)
   :init

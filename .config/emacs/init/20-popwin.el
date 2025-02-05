@@ -21,6 +21,7 @@
   (push "*Async Shell Command*" popwin:special-display-config)
   (push "*vc-diff*" popwin:special-display-config)
   (push "*vc-change-log*" popwin:special-display-config)
+  (push "*Pp Eval Output*" popwin:special-display-config)
   (push '(compilation-mode :noselect t) popwin:special-display-config)
   (popwin-mode 1))
 

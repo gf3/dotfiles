@@ -1,17 +1,15 @@
-;; init-vertico.el --- General vertico-related configuration. -*- lexical-binding: t -*-
+;; 20-vertico.el --- General vertico-related configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 ;; Enable vertico
 (use-package vertico
   :straight (:host github :repo "minad/vertico"
-				   :files ("*.el" "extensions/*.el"))
+				           :files ("*.el" "extensions/*.el"))
   :config
-  (setq vertico-resize nil
-        vertico-count 17
+  (setq vertico-resize t
+        vertico-count 20
         vertico-cycle t)
-
-  :init
   (vertico-mode 1))
 
 (use-package vertico-repeat
@@ -166,7 +164,7 @@
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
   (setq orderless-component-separator #'orderless-escapable-split-on-space ;; allow escaping space with backslash!
-		completion-styles '(orderless basic)
+		    completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
@@ -196,5 +194,5 @@
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
-(provide 'init-vertico)
-;;; init-vertico.el ends here
+(provide '20-vertico)
+;;; 20-vertico.el ends here

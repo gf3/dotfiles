@@ -35,10 +35,6 @@
 (setq-default lazy-count-prefix-format nil)
 (setq-default lazy-count-suffix-format " (%s/%s)")
 
-;; One Esc is enough
-;; (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-;; See: init-kakoune.el
-
 ;; Set cursor shape
 (setq-default cursor-type 'bar)
 
