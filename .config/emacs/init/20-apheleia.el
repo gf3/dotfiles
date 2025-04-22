@@ -1,28 +1,28 @@
-;;; init-apheleia.el --- Formatter configuration. -*- lexical-binding: t -*-
+;;; 20-apheleia.el --- Formatter configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package apheleia
-  :straight (:host github :repo "radian-software/apheleia" :branch "main")
+  :straight t
   :defer t
   :hook ((prog-mode . apheleia-mode))
   :commands (apheleia-mode apheleia-global-mode apheleia-format-buffer)
   :config
   ;; Additional formatters
   (push '(mix-filename-format . ("mix" "format" "--stdin-filename" filepath "-"))
-		apheleia-formatters)
+		    apheleia-formatters)
   (push '(jsbeautify-css . (npx "js-beautify" "--type=css" "--quiet" "-"))
-		apheleia-formatters)
+		    apheleia-formatters)
   (push '(jsbeautify-html . (npx "js-beautify" "--type=html" "--quiet" "-"))
-		apheleia-formatters)
+		    apheleia-formatters)
   (push '(jsbeautify-js . (npx "js-beautify" "--type=js" "--quiet" "-"))
-		apheleia-formatters)
+		    apheleia-formatters)
   (push '(erb-formatter . ("erb-format" "--stdin"))
-		apheleia-formatters)
+		    apheleia-formatters)
   (push '(rufo . ("rufo" "--simple-exit"))
-		apheleia-formatters)
+		    apheleia-formatters)
   (setf (alist-get 'ruby-mode apheleia-mode-alist)
-		'(rufo)))
+		    '(rufo)))
 
-(provide 'init-apheleia)
-;;; init-apheleia.el ends here
+(provide '20-apheleia)
+;;; 20-apheleia.el ends here

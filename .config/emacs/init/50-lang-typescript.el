@@ -1,4 +1,4 @@
-;;; init-lang-typescript.el --- Typescript configuration. -*- lexical-binding: t -*-
+;;; 50-lang-typescript.el --- Typescript configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -9,7 +9,7 @@
   (js-indent-level 2))
 
 (use-package typescript-mode
-  :straight (:host github :repo "emacs-typescript/typescript.el" :branch "master")
+  :straight t
   :defer t
   :mode ("\\.ts\\'" "\\.tsx\\'")
   :custom
@@ -18,5 +18,5 @@
   (put 'typescript-mode 'eglot-language-id "typescript.tsx")
   (put 'typescript-ts-mode 'eglot-language-id "typescript.tsx"))
 
-(provide 'init-lang-typescript)
-;;; init-lang-typescript.el ends here
+(provide '50-lang-typescript)
+;;; 50-lang-typescript.el ends here

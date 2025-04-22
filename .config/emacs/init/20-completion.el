@@ -1,11 +1,10 @@
-;; 20-vertico.el --- General vertico-related configuration. -*- lexical-binding: t -*-
+;; 20-completion.el --- General vertico-related configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 ;; Enable vertico
 (use-package vertico
-  :straight (:host github :repo "minad/vertico"
-				           :files ("*.el" "extensions/*.el"))
+  :straight t
   :config
   (setq vertico-resize t
         vertico-count 20
@@ -35,7 +34,7 @@
 
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
-  :straight (:host github :repo "minad/marginalia")
+  :straight t
   ;; Either bind `marginalia-cycle' globally or only in the minibuffer
   :bind (("M-A" . marginalia-cycle)
          :map minibuffer-local-map
@@ -48,8 +47,8 @@
   ;; enabled right away. Note that this forces loading the package.
   (marginalia-mode))
 
-;; Example configuration for Consult
 (use-package consult
+  :straight t  
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
          ("C-c M-x" . consult-mode-command)
@@ -150,15 +149,16 @@
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
   ;; (keymap-set consult-narrow-map (concat consult-narrow-key " ?") #'consult-narrow-help)
   )
+
 (use-package consult-project-extra
-  :straight (consult-project-extra :type git :host github :repo "Qkessler/consult-project-extra")
+  :straight t
   :bind
   (("C-c p f" . consult-project-extra-find)
    ("C-c p o" . consult-project-extra-find-other-window)))
 
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
-  :straight (:host github :repo "oantolin/orderless")
+  :straight t
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
@@ -194,5 +194,5 @@
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
-(provide '20-vertico)
-;;; 20-vertico.el ends here
+(provide '20-completion)
+;;; 20-completion.el ends here

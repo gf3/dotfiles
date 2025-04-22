@@ -1,13 +1,13 @@
-;;; init-lang-yaml.el --- YAML configuration. -*- lexical-binding: t -*-
+;;; 50-lang-yaml.el --- YAML configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package yaml-mode
-  :straight (:host github :repo "yoshiki/yaml-mode" :branch "master")
+  :straight t
   :defer t
   :mode ("\\.yaml\\'" "\\.yml\\'")
   :hook ((yaml-mode . (lambda ()
-						 (define-key yaml-mode-map "\C-m" 'newline-and-indent)))))
+						            (define-key yaml-mode-map "\C-m" 'newline-and-indent)))))
 
-(provide 'init-lang-yaml)
-;;; init-lang-yaml.el ends here
+(provide '50-lang-yaml)
+;;; 50-lang-yaml.el ends here

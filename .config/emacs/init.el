@@ -32,41 +32,14 @@
 (setq custom-safe-themes t)
 
 ;; Fonts
-(require 'cl-lib)
-
-(defun gf3/get-dpi (&optional frame)
-  "Get the DPI of FRAME (or current if nil)."
-  (cl-flet ((pyth (lambda (w h)
-                    (sqrt (+ (* w w)
-                             (* h h)))))
-            (mm2in (lambda (mm)
-                     (/ mm 25.4))))
-    (let* ((atts (frame-monitor-attributes frame))
-           (pix-w (cl-fourth (assoc 'geometry atts)))
-           (pix-h (cl-fifth (assoc 'geometry atts)))
-           (pix-d (pyth pix-w pix-h))
-           (mm-w (cl-second (assoc 'mm-size atts)))
-           (mm-h (cl-third (assoc 'mm-size atts)))
-           (mm-d (pyth mm-w mm-h)))
-      (/ pix-d (mm2in mm-d)))))
-
-(defun gf3/preferred-font-size ()
-  "Calculate the preferred font size based on the monitor DPI."
-  (let ((dpi (gf3/get-dpi)))
-    (cond
-     ((< dpi 110) 11)
-     ((< dpi 130) 11)
-     ((< dpi 160) 11)
-     (t 11))))
-
 (defvar fixed-pitch-font-name "Maple Mono NF" "The fixed pitch font name.")
 (defvar variable-pitch-font-name "Iosevka Aile" "The variable pitch font name.")
-(defvar preferred-font-size (gf3/preferred-font-size) "The preferred font size.")
+(defvar preferred-font-size 13 "The preferred font size.")
 (defvar preferred-font (format "%s-%d:weight=regular" fixed-pitch-font-name preferred-font-size) "The preferred font.")
 
 (defun gf3/set-fonts ()
   "Set the default fonts."
-  (message "Setting fonts: dpi: %d, size: %d, fixed: %s, variable: %s" (gf3/get-dpi) preferred-font-size fixed-pitch-font-name variable-pitch-font-name)
+  (message "Setting fonts: size: %d, fixed: %s, variable: %s" preferred-font-size fixed-pitch-font-name variable-pitch-font-name)
   (set-frame-font preferred-font t t)
   (set-face-font 'fixed-pitch-serif fixed-pitch-font-name)
   (set-face-font 'variable-pitch variable-pitch-font-name))
@@ -93,5 +66,7 @@
 ;; Font
 (gf3/set-fonts)
 
-;;; init.el ends here
+;; Misc.
 (put 'erase-buffer 'disabled nil)
+
+;;; init.el ends here

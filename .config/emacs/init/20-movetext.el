@@ -1,9 +1,9 @@
-;; init-movetext.el --- Move text around. -*- lexical-binding: t -*-
+;; 20-movetext.el --- Move text around. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package move-text
-  :straight (:host github :repo "emacsfodder/move-text")
+  :straight t
   :demand t
   :commands (move-text-up move-text-down)
   :config
@@ -19,5 +19,5 @@
   
   (move-text-default-bindings))
 
-(provide 'init-movetext)
-;;; init-movetext.el ends here
+(provide '20-movetext)
+;;; 20-movetext.el ends here

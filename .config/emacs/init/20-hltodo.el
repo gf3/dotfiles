@@ -1,9 +1,9 @@
-;;; init-hltodo.el --- Highlight comment keywords. -*- lexical-binding: t -*-
+;;; 20-hltodo.el --- Highlight comment keywords. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package hl-todo
-  :straight (:host github :repo "tarsius/hl-todo")
+  :straight t
   :custom
   (hl-todo-keyword-faces
    '(("HOLD" . "#d0bf8f") ("TODO" . "#7209b7") ("NEXT" . "#dca3a3")
@@ -18,5 +18,5 @@
   :config
   (global-hl-todo-mode))
 
-(provide 'init-hltodo)
-;;; init-hltodo.el ends here
+(provide '20-hltodo)
+;;; 20-hltodo.el ends here

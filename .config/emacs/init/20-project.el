@@ -1,4 +1,4 @@
-;;; init-project.el --- Projects. -*- lexical-binding: t -*-
+;;; 20-project.el --- Projects. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -35,7 +35,7 @@ variable `project-local-identifier' to be considered a project."
   :demand t)
 
 (use-package ibuffer-project
-  :straight (ibuffer-project :type git :host github :repo "muffinmad/emacs-ibuffer-project")
+  :straight t
   :demand t
   :after project
   :hook (ibuffer-hook . (lambda ()
@@ -43,5 +43,5 @@ variable `project-local-identifier' to be considered a project."
                           (unless (eq ibuffer-sorting-mode 'project-file-relative)
                             (ibuffer-do-sort-by-project-file-relative)))))
 
-(provide 'init-project)
-;;; init-project.el ends here
+(provide '20-project)
+;;; 20-project.el ends here

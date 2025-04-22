@@ -1,9 +1,9 @@
-;;; init-anzu.el --- Search & replace counters. -*- lexical-binding: t -*-
+;;; 20-anzu.el --- Search & replace counters. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package anzu
-  :straight (:host github :repo "emacsorphanage/anzu")
+  :straight t
   :config
   (custom-set-variables
    '(anzu-mode-lighter "")
@@ -17,5 +17,5 @@
   :init
   (global-anzu-mode +1))
 
-(provide 'init-anzu)
-;;; init-anzu.el ends here
+(provide '20-anzu)
+;;; 20-anzu.el ends here

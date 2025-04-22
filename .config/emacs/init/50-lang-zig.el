@@ -1,9 +1,9 @@
-;;; init-lang-zig.el --- Odin configuration. -*- lexical-binding: t -*-
+;;; 50-lang-zig.el --- Odin configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package zig-mode
-  :straight (:host github :repo "ziglang/zig-mode")
+  :straight t
   :mode ("\\.zig\\'")
   :after tree-sitter)
 
@@ -19,5 +19,5 @@
 ;;   (add-to-list 'eglot-server-programs
 ;;                '(zig-mode . ("/Users/gianni/Code/ols/ols"))))
 
-(provide 'init-lang-zig)
-;;; init-lang-zig.el ends here
+(provide '50-lang-zig)
+;;; 50-lang-zig.el ends here

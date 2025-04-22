@@ -1,11 +1,11 @@
-;;; init-beacon.el --- Highlight the current line. -*- lexical-binding: t -*-
+;;; 20-beacon.el --- Highlight the current line. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package beacon
-  :straight (:host github :repo "Malabarba/beacon")
+  :straight t
   :config
   (beacon-mode 1))
 
-(provide 'init-beacon)
-;;; init-beacon.el ends here
+(provide '20-beacon)
+;;; 20-beacon.el ends here

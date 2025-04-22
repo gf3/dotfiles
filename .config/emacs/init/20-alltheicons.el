@@ -1,16 +1,16 @@
-;;; init-alltheicons.el --- All the icons configuration. -*- lexical-binding: t -*-
+;;; 20-alltheicons.el --- All the icons configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package all-the-icons
-  :straight (:host github :repo "domtronn/all-the-icons.el")
+  :straight t
   :if (display-graphic-p))
 
 (use-package all-the-icons-completion
-  :straight (:host github :repo "iyefrat/all-the-icons-completion")
+  :straight t
   :after all-the-icons
   :config
   (all-the-icons-completion-mode))
 
-(provide 'init-alltheicons)
-;;; init-alltheicons.el ends here
+(provide '20-alltheicons)
+;;; 20-alltheicons.el ends here

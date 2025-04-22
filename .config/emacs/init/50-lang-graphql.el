@@ -1,12 +1,12 @@
-;;; init-lang-graphql.el --- GraphQL configuration. -*- lexical-binding: t -*-
+;;; 50-lang-graphql.el --- GraphQL configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package graphql-mode
-  :straight (:host github :repo "davazp/graphql-mode" :branch "master")
+  :straight t
   :defer t
   :mode ("\\.graphql\\'")
   :after tree-sitter)
 
-(provide 'init-lang-graphql)
-;;; init-lang-graphql.el ends here
+(provide '50-lang-graphql)
+;;; 50-lang-graphql.el ends here

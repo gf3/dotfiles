@@ -1,4 +1,4 @@
-;;; init-lang-elixir.el --- Elixir configuration. -*- lexical-binding: t -*-
+;;; 50-lang-elixir.el --- Elixir configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -17,9 +17,11 @@
   (add-to-list 'eglot-server-programs '(heex-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_release/language_server.sh")))
 
 (use-package exunit
-  :straight (:host github :repo "ananthakumaran/exunit.el")
+  :straight t
   :hook ((elixir-mode . exunit-mode)
-         (elixir-ts-mode . exunit-mode)))
+         (elixir-ts-mode . exunit-mode))
+  :custom
+  (transient-default-level 5))
 
-(provide 'init-lang-elixir)
-;;; init-lang-elixir.el ends here
+(provide '50-lang-elixir)
+;;; 50-lang-elixir.el ends here

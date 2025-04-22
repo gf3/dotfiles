@@ -1,12 +1,12 @@
-;;; init-benchmarkinit.el --- Benchmark emacs init. -*- lexical-binding: t -*-
+;;; 20-benchmarkinit.el --- Benchmark emacs init. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package benchmark-init
-  :straight (:host github :repo "dholm/benchmark-init-el" :branch "master")
+  :straight t
   :config
   ;; To disable collection of benchmark data after init is done.
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-(provide 'init-benchmarkinit)
-;;; init-benchmarkinit.el ends here
+(provide '20-benchmarkinit)
+;;; 20-benchmarkinit.el ends here

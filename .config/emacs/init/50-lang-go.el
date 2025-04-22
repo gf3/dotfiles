@@ -1,4 +1,4 @@
-;;; init-lang-go.el --- Go configuration. -*- lexical-binding: t -*-
+;;; 50-lang-go.el --- Go configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -18,28 +18,30 @@
   :mode ("\\.go\\'")
   :after tree-sitter)
 
-(use-package gotest.el
-  :straight (:host github :repo "nlamirault/gotest.el")
+(use-package gotest
+  :straight t
   :commands (go-test-current-test
-			 go-test-current-test-cache
-			 go-test-current-file
-			 go-test-current-project
-			 go-test-current-coverage
-			 go-test-current-benchmark
-			 go-test-current-file-benchmarks
-			 go-test-current-project-benchmarks
-			 go-run))
+			       go-test-current-test-cache
+			       go-test-current-file
+			       go-test-current-project
+			       go-test-current-coverage
+			       go-test-current-benchmark
+			       go-test-current-file-benchmarks
+			       go-test-current-project-benchmarks
+			       go-run))
 
 (use-package go-gen-test
-  :straight (:host github :repo "s-kostyaev/go-gen-test")
+  :straight t
   :defer t
+  :mode ("\\.go\\'")
   :commands (go-gen-test-dwim
              go-gen-test-all
              go-gen-test-exported))
 
 (use-package go-dlv
-  :straight (:host github :repo "benma/go-dlv.el")
+  :straight t
+  :mode ("\\.go\\'")
   :defer t)
 
-(provide 'init-lang-go)
-;;; init-lang-go.el ends here
+(provide '50-lang-go)
+;;; 50-lang-go.el ends here

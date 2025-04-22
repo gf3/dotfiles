@@ -1,9 +1,9 @@
-;;; init-eglot.el --- Language server configuration. -*- lexical-binding: t -*-
+;;; 19-eglot.el --- Language server configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package eglot
-  :straight (:host github :repo "joaotavora/eglot")
+  :straight t
   :preface
   (defun mp-eglot-eldoc ()
     (setq eldoc-documentation-strategy
@@ -25,19 +25,19 @@
     (add-to-list 'eglot-server-programs '(elixir-mode . ("nextls" "--stdio=true")))))
 
 (use-package consult-eglot
-  :straight (:host github :repo "mohkale/consult-eglot")
+  :straight t
   :after eglot
   :commands (consult-eglot-symbols))
 
 (defalias 'gf3/eglot
   (let ((map (make-sparse-keymap)))
-	(define-key map (kbd "a") #'eglot-code-actions)
-	(define-key map (kbd "f") #'eglot-format)
-	(define-key map (kbd "r") #'eglot-rename)
-	map)
+	  (define-key map (kbd "a") #'eglot-code-actions)
+	  (define-key map (kbd "f") #'eglot-format)
+	  (define-key map (kbd "r") #'eglot-rename)
+	  map)
   "Eglot commands.")
 
 (global-set-key (kbd "C-c c") 'gf3/eglot)
 
-(provide 'init-eglot)
-;;; init-eglot.el ends here
+(provide '19-eglot)
+;;; 19-eglot.el ends here

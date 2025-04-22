@@ -1,13 +1,13 @@
-;;; init-diffhl.el --- Diff highlighter. -*- lexical-binding: t -*-
+;;; 20-diffhl.el --- Diff highlighter. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package diff-hl
-  :straight (:host github :repo "dgutov/diff-hl")
+  :straight t
   :config
   (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (global-diff-hl-mode))
 
-(provide 'init-diffhl)
-;;; init-diffhl.el ends here
+(provide '20-diffhl)
+;;; 20-diffhl.el ends here

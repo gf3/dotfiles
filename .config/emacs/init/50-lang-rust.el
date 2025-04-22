@@ -1,12 +1,19 @@
-;;; init-lang-rust.el --- Go configuration. -*- lexical-binding: t -*-
+;;; 50-lang-rust.el --- Go configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
-(use-package rustic
-  :straight (:host github :repo "brotzeit/rustic")
-  :defer t
-  :mode ("\\.rust\\'" "\\.rs\\'")
-  :after tree-sitter)
+(use-package rust-mode
+  :straight t
+  :custom
+  (rust-format-on-save t)
+  (rust-mode-treesitter-derive t))
 
-(provide 'init-lang-rust)
-;;; init-lang-rust.el ends here
+(use-package cargo-mode
+  :straight t
+  :hook
+  (rust-mode . cargo-minor-mode)
+  :config
+  (setq compilation-scroll-output t))
+
+(provide '50-lang-rust)
+;;; 50-lang-rust.el ends here

@@ -1,9 +1,9 @@
-;;; init-perspective.el --- Perspectives for emacs. -*- lexical-binding: t -*-
+;;; 20-perspective.el --- Perspectives for emacs. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package perspective
-  :straight (:host github :repo "nex3/perspective-el")
+  :straight t
   :after consult
   :demand t
   :custom
@@ -22,5 +22,5 @@
   :init
   (persp-mode))
 
-(provide 'init-perspective)
-;;; init-perspective.el ends here
+(provide '20-perspective)
+;;; 20-perspective.el ends here

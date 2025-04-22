@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package yasnippet
-  :straight (:host github :repo "joaotavora/yasnippet")
+  :straight t
   :config
   (setq yas-snippet-dirs
 		    `(,(concat user-emacs-directory (file-name-as-directory "snippets"))))
@@ -12,7 +12,7 @@
   (yas-global-mode 1))
 
 (use-package yasnippet-snippets
-  :straight (:host github :repo "AndreaCrotti/yasnippet-snippets")
+  :straight t
   :after yasnippet)
 
 (provide '20-yasnippet)

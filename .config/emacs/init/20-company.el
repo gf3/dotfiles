@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package company
-  :straight (:host github :repo "company-mode/company-mode")
+  :straight t
   :demand t
   :config
   (setq company-tooltip-align-annotations t)
@@ -20,11 +20,11 @@
   (global-company-mode))
 
 (use-package company-box
-  :straight (:host github :repo "sebastiencs/company-box")
+  :straight t
   :hook (company-mode . company-box-mode))
 
 (use-package company-quickhelp
-  :straight (:host github :repo "company-mode/company-quickhelp")
+  :straight t
   :after company
   :init
   (company-quickhelp-mode))
