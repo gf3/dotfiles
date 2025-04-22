@@ -1,6 +1,6 @@
-font-family = "Maple Mono NF"
+font-family = "Maple Mono"
 font-feature = zero ss01 cv11
-font-size = 12
+font-size = 13
 
 theme = light:OneHalfLight,dark:OneHalfDark
 

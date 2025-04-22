@@ -1,4 +1,4 @@
-theme = "base16_gianni"
+theme = "zed_onedark"
 
 [editor]
 auto-format = true
