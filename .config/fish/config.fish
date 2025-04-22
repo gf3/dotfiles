@@ -18,7 +18,7 @@ set -x GPG_TTY (tty)
 set -x LANG "en_CA.UTF-8"
 set -x LC_ALL "en_US.UTF-8"
 set -x LESS "-i -R"
-set -x SSH_AUTH_SOCK /home/{$USER}/.var/app/com.quexten.Goldwarden/data/ssh-auth-sock
+set -x SSH_AUTH_SOCK (realpath ~/.bitwarden-ssh-agent.sock)
 
 # Path
 fish_add_path -m /bin
