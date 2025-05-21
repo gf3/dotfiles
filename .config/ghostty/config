@@ -1,5 +1,4 @@
-font-family = "Maple Mono"
-font-feature = zero ss01 cv11
+font-family = "Maple Mono NF"
 font-size = 13
 
 theme = light:OneHalfLight,dark:OneHalfDark
@@ -14,7 +13,6 @@ shell-integration-features = true
 
 window-padding-x = 8
 window-padding-y = 16
-window-padding-color = extend
 window-inherit-working-directory = true
 window-theme = ghostty
 

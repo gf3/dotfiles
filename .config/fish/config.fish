@@ -15,6 +15,7 @@ set -x EDITOR "emacs -nw"
 set -x ELIXIR_ERL_OPTIONS "-kernel shell_history enabled"
 set -x GOPATH (realpath ~/.go)
 set -x GPG_TTY (tty)
+set -x IHP_EDITOR (realpath ~/.local/bin/emacs-line)
 set -x LANG "en_CA.UTF-8"
 set -x LC_ALL "en_US.UTF-8"
 set -x LESS "-i -R"
@@ -46,3 +47,11 @@ end
 if type -q cargo
     source "$HOME/.cargo/env.fish"
 end
+
+# Nix
+. ~/.nix-profile/etc/profile.d/nix.fish
+
+# GHCUP
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME
+fish_add_path ~/.cabal/bin
+fish_add_path ~/.ghcup/bin
