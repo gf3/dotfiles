@@ -1,4 +1,4 @@
-;;; init-theme.el --- Theme configuration. -*- lexical-binding: t -*-
+;;; 15-theme.el --- Theme configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -28,5 +28,5 @@
   :config
   (setq custom-safe-themes t))
 
-(provide 'init-theme)
-;;; init-theme.el ends here
+(provide '15-theme)
+;;; 15-theme.el ends here

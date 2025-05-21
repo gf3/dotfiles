@@ -1,4 +1,4 @@
-;;; init-treesitter.el --- Tree sitter configuration. -*- lexical-binding: t -*-
+;;; 20-treesitter.el --- Tree sitter configuration. -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -18,7 +18,6 @@
         (js2-mode . js-ts-mode)
         (json-mode . json-ts-mode)
         (makefile-mode . make-ts-mode)
-        (markdown-mode . markdown-ts-mode)
         (python-mode . python-ts-mode)
         (toml-mode . toml-ts-mode)
         (typescript-mode . typescript-ts-mode)
@@ -41,7 +40,6 @@
         (json "https://github.com/tree-sitter/tree-sitter-json")
         (liquid "https://github.com/Shopify/tree-sitter-liquid")
         (make "https://github.com/alemuller/tree-sitter-make")
-        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
         (python "https://github.com/tree-sitter/tree-sitter-python")
         (rust "https://github.com/tree-sitter/tree-sitter-rust")
         (toml "https://github.com/tree-sitter/tree-sitter-toml")
@@ -49,5 +47,5 @@
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
         (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
-(provide 'init-treesitter)
-;;; init-treesitter.el ends here
+(provide '20-treesitter)
+;;; 20-treesitter.el ends here

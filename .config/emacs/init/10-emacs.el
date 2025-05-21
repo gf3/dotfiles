@@ -120,6 +120,8 @@
 ;; Enable indentation+completion using the TAB key.
 ;; `completion-at-point' is often bound to M-TAB.
 (setq tab-always-indent 'complete)
+(setq completions-max-height 20)
+(setq completion-auto-select 'second-tab)
 
 ;; Preserve selection after certain operations
 (defun gf3/with-mark-active (&rest _args)
@@ -136,7 +138,7 @@ To be used as advice AFTER any function that sets `deactivate-mark' to t."
   :preface
   (add-to-list 'display-buffer-alist
                '("^\\*eldoc for" display-buffer-at-bottom
-                 (window-height . 4)))
+                 (window-height . 5)))
   (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
   :custom (eldoc-echo-area-use-multiline-p t)
   :config

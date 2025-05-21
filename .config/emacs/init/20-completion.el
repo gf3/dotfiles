@@ -16,8 +16,6 @@
   :after vertico
   :config
   (keymap-global-set "M-R" #'vertico-repeat)
-  (add-to-list 'psession-object-to-save-alist 
-               '(vertico-repeat-history . "vertico-repeat-history.el"))
   (add-hook 'minibuffer-setup-hook #'vertico-repeat-save))
 
 ;; Configure directory extension.

@@ -65,15 +65,28 @@
 	    (consult-project-extra-find)
 	  (consult-find)))
 
+(defun gf3/kill-buffer-filename (&optional prefix)
+  "Kill the current buffer's filename to the kill ring. If PREFIX is set the filename is killed to the system clipboard."
+  (interactive "p")
+  (let ((filename
+         (if (project-current)
+             (file-relative-name buffer-file-name (project-root (project-current)))
+           buffer-file-name)))
+    (if (eq 4 prefix)
+        (gui-set-selection 'CLIPBOARD filename)
+      (kill-new filename))
+    (message (format "%s %s" (if (eq 4 prefix) "Copied" "Killed") filename))))
+
 (defalias 'gf3/buffers
   (let ((map (make-sparse-keymap)))
 	  (define-key map (kbd "a") '("Last buffer" . switch-to-last-buffer))
 	  (define-key map (kbd "b") '("Buffers". gf3/buffer))
-	  (define-key map (kbd "c") '("Symbols" . consult-imenu))
+	  (define-key map (kbd "i") '("Symbols" . consult-imenu))
 	  (define-key map (kbd "f") '("Files" . gf3/find))
 	  (define-key map (kbd "F") '("Browse files" . find-file))
 	  (define-key map (kbd "g") '("Grep" . deadgrep))
-	  (define-key map (kbd "k") '("Kill buffer" . kill-current-buffer))
+	  (define-key map (kbd "k") '("Kill filename" . gf3/kill-buffer-filename))
+	  (define-key map (kbd "q") '("Close buffer" . kill-current-buffer))
 	  (define-key map (kbd "l") '("Lines" . consult-line))
 	  (define-key map (kbd "n") '("New buffer" . new-buffer))
 	  (define-key map (kbd "r") '("Recent file" . consult-recent-file))

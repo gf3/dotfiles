@@ -67,6 +67,6 @@
 (gf3/set-fonts)
 
 ;; Misc.
-(put 'erase-buffer 'disabled nil)
 
 ;;; init.el ends here
+(put 'erase-buffer 'disabled nil)

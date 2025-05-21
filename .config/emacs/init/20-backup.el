@@ -20,6 +20,5 @@
 ;; Lockfiles
 (setq lock-file-name-transforms `((".*" ,(concat user-emacs-directory (file-name-as-directory "tmp") (file-name-as-directory "lockfiles")) t)))
 
-
 (provide '20-backup)
 ;;; 20-backup.el ends here
