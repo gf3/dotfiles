@@ -4,12 +4,12 @@
 
 (defun gf3/term-custom-settings ()
   (local-set-key (kbd "M-p") 'term-send-up)
-  (local-set-key (kbd "M-n") 'term-send-down))
-(add-hook 'term-load-hook #'gf3/term-custom-settings)
+  (local-set-key (kbd "M-n") 'term-send-down)
+  (define-key term-raw-map (kbd "M-o") 'other-window)
+  (define-key term-raw-map (kbd "M-p") 'term-send-up)
+  (define-key term-raw-map (kbd "M-n") 'term-send-down))
 
-(define-key term-raw-map (kbd "M-o") 'other-window)
-(define-key term-raw-map (kbd "M-p") 'term-send-up)
-(define-key term-raw-map (kbd "M-n") 'term-send-down)
+(add-hook 'term-load-hook #'gf3/term-custom-settings)
 
 ;; Directory tracking
 (add-hook 'comint-output-filter-functions #'comint-osc-process-output)
