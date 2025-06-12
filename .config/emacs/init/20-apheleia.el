@@ -5,7 +5,7 @@
 (use-package apheleia
   :straight t
   :defer t
-  :hook ((prog-mode . apheleia-mode))
+  ;; :hook ((prog-mode . apheleia-mode))
   :commands (apheleia-mode apheleia-global-mode apheleia-format-buffer)
   :config
   ;; Additional formatters

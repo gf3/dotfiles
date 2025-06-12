@@ -1,8 +1,8 @@
-;;; init-straight.el --- Package management -*- lexical-binding: t -*-
+;;; 00-straight.el --- Package management -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
-(setq straight-check-for-modifications '(watch-files find-when-checking))
+(setq straight-check-for-modifications '(check-on-save find-when-checking))
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -18,5 +18,5 @@
 
 (straight-use-package 'use-package)
 
-(provide 'init-straight)
-;;; init-straight.el ends here
+(provide '00-straight)
+;;; 00-straight.el ends here

@@ -33,7 +33,7 @@
 
 ;; Fonts
 (defvar fixed-pitch-font-name "Maple Mono NF" "The fixed pitch font name.")
-(defvar variable-pitch-font-name "Iosevka Aile" "The variable pitch font name.")
+(defvar variable-pitch-font-name "Adwaita Sans" "The variable pitch font name.")
 (defvar preferred-font-size 13 "The preferred font size.")
 (defvar preferred-font (format "%s-%d:weight=regular" fixed-pitch-font-name preferred-font-size) "The preferred font.")
 

@@ -7,6 +7,7 @@
 
 (defvar light-theme 'kaolin-valley-light
   "The light theme to use.")
+
 (defvar dark-theme 'kaolin-valley-dark
   "The dark theme to use.")
 
