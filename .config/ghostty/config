@@ -1,13 +1,13 @@
 font-family = "Maple Mono NF"
 font-size = 13
 
-theme = light:OneHalfLight,dark:OneHalfDark
+theme = light:flexoki-light,dark:flexoki-dark
 
 mouse-hide-while-typing = true
 focus-follows-mouse = true
 cursor-color = #FF0000
 
-command = /usr/bin/fish
+command = /usr/bin/env fish
 shell-integration = detect
 shell-integration-features = true
 
@@ -25,3 +25,4 @@ copy-on-select = true
 
 keybind = ctrl+shift+k=clear_screen
 keybind = super+k=clear_screen
+keybind = shift+enter=text:\n
