@@ -25,8 +25,6 @@
          ("C-h B" . embark-bindings))
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
-  (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
-  (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
   :config
   (add-to-list 'display-buffer-alist
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
@@ -38,5 +36,4 @@
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (provide '20-embark)
-
 ;;; 20-embark.el ends here

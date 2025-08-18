@@ -34,6 +34,7 @@
         (elm "https://github.com/elm-tooling/tree-sitter-elm")
         (go "https://github.com/tree-sitter/tree-sitter-go")
         (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+        (gren "https://github.com/MaeBrooks/tree-sitter-gren")
         (haskell "https://github.com/tree-sitter/tree-sitter-haskell")
         (hcl "https://github.com/MichaHoffmann/tree-sitter-hcl")
         (heex "https://github.com/phoenixframework/tree-sitter-heex.git")

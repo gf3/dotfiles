@@ -145,6 +145,11 @@ To be used as advice AFTER any function that sets `deactivate-mark' to t."
   (eldoc-add-command-completions "paredit-")
   (eldoc-add-command-completions "combobulate-"))
 
+(use-package eldoc-box
+  :straight t
+  :config
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t))
+
 ;; Clear the screen
 (add-hook 'shell-command-mode-hook
           (lambda () (local-set-key (kbd "C-K") 'erase-buffer)))

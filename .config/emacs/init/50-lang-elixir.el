@@ -3,18 +3,26 @@
 ;;; Code:
 
 (use-package heex-ts-mode
-  :straight (:host github :repo "wkirschbaum/heex-ts-mode")
+  :straight t
   :mode "\\.heex\\'")
 
 (use-package elixir-ts-mode
-  :straight (:host github :repo "wkirschbaum/elixir-ts-mode")
-  :after eglot
+  :straight t
   :mode (("\\.ex\\'" . elixir-ts-mode)
          ("\\.exs\\'" . elixir-ts-mode))
   :config
   (global-subword-mode t)
-  (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_release/language_server.sh"))
-  (add-to-list 'eglot-server-programs '(heex-ts-mode "~/Code/github.com/elixir-lsp/elixir-ls/_release/language_server.sh")))
+  (with-eval-after-load 'eglot
+    (add-hook 'elixir-ts-mode-hook 'eglot-ensure)
+    (add-hook 'heex-ts-mode-hook 'eglot-ensure)
+    (add-to-list 'eglot-server-programs
+                 '(elixir-mode . ("elixir-ls")))
+    (add-to-list 'eglot-server-programs
+                 '(elixir-ts-mode . ("elixir-ls")))
+    (add-to-list 'eglot-server-programs
+                 '(heex-mode . ("elixir-ls")))
+    (add-to-list 'eglot-server-programs
+                 '(heex-ts-mode . ("elixir-ls")))))
 
 (use-package exunit
   :straight t

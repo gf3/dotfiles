@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+(setq package-install-upgrade-built-in t)
 (setq straight-check-for-modifications '(check-on-save find-when-checking))
 (defvar bootstrap-version)
 (let ((bootstrap-file

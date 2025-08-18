@@ -5,6 +5,7 @@
 (use-package magit
   :straight t
   :demand t
+  :after transient
   :config
   (setq magit-diff-options '("-b")) ; ignore whitespace
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
@@ -35,7 +36,6 @@
   :straight t
   :after magit
   :hook (magit-mode . magit-delta-mode))
-
 
 (use-package git-link
   :straight t
