@@ -45,6 +45,10 @@ apps are not started from a shell."
 (when (eq system-type 'darwin)
   (add-to-list 'default-frame-alist '(undecorated-round . t)))
 
+;; Set the frame to none
+(when (eq system-type 'gnu/linux)
+  (add-to-list 'default-frame-alist '(undecorated . t)))
+
 ;; Resize the frame by pixels instead of cols/rows
 (setq-default
  window-resize-pixelwise t

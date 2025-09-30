@@ -1,7 +1,7 @@
 font-family = "Maple Mono NF"
 font-size = 13
 
-theme = light:flexoki-light,dark:flexoki-dark
+# theme = light:flexoki-light,dark:flexoki-dark
 
 mouse-hide-while-typing = true
 focus-follows-mouse = true
