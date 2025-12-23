@@ -1,0 +1,107 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "load_direnv": "shell_hook",
+  "minimap": {
+    "show": "auto",
+    "thumb": "always",
+    "thumb_border": "left_open",
+    "current_line_highlight": "all"
+  },
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-latest"
+    },
+    "model_parameters": []
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "context_servers": {
+    "postgres-context-server": {
+      "enabled": true,
+      "settings": {
+        "database_url": "postgresql://postgres:postgres@localhost:5432/wharf_dev"
+      }
+    }
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "project_panel": {
+    "entry_spacing": "standard"
+  },
+  "bottom_dock_layout": "contained",
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": true
+  },
+  "search": {
+    "regex": true
+  },
+  "use_smartcase_search": true,
+  "languages": {
+    "Elixir": {
+      "indent_guides": {
+        "coloring": "indent_aware"
+      },
+      "preferred_line_length": 120,
+      "tab_size": 2,
+    }
+  },
+  "prettier": {
+    "allowed": false
+  },
+  "colorize_brackets": true,
+  "inlay_hints": {
+    "enabled": true
+  },
+  "show_signature_help_after_edits": true,
+  "auto_signature_help": true,
+  "autosave": "on_window_change",
+  "ui_font_family": ".SystemUIFont",
+  "icon_theme": "Light Charmed Icons",
+  "terminal": {
+    "shell": {
+      "program": "/usr/bin/fish"
+    },
+    "font_size": 15.0,
+    "blinking": "on",
+    "copy_on_select": true,
+    "max_scroll_history_lines": 10000
+  },
+  "vertical_scroll_margin": 5.0,
+  "buffer_font_fallbacks": [
+    "JetBrainsMono Nerd Font",
+    "JetBrains Mono",
+    "Rec Mono Linear",
+    "Droid Sans Mono",
+    "monospace",
+    "monospace",
+    "Noto Color Emoji"
+  ],
+  "buffer_font_family": "Maple Mono",
+  "auto_indent_on_paste": true,
+  "base_keymap": "Emacs",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  }
+}
