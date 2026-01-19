@@ -103,5 +103,21 @@
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark"
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          "allFeatures": true // Enable all features
+        }
+      },
+      "procMacro": {
+        "ignored": [
+          // optional:
+          // "component",
+          "server"
+        ]
+      }
+    }
   }
 }

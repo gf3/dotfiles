@@ -23,5 +23,11 @@
     "bindings": {
       // "j k": "vim::NormalBefore"
     }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-k": "terminal::Clear"
+    }
   }
 ]
