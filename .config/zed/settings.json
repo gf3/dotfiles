@@ -7,6 +7,53 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "code_lens": "on",
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "semantic_tokens": "combined",
+  "helix_mode": true,
+  "agent_servers": {
+    "mistral-vibe": {
+      "type": "registry"
+    },
+    "cursor": {
+      "default_config_options": {
+        "context": "1m",
+        "model": "claude-fable-5",
+        "mode": "agent"
+      },
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "goose": {
+      "type": "registry"
+    },
+    "gemini": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "default_config_options": {
+        "model": "gpt-5.4"
+      },
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    },
+    "junie-acp": {
+      "type": "registry"
+    }
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "subtle"
+  },
   "load_direnv": "shell_hook",
   "minimap": {
     "show": "auto",
@@ -15,27 +62,85 @@
     "current_line_highlight": "all"
   },
   "agent": {
+    "show_turn_stats": true,
+    "use_modifier_to_send": true,
+    "play_sound_when_agent_done": "always",
+    "dock": "left",
+    "tool_permissions": {
+      "tools": {
+        "fetch": {
+          "always_allow": [
+            {
+              "pattern": "^https?://hexdocs\\.pm"
+            }
+          ]
+        },
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^mix\\b"
+            }
+          ]
+        }
+      }
+    },
+    "default_model": {
+      "effort": "high",
+      "enable_thinking": false,
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-6"
+    },
+    "default_profile": "write",
+    "profiles": {
+      "plan": {
+        "default_model": {
+          "provider": "anthropic",
+          "model": "claude-sonnet-4-5-thinking-latest"
+        },
+        "name": "Plan",
+        "tools": {
+          "search_web": true,
+          "thinking": true,
+          "terminal": true,
+          "save_file": true,
+          "restore_file_from_disk": true,
+          "read_file": true,
+          "open": true,
+          "now": true,
+          "move_path": true,
+          "list_directory": true,
+          "grep": true,
+          "find_path": true,
+          "edit_file": true,
+          "fetch": true,
+          "diagnostics": true,
+          "delete_path": true,
+          "create_directory": true,
+          "copy_path": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "postgres-context-server": {
+            "tools": {
+              "pg-schema": true,
+              "query": true
+            }
+          }
+        }
+      }
+    },
     "inline_assistant_model": {
       "provider": "anthropic",
       "model": "claude-sonnet-4-5-latest"
     },
     "model_parameters": []
   },
-  "features": {
-    "edit_prediction_provider": "copilot"
-  },
-  "context_servers": {
-    "postgres-context-server": {
-      "enabled": true,
-      "settings": {
-        "database_url": "postgresql://postgres:postgres@localhost:5432/wharf_dev"
-      }
-    }
-  },
+  "context_servers": {},
   "outline_panel": {
     "dock": "right"
   },
   "project_panel": {
+    "dock": "right",
     "entry_spacing": "standard"
   },
   "bottom_dock_layout": "contained",
@@ -48,7 +153,6 @@
   },
   "title_bar": {
     "show_menus": false,
-    "show_branch_icon": true
   },
   "search": {
     "regex": true
@@ -57,24 +161,27 @@
   "languages": {
     "Elixir": {
       "indent_guides": {
+        "background_coloring": "disabled",
         "coloring": "indent_aware"
       },
       "preferred_line_length": 120,
       "tab_size": 2,
-    }
+    },
+    "HEEx": {}
   },
   "prettier": {
     "allowed": false
   },
   "colorize_brackets": true,
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
+    "show_background": true
   },
   "show_signature_help_after_edits": true,
   "auto_signature_help": true,
   "autosave": "on_window_change",
   "ui_font_family": ".SystemUIFont",
-  "icon_theme": "Light Charmed Icons",
+  "icon_theme": "Zed (Default)",
   "terminal": {
     "shell": {
       "program": "/usr/bin/fish"
@@ -85,15 +192,6 @@
     "max_scroll_history_lines": 10000
   },
   "vertical_scroll_margin": 5.0,
-  "buffer_font_fallbacks": [
-    "JetBrainsMono Nerd Font",
-    "JetBrains Mono",
-    "Rec Mono Linear",
-    "Droid Sans Mono",
-    "monospace",
-    "monospace",
-    "Noto Color Emoji"
-  ],
   "buffer_font_family": "Maple Mono",
   "auto_indent_on_paste": true,
   "base_keymap": "Emacs",
@@ -110,13 +208,6 @@
         "cargo": {
           "allFeatures": true // Enable all features
         }
-      },
-      "procMacro": {
-        "ignored": [
-          // optional:
-          // "component",
-          "server"
-        ]
       }
     }
   }

@@ -69,3 +69,6 @@ external = difft
 
 [merge]
 conflictStyle = zdiff3
+[credential]
+	helper = cache --timeout 21600
+	helper = oauth
